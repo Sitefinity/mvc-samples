@@ -1,0 +1,17 @@
+{
+  "name": "Telerik.Sitefinity.Frontend.Samples",
+  "description": "This project contains samples demonstrating the features of the Feather project.",
+  "author": "Elena Ganeva",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sitefinity/feather-samples"
+  },
+  "bugs": {
+    "url": "https://github.com/Sitefinity/feather-samples/issues"
+  },
+  "homepage": "https://github.com/Sitefinity/feather-samples",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-jshint": "^0.10.0"
+  }
+}

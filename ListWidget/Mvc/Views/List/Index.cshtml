@@ -1,0 +1,31 @@
+﻿<div class="sfContentBlock">
+    @{
+        string openingTag;
+        string closingTag;
+        
+        
+        if (@ViewBag.ListType == ListWidget.ListMode.Bullets)
+        {
+            openingTag = "<ul>";
+            closingTag = "</ul>";
+        }
+        else
+        {
+            openingTag = "<ol>";
+            closingTag = "</ol>";
+        }
+        
+        <h2>
+            @ViewBag.ListTitle
+        </h2>
+        
+        @Html.Raw(openingTag)
+
+        foreach (var listItem in ViewBag.ListItems)
+        {
+            <li>@listItem</li>
+        }
+    
+        @Html.Raw(closingTag)
+    }
+</div>
