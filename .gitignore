@@ -110,7 +110,7 @@ UpgradeLog*.XML
 #NPM directory
 node_modules
 
-Feather.jmconfig
+*.jmconfig
 
 ListWidget/.nuget/NuGet.exe
 UpgradeLog*.htm
