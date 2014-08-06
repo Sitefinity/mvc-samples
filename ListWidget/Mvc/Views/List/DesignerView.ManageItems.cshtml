@@ -1,12 +1,12 @@
 ﻿<div id="list-items">
     <ul id="sortable-list">
-        <li data-ng-repeat="item in ListItems" class="form-group"> 
+        <li data-ng-repeat="item in listItems" class="form-group"> 
             <label ng-bind="item"></label>
-            <button class="btn btn-default btn-xs" ng-click="DeleteListItem($index)">Delete<i class="glyphicon glyphicon-remove-circle"></i></button> 
+            <button class="btn btn-default btn-xs" ng-click="deleteListItem($index)">Delete<i class="glyphicon glyphicon-remove-circle"></i></button> 
         </li>
     </ul>
     <div class="form-inline">
         <input type="text" name="newListItem" id="newListItem" placeholder="Enter new list item..." ng-model="newListItem" />
-        <button id="add-list-item" class="btn" ng-click="AddListItem()">Add</button>
+        <button id="add-list-item" class="btn" ng-click="addListItem()">Add</button>
     </div>
 </div>
