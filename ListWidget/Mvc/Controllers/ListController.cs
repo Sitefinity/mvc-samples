@@ -1,7 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using Telerik.Sitefinity.Mvc;
@@ -28,6 +25,7 @@ namespace ListWidget.Mvc.Controllers
             {
                 return this.listTitle;
             }
+
             set
             {
                 this.listTitle = value;
@@ -58,6 +56,7 @@ namespace ListWidget.Mvc.Controllers
             {
                 return this.listItems;
             }
+
             set
             {
                 this.listItems = value;
@@ -91,7 +90,7 @@ namespace ListWidget.Mvc.Controllers
         /// <returns>The list of items</returns>
         private IList<string> DeserializeItems()
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var serializer = new JavaScriptSerializer();
             IList<string> items = new List<string>();
 
             if (!string.IsNullOrEmpty(this.ListItems))
@@ -104,7 +103,14 @@ namespace ListWidget.Mvc.Controllers
 
         #region Private fields and constants
 
+        /// <summary>
+        /// The list title
+        /// </summary>
         private string listTitle = "My list title";
+
+        /// <summary>
+        /// The list items
+        /// </summary>
         private string listItems = "[\"First Item\", \"Second Item\", \"Third Item\"]";
 
         #endregion
