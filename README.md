@@ -3,10 +3,6 @@ The Feather Project
 
 This repository contains samples related to the [Feather project](http://projectfeather.sitefinity.com).
 
-# Documentation
-
-[List widget documentation](https://github.com/Sitefinity/feather/wiki/Create-a-MVC-List-widget) 
-
 # Related Repositories
 
 [feather](https://github.com/Sitefinity/feather) - This repository contains the core infrastructure related to the Feather project.
@@ -14,6 +10,10 @@ This repository contains samples related to the [Feather project](http://project
 [feather-widgets](https://github.com/Sitefinity/feather-widgets) - This repository contains custom MVC widgets which are part of the Feather project.
 
 [feather-packages](https://github.com/Sitefinity/feather-packages) - This repository contains front-end packages for the Feather project.
+
+# Documentation
+
+[List widget documentation](https://github.com/Sitefinity/feather/wiki/Create-a-MVC-List-widget) 
 
 # License Information
 
