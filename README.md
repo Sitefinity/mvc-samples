@@ -1,7 +1,7 @@
 The Feather Project
 =======
 
-This repository contains samples related to the [Project Feather](http://projectfeather.sitefinity.com).
+This repository contains samples related to [Project Feather](http://projectfeather.sitefinity.com).
 
 # Related Repositories
 
