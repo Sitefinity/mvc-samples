@@ -192,5 +192,3 @@ OauthExternalAuthentication/obj/Debug/DesignTimeResolveAssemblyReferencesInput.c
 
 # Ignore search indexes and Data configuration Uncoment if you want to ignore it
 # **/App_Data/Sitefinity/Search/
-[Dd]ataConfig.config
-SitefinityWebApp/App_Data/Sitefinity/Configuration/DataConfig.config
