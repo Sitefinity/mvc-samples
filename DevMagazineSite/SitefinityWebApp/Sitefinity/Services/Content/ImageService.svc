@@ -1,0 +1,8 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.Modules.Libraries.Web.Services.ImageService" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+ %>
+ 
+ 

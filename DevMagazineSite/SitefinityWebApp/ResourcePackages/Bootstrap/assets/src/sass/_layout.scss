@@ -1,0 +1,47 @@
+// Sections
+.section--gray {
+  background-color:#ebebec;
+}
+
+.section--border .container {
+  border-bottom:1px solid #d6d6d6;
+}
+
+// Containers
+.container {
+  padding-top: 30px;
+  padding-bottom:30px;
+  position: relative;
+}
+
+// Row
+.row {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  & ~ .row {
+    margin-top: 30px;
+  }
+}
+
+.row--border {
+  border-bottom:1px solid #d6d6d6;
+}
+
+//Responsive
+
+//max-width:991px
+@media (max-width: $screen-sm-max) {
+ .container {
+  padding-top:15px;
+  padding-bottom:15px;
+ }
+
+ .row {
+  padding-top:0;
+  padding-bottom:0;
+    ~.row {
+      margin-top: 0;
+    }
+  }
+}

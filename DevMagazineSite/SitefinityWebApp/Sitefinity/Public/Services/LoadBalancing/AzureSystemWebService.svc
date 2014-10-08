@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true"
+    Service="Telerik.Sitefinity.Cloud.WindowsAzure.AzureSystemWebService"
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

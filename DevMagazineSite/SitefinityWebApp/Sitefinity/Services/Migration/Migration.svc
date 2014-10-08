@@ -1,0 +1,6 @@
+<%@ ServiceHost
+    Language="C#"
+    Debug="false"
+    Service="Telerik.Sitefinity.Modules.Migration.Web.Services.MigrationService"
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+%>

@@ -1,0 +1,17 @@
+﻿@model News.Mvc.Models.INewsModel
+
+@using Telerik.Sitefinity.News.Model;
+@using SitefinityWebApp.Mvc.HtmlHelpers;
+@using DevMagazine.Core.Mvc.Helpers
+
+@{
+    IList<NewsItem> allNewsItems = Model.Items.OrderByDescending(x => x.DateCreated).ToList();
+}
+
+<h3>@Html.RenderTopicLink(Model.SerializedTaxonomyFilter)</h3>
+<ul class="list-unstyled">
+    @foreach (NewsItem newsItem in allNewsItems)
+    {
+        <li><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></li>
+    }
+</ul>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns="http://schemas.microsoft.com/wlw/manifest/weblog">
+  <options>
+    <supportsEmbeds>Yes</supportsEmbeds>
+    <clientType>Atompub</clientType>
+    <supportsCategoriesInline>Yes</supportsCategoriesInline>
+    <supportsNewCategoriesInline>Yes</supportsNewCategoriesInline>
+    <supportsNewCategories>Yes</supportsNewCategories>
+    <supportsCategories>Yes</supportsCategories>
+    <supportsCustomDate>No</supportsCustomDate>
+  </options>
+  <weblog>
+    <serviceName>Sitefinity</serviceName>
+    <imageUrl>images/sitefinitylogo-16x16.png</imageUrl>
+    <watermarkImageUrl>images/sitefinitywatermark-84x84.png</watermarkImageUrl>
+    <homepageLinkText>View your blog</homepageLinkText>
+  </weblog> 
+</manifest>

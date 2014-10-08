@@ -1,0 +1,6 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+    Service="Telerik.Sitefinity.Services.Content.Web.Services.CommentsService, Telerik.Sitefinity"     
+%>

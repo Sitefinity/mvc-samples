@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SitefinityWebApp", "SitefinityWebApp\SitefinityWebApp.csproj", "{3E598CFC-83B2-494A-A97F-32EB24D797C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMagazine.Issues", "DevMagazine.Issues\DevMagazine.Issues.csproj", "{258E1CC1-B11E-40E3-8D94-6767FC21324C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMagazine.Core", "DevMagazine.Core\DevMagazine.Core.csproj", "{3F55D63D-E9A7-46F6-9447-8AAD1651A606}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{975517E9-ACCA-4BC2-A9B1-3AA8949899F3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMagazine.Authors", "DevMagazine.Authors\DevMagazine.Authors.csproj", "{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevMagazine.Search", "DevMagazine.Search\DevMagazine.Search.csproj", "{90A9D526-E737-45E8-8A4C-63B1816F19E8}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.telerik.com:8082/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DevMagazine.Core\\DevMagazine.Core.csproj
+		SccProjectName1 = DevMagazine.Core
+		SccLocalPath1 = DevMagazine.Core
+		SccProjectUniqueName2 = DevMagazine.Issues\\DevMagazine.Issues.csproj
+		SccProjectName2 = DevMagazine.Issues
+		SccLocalPath2 = DevMagazine.Issues
+		SccProjectUniqueName3 = SitefinityWebApp\\SitefinityWebApp.csproj
+		SccProjectName3 = SitefinityWebApp
+		SccLocalPath3 = SitefinityWebApp
+		SccProjectUniqueName4 = DevMagazine.Search\\DevMagazine.Search.csproj
+		SccProjectName4 = DevMagazine.Search
+		SccLocalPath4 = DevMagazine.Search
+		SccProjectUniqueName5 = DevMagazine.Authors\\DevMagazine.Authors.csproj
+		SccProjectName5 = DevMagazine.Authors
+		SccLocalPath5 = DevMagazine.Authors
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release Pro|Any CPU = Release Pro|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Release Pro|Any CPU.ActiveCfg = Release Pro|Any CPU
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Release Pro|Any CPU.Build.0 = Release Pro|Any CPU
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E598CFC-83B2-494A-A97F-32EB24D797C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Release Pro|Any CPU.ActiveCfg = Release|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Release Pro|Any CPU.Build.0 = Release|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258E1CC1-B11E-40E3-8D94-6767FC21324C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Release Pro|Any CPU.ActiveCfg = Release|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Release Pro|Any CPU.Build.0 = Release|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F55D63D-E9A7-46F6-9447-8AAD1651A606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Release Pro|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Release Pro|Any CPU.Build.0 = Release|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC6E1A5-37C4-4F13-A878-07E9BF84659E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Release Pro|Any CPU.ActiveCfg = Release|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Release Pro|Any CPU.Build.0 = Release|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A9D526-E737-45E8-8A4C-63B1816F19E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

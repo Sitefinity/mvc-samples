@@ -1,0 +1,34 @@
+﻿@model DevMagazine.Search.Mvc.ViewModels.SearchResultsViewModel
+@using DevMagazine.Core.Mvc.Helpers
+
+<section class="section">
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2 row--border">
+            <div class="row text-center">
+                <h1>@Html.RenderTextOrText("Search results for ", "No search results for ", Model.Hits > 0)"<span class="js-search-term">@Model.Term</span>"</h1>
+                <div class="text-muted">@Model.Hits results</div>
+            </div>
+            <div id="search-results">
+                @foreach (var item in Model.Results)
+                {
+                    <div class="row" style="margin-bottom: 10px;">
+                        <h3><a href="@item.GetValue("Link")">@item.GetValue("Title")</a></h3>
+                        <p>@Html.Raw(item.GetValue("HighLighterResult"))</p>
+                        <a href="@item.GetValue("Link")">Read more</a>
+                    </div>
+                }
+
+                <div class="row text-center u-mt4" id="paging-wrapper">
+                    <a id="showMoreResults" href="#" data-page="@Model.CurrentPage" data-url="@Html.GetCurrentNodeUrl()" data-query="@Model.Term" class="@Html.RenderTextIfTrue("hidden", (Model.CurrentPage >= Model.TotalPagesCount))">
+                        <span class="glyphicon glyphicon-chevron-down glyph-bordered"></span><br />
+                        Load more results
+                    </a>
+                    <div id="endless-paging" style="margin-top: 10px; display: none;">
+                        <img src="/ajax-loader.gif" height="24" width="24" alt="Ajax Loader">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

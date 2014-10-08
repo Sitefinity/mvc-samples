@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Telerik.Sitefinity.Thunder.Module.Services.ThunderService" Factory="Telerik.Sitefinity.Thunder.Module.Services.ThunderServiceHostFactory" %>

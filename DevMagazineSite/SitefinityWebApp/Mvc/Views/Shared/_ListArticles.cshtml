@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Telerik.Sitefinity.News.Model.NewsItem>
+
+@using DevMagazine.Core.Mvc.Helpers
+
+<ul class="list-unstyled">
+    @foreach (var newsItem in Model)
+    {
+        <li><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></li>
+    }
+</ul>

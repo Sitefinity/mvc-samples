@@ -1,0 +1,15 @@
+﻿@model DevMagazine.Issues.Mvc.ViewModels.IssueViewModel
+
+@using DevMagazine.Core.Mvc.Helpers;
+
+<div class="col-md-4">
+    <div class="media">
+        <a class="pull-left" href="@Html.GetRelativeUrl(Model.UrlName)">
+            <img class="media-object" src="@Model.Cover.ImageUrl" alt="@Model.Cover.AlternativeText" height="240" width="180">
+        </a>
+        <div class="media-body">
+            <h6 class="text-muted">@Model.Number</h6>
+            <h5 class="media-heading"><a href="@Html.GetRelativeUrl(Model.UrlName)">@Model.Title</a></h5>
+        </div>
+    </div>
+</div>

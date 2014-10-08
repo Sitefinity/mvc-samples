@@ -1,0 +1,4 @@
+﻿<%@ ServiceHost Language="C#"
+                Debug="true"
+                Service="Telerik.Sitefinity.Modules.Ecommerce.Orders.Web.Services.CartOrderService"
+                Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

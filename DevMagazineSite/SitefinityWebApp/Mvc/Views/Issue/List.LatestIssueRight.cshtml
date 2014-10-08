@@ -1,0 +1,51 @@
+﻿@model DevMagazine.Issues.Mvc.Models.IIssueModel
+
+@using DevMagazine.Core.Mvc.Helpers;
+@using DevMagazine.Issues.Mvc.Models.Impl;
+
+@{
+    var issue = Model.Issues.FirstOrDefault();
+
+    var first5articles = issue.Articles.OrderByDescending(x => x.DateCreated).Take(5);
+    var second5articles = issue.Articles.OrderByDescending(x => x.DateCreated).Skip(5).Take(5);
+}
+<div class="container">
+    <!--  Default 8+4 Feather widget -->
+    <h1 class="text-center">Issues</h1>
+
+    <h4>Latest issue</h4>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-5 text-center">
+            @Html.RenderImage(issue.Cover, "image-issue", "463", "380")
+            <a class="Btn Btn--download-issue" href="@issue.PrintedVersion.DownloadUrl">Download</a>
+        </div>
+
+        <div class="col-md-7">
+            <h4>@issue.Number</h4>
+            <h2><a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue)">@issue.Title</a></h2>
+            <p>@Html.Raw(issue.Description)</p>
+            <h5>Featured issue articles</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        @foreach (var article in first5articles)
+                        {
+                            <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
+                        }
+                    </ul>
+                    <a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
+                </div>
+                <div class="col-md-6">
+                   <ul class="list-unstyled">
+                    @foreach (var article in second5articles)
+                    {
+                        <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
+                    }
+                </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

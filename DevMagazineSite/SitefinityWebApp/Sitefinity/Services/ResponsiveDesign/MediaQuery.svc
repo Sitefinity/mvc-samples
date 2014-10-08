@@ -1,0 +1,4 @@
+<%@ ServiceHost Language="C#" 
+                Debug="false" 
+                Service="Telerik.Sitefinity.Modules.ResponsiveDesign.Web.Services.MediaQueryService" 
+                Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

@@ -1,0 +1,6 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.Services.MetaData.Web.Services.MetaDataService" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+ %>

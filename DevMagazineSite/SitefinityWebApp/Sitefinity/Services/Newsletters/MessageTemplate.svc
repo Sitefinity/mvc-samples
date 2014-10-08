@@ -1,0 +1,4 @@
+<%@ ServiceHost Language="C#" 
+                Debug="false" 
+                Service="Telerik.Sitefinity.Modules.Newsletters.Services.MessageTemplateService" 
+                Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

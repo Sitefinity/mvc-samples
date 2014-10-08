@@ -1,0 +1,4 @@
+<%@ ServiceHost Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.ModuleEditor.Web.Services.ModuleEditorService"
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

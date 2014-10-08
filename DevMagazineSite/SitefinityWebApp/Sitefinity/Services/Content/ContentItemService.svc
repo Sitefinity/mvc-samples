@@ -1,0 +1,8 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.Modules.GenericContent.Web.Services.ContentItemService" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+ %>
+ 
+ 

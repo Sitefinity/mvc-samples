@@ -1,0 +1,6 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.Services.Content.Web.Services.Obsolete.ContentService" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+ %>

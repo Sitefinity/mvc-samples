@@ -1,0 +1,8 @@
+<%@ ServiceHost 
+    Language="C#" 
+    Debug="false" 
+    Service="Telerik.Sitefinity.Modules.Blogs.Web.Services.BlogPostService" 
+    Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory"
+ %>
+ 
+ 

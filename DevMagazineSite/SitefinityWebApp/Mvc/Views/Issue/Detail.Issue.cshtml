@@ -1,0 +1,61 @@
+﻿@model DevMagazine.Issues.Mvc.ViewModels.IssueViewModel
+
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.DynamicModules.Model;
+@using Telerik.Sitefinity.RelatedData;
+@using DevMagazine.Core.Mvc.Helpers;
+
+@{
+    var featuredArticle = Model.FeaturedArticle.Single();
+    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)featuredArticle.GetRelatedItems<DynamicContent>("ArticleAuthor").Single()), featuredArticle);
+}
+
+<div class="Main-content">
+    <div class="section">
+
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h4>@Model.Number</h4>
+                    <h1>@Model.Title</h1>
+                </div>
+            </div>
+
+            <div class="Issue-cover">
+                @Html.RenderImage(Model.Cover, "", "400", "428")
+            </div>
+
+            <a href="@Model.PrintedVersion.DownloadUrl" class="Btn Btn--download-issue-2">Download</a>
+        </div>
+    </div>
+
+    <section class="Section">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="@Html.GetItemDefaultUrl(featuredArticle)">
+                        @Html.RenderImage(featuredArticle.GetRelatedItems<Image>("Image").SingleOrDefault(), "", "198", "780")
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <h4>Featured</h4>
+                    <h2><a href="@Html.GetItemDefaultUrl(featuredArticle)">@featuredArticle.Title</a></h2>
+                    <p>@Html.Raw(@featuredArticle.Summary)</p>
+                    <a href="@Html.GetItemDefaultUrl(featuredArticle)">Read more</a>
+                    @Html.Partial("_FeaturedArticle.Author", authorViewModel)
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+
+        <div class="container">
+
+            <h4>Issue articles</h4>
+            <hr>
+            @Html.Partial("_RecentByTopic.Author", Model.Articles.ToList())
+        </div>
+    </section>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DevMagazine.Issues.Mvc.ViewModels.IssueViewModel>
+
+@{
+    var issue = Model.FirstOrDefault();
+}
+
+@using DevMagazine.Core.Mvc.Helpers;
+@using DevMagazine.Issues.Mvc.Models.Impl;
+
+<div class="row">
+    <div class="col-md-7">
+        <h4>@issue.Number</h4>
+        <h2><a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue.ProviderName, issue.Id)">@issue.Title</a></h2>
+        <p>@Html.Raw(issue.Description)</p>
+        <h5>Featured issue articles</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    @foreach (var article in issue.Articles.Take(5))
+                    {
+                        <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
+                    }
+                </ul>
+                <a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue.ProviderName, issue.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
+            </div>
+
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    @foreach (var article in issue.Articles.Skip(5).Take(5))
+                    {
+                        <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 text-center">
+        @Html.RenderImage(issue.Cover, "image-issue", "482", "379")
+        <a class="Btn Btn--download-issue" href="@issue.PrintedVersion.DownloadUrl">Download</a>
+    </div>
+</div>

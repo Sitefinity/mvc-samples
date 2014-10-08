@@ -1,0 +1,34 @@
+﻿@model News.Mvc.Models.INewsModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using SitefinityWebApp.Mvc.HtmlHelpers;
+@using DevMagazine.Core.Mvc.Helpers;
+
+@{
+    var newsItems = Model.Items;
+}
+
+@Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
+
+<section class="section section--border">
+    <div id="container" class="container">
+        <div class="row text-center">
+            <h4>Topic</h4>
+            <h1>@Html.RenderTopicTitle(Model.SerializedTaxonomyFilter)</h1>
+        </div>
+        <hr />
+        <div id="news-container">
+            @Html.Partial("_RecentByTopic.Author", Model.Items)
+
+            <div class="row text-center u-mt4" id="paging-wrapper" >
+                <a id="showMoreArticles" href="#" data-page="@Model.CurrentPage" data-url="@Html.GetCurrentNodeUrl()" class="@Html.RenderTextIfTrue("hidden", (Model.CurrentPage >= Model.TotalPagesCount))">
+                    <span class="glyphicon glyphicon-chevron-down glyph-bordered"></span><br />
+                    Load more articles
+                </a>
+                <div id="endless-paging" style="margin-top: 10px; display: none;">
+                    <img src="/ajax-loader.gif" height="24" width="24" alt="Ajax Loader">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

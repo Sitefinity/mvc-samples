@@ -1,0 +1,4 @@
+<%@ ServiceHost Language="C#"
+                Debug="false"
+                Service="Telerik.Sitefinity.DynamicModules.Web.Services.DataService"
+                Factory="Telerik.Sitefinity.Web.Services.WcfHostFactory" %>

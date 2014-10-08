@@ -1,0 +1,39 @@
+﻿﻿@model IList<NewsItem>
+
+@using Telerik.Sitefinity.News.Model;
+@using Telerik.Sitefinity.RelatedData;
+@using DevMagazine.Core.Mvc.Helpers;
+@using Telerik.Sitefinity.DynamicModules.Model;
+
+@{
+    var newsItems = Model;
+
+    int counter = 0;
+    int maximumItemsPerRow = 3;
+    int newsItemsCount = newsItems.Count;
+}
+
+@foreach (NewsItem newsItem in newsItems)
+{
+    if (counter % maximumItemsPerRow == 0)
+    {
+        @:<div class="row">
+    }
+
+    <div class="col-md-4 article">
+        <h3><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></h3>
+        <p>
+            @newsItem.Summary
+        </p>
+            <a href="@Html.GetItemDefaultUrl(newsItem)">Read more</a>
+
+            @Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml", DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem))
+    </div>
+
+    counter++;
+
+    if (counter == maximumItemsPerRow || (counter > 0 && (counter % maximumItemsPerRow == 0)) || counter == newsItemsCount)
+    {
+        @:</div>
+    }
+}

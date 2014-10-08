@@ -1,0 +1,31 @@
+﻿﻿@model News.Mvc.Models.INewsModel
+
+@using System.Linq;
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.Model;
+@using Telerik.Sitefinity.DynamicModules.Model;
+@using DevMagazine.Core.Mvc.Helpers;
+
+
+@{
+    var newsItem = Model.Items.First();
+    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)newsItem.GetValue<DynamicContent>("ArticleAuthor")), newsItem);
+}
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <a href="@Html.GetItemDefaultUrl(newsItem)">
+                    @Html.RenderImage(newsItem.GetValue<Image>("Image"), "", "354", "650")
+                </a>
+            </div>
+            <div class="col-md-5">
+                <h4>Featured</h4>
+                <h1><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></h1>
+                @Html.Partial("_FeaturedArticle.Author", authorViewModel)
+
+            </div>
+        </div>
+    </div>
+</section>
