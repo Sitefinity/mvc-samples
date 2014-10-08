@@ -11,9 +11,17 @@ This repository contains samples related to [Project Feather](http://projectfeat
 
 [feather-packages](https://github.com/Sitefinity/feather-packages) - This repository contains front-end packages for the Feather project.
 
+
 # Documentation
 
-[List widget documentation](https://github.com/Sitefinity/feather/wiki/Create-a-MVC-List-widget) 
+### Widgets
+
+  * [List widget documentation](https://github.com/Sitefinity/feather/wiki/Create-a-MVC-List-widget) 
+
+### Sites
+
+  * [DevMagazine site overview](https://github.com/Sitefinity/feather/wiki/DevMagazine-site-overview)
+
 
 # License Information
 
