@@ -65,6 +65,13 @@
 
 //Responsive
 
+@media (max-width: 320px) {
+  li.Search {
+    width:240px;
+    float:left;
+  }
+}
+
 //max-width:767px
 @media (max-width: $screen-xs-max) {
   .Search {

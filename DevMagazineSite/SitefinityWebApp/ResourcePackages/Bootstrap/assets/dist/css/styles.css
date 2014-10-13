@@ -4503,6 +4503,11 @@ hr {
   top: 0;
   right: -35px; }
 
+@media (max-width: 320px) {
+  li.Search {
+    width: 240px;
+    float: left; } }
+
 @media (max-width: 767px) {
   .Search > [type="search"] {
     width: 85%; }
