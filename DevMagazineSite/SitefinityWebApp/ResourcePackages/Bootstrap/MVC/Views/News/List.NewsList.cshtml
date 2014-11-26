@@ -1,30 +1,55 @@
-@model News.Mvc.Models.NewsModel
+@model News.Mvc.Models.INewsModel
 
 @using News.Mvc.Models;
+@using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Modules.Pages;
 
-@if (!SitefinityContext.IsBackend && !Telerik.Sitefinity.Services.SystemManager.IsInlineEditingMode)
-{
-    @Html.Script("//code.jquery.com/jquery-1.8.3.min.js")
-}
+@Html.Script(ScriptRef.JQuery)
+@Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<div class="row @Model.ListCssClass">
-    @foreach (var item in Model.Items)
+<div class="@Model.ListCssClass">
+    <ul class="list-unstyled">
+        @foreach (var item in Model.Items)
         {
-            using (Html.InlineEditingRegion(Model.ProviderName, "Telerik.Sitefinity.News.Model.NewsItem", item.Id))
-            {
-                <div class="col-md-4">
-                    <h3>
-                        @Html.ActionLink(item.Title, item.ItemDefaultUrl)
-                    </h3>
-                    <p>@Html.Raw(Html.TextField("Summary", item.Summary, "ShortText"))</p>
-                    @Html.ActionLink("Read More", item.ItemDefaultUrl)
-                </div>
-            }
-        }
+            <li>
+              @using (Html.InlineEditingRegion(Model.ProviderName, "Telerik.Sitefinity.News.Model.NewsItem", item.Id))
+              {
+                  <h3>
+                            @if (ViewBag.OpenInSamePage)
+                            {
+                                <a href="@(ViewBag.CurrentPageUrl + item.ItemDefaultUrl)">@item.Title</a>
+                            }
+                            else
+                            {
+                                <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId)">@item.Title</a>
+                            }
+                  </h3>
 
+                  <div class="text-muted">
+                      @item.PublicationDate.ToLocal().ToString("MMM d, yyyy, hh:mm tt")
+                      @Html.Resource("By")
+                      @DataResolver.Resolve(item, "Author", null)
+                  </div>
+                  
+                  if (!String.IsNullOrEmpty(item.Summary))
+                  {
+                        @Html.Raw(Html.TextField("Summary", item.Summary, "ShortText"))
+                  }
+                  
+                  if (ViewBag.OpenInSamePage)
+                  {
+                      <a href="@(ViewBag.CurrentPageUrl + item.ItemDefaultUrl)">Full story</a>
+                  }
+                  else
+                  {
+                      <a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId)">Full story</a>
+                  }
+                }
+              </li>
+        }
+    </ul>
 
     @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
     {

@@ -1,0 +1,39 @@
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+
+@using DevMagazine.Core.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+
+@Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
+
+<section class="section">
+    <div class="container">
+        @{
+            using (Html.InlineEditingRegion(Model.ProviderName, Model.ContentType, Model.Item.Id))
+            {
+            <div class="Author Author--header text-center">
+                @Html.RenderImage(Model.Avatar, "img-circle", "128", "128")
+
+                <h1>@Model.Name</h1>
+                <p class="text-muted">@Model.JobTitle</p>
+
+                <p>@Html.Raw(Model.Bio)</p>
+            </div>
+            }
+        }
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h4>@Model.Name’s articles</h4>
+        <hr />
+        @Html.Partial("_RecentByTopic.Author", Model.RelatedArticles)
+    </div>
+</section>
+
+<section class="section section--gray">
+    <div class="container">
+        @Html.Partial("_LatestIssue", Model.LatestIssue)
+    </div>
+</section>

@@ -1,29 +1,14 @@
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")' type="text/css" />
 </head>
 <body>
-
-    @Html.SfPlaceHolder("ContainerPlaceholder")
-
-    <!-- <script src="/ResourcePackages/Bootstrap/vendor/jquery/dist/jquery.js"></script> -->
-    <script src="/ResourcePackages/Bootstrap/assets/dist/js/all.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".js-nav-fixed").fixit({
-                top: 0,
-                fixClass: "is-fixed",
-                dummyClass: "fixed-dummy",
-                classOnly: true,
-                renderDummy: true
-            });
-        });
-
-    </script>
+    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")' type="text/css" />
+    @Html.SfPlaceHolder("Contentplaceholder1")
 </body>
 </html>

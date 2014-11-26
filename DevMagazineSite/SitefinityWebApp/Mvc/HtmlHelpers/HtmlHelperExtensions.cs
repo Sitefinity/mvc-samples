@@ -77,7 +77,7 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
                 return null;
 
             DynamicModuleManager manager = DynamicModuleManager.GetManager();
-            DynamicContent issueItem = manager.GetDataItem(issueType, relatedIssueItem.Id);
+            var issueItem = manager.GetDataItem(issueType, relatedIssueItem.Id);
 
             var sb = new StringBuilder();
             sb.AppendLine("<span class=\"text-muted\">|</span>");
