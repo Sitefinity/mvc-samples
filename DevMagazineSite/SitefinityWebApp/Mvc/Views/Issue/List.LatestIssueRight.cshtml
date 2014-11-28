@@ -1,13 +1,20 @@
-﻿@model DevMagazine.Issues.Mvc.Models.IIssueModel
+﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
 
+@using Telerik.Sitefinity.News.Model;
+@using Telerik.Sitefinity.RelatedData;
+@using Telerik.Sitefinity.Model;
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.Utilities.TypeConverters;
 @using DevMagazine.Core.Mvc.Helpers;
 @using DevMagazine.Issues.Mvc.Models.Impl;
 
 @{
-    var issue = Model.Issues.FirstOrDefault();
+    var issue = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Items.FirstOrDefault();
 
-    var first5articles = issue.Articles.OrderByDescending(x => x.DateCreated).Take(5);
-    var second5articles = issue.Articles.OrderByDescending(x => x.DateCreated).Skip(5).Take(5);
+    var articles = issue.GetRelatedItems<NewsItem>("Articles");
+
+    var first5articles = articles.OrderByDescending(x => x.DateCreated).Take(5);
+    var second5articles = articles.OrderByDescending(x => x.DateCreated).Skip(5).Take(5);
 }
 <div class="container">
     <!--  Default 8+4 Feather widget -->
@@ -18,14 +25,19 @@
 
     <div class="row">
         <div class="col-md-5 text-center">
-            @Html.RenderImage(issue.Cover, "image-issue", "463", "380")
-            <a class="Btn Btn--download-issue" href="@issue.PrintedVersion.DownloadUrl">Download</a>
+            @{ 
+                var cover = issue.GetRelatedItems<Image>("IssueCover").FirstOrDefault();
+                var document = issue.GetRelatedItems<Document>("IssueDocument").FirstOrDefault();
+                var issueType = TypeResolutionService.ResolveType("Telerik.Sitefinity.DynamicTypes.Model.Issues.Issue");
+            }
+            @Html.RenderImage(cover, "image-issue", "463", "380")
+            <a class="Btn Btn--download-issue" href="@document.MediaUrl">Download</a>
         </div>
 
         <div class="col-md-7">
-            <h4>@issue.Number</h4>
-            <h2><a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue)">@issue.Title</a></h2>
-            <p>@Html.Raw(issue.Description)</p>
+            <h4>@issue.GetString("IssueNumber")</h4>
+            <h2><a href="@Html.GetItemDefaultUrl(issueType, issue.Provider.ToString(), issue.Id)">@issue.GetString("Title")</a></h2>
+            <p>@Html.Raw(issue.GetString("Description"))</p>
             <h5>Featured issue articles</h5>
             <div class="row">
                 <div class="col-md-6">
@@ -35,7 +47,7 @@
                             <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
                         }
                     </ul>
-                    <a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
+                    <a href="@Html.GetItemDefaultUrl(issueType, issue.Provider.ToString(), issue.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
                 </div>
                 <div class="col-md-6">
                    <ul class="list-unstyled">
@@ -43,7 +55,7 @@
                     {
                         <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
                     }
-                </ul>
+                    </ul>
                 </div>
             </div>
         </div>
