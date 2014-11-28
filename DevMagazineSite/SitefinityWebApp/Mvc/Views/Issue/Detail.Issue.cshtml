@@ -1,31 +1,39 @@
-﻿@model DevMagazine.Issues.Mvc.ViewModels.IssueViewModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.DynamicModules.Model;
 @using Telerik.Sitefinity.RelatedData;
+@using Telerik.Sitefinity.Model;
 @using DevMagazine.Core.Mvc.Helpers;
+@using Telerik.Sitefinity.News.Model;
 
 @{
-    var featuredArticle = Model.FeaturedArticle.Single();
-    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)featuredArticle.GetRelatedItems<DynamicContent>("ArticleAuthor").Single()), featuredArticle);
+    var item = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item;
+    var featuredArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle").Single();
+    //TODO: remove ViewModel from the title
+    var authorViewModel = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)featuredArticle.GetRelatedItems<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor").Single();
 }
 
 <div class="Main-content">
     <div class="section">
-
         <div class="container text-center">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h4>@Model.Number</h4>
-                    <h1>@Model.Title</h1>
+                    <h4>@item.GetString("IssueNumber")</h4>
+                    <h1>@item.GetString("Title")</h1>
                 </div>
             </div>
 
+            @{
+                var cover = item.GetRelatedItems<Image>("IssueCover").FirstOrDefault();
+                var document = item.GetRelatedItems<Document>("IssueDocument").FirstOrDefault();
+            }
+
             <div class="Issue-cover">
-                @Html.RenderImage(Model.Cover, "", "400", "428")
+                @Html.RenderImage(cover, "", "400", "428")
             </div>
 
-            <a href="@Model.PrintedVersion.DownloadUrl" class="Btn Btn--download-issue-2">Download</a>
+            <a href="@document.MediaUrl" class="Btn Btn--download-issue-2">Download</a>
         </div>
     </div>
 
@@ -55,7 +63,7 @@
 
             <h4>Issue articles</h4>
             <hr>
-            @Html.Partial("_RecentByTopic.Author", Model.Articles.ToList())
+            @Html.Partial("_RecentByTopic.Author", item.GetRelatedItems<NewsItem>("Articles").ToList())
         </div>
     </section>
 </div>
