@@ -169,15 +169,10 @@ namespace DevMagazine.Authors.Mvc.ViewModels
         /// <value>
         /// The latest issue.
         /// </value>
-        public IEnumerable<IssueViewModel> LatestIssue
+        public IssueViewModel LatestIssue
         {
             get
-            {
-                if (this.latestIssue == null)
-                {
-                    this.latestIssue = new List<IssueViewModel>();
-                }
-
+            {               
                 return this.latestIssue;
             }
             set
@@ -195,7 +190,7 @@ namespace DevMagazine.Authors.Mvc.ViewModels
         private string authorType;
         private IList<NewsItem> relatedArticles;
         private NewsItem detailedArticle;
-        private IEnumerable<IssueViewModel> latestIssue;
+        private IssueViewModel latestIssue;
 
         #endregion
     }

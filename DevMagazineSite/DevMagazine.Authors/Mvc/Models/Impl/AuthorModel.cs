@@ -7,8 +7,6 @@ using Telerik.Sitefinity.GenericContent.Model;
 using Telerik.Sitefinity.Data;
 using DevMagazine.Authors.Mvc.ViewModels;
 using Telerik.Sitefinity.Utilities.TypeConverters;
-using DevMagazine.Core.Modules.Libraries.Documents.Models;
-using DevMagazine.Core.Modules.Libraries.Images.Models;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
 using Telerik.Sitefinity.News.Model;
 using Telerik.Sitefinity.Modules.News;
@@ -16,6 +14,8 @@ using DevMagazine.Core.Content;
 using DevMagazine.Issues.Mvc.ViewModels;
 using Telerik.Sitefinity.Model;
 using Telerik.Sitefinity.RelatedData;
+using DevMagazine.Core.Modules.Libraries.Images;
+using DevMagazine.Core.Modules.Libraries.Documents;
 
 namespace DevMagazine.Authors.Mvc.Models.Impl
 {
@@ -24,16 +24,6 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
     /// </summary>
     public class AuthorModel : IAuthorModel
     {
-        #region Constructors
-
-        public AuthorModel(IImagesModel imageModel, IDocumenstModel documentModel)
-        {
-            this.imageModel = imageModel;
-            this.documentModel = documentModel;
-        }
-
-        #endregion
-
         #region Properties
 
         /// <inheritdoc />
@@ -149,12 +139,6 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
         /// <returns>Author view models</returns>
         public IList<AuthorViewModel> GetAuthorsViewModel()
         {
-            var dynamicManager = DynamicModuleManager.GetManager();
-            var latestIssue = dynamicManager.GetDataItems(DevMagazine.Issues.Mvc.Models.Impl.IssueModel.IssueType)
-              .Where(di => di.Status == ContentLifecycleStatus.Live)
-              .Where(di => di.Visible == true)
-              .OrderByDescending(di => di.PublicationDate).FirstOrDefault();
-
             return this.Authors.Select(author => new AuthorViewModel()
             {
                 Author = author,
@@ -167,9 +151,22 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
                 ProviderName = this.ProviderName,
                 AuthorType = AuthorModel.AuthorType.FullName,
                 RelatedArticles = AuthorModel.GetRelatedArticles(author),
-                LatestIssue = this.GetIssue(latestIssue)
+                LatestIssue = AuthorModel.GetLatestIssue()
             })
             .ToList();
+        }
+
+        public static IssueViewModel GetLatestIssue()
+        {
+            var dynamicManager = DynamicModuleManager.GetManager();
+
+            var latestIssue = dynamicManager.GetDataItems(DevMagazine.Issues.Mvc.Models.Impl.IssueModel.IssueType)
+              .Where(di => di.Status == ContentLifecycleStatus.Live)
+              .Where(di => di.Visible == true)
+              .OrderByDescending(di => di.PublicationDate)
+              .FirstOrDefault();
+
+            return AuthorModel.GetIssue(latestIssue);
         }
 
         /// <summary>
@@ -177,7 +174,7 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns></returns>
-        public IEnumerable<IssueViewModel> GetIssue(DynamicContent item)
+        public static IssueViewModel GetIssue(DynamicContent item)
         {
             IssueViewModel issue = new IssueViewModel();
 
@@ -186,12 +183,12 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
             issue.UrlName = item.ItemDefaultUrl;
             issue.Description = item.GetString("Description");
             issue.Number = item.GetString("IssueNumber");
-            issue.Cover = imageModel.GetRelatedImage(item, "IssueCover");
-            issue.PrintedVersion = documentModel.GetRelatedDocument(item, "IssueDocument");
+            issue.Cover = ImagesHelper.GetRelatedImage(item, "IssueCover");
+            issue.PrintedVersion = DocumentsHelper.GetRelatedDocument(item, "IssueDocument");
             issue.Articles = item.GetRelatedItems<NewsItem>("Articles");
             issue.FeaturedArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle");
 
-            return new List<IssueViewModel>() { issue };
+            return issue;
         }
 
         /// <summary>
@@ -242,8 +239,6 @@ namespace DevMagazine.Authors.Mvc.Models.Impl
 
         #region Private fields and constants
 
-        private readonly IImagesModel imageModel;
-        private readonly IDocumenstModel documentModel;
         private IList<DynamicContent> authors = new List<DynamicContent>();
         private AuthorViewModel detailAuthor;
        

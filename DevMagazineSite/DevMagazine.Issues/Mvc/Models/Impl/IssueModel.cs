@@ -7,13 +7,13 @@ using Telerik.Sitefinity.DynamicModules.Model;
 using Telerik.Sitefinity.DynamicModules;
 using Telerik.Sitefinity.GenericContent.Model;
 using Telerik.Sitefinity.News.Model;
-using DevMagazine.Core.Modules.Libraries.Documents.Models;
-using DevMagazine.Core.Modules.Libraries.Images.Models;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
 using DevMagazine.Core.Exceptions;
 using Telerik.Sitefinity.Data;
 using DevMagazine.Issues.Mvc.ViewModels;
 using Telerik.Sitefinity.Utilities.TypeConverters;
+using DevMagazine.Core.Modules.Libraries.Images;
+using DevMagazine.Core.Modules.Libraries.Documents;
 
 namespace DevMagazine.Issues.Mvc.Models.Impl
 {
@@ -24,10 +24,8 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
     {
         #region Constructors
 
-        public IssueModel(IImagesModel imageModel, IDocumenstModel documentModel)
+        public IssueModel()
         {
-            this.imageModel = imageModel;
-            this.documentModel = documentModel;
             this.InitializeManager();
         }
 
@@ -158,9 +156,9 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
             issue.Description = item.GetString("Description");
             issue.Number = item.GetString("IssueNumber");
             issue.Cover = new ImageViewModel();
-            issue.Cover = imageModel.GetRelatedImage(item, "IssueCover");
+            issue.Cover = ImagesHelper.GetRelatedImage(item, "IssueCover");
             issue.ProviderName = item.ProviderName;
-            issue.PrintedVersion = documentModel.GetRelatedDocument(item, "IssueDocument");
+            issue.PrintedVersion = DocumentsHelper.GetRelatedDocument(item, "IssueDocument");
             issue.Articles = item.GetRelatedItems<NewsItem>("Articles");
             issue.FeaturedArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle");
 
@@ -284,8 +282,6 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
         private int itemsPerPage = 3;
         private int initialItems = 7;
         private IssueViewModel detailIssue;
-        private readonly IImagesModel imageModel;
-        private readonly IDocumenstModel documentModel;
         private DynamicModuleManager dynamicManager;
 
         #endregion

@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Linq;
 using Telerik.Sitefinity.DynamicModules.Model;
-using DevMagazine.Core.Modules.Libraries.Documents.ViewModels;
 using Telerik.Sitefinity.Libraries.Model;
 using Telerik.Sitefinity.RelatedData;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
 
-namespace DevMagazine.Core.Modules.Libraries.Images.Models.Impl
+namespace DevMagazine.Core.Modules.Libraries.Images
 {
     /// <summary>
-    /// This class represents implements Sitefintiy image processing logic
+    /// This class implements Sitefintiy image processing logic
     /// </summary>
-    public class ImagesModel : IImagesModel
+    public class ImagesHelper
     {
         /// <inheritdoc />
-        public ImageViewModel GetRelatedImage(DynamicContent item, string fieldName)
+        public static ImageViewModel GetRelatedImage(DynamicContent item, string fieldName)
         {
 
             if (item == null)

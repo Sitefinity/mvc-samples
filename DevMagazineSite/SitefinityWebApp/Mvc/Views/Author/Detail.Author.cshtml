@@ -42,6 +42,6 @@
 
 <section class="section section--gray">
     <div class="container">
-        @*@Html.Partial("_LatestIssue", Model.LatestIssue)*@
+        @Html.Partial("_LatestIssue", AuthorModel.GetLatestIssue())
     </div>
 </section>

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using DevMagazine.Core.Modules.Libraries.Documents.Models;
-using DevMagazine.Core.Modules.Libraries.Documents.Models.Impl;
-using DevMagazine.Core.Modules.Libraries.Images.Models;
-using DevMagazine.Core.Modules.Libraries.Images.Models.Impl;
 using Ninject;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers;
 using DevMagazine.Authors.Mvc.Models;
@@ -47,8 +43,6 @@ namespace SitefinityWebApp.DI
         {
             ninjectKernel.Bind<IAuthorModel>().To<AuthorModel>();
             ninjectKernel.Bind<IIssueModel>().To<IssueModel>();
-            ninjectKernel.Bind<IImagesModel>().To<ImagesModel>();
-            ninjectKernel.Bind<IDocumenstModel>().To<DocumentsModel>();
             ninjectKernel.Bind<ISearchModel>().To<SearchModel>();
         }
     }

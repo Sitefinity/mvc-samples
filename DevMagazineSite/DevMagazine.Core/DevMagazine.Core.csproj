@@ -114,10 +114,8 @@
     <Compile Include="Mvc\Helpers\GenericHtmlHelperExtensions.cs" />
     <Compile Include="Mvc\Helpers\UrlHtmlHelperExtensions.cs" />
     <Compile Include="Mvc\Helpers\MediaHtmlHelperExtensions.cs" />
-    <Compile Include="Modules\Libraries\Documents\Models\IDocumenstModel.cs" />
-    <Compile Include="Modules\Libraries\Images\Models\IImagesModel.cs" />
-    <Compile Include="Modules\Libraries\Documents\Models\Impl\DocumentsModel.cs" />
-    <Compile Include="Modules\Libraries\Images\Models\Impl\ImagesModel.cs" />
+    <Compile Include="Modules\Libraries\Documents\DocumentsHelper.cs" />
+    <Compile Include="Modules\Libraries\Images\ImagesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modules\Libraries\Documents\ViewModels\DocumentViewModel.cs" />
     <Compile Include="Modules\Libraries\Images\ViewModels\ImageViewModel.cs" />

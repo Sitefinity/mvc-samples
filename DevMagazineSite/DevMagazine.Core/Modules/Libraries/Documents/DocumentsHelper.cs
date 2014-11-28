@@ -5,15 +5,15 @@ using Telerik.Sitefinity.DynamicModules.Model;
 using Telerik.Sitefinity.Libraries.Model;
 using Telerik.Sitefinity.RelatedData;
 
-namespace DevMagazine.Core.Modules.Libraries.Documents.Models.Impl
+namespace DevMagazine.Core.Modules.Libraries.Documents
 {
     /// <summary>
-    /// This class represents implements Sitefintiy document processing logic
+    /// This class implements Sitefintiy document processing logic
     /// </summary>
-    public class DocumentsModel : IDocumenstModel
+    public class DocumentsHelper
     {
         /// <inheritdoc />
-        public DocumentViewModel GetRelatedDocument(DynamicContent item, string fieldName)
+        public static DocumentViewModel GetRelatedDocument(DynamicContent item, string fieldName)
         {
 
             if (item == null)
