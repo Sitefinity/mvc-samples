@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Services;
 using Telerik.Sitefinity.Services.Search;
 using Telerik.Sitefinity.Services.Search.Data;
 using Telerik.Sitefinity.Utilities.TypeConverters;
-using Telerik.Sitefinity.Services.Search;
 
 namespace DevMagazine.Search.Mvc.Models.Impl
 {
@@ -76,26 +76,24 @@ namespace DevMagazine.Search.Mvc.Models.Impl
         /// <inheritdoc />
         public IEnumerable<IDocument> Search(string query, string catalog, int skip, int take, out int hitCount)
         {
-            var compiledQuery = this.BuildSearchQuery(query);
+            var searchQuery = this.BuildSearchQuery(query);
 
-            IResultSet result = searchService.Search(
-                catalog,
-                compiledQuery,
-                this.HighlightedFields,
-                skip,
-                take,
-                null);
+            searchQuery.IndexName = catalog;
+            searchQuery.HighlightedFields = this.HighlightedFields;
+            searchQuery.Skip = skip;
+            searchQuery.Take = take;
+
+            IResultSet result = searchService.Search(searchQuery);
 
             hitCount = result.HitCount;
-          
             return result.SetContentLinks();
         }
 
         /// <inheritdoc />
-        public string BuildSearchQuery(string searchQuery)
+        public ISearchQuery BuildSearchQuery(string searchQuery)
         {
-            var compiledQuery = searchService.BuildQuery(searchQuery, this.SearchFields, SystemManager.CurrentContext.AppSettings.Multilingual);
-            return compiledQuery;
+            var queryBuilder = ObjectFactory.Resolve<IQueryBuilder>();
+            return queryBuilder.BuildQuery(searchQuery, this.SearchFields);
         }
 
         #endregion

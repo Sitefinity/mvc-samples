@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Telerik.Sitefinity.Services.Search;
 using Telerik.Sitefinity.Services.Search.Data;
 
 namespace DevMagazine.Search.Mvc.Models
@@ -30,17 +31,14 @@ namespace DevMagazine.Search.Mvc.Models
         /// <returns></returns>
         IEnumerable<IDocument> Search(string query, string catalogue, int skip, int take, out int hitCount);
 
-
         /// <summary>
-        /// Builds a formatted query from the passed <paramref name="searchQuery"/> using the search service.
+        /// Builds a formatted query from the passed <paramref name="searchQuery" /> using the search service.
         /// The result query will be used by the search service to perform a search.
         /// Override this method if you want to build a custom query.
         /// </summary>
         /// <param name="searchQuery">The search query.</param>
-        /// <param name="service">The service.</param>
         /// <returns></returns>
-        string BuildSearchQuery(string searchQuery);
-
+        ISearchQuery BuildSearchQuery(string searchQuery);
 
         /// <summary>
         /// Gets or sets the fields which will be used in the search.
