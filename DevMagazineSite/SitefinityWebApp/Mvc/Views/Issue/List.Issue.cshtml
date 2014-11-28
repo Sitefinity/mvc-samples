@@ -1,35 +1,38 @@
 ﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
 
-    @try 
-    {
-            <section class="section section--gray">
-                @Html.Partial("List.LatestIssueRight", (DynamicContent.Mvc.Models.DynamicContentListViewModel)Model)
-            </section>
+@using DevMagazine.Issues.Mvc.Models.Impl;
 
-            <section class="section section--border">
-                <div class="container">
-                    <h4>Archive</h4>
-                    <hr>
-                    <div id="issues-list">
-                        <div class="row">
-                            @foreach (var issue in Model.Items.Skip(1).Take(3))
-                            {
-                                @Html.Partial("IssueElement", (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue)
-                            }
-                        </div>
-                        <div class="row">
-                            @foreach (var issue in Model.Items.Skip(4).Take(3))
-                            {
-                                @Html.Partial("IssueElement", (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue)
-                            }
-                        </div>
+<section class="section section--gray">
+    @Html.Partial("List.LatestIssueRight", (DynamicContent.Mvc.Models.DynamicContentListViewModel)Model)
+</section>
 
-                       @Html.Partial("EndlessPager", (DynamicContent.Mvc.Models.DynamicContentListViewModel)Model)
-                    </div>
-                </div>
-            </section>
-    }
-    catch (Exception ex)
-    {
-        <p>@ex.Message;</p>
-    }
+<section class="section section--border">
+    <div class="container">
+        <h4>Archive</h4>
+        <hr>
+        <div id="issues-list">
+            <div class="row">
+                @foreach (var issue in Model.Items.Skip(1).Take(3))
+                {
+                    @Html.Partial("IssueElement", IssueModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
+                }
+            </div>
+            <div class="row">
+                @foreach (var issue in Model.Items.Skip(4).Take(3))
+                {
+                    @Html.Partial("IssueElement", IssueModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
+                }
+            </div>
+
+            @{
+                var issueModel = new ﻿IssueModel()
+                {
+                    CurrentPage = Model.CurrentPage,
+                    TotalPagesCount = Model.TotalPagesCount
+                };
+            }
+
+            @Html.Partial("EndlessPager", issueModel)
+        </div>
+    </div>
+</section>

@@ -76,13 +76,6 @@ namespace DevMagazine.Issues.Mvc.Models
         void PopulateModel(IssueSelectionMode selectionMode);
 
         /// <summary>
-        /// Gets the issue.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        /// <returns></returns>
-        IssueViewModel GetIssue(DynamicContent item);
-
-        /// <summary>
         /// Gets issue using its Id
         /// </summary>
         /// <param name="id">Guid, the Id of the issue</param>

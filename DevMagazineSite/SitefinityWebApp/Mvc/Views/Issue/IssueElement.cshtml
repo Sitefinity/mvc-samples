@@ -1,21 +1,16 @@
-﻿@model Telerik.Sitefinity.DynamicModules.Model.DynamicContent
+﻿﻿@model DevMagazine.Issues.Mvc.ViewModels.IssueViewModel
 
-@using Telerik.Sitefinity.Libraries.Model;
-@using Telerik.Sitefinity.RelatedData;
-@using Telerik.Sitefinity.Model;
 @using DevMagazine.Core.Mvc.Helpers;
 
 <div class="col-md-4">
     <div class="media">
-        @{
-            var cover = Model.GetRelatedItems<Image>("IssueCover").FirstOrDefault();
-        }
-        <a class="pull-left" href="@Html.GetRelativeUrl(Model.ItemDefaultUrl)">
-            <img class="media-object" src="@cover.MediaUrl" alt="@cover.AlternativeText" height="240" width="180">
+        <a class="pull-left" href="@Html.GetRelativeUrl(Model.UrlName)">
+            <img class="media-object" src="@Model.Cover.ImageUrl" alt="@Model.Cover.AlternativeText" height="240" width="180">
         </a>
         <div class="media-body">
-            <h6 class="text-muted">@Model.GetString("IssueNumber")</h6>
-            <h5 class="media-heading"><a href="@Html.GetRelativeUrl(Model.UrlName)">@Model.GetString("Title")</a></h5>
+            <h6 class="text-muted">@Model.Number</h6>
+            <h5 class="media-heading"><a href="@Html.GetRelativeUrl(Model.UrlName)">@Model.Title</a></h5>
+
         </div>
     </div>
 </div>

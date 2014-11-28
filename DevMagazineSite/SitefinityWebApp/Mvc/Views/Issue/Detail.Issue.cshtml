@@ -6,12 +6,12 @@
 @using Telerik.Sitefinity.Model;
 @using DevMagazine.Core.Mvc.Helpers;
 @using Telerik.Sitefinity.News.Model;
+@using DevMagazine.Authors.Mvc.Models.Impl;
 
 @{
     var item = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item;
     var featuredArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle").Single();
-    //TODO: remove ViewModel from the title
-    var authorViewModel = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)featuredArticle.GetRelatedItems<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor").Single();
+    var author = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)featuredArticle.GetRelatedItems<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor").Single();
 }
 
 <div class="Main-content">
@@ -52,7 +52,7 @@
                     <h2><a href="@Html.GetItemDefaultUrl(featuredArticle)">@featuredArticle.Title</a></h2>
                     <p>@Html.Raw(@featuredArticle.Summary)</p>
                     <a href="@Html.GetItemDefaultUrl(featuredArticle)">Read more</a>
-                    @Html.Partial("_FeaturedArticle.Author", authorViewModel)
+                    @Html.Partial("_FeaturedArticle.Author", AuthorModel.GetAuthorViewModel(author))
                 </div>
             </div>
         </div>

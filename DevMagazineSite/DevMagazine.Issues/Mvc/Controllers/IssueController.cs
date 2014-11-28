@@ -229,7 +229,7 @@ namespace DevMagazine.Issues.Mvc.Controllers
             if (!this.EnableDetailMode)
                 return RedirectToAction("Index");
 
-            IssueViewModel viewModel = model.GetIssue(issue);
+            IssueViewModel viewModel = IssueModel.GetIssue(issue);
             this.model.DetailIssue = viewModel;
             this.AddCacheDependencies(); // add the cache dependancies
 
