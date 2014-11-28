@@ -1,5 +1,7 @@
 ﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
 
+@using DevMagazine.Issues.Mvc.Models.Impl;
+
     @try 
     {
             <section class="section section--gray">
@@ -14,17 +16,25 @@
                         <div class="row">
                             @foreach (var issue in Model.Items.Skip(1).Take(3))
                             {
-                                @Html.Partial("IssueElement", (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue)
+                                @Html.Partial("IssueElement", IssueModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
                             }
                         </div>
                         <div class="row">
                             @foreach (var issue in Model.Items.Skip(4).Take(3))
                             {
-                                @Html.Partial("IssueElement", (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue)
+                                @Html.Partial("IssueElement", IssueModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
                             }
                         </div>
 
-                       @Html.Partial("EndlessPager", (DynamicContent.Mvc.Models.DynamicContentListViewModel)Model)
+                        @{
+                            var issueModel = new ﻿IssueModel()
+                            {
+                                CurrentPage = Model.CurrentPage,
+                                TotalPagesCount = Model.TotalPagesCount
+                            };
+                        }
+
+                       @Html.Partial("EndlessPager", issueModel)
                     </div>
                 </div>
             </section>

@@ -139,14 +139,14 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
                 issues = issues.Take(1);
 
             this.Issues = issues.ToList()
-                .Select(item => this.GetIssue(item));
+                .Select(item => IssueModel.GetIssue(item));
 
             // set the number of pages
             this.TotalPagesCount = (totalCount > this.InitialItems) ? (int)(Math.Ceiling((double)(totalCount - 7) / this.ItemsPerPage) + 1) : 1;
         }
 
         /// <inheritdoc />
-        public IssueViewModel GetIssue(DynamicContent item)
+        public static IssueViewModel GetIssue(DynamicContent item)
         {
             IssueViewModel issue = new IssueViewModel();
 
@@ -172,7 +172,7 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
                 .Where(d => d.Status == ContentLifecycleStatus.Live)
                 .FirstOrDefault();
 
-            return this.GetIssue(issue);
+            return IssueModel.GetIssue(issue);
         }
 
         /// <inheritdoc />
@@ -194,7 +194,7 @@ namespace DevMagazine.Issues.Mvc.Models.Impl
                 return new IssueViewModel();
             }
 
-            return this.GetIssue(item);
+            return IssueModel.GetIssue(item);
         }
 
         /// <summary>
