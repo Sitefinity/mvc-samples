@@ -1,39 +1,47 @@
 ﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
-@using DevMagazine.Core.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.RelatedData;
+@using Telerik.Sitefinity.Modules.Libraries;
+@using System.Linq;
+
+@using DevMagazine.Authors.Mvc.Models.Impl;
 
 
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
 <section class="section">
     <div class="container">
-        @{
-            using (Html.InlineEditingRegion(Model.ProviderName, Model.ContentType, Model.Item.Id))
-            {
-            <div class="Author Author--header text-center">
-                @Html.RenderImage(Model.Avatar, "img-circle", "128", "128")
+        
+            <div @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Id)>          
+                <div class="Author Author--header text-center">
+                    <img src='@(MediaContentExtensions.ResolveThumbnailUrl(
+                                        Enumerable.ToList(
+                                        RelatedDataExtensions.GetRelatedItems(Model.Item, "Avatar"))[0], "v150-150", true))'
+                                        class="img-circle"
+                                        width='128'
+                                        height='128'/>
 
-                <h1>@Model.Name</h1>
-                <p class="text-muted">@Model.JobTitle</p>
+                    <h1>@Model.Item.Name</h1>
+                    <p class="text-muted">@Model.Item.JobTitle</p>
 
-                <p>@Html.Raw(Model.Bio)</p>
+                    <p>@Html.Raw(Model.Item.Bio)</p>
+                </div>
             </div>
-            }
-        }
+        
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <h4>@Model.Name’s articles</h4>
+        <h4>@Model.Item.Name’s articles</h4>
         <hr />
-        @Html.Partial("_RecentByTopic.Author", Model.RelatedArticles)
+        @Html.Partial("_RecentByTopic.Author", AuthorModel.GetRelatedArticles((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item))
     </div>
 </section>
 
 <section class="section section--gray">
     <div class="container">
-        @Html.Partial("_LatestIssue", Model.LatestIssue)
+        @*@Html.Partial("_LatestIssue", Model.LatestIssue)*@
     </div>
 </section>
