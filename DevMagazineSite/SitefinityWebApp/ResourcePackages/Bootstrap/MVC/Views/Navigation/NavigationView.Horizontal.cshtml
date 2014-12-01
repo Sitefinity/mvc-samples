@@ -9,8 +9,8 @@
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown",  model= Model})
-    <nav class="navbar navbar-default" role="navigation">
+   @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model})*@
+    <nav class="navbar navbar-default js-nav-fixed" role="navigation">
 
         <div class="container-fluid">
             <div class="navbar-header">

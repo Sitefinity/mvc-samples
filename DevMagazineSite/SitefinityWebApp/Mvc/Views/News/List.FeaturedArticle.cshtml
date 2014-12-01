@@ -3,13 +3,14 @@
 @using System.Linq;
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Model;
-@using Telerik.Sitefinity.DynamicModules.Model;
 @using DevMagazine.Core.Mvc.Helpers;
 
 
 @{
     var newsItem = Model.Items.First();
-    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)newsItem.GetValue<DynamicContent>("ArticleAuthor")), newsItem);
+    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(
+        ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)newsItem
+        .GetValue<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor")), newsItem);
 }
 
 <section class="section">

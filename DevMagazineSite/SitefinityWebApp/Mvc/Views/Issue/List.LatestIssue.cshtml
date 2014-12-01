@@ -1,3 +1,6 @@
-﻿@model DevMagazine.Issues.Mvc.Models.IIssueModel
+﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
 
-@Html.Partial("_LatestIssue", Model.Issues)
+@using DevMagazine.Issues.Mvc.Models.Impl;
+
+@(Html.Partial("_LatestIssue", IssueModel.GetIssue(
+    (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Items.FirstOrDefault())))
