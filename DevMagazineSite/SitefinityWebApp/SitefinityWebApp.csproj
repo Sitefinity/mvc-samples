@@ -294,6 +294,10 @@
     <Reference Include="System.Xaml" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.DataIntelligence.Client, Version=1.0.0.185, Culture=neutral, PublicKeyToken=241a23cf8b6c74c1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Telerik.Sitefinity.DigitalExperienceCloudConnector.7.3.5500.0\lib\net40\Telerik.DataIntelligence.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Everlive.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Telerik.Sitefinity.Everlive.7.3.5500.0\lib\net40\Telerik.Everlive.Client.dll</HintPath>
@@ -349,6 +353,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Telerik.Sitefinity.Analytics.7.3.5500.0\lib\net40\Telerik.Sitefinity.Analytics.Server.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Sitefinity.Audit.Elasticsearch, Version=7.3.5500.0, Culture=neutral, PublicKeyToken=4d437ae15f42fd43, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Telerik.Sitefinity.Audit.Elasticsearch.7.3.5500.0\lib\net40\Telerik.Sitefinity.Audit.Elasticsearch.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Sitefinity.AuditTrail, Version=7.3.5500.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Telerik.Sitefinity.AuditTrail.7.3.5500.0\lib\net40\Telerik.Sitefinity.AuditTrail.dll</HintPath>
@@ -368,6 +376,10 @@
     <Reference Include="Telerik.Sitefinity.Dashboard, Version=7.3.5500.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Telerik.Sitefinity.Dashboard.7.3.5500.0\lib\net40\Telerik.Sitefinity.Dashboard.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.DataIntelligenceConnector, Version=7.3.5500.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Telerik.Sitefinity.DigitalExperienceCloudConnector.7.3.5500.0\lib\net40\Telerik.Sitefinity.DataIntelligenceConnector.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Diagnostics, Version=7.3.5500.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
