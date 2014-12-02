@@ -1059,8 +1059,6 @@
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Sitemap.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Tabs.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Vertical.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\News\DesignerView.Simple.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\News\DesignerView.Simple.json" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\News\Detail.DetailPage.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\News\List.NewsList.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\SocialShare\SocialShare.cshtml" />
