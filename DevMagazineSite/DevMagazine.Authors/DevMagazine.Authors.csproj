@@ -194,7 +194,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvc\Controllers\AuthorController.cs" />
     <Compile Include="Mvc\Models\IAuthorModel.cs" />
     <Compile Include="Mvc\Models\Impl\AuthorModel.cs" />
     <Compile Include="Mvc\ViewModels\AuthorViewModel.cs" />
@@ -218,6 +217,9 @@
       <Project>{258e1cc1-b11e-40e3-8d94-6767fc21324c}</Project>
       <Name>DevMagazine.Issues</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mvc\Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="OpenAccessNuget.targets" />
