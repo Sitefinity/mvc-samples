@@ -5,12 +5,12 @@
 }
 
 @using DevMagazine.Core.Mvc.Helpers;
-@using DevMagazine.Issues.Mvc.Models.Impl;
+@using DevMagazine.Issues.Mvc.ViewModels;
 
 <div class="row">
     <div class="col-md-7">
         <h4>@issue.Number</h4>
-        <h2><a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue.ProviderName, issue.Id)">@issue.Title</a></h2>
+        <h2><a href="@Html.GetItemDefaultUrl(IssueViewModel.IssueType, issue.ProviderName, issue.Id)">@issue.Title</a></h2>
         <p>@Html.Raw(issue.Description)</p>
         <h5>Featured issue articles</h5>
         <div class="row">
@@ -21,7 +21,7 @@
                         <li><a href="@Html.GetItemDefaultUrl(article)">@article.Title</a></li>
                     }
                 </ul>
-                <a href="@Html.GetItemDefaultUrl(IssueModel.IssueType, issue.ProviderName, issue.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
+                <a href="@Html.GetItemDefaultUrl(IssueViewModel.IssueType, issue.ProviderName, issue.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
             </div>
 
             <div class="col-md-6">

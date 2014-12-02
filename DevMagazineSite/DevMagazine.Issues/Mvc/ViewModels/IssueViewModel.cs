@@ -5,6 +5,12 @@ using Telerik.Sitefinity.News.Model;
 using DevMagazine.Core.Modules.Libraries.Documents.ViewModels;
 using DevMagazine.Core.Modules.Shared.ViewModels;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
+using Telerik.Sitefinity.Utilities.TypeConverters;
+using Telerik.Sitefinity.DynamicModules.Model;
+using DevMagazine.Core.Modules.Libraries.Images;
+using DevMagazine.Core.Modules.Libraries.Documents;
+using Telerik.Sitefinity.RelatedData;
+using Telerik.Sitefinity.Model;
 
 namespace DevMagazine.Issues.Mvc.ViewModels
 {
@@ -140,6 +146,44 @@ namespace DevMagazine.Issues.Mvc.ViewModels
             {
                 this.featuredArticle = value;
             }
+        }
+
+        /// <summary>
+        /// Gets the type of the issue.
+        /// </summary>
+        /// <value>The type of the issue.</value>
+        public static Type IssueType
+        {
+            get
+            {
+                return TypeResolutionService.ResolveType("Telerik.Sitefinity.DynamicTypes.Model.Issues.Issue");
+            }
+        }
+
+        #endregion
+
+        #region Static methods
+        /// <summary>
+        /// Gets the issue view model.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns></returns>
+        public static IssueViewModel GetIssue(DynamicContent item)
+        {
+            IssueViewModel issue = new IssueViewModel();
+
+            issue.Title = item.GetString("Title");
+            issue.Id = item.Id;
+            issue.UrlName = item.ItemDefaultUrl;
+            issue.Description = item.GetString("Description");
+            issue.Number = item.GetString("IssueNumber");
+            issue.Cover = ImagesHelper.GetRelatedImage(item, "IssueCover");
+            issue.ProviderName = item.ProviderName;
+            issue.PrintedVersion = DocumentsHelper.GetRelatedDocument(item, "IssueDocument");
+            issue.Articles = item.GetRelatedItems<NewsItem>("Articles");
+            issue.FeaturedArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle");
+
+            return issue;
         }
 
         #endregion

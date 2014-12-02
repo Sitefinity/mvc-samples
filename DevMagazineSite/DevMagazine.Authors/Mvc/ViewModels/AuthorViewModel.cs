@@ -196,35 +196,13 @@ namespace DevMagazine.Authors.Mvc.ViewModels
         {
             var dynamicManager = DynamicModuleManager.GetManager();
 
-            var latestIssue = dynamicManager.GetDataItems(DevMagazine.Issues.Mvc.Models.Impl.IssueModel.IssueType)
+            var latestIssue = dynamicManager.GetDataItems(IssueViewModel.IssueType)
               .Where(di => di.Status == ContentLifecycleStatus.Live)
               .Where(di => di.Visible == true)
               .OrderByDescending(di => di.PublicationDate)
               .FirstOrDefault();
 
-            return AuthorViewModel.GetIssue(latestIssue);
-        }
-
-        /// <summary>
-        /// Gets the issue.
-        /// </summary>
-        /// <param name="item">The item.</param>
-        /// <returns></returns>
-        public static IssueViewModel GetIssue(DynamicContent item)
-        {
-            IssueViewModel issue = new IssueViewModel();
-
-            issue.Title = item.GetString("Title");
-            issue.Id = item.Id;
-            issue.UrlName = item.ItemDefaultUrl;
-            issue.Description = item.GetString("Description");
-            issue.Number = item.GetString("IssueNumber");
-            issue.Cover = ImagesHelper.GetRelatedImage(item, "IssueCover");
-            issue.PrintedVersion = DocumentsHelper.GetRelatedDocument(item, "IssueDocument");
-            issue.Articles = item.GetRelatedItems<NewsItem>("Articles");
-            issue.FeaturedArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle");
-
-            return issue;
+            return IssueViewModel.GetIssue(latestIssue);
         }
 
         /// <summary>

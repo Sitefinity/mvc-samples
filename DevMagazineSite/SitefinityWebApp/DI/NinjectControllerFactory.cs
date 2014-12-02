@@ -3,9 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Ninject;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers;
-using DevMagazine.Issues.Mvc.Models;
 using DevMagazine.Search.Mvc.Models;
-using DevMagazine.Issues.Mvc.Models.Impl;
 using DevMagazine.Search.Mvc.Models.Impl;
 
 namespace SitefinityWebApp.DI
@@ -39,7 +37,6 @@ namespace SitefinityWebApp.DI
         /// </summary>
         private void AddBindings()
         {
-            ninjectKernel.Bind<IIssueModel>().To<IssueModel>();
             ninjectKernel.Bind<ISearchModel>().To<SearchModel>();
         }
     }
