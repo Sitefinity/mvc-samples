@@ -194,8 +194,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvc\Models\IAuthorModel.cs" />
-    <Compile Include="Mvc\Models\Impl\AuthorModel.cs" />
     <Compile Include="Mvc\ViewModels\AuthorViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -220,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mvc\Controllers\" />
+    <Folder Include="Mvc\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="OpenAccessNuget.targets" />

@@ -5,8 +5,7 @@
 @using Telerik.Sitefinity.Modules.Libraries;
 @using System.Linq;
 
-@using DevMagazine.Authors.Mvc.Models.Impl;
-
+@using DevMagazine.Authors.Mvc.ViewModels;
 
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
@@ -36,12 +35,12 @@
     <div class="container">
         <h4>@Model.Item.Name’s articles</h4>
         <hr />
-        @Html.Partial("_RecentByTopic.Author", AuthorModel.GetRelatedArticles((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item))
+        @Html.Partial("_RecentByTopic.Author", AuthorViewModel.GetRelatedArticles((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item))
     </div>
 </section>
 
 <section class="section section--gray">
     <div class="container">
-        @Html.Partial("_LatestIssue", AuthorModel.GetLatestIssue())
+        @Html.Partial("_LatestIssue", AuthorViewModel.GetLatestIssue())
     </div>
 </section>

@@ -6,12 +6,12 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using DevMagazine.Core.Mvc.Helpers;
 @using SitefinityWebApp.Mvc.HtmlHelpers;
-@using DevMagazine.Authors.Mvc.Models.Impl;
+@using DevMagazine.Authors.Mvc.ViewModels;
 
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
 @{
-    var author = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(((DynamicContent)Model.DetailItem.GetValue("ArticleAuthor")), Model.DetailItem);
+    var author = AuthorViewModel.GetAuthorViewModel(((DynamicContent)Model.DetailItem.GetValue("ArticleAuthor")), Model.DetailItem);
 }
 
 <section class="section section--border">
@@ -24,7 +24,7 @@
                     </h4>
                     <h1>@Model.DetailItem.Title</h1>
                     <p>
-                        by <a href="@Html.GetItemDefaultUrl(AuthorModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.DetailItem.PublicationDate.ToString("MMMM dd, yyyy") 
+                        by <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.DetailItem.PublicationDate.ToString("MMMM dd, yyyy") 
                         @Html.RenderRelatedIssueItem(Model.DetailItem)
                     </p>
                 </div>

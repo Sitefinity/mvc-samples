@@ -3,7 +3,7 @@
 @using Telerik.Sitefinity.News.Model;
 @using Telerik.Sitefinity.RelatedData;
 @using DevMagazine.Core.Mvc.Helpers;
-@using DevMagazine.Authors.Mvc.Models.Impl;
+@using DevMagazine.Authors.Mvc.ViewModels;
 
 @{
     var newsItems = Model;
@@ -27,7 +27,7 @@
         </p>
             <a href="@Html.GetItemDefaultUrl(newsItem)">Read more</a>
 
-            @Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml", AuthorModel.GetAuthorViewModel(((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem))
+            @Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml", AuthorViewModel.GetAuthorViewModel(((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem))
     </div>
 
     counter++;

@@ -1,14 +1,14 @@
 ﻿@model DevMagazine.Authors.Mvc.ViewModels.AuthorViewModel
 
-@using DevMagazine.Authors.Mvc.Models.Impl;
+@using DevMagazine.Authors.Mvc.ViewModels;
 @using DevMagazine.Core.Mvc.Helpers;
 
 <div class="media Author--small">
-    <a class="pull-left" href="@Html.GetItemDefaultUrl(AuthorModel.AuthorType, Model.ProviderName, Model.Id)">
+    <a class="pull-left" href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">
         <img src="@Model.Avatar.ImageUrl" class="media-object img-circle" width="40" height="40"/>        
     </a>
     <div class="media-body">
-        <h6 class="media-heading"><a href="@Html.GetItemDefaultUrl(AuthorModel.AuthorType, Model.ProviderName, Model.Id)">@Model.Name</a></h6>
+        <h6 class="media-heading"><a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">@Model.Name</a></h6>
     </div>
     <span class="date-created">on @Model.DetailedArticle.PublicationDate.ToString("MMMM dd, yyyy")</span>
 </div>

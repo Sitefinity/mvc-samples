@@ -6,7 +6,7 @@
 @using Telerik.Sitefinity.Model;
 @using DevMagazine.Core.Mvc.Helpers;
 @using Telerik.Sitefinity.News.Model;
-@using DevMagazine.Authors.Mvc.Models.Impl;
+@using DevMagazine.Authors.Mvc.ViewModels;
 
 @{
     var item = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item;
@@ -52,7 +52,7 @@
                     <h2><a href="@Html.GetItemDefaultUrl(featuredArticle)">@featuredArticle.Title</a></h2>
                     <p>@Html.Raw(@featuredArticle.Summary)</p>
                     <a href="@Html.GetItemDefaultUrl(featuredArticle)">Read more</a>
-                    @Html.Partial("_FeaturedArticle.Author", AuthorModel.GetAuthorViewModel(author))
+                    @Html.Partial("_FeaturedArticle.Author", AuthorViewModel.GetAuthorViewModel(author))
                 </div>
             </div>
         </div>

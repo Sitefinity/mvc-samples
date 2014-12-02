@@ -4,11 +4,11 @@
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Model;
 @using DevMagazine.Core.Mvc.Helpers;
-
+@using DevMagazine.Authors.Mvc.ViewModels;
 
 @{
     var newsItem = Model.Items.First();
-    var authorViewModel = DevMagazine.Authors.Mvc.Models.Impl.AuthorModel.GetAuthorViewModel(
+    var authorViewModel = AuthorViewModel.GetAuthorViewModel(
         ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)newsItem
         .GetValue<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor")), newsItem);
 }
