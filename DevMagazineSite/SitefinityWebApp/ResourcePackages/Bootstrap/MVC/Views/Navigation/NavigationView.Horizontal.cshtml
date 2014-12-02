@@ -4,12 +4,14 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery)
+@if (!SitefinityContext.IsBackend)
+{
+    @Html.Script("//code.jquery.com/jquery-1.8.3.min.js")
+}
 @Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-   @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model})*@
     <nav class="navbar navbar-default js-nav-fixed" role="navigation">
 
         <div class="container-fluid">
@@ -20,8 +22,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Brand</a>
+              <a class="navbar-brand" href="/">DevMagazine</a>
             </div>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/issues">Issues</a></li>
+              <li class="Search">
+                <label class="glyphicon glyphicon-search"></label>
+                <input class="js-search-field" type="search" data-url="/search-results?query=" />
+              </li>
+            </ul>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">

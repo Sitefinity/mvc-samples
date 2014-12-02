@@ -1050,14 +1050,6 @@
     <Content Include="ResourcePackages\Bootstrap\icon-font.json" />
     <Content Include="ResourcePackages\Bootstrap\jshint.json" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\Default.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Share.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Share.json" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Simple.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Simple.json" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Unshare.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.Unshare.json" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.UseShared.cshtml" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\DesignerView.UseShared.json" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Layouts\default.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\DesignerView.Simple.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\DesignerView.Simple.json" />
