@@ -1,38 +1,3 @@
 ﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
 
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-@using Telerik.Sitefinity.RelatedData;
-@using Telerik.Sitefinity.Modules.Libraries;
-@using System.Linq;
-
-
-@Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
-
-<h2>Authors</h2>
-<div class="row">
-    @foreach (var item in Model.Items)
-    { 
-        using (Html.InlineEditingRegion(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Id))
-        {
-            <div class="col-md-2">
-                <div class="text-center">
-                    @{string detailsPageUrl = ViewBag.OpenInSamePage ?
-                          ViewBag.CurrentPageUrl + item.ItemDefaultUrl :
-                          HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId);}                    
-
-                    <a href="@detailsPageUrl">
-                        <img src='@(MediaContentExtensions.ResolveThumbnailUrl(
-                                    Enumerable.ToList(
-                                    RelatedDataExtensions.GetRelatedItems(item, "Avatar"))[0], "v150-150", true))'
-                                    class="img-circle"
-                                    width='128'
-                                    height='128'/>
-                    </a>
-                    <h3><a href='@detailsPageUrl'>@item.Name</a></h3>
-
-                    <p>@item.JobTitle</p>
-                </div>
-            </div>
-        }
-    }
-</div>
+@Html.Partial("_ListAuthor", Model)

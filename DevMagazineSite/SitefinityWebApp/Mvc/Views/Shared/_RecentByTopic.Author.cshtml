@@ -27,7 +27,9 @@
         </p>
             <a href="@Html.GetItemDefaultUrl(newsItem)">Read more</a>
 
-            @Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml", AuthorViewModel.GetAuthorViewModel(((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem))
+            @(Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml",
+                AuthorViewModel.GetAuthorViewModel(
+                    ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem)))
     </div>
 
     counter++;

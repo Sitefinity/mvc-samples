@@ -1064,6 +1064,8 @@
     <Content Include="ResourcePackages\Bootstrap\MVC\Views\SocialShare\SocialShare.cshtml" />
     <Content Include="ResourcePackages\Bootstrap\package.json" />
     <Content Include="ResourcePackages\Bootstrap\README.md" />
+    <Content Include="Mvc\Views\Shared\_ListAuthor.cshtml" />
+    <Content Include="Mvc\Views\Author\List.AuthorLatestIssue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevMagazine.Authors\DevMagazine.Authors.csproj">

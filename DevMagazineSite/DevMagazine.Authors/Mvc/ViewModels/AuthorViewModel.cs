@@ -24,7 +24,17 @@ namespace DevMagazine.Authors.Mvc.ViewModels
     public class AuthorViewModel : ViewModelBase
     {
         #region Properties
-        public DynamicContent Author { get; set; }
+        public DynamicContent Author 
+        {
+            get
+            {
+                return this.author;
+            }
+            set
+            {
+                this.author = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the name.
@@ -216,6 +226,7 @@ namespace DevMagazine.Authors.Mvc.ViewModels
             return new AuthorViewModel
             {
                 Id = obj.Id,
+                Author = obj,
                 ItemDefaultUrl = obj.ItemDefaultUrl,
                 Name = obj.GetString("Name"),
                 JobTitle = obj.GetString("JobTitle"),
@@ -258,6 +269,7 @@ namespace DevMagazine.Authors.Mvc.ViewModels
         private IList<NewsItem> relatedArticles;
         private NewsItem detailedArticle;
         private IssueViewModel latestIssue;
+        private DynamicContent author;
 
         #endregion
     }

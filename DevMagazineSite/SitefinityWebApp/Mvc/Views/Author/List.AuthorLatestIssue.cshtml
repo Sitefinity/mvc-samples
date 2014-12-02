@@ -1,0 +1,7 @@
+﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
+
+@using DevMagazine.Authors.Mvc.ViewModels;
+
+@Html.Partial("_ListAuthor", Model)
+
+@Html.Partial("_LatestIssue", AuthorViewModel.GetLatestIssue())

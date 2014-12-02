@@ -4,7 +4,7 @@
 @using DevMagazine.Core.Mvc.Helpers;
 
 <div class="media Author--small">
-    <a class="pull-left" href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">
+    <a class="pull-left" href="@Html.GetItemDefaultUrl(Model.Author)">
         <img src="@Model.Avatar.ImageUrl" class="media-object img-circle" width="40" height="40"/>        
     </a>
     <div class="media-body">
