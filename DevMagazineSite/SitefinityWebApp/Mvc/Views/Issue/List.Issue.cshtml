@@ -1,9 +1,11 @@
-﻿@model DynamicContent.Mvc.Models.DynamicContentListViewModel
+﻿@model Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models.DynamicContentListViewModel
 
+@using Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models;
+@using Telerik.Sitefinity.DynamicModules.Model;
 @using DevMagazine.Issues.Mvc.ViewModels;
 
 <section class="section section--gray">
-    @Html.Partial("List.LatestIssueRight", (DynamicContent.Mvc.Models.DynamicContentListViewModel)Model)
+    @Html.Partial("List.LatestIssueRight", (DynamicContentListViewModel)Model)
 </section>
 
 <section class="section section--border">
@@ -14,13 +16,13 @@
             <div class="row">
                 @foreach (var issue in Model.Items.Skip(1).Take(3))
                 {
-                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
+                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
                 }
             </div>
             <div class="row">
                 @foreach (var issue in Model.Items.Skip(4).Take(3))
                 {
-                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)issue))
+                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
                 }
             </div>
 

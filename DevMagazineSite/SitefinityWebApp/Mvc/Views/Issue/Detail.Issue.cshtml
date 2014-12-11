@@ -9,7 +9,7 @@
 @using DevMagazine.Authors.Mvc.ViewModels;
 
 @{
-    var item = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item;
+    var item = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item.DataItem;
     var featuredArticle = item.GetRelatedItems<NewsItem>("FeaturedArticle").Single();
     var author = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)featuredArticle.GetRelatedItems<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor").Single();
 }
