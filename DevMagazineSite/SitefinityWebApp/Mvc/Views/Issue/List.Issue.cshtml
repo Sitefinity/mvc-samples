@@ -5,7 +5,7 @@
 @using DevMagazine.Issues.Mvc.ViewModels;
 
 <section class="section section--gray">
-    @Html.Partial("List.LatestIssueRight", (DynamicContentListViewModel)Model)
+    @Html.Partial("List.LatestIssueRight")
 </section>
 
 <section class="section section--border">
@@ -14,27 +14,24 @@
         <hr>
         <div id="issues-list">
             <div class="row">
-                @foreach (var issue in Model.Items.Skip(1).Take(3))
+                @foreach (var issue in Model.Items.Take(3))
                 {
                     @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
                 }
             </div>
             <div class="row">
-                @foreach (var issue in Model.Items.Skip(4).Take(3))
+                @foreach (var issue in Model.Items.Skip(3).Take(3))
                 {
                     @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
                 }
             </div>
 
-            @{
-                var pagerModel = new PagerViewModel()
-                {
-                    CurrentPage = Model.CurrentPage,
-                    TotalPagesCount = Model.TotalPagesCount
-                };
+            @if (Model.ShowPager)
+            {
+                @Html.Action("Index", "ContentPager", new { currentPage = Model.CurrentPage, 
+                                totalPagesCount = Model.TotalPagesCount.Value, 
+                                redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate })
             }
-
-            @Html.Partial("EndlessPager", pagerModel)
         </div>
     </div>
 </section>

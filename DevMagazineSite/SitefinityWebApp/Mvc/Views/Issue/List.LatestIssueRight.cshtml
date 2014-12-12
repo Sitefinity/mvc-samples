@@ -1,6 +1,4 @@
-﻿@model Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models.DynamicContentListViewModel
-
-@using Telerik.Sitefinity.News.Model;
+﻿@using Telerik.Sitefinity.News.Model;
 @using Telerik.Sitefinity.RelatedData;
 @using Telerik.Sitefinity.Model;
 @using Telerik.Sitefinity.Libraries.Model;
@@ -8,7 +6,7 @@
 @using DevMagazine.Core.Mvc.Helpers;
 
 @{
-    var issue = (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Items.FirstOrDefault().DataItem;
+    var issue = DevMagazine.Issues.Mvc.Helpers.IssueHelper.GetLatestIssue();
 
     var articles = issue.GetRelatedItems<NewsItem>("Articles");
 

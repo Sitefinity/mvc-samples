@@ -811,7 +811,6 @@
     <Content Include="Mvc\Views\Issue\List.LatestIssue.cshtml" />
     <Content Include="Mvc\Views\News\Detail.EmptyArticle.cshtml" />
     <Content Include="Mvc\Views\Issue\Detail.Issue.cshtml" />
-    <Content Include="Mvc\Views\Issue\EndlessPager.cshtml" />
     <Content Include="Mvc\Views\Issue\IssueElement.cshtml" />
     <Content Include="Mvc\Views\Issue\List.Issue.cshtml" />
     <Content Include="Mvc\Views\Issue\List.LatestIssueRight.cshtml" />

@@ -225,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IssueSelectionMode.cs" />
+    <Compile Include="Mvc\Helpers\IssueHelper.cs" />
     <Compile Include="Mvc\ViewModels\IssueViewModel.cs" />
     <Compile Include="Mvc\ViewModels\PagerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
