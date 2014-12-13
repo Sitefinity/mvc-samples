@@ -1,7 +1,7 @@
 ﻿using DevMagazine.Core.Content;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
 using DevMagazine.Core.Modules.Shared.ViewModels;
-using DevMagazine.Issues.Mvc.ViewModels;
+using SitefinityWebApp.Mvc.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using DevMagazine.Core.Modules.Libraries.Documents;
 using Telerik.Sitefinity.Utilities.TypeConverters;
 using Telerik.Sitefinity.Modules.News;
 
-namespace DevMagazine.Authors.Mvc.ViewModels
+namespace SitefinityWebApp.Mvc.ViewModels
 {
     /// <summary>
     /// View model class used by the Authors widget.

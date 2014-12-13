@@ -6,7 +6,7 @@
 @using DevMagazine.Core.Mvc.Helpers;
 
 @{
-    var issue = DevMagazine.Issues.Mvc.Helpers.IssueHelper.GetLatestIssue();
+    var issue = SitefinityWebApp.Mvc.Helpers.IssueHelper.GetLatestIssue();
 
     var articles = issue.GetRelatedItems<NewsItem>("Articles");
 

@@ -1,4 +1,4 @@
-﻿using DevMagazine.Issues.Mvc.ViewModels;
+﻿using SitefinityWebApp.Mvc.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using Telerik.Sitefinity.DynamicModules;
 using Telerik.Sitefinity.DynamicModules.Model;
 using Telerik.Sitefinity.GenericContent.Model;
 
-namespace DevMagazine.Issues.Mvc.Helpers
+namespace SitefinityWebApp.Mvc.Helpers
 {
     /// <summary>
     /// Contains Helper methods for Issues

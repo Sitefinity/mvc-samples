@@ -1,7 +1,7 @@
-﻿@model DevMagazine.Authors.Mvc.ViewModels.AuthorViewModel
+﻿@model SitefinityWebApp.Mvc.ViewModels.AuthorViewModel
 
 @using DevMagazine.Core.Mvc.Helpers;
-@using DevMagazine.Authors.Mvc.ViewModels;
+@using SitefinityWebApp.Mvc.ViewModels;
 
 @{
     var authorLast5Articles = Model.RelatedArticles.OrderByDescending(x => x.DateCreated).Take(5);

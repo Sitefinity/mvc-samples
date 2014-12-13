@@ -12,7 +12,7 @@ using DevMagazine.Core.Modules.Libraries.Documents;
 using Telerik.Sitefinity.RelatedData;
 using Telerik.Sitefinity.Model;
 
-namespace DevMagazine.Issues.Mvc.ViewModels
+namespace SitefinityWebApp.Mvc.ViewModels
 {
     /// <summary>
     /// A view model for representing the Issues dynamic type
