@@ -4546,3 +4546,13 @@ hr {
       clear: both; }
     .media .pull-left {
       margin-bottom: 10px; } }
+
+ul.pagination > li a {
+  border: 0;
+  border-radius: 50%;
+  color: #596c9b; }
+ul.pagination .active a {
+  background-color: #596c9b; }
+  ul.pagination .active a:hover, ul.pagination .active a:focus {
+    background-color: #596c9b;
+    color: #fff; }
