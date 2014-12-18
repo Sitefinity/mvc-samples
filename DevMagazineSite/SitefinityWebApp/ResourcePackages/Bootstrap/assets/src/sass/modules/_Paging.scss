@@ -1,0 +1,19 @@
+ul.pagination {
+	>li {
+			a {
+				border: 0;
+				border-radius: 50%;
+				color: #596c9b;
+			}
+	}
+	.active {
+		a {
+			background-color: #596c9b;
+			&:hover,
+			&:focus {
+				background-color: #596c9b;
+				color: #fff;
+			}
+		}
+	}
+}
