@@ -45,5 +45,5 @@ Using this convention, you can use classes such as `nav-xs-hidden` and `nav-sm-d
 #### Sitemap
 The sitemap has two additional classes you can use. Their names are pretty self-explaining:
 
- - `.nav-sitemap-BREAKPOINT-one-col` - makes the sitemap display in one column
- - `.nav-sitemap-BREAKPOINT-two-cols` - makes the sitemap display in two columns
+ - `.sitemap-BREAKPOINT-one-col` - makes the sitemap display in one column
+ - `.sitemap-BREAKPOINT-two-cols` - makes the sitemap display in two columns
