@@ -1,29 +1,33 @@
-﻿﻿@model Telerik.Sitefinity.Frontend.News.Mvc.Models.INewsModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
 @using System.Linq;
-@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Model;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.News.Model;
+@using Telerik.Sitefinity.Libraries.Model;
+@using Telerik.Sitefinity.Web.DataResolving;
 @using DevMagazine.Core.Mvc.Helpers;
 @using SitefinityWebApp.Mvc.ViewModels;
 
 @{
-    var newsItem = Model.Items.First();
+    var item = Model.Items.First();
     var authorViewModel = AuthorViewModel.GetAuthorViewModel(
-        ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)newsItem
-        .GetValue<Telerik.Sitefinity.DynamicModules.Model.DynamicContent>("ArticleAuthor")), newsItem);
+        ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)item.Fields.ArticleAuthor.DataItem), (NewsItem)item.DataItem);
 }
 
 <section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <a href="@Html.GetItemDefaultUrl(newsItem)">
-                    @Html.RenderImage(newsItem.GetValue<Image>("Image"), "", "354", "650")
+                <a href="@item.DefaultUrl">
+                    @Html.RenderImage((Image)item.Fields.Image.DataItem, "", "354", "650")
                 </a>
             </div>
             <div class="col-md-5">
                 <h4>Featured</h4>
-                <h1><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></h1>
+                <h1><a href="@item.DefaultUrl">@item.Fields.Title</a></h1>
                 @Html.Partial("_FeaturedArticle.Author", authorViewModel)
 
             </div>

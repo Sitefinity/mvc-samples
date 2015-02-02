@@ -43,6 +43,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -382,22 +383,22 @@
       <HintPath>..\packages\Telerik.Sitefinity.Content.7.3.5600.0\lib\net40\Telerik.Sitefinity.Forums.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.ContentBlock">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.ContentBlock.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.ContentBlock.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.DynamicContent">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.DynamicContent.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.DynamicContent.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.Navigation">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.Navigation.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.News">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.News.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.News.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.SocialShare">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.20.3\lib\net40\Telerik.Sitefinity.Frontend.SocialShare.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.SocialShare.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.MarketoConnector">
       <HintPath>..\packages\Telerik.Sitefinity.MarketoConnector.7.3.5600.0\lib\net40\Telerik.Sitefinity.MarketoConnector.dll</HintPath>

@@ -1,9 +1,12 @@
-﻿@model Telerik.Sitefinity.Frontend.News.Mvc.Models.INewsModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
+@using Telerik.Sitefinity;
 @using Telerik.Sitefinity.DynamicModules.Model;
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Model;
+@using Telerik.Sitefinity.News.Model;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
 @using DevMagazine.Core.Mvc.Helpers;
 @using SitefinityWebApp.Mvc.HtmlHelpers;
 @using SitefinityWebApp.Mvc.ViewModels;
@@ -11,7 +14,7 @@
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
 @{
-    var author = AuthorViewModel.GetAuthorViewModel(((DynamicContent)Model.DetailItem.GetValue("ArticleAuthor")), Model.DetailItem);
+    var author = AuthorViewModel.GetAuthorViewModel(((DynamicContent)Model.Item.Fields.ArticleAuthor.DataItem), (NewsItem)Model.Item.DataItem);
 }
 
 <section class="section section--border">
@@ -20,21 +23,24 @@
             <div class="text-center">
                 <div class="col-md-8 col-md-offset-2">
                     <h4>
-                        @Html.RenderPageTagLink(Model.DetailItem, Url)
+                        @Html.RenderPageTagLink((NewsItem)Model.Item.DataItem, Url)
                     </h4>
-                    <h1>@Model.DetailItem.Title</h1>
+                    <h1>@Model.Item.Fields.Title</h1>
                     <p>
-                        by <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.DetailItem.PublicationDate.ToString("MMMM dd, yyyy") 
-                        @Html.RenderRelatedIssueItem(Model.DetailItem)
+                        by <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.Item.GetDateTime("PublicationDate", "MMMM dd, yyyy")
+                        @Html.RenderRelatedIssueItem((NewsItem)Model.Item.DataItem)
                     </p>
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <hr />
-                    @Html.RenderImage(Model.DetailItem.GetValue<Image>("Image"), "", "198", "780")
+                    @if (Model.Item.RelatedItem("Image") !=null)
+                    {
+                        Html.RenderImage((Image)Model.Item.RelatedItem("Image").DataItem, "", "198", "780");
+                    }
                 </div>
             </div>
             <div class="col-md-8 col-md-offset-2">
-                @Html.Raw(Model.DetailItem.Content)
+                @Html.Raw(Model.Item.Fields.Content)
             </div>
         </div>
         @Html.Partial("_AuthorResume", author)
