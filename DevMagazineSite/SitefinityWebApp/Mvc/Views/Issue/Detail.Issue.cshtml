@@ -63,7 +63,7 @@
 
             <h4>Issue articles</h4>
             <hr>
-            @Html.Partial("_RecentByTopic.Author", Model.Item.RelatedItems("Articles"))
+            @Html.Partial("_RecentByTopic.Author", item.GetRelatedItems<NewsItem>("Articles").ToList())
         </div>
     </section>
 </div>

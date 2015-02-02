@@ -1,4 +1,4 @@
-﻿@model IList<Telerik.Sitefinity.Frontend.Mvc.Models.ItemViewModel>
+﻿﻿@model IList<NewsItem>
 
 @using Telerik.Sitefinity.News.Model;
 @using Telerik.Sitefinity.RelatedData;
@@ -13,7 +13,7 @@
     int newsItemsCount = newsItems.Count;
 }
 
-@foreach (var newsItem in newsItems)
+@foreach (NewsItem newsItem in newsItems)
 {
     if (counter % maximumItemsPerRow == 0)
     {
@@ -21,15 +21,15 @@
     }
 
     <div class="col-md-4 article">
-        <h3><a href="@newsItem.DefaultUrl">@newsItem.Fields.Title</a></h3>
+        <h3><a href="@Html.GetItemDefaultUrl(newsItem)">@newsItem.Title</a></h3>
         <p>
-            @newsItem.Fields.Summary
+            @newsItem.Summary
         </p>
-            <a href="@newsItem.DefaultUrl">Read more</a>
+            <a href="@Html.GetItemDefaultUrl(newsItem)">Read more</a>
 
             @(Html.Partial("~/Mvc/Views/Shared/_FeaturedArticle.Author.cshtml",
                 AuthorViewModel.GetAuthorViewModel(
-                    ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.Fields.ArticleAuthor.DataItem)), (NewsItem)newsItem.DataItem)))
+                    ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)(newsItem.GetRelatedItems("ArticleAuthor").First())), newsItem)))
     </div>
 
     counter++;

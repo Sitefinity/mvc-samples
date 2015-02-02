@@ -34,7 +34,7 @@
     <div class="container">
         <h4>@Model.Item.Fields.Name’s articles</h4>
         <hr />
-        @Html.Partial("_RecentByTopic.Author", new List<Telerik.Sitefinity.Frontend.Mvc.Models.ItemViewModel>(){Model.Item.ParentItem()})
+        @Html.Partial("_RecentByTopic.Author", AuthorViewModel.GetRelatedArticles((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item.DataItem))
     </div>
 </section>
 
