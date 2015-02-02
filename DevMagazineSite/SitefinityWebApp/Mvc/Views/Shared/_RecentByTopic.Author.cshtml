@@ -1,4 +1,4 @@
-﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+﻿@model IList<Telerik.Sitefinity.Frontend.Mvc.Models.ItemViewModel>
 
 @using Telerik.Sitefinity.News.Model;
 @using Telerik.Sitefinity.RelatedData;
@@ -6,11 +6,11 @@
 @using SitefinityWebApp.Mvc.ViewModels;
 
 @{
-    var newsItems = Model.Items;
+    var newsItems = Model;
 
     int counter = 0;
     int maximumItemsPerRow = 3;
-    int newsItemsCount = newsItems.Count();
+    int newsItemsCount = newsItems.Count;
 }
 
 @foreach (var newsItem in newsItems)

@@ -1,6 +1,7 @@
 ﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Helpers;
 @using Telerik.Sitefinity.RelatedData;
 @using Telerik.Sitefinity.Modules.Libraries;
 @using System.Linq;
@@ -33,7 +34,7 @@
     <div class="container">
         <h4>@Model.Item.Fields.Name’s articles</h4>
         <hr />
-        @Html.Partial("_RecentByTopic.Author", AuthorViewModel.GetRelatedArticles((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Item.DataItem))
+        @Html.Partial("_RecentByTopic.Author", new List<Telerik.Sitefinity.Frontend.Mvc.Models.ItemViewModel>(){Model.Item.ParentItem()})
     </div>
 </section>
 

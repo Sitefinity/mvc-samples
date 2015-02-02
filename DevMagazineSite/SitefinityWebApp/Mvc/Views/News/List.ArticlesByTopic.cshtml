@@ -21,7 +21,7 @@
         </div>
         <hr />
         <div id="news-container">
-            @Html.Partial("_RecentByTopic.Author", Model)
+            @Html.Partial("_RecentByTopic.Author", Model.Items)
 
             <div class="row text-center u-mt4" id="paging-wrapper" >
                 <a id="showMoreArticles" href="#" data-page="@Model.CurrentPage" data-url="@Html.GetCurrentNodeUrl()" class="@Html.RenderTextIfTrue("hidden", (Model.CurrentPage >= Model.TotalPagesCount))">
