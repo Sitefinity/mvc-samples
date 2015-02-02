@@ -575,10 +575,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureWebRole.cs" />
-    <Compile Include="DI\NinjectControllerFactory.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Mvc\Helpers\IssueHelper.cs" />
     <Compile Include="Mvc\HtmlHelpers\HtmlHelperExtensions.cs" />
     <Compile Include="Mvc\ViewModels\AuthorViewModel.cs" />
@@ -590,7 +586,6 @@
     <Content Include="ClientBin\Telerik.Sitefinity.Analytics.xap" />
     <Content Include="ClientBin\Telerik.Sitefinity.Silverlight.xap" />
     <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="ResourcePackages\Bootstrap\assets\dist\css\styles.css" />
     <Content Include="ResourcePackages\Bootstrap\assets\dist\css\styles.min.css" />
     <Content Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
@@ -1043,10 +1038,6 @@
     <ProjectReference Include="..\DevMagazine.Core\DevMagazine.Core.csproj">
       <Project>{3f55d63d-e9a7-46f6-9447-8aad1651a606}</Project>
       <Name>DevMagazine.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevMagazine.Search\DevMagazine.Search.csproj">
-      <Project>{90a9d526-e737-45e8-8a4c-63b1816f19e8}</Project>
-      <Name>DevMagazine.Search</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
