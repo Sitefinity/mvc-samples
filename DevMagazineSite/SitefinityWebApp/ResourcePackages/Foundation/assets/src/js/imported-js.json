@@ -1,0 +1,5 @@
+{
+	"assets/dist/js/foundation.min.js": "node_modules/zurb-foundation-5/js/foundation/foundation.js",
+	"assets/dist/js/foundation.init.js": "assets/src/js/foundation.init.js",
+	"assets/dist/js/foundation.topbar.min.js" : "node_modules/zurb-foundation-5/js/foundation/foundation.topbar.js"
+}
