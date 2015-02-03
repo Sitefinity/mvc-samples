@@ -15,6 +15,7 @@ using Telerik.Sitefinity.Modules.Pages;
 using DevMagazine.Core.Mvc.Helpers;
 using Telerik.Sitefinity.Web;
 using Telerik.Sitefinity.Abstractions;
+using Telerik.Sitefinity.Frontend.Mvc.Models;
 
 namespace SitefinityWebApp.Mvc.HtmlHelpers
 {
@@ -26,40 +27,23 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
         /// Renders the topic title taken by the serialized taxonomy filter
         /// </summary>
         /// <param name="helper">The HTML helper.</param>
-        /// <param name="serializedTaxonomyFilter">The serialized taxonomy filter.</param>
-        /// <param name="htmlTag">The preferred HTML tag wrapper.</param>
+        /// <param name="model">The model.</param>
         /// <returns>
-        /// Topic title
+        /// Topic title link
         /// </returns>
-        public static IHtmlString RenderTopicTitle(this HtmlHelper helper, string serializedTaxonomyFilter)
+        public static IHtmlString RenderTopicLink(this HtmlHelper helper, ContentListViewModel model)
         {
-            var taxon = GetTaxonByTaxonomyFilter(serializedTaxonomyFilter);
+            var viewItem = model.Items.FirstOrDefault();
 
-            if (taxon != null)
-            {
-                return new HtmlString(taxon.Title);
-            }
+            if (viewItem == null)
+                return null;
+            
+            var taxon = viewItem.GetFlatTaxon("Tags");
 
-            return null;
-        }
-
-        /// <summary>
-        /// Renders the topic title taken by the serialized taxonomy filter
-        /// </summary>
-        /// <param name="helper">The HTML helper.</param>
-        /// <param name="serializedTaxonomyFilter">The serialized taxonomy filter.</param>
-        /// <param name="htmlTag">The preferred HTML tag wrapper.</param>
-        /// <returns>Topic title link</returns>
-        public static IHtmlString RenderTopicLink(this HtmlHelper helper, string serializedTaxonomyFilter)
-        {
-            var taxon = GetTaxonByTaxonomyFilter(serializedTaxonomyFilter);
-
-            if (taxon != null)
-            {
-                return new HtmlString(string.Format("<a href=\"../{0}\">{1}</a>", taxon.Name, taxon.Title));
-            }
-
-            return null;
+            if (taxon == null)
+                return null;
+            
+            return new HtmlString(string.Format("<a href=\"../{0}\">{1}</a>", taxon.Name, taxon.Title));
         }
 
         /// <summary>
@@ -106,33 +90,5 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
             return pageNode == null ? null : new HtmlString(string.Format("<a href=\"{0}\">{1}</a>", urlHelper.Content(pageNode.GetFullUrl()), tag.Title));
         }
         #endregion
-
-        #region Private memebers
-
-        private static Taxon GetTaxonByTaxonomyFilter(string serializedTaxonomyFilter)
-        {
-            var taxonomyDictionary = (Dictionary<string, string>)ServiceStack.Text.JsonObject.Parse(serializedTaxonomyFilter);
-
-            if (taxonomyDictionary != null && taxonomyDictionary.ContainsKey("Tags"))
-            {
-                var tagString = taxonomyDictionary["Tags"];
-
-                // remove deserialized object unnecessarily symbols
-                var tagGuid = tagString.Substring(2, tagString.Length - 4);
-
-                Guid taxonId = Guid.Parse(tagGuid);
-
-                TaxonomyManager manager = TaxonomyManager.GetManager();
-
-                var taxon = (Telerik.Sitefinity.Taxonomies.Model.Taxon)manager.GetItem(typeof(Telerik.Sitefinity.Taxonomies.Model.Taxon), taxonId);
-
-                return taxon;
-            }
-
-            return null;
-        }
-
-        #endregion
-
     }
 }

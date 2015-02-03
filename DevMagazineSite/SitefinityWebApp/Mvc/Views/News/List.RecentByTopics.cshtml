@@ -11,7 +11,7 @@
     var allNewsItems = Model.Items.OrderByDescending(x => x.Fields.DateCreated).ToList();
 }
 
-@*<h3>@Html.RenderTopicLink(Model.SerializedTaxonomyFilter)</h3>*@
+<h3>@Html.RenderTopicLink(Model)</h3>
 <ul class="list-unstyled">
     @foreach (var newsItem in allNewsItems)
     {
