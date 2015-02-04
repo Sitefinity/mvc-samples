@@ -397,6 +397,9 @@
     <Reference Include="Telerik.Sitefinity.Frontend.News">
       <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.News.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Sitefinity.Frontend.Search">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.Search.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.SocialShare">
       <HintPath>..\packages\Telerik.Sitefinity.Feather.1.1.60.2\lib\net40\Telerik.Sitefinity.Frontend.SocialShare.dll</HintPath>
     </Reference>
@@ -1057,7 +1060,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>61621</DevelopmentServerPort>
+          <DevelopmentServerPort>63509</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
