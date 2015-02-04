@@ -2,6 +2,7 @@
 
 @using System.Linq;
 @using Telerik.Sitefinity;
+@using Telerik.Sitefinity.DynamicModules.Model;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Model;
 @using Telerik.Sitefinity.Modules.Pages;
@@ -9,12 +10,13 @@
 @using Telerik.Sitefinity.Libraries.Model;
 @using Telerik.Sitefinity.Web.DataResolving;
 @using DevMagazine.Core.Mvc.Helpers;
+@using SitefinityWebApp.Mvc.HtmlHelpers;
 @using SitefinityWebApp.Mvc.ViewModels;
 
 @{
     var item = Model.Items.First();
     var authorViewModel = AuthorViewModel.GetAuthorViewModel(
-        ((Telerik.Sitefinity.DynamicModules.Model.DynamicContent)item.Fields.ArticleAuthor.DataItem), (NewsItem)item.DataItem);
+        item.RelatedItem("ArticleAuthor").GetDataItem<DynamicContent>(), item.GetDataItem<NewsItem>());
 }
 
 <section class="section">
@@ -22,7 +24,7 @@
         <div class="row">
             <div class="col-md-7">
                 <a href="@item.DefaultUrl">
-                    @Html.RenderImage((Image)item.Fields.Image.DataItem, "", "354", "650")
+                    @Html.RenderImage(item.RelatedItem("Image").GetDataItem<Image>(), "", "354", "650")
                 </a>
             </div>
             <div class="col-md-5">

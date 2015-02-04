@@ -14,7 +14,7 @@
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
 @{
-    var author = AuthorViewModel.GetAuthorViewModel(((DynamicContent)Model.Item.Fields.ArticleAuthor.DataItem), (NewsItem)Model.Item.DataItem);
+    var author = AuthorViewModel.GetAuthorViewModel(Model.Item.RelatedItem("ArticleAuthor").GetDataItem<DynamicContent>(), Model.Item.GetDataItem<NewsItem>());
 }
 
 <section class="section section--border">
@@ -23,19 +23,19 @@
             <div class="text-center">
                 <div class="col-md-8 col-md-offset-2">
                     <h4>
-                        @Html.RenderPageTagLink((NewsItem)Model.Item.DataItem, Url)
+                        @Html.RenderPageTagLink(Model.Item.GetDataItem<NewsItem>(), Url)
                     </h4>
                     <h1>@Model.Item.Fields.Title</h1>
                     <p>
                         by <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.Item.GetDateTime("PublicationDate", "MMMM dd, yyyy")
-                        @Html.RenderRelatedIssueItem((NewsItem)Model.Item.DataItem)
+                        @Html.RenderRelatedIssueItem(Model.Item.GetDataItem<NewsItem>())
                     </p>
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <hr />
                     @if (Model.Item.RelatedItem("Image") !=null)
                     {
-                        Html.RenderImage((Image)Model.Item.RelatedItem("Image").DataItem, "", "198", "780");
+                        Html.RenderImage(Model.Item.RelatedItem("Image").GetDataItem<Image>(), "", "198", "780");
                     }
                 </div>
             </div>
