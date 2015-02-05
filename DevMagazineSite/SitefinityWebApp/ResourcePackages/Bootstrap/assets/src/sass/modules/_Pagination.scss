@@ -1,0 +1,31 @@
+﻿.pagination {
+	> li > a,
+	> li > span {
+		padding: 0;
+		margin-left:0;
+		width:35px;
+		height:35px;
+		line-height: 35px;
+		color: #5573c9;
+		border:0;
+		text-align: center;
+
+		&:hover,
+		&:focus {
+			border:0;
+			border-radius: 50%;
+			background-color: rgba(0, 0, 0, .15);
+		}
+	}
+
+	> .active > a,
+	> .active > span {
+		&,
+		&:hover,
+		&:focus {
+			background-color: #596c9b;
+			border-color: #596c9b;
+			border-radius: 50%;
+		}
+	}
+}
