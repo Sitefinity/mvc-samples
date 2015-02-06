@@ -41,8 +41,7 @@ module.exports = function (grunt) {
             sprites: {
                 files: [{
                     src: [
-                      '<%= pkg.name %>/images/src/sprites/*.png',
-                      '<%= pkg.name %>/images/dist/sprites/*.png'
+                      '<%= dist.path %>/**/*.{png,jpg,gif,jpeg}'
                     ]
                 }]
             }
@@ -126,7 +125,7 @@ module.exports = function (grunt) {
                   {
                       expand: true,
                       cwd: '<%= src.path %>/images',
-                      src: ['**/*.{png,jpg,gif,jpeg}'],
+                      src: ['**/*.{png,jpg,gif,jpeg', '!/**/social-share/**],
                       dest: '<%= dist.path %>/images'
                   }
                 ]
@@ -157,6 +156,16 @@ module.exports = function (grunt) {
             }
         },
 
+        // Sprite generation
+        sprite: {
+            all: {
+                src: 'assets/src/images/social-share/*.png',
+                dest: 'assets/src/images/social-share-sprite.png',
+                destCss: 'assets/src/sass/_sf-social-share-sprite.sass',
+                cssTemplate: 'assets/src/sass/social-share-sprite.mustache'
+            }
+        },
+
         watch: {
             options: {
                 spawn: false
@@ -166,6 +175,12 @@ module.exports = function (grunt) {
                 tasks: ['sass:dist', 'cssmin']
                 // tasks: ['sass:dist', 'uncss', 'cssmin']
             },
+
+            images: {
+                files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
+                tasks: ['clean:images', 'sprite', 'imagemin']
+            },
+
             js: {
                 files: ['<%= src.path %>/**/*.js'],
                 tasks: ['uglify:dist']
@@ -174,7 +189,7 @@ module.exports = function (grunt) {
 
         concurrent: {
             dev: {
-                tasks: ['watch:styles', 'watch:js'],
+                tasks: ['watch:styles', 'watch:js', 'watch:images'],
                 options: {
                     logConcurrentOutput: true
                 }
@@ -186,9 +201,12 @@ module.exports = function (grunt) {
       'webfont'
     ]);
 
+
+
     // Tasks
     grunt.registerTask('default', [
       'clean:all',
+      'newer:sprite',
       'sass:dist',
       // 'uncss',
       'cssmin',

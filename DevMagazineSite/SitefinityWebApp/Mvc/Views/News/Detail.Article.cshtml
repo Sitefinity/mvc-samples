@@ -30,6 +30,11 @@
                         by <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, author.ProviderName, author.Id)">@author.Name</a> on @Model.Item.GetDateTime("PublicationDate", "MMMM dd, yyyy")
                         @Html.RenderRelatedIssueItem(Model.Item.GetDataItem<NewsItem>())
                     </p>
+
+                    @if (Model.EnableSocialSharing)
+                    {
+                        @Html.SocialShareOptions()
+                    }
                 </div>
                 <div class="col-md-8 col-md-offset-2">
                     <hr />
