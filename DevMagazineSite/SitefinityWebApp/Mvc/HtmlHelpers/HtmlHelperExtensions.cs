@@ -24,7 +24,7 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
         #region Public methods
 
         /// <summary>
-        /// Renders the topic title taken by the serialized taxonomy filter
+        /// Renders the topic title as link.
         /// </summary>
         /// <param name="helper">The HTML helper.</param>
         /// <param name="model">The model.</param>
@@ -89,6 +89,30 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
 
             return pageNode == null ? null : new HtmlString(string.Format("<a href=\"{0}\">{1}</a>", urlHelper.Content(pageNode.GetFullUrl()), tag.Title));
         }
+
+        /// <summary>
+        /// Constructs collection of news items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>Collection of <see cref="NewsItem"/></returns>
+        public static IEnumerable<NewsItem> AsNewsItems(this IEnumerable<ItemViewModel> items)
+        {
+            var newsItems = items.Select(i=>(Telerik.Sitefinity.News.Model.NewsItem)i.DataItem).ToList();
+
+            return newsItems;
+        }
+
+        /// <summary>
+        /// Constructs collection of news items. 
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>Collection of <see cref="NewsItem"/></returns>
+        public static T GetDataItem<T>(this ItemViewModel item) where T: class
+        {
+            return item.DataItem as T;
+        }
+
+
         #endregion
     }
 }

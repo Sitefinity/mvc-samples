@@ -96,6 +96,7 @@
     <Reference Include="LinqToTwitter">
       <HintPath>..\packages\linqtotwitterNET40.2.1.9.0\lib\net40\LinqToTwitter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Http">
       <HintPath>..\packages\Microsoft.Http.1.0.0.0\lib\Microsoft.Http.dll</HintPath>
     </Reference>
@@ -854,7 +855,6 @@
     <Content Include="Mvc\Views\News\List.ArticlesByTopic.cshtml" />
     <Content Include="Mvc\Views\News\List.FeaturedArticle.cshtml" />
     <Content Include="Mvc\Views\News\List.RecentByTopics.cshtml" />
-    <Content Include="Mvc\Views\Search\SearchResults.Default.cshtml" />
     <Content Include="Mvc\Views\Shared\_AuthorResume.cshtml" />
     <Content Include="Mvc\Views\Shared\_FeaturedArticle.Author.cshtml" />
     <Content Include="Mvc\Views\Shared\_LatestIssue.cshtml" />
