@@ -17,3 +17,10 @@
 @import "modules/Search";
 @import "modules/Article";
 @import "modules/Media";
+@import "modules/Pagination";
+
+// Social share
+// Due to some unfortunate circumstances, these files must be
+// directly in the `sass` folder :/
+@import "sf-social-share-sprite";
+@import "sf-social-share";

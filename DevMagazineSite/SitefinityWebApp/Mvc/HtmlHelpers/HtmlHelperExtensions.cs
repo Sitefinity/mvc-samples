@@ -15,6 +15,7 @@ using Telerik.Sitefinity.Modules.Pages;
 using DevMagazine.Core.Mvc.Helpers;
 using Telerik.Sitefinity.Web;
 using Telerik.Sitefinity.Abstractions;
+using Telerik.Sitefinity.Frontend.Mvc.Models;
 
 namespace SitefinityWebApp.Mvc.HtmlHelpers
 {
@@ -23,43 +24,26 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
         #region Public methods
 
         /// <summary>
-        /// Renders the topic title taken by the serialized taxonomy filter
+        /// Renders the topic title as link.
         /// </summary>
         /// <param name="helper">The HTML helper.</param>
-        /// <param name="serializedTaxonomyFilter">The serialized taxonomy filter.</param>
-        /// <param name="htmlTag">The preferred HTML tag wrapper.</param>
+        /// <param name="model">The model.</param>
         /// <returns>
-        /// Topic title
+        /// Topic title link
         /// </returns>
-        public static IHtmlString RenderTopicTitle(this HtmlHelper helper, string serializedTaxonomyFilter)
+        public static IHtmlString RenderTopicLink(this HtmlHelper helper, ContentListViewModel model)
         {
-            var taxon = GetTaxonByTaxonomyFilter(serializedTaxonomyFilter);
+            var viewItem = model.Items.FirstOrDefault();
 
-            if (taxon != null)
-            {
-                return new HtmlString(taxon.Title);
-            }
+            if (viewItem == null)
+                return null;
+            
+            var taxon = viewItem.GetFlatTaxon("Tags");
 
-            return null;
-        }
-
-        /// <summary>
-        /// Renders the topic title taken by the serialized taxonomy filter
-        /// </summary>
-        /// <param name="helper">The HTML helper.</param>
-        /// <param name="serializedTaxonomyFilter">The serialized taxonomy filter.</param>
-        /// <param name="htmlTag">The preferred HTML tag wrapper.</param>
-        /// <returns>Topic title link</returns>
-        public static IHtmlString RenderTopicLink(this HtmlHelper helper, string serializedTaxonomyFilter)
-        {
-            var taxon = GetTaxonByTaxonomyFilter(serializedTaxonomyFilter);
-
-            if (taxon != null)
-            {
-                return new HtmlString(string.Format("<a href=\"../{0}\">{1}</a>", taxon.Name, taxon.Title));
-            }
-
-            return null;
+            if (taxon == null)
+                return null;
+            
+            return new HtmlString(string.Format("<a href=\"../{0}\">{1}</a>", taxon.Name, taxon.Title));
         }
 
         /// <summary>
@@ -105,34 +89,30 @@ namespace SitefinityWebApp.Mvc.HtmlHelpers
 
             return pageNode == null ? null : new HtmlString(string.Format("<a href=\"{0}\">{1}</a>", urlHelper.Content(pageNode.GetFullUrl()), tag.Title));
         }
-        #endregion
 
-        #region Private memebers
-
-        private static Taxon GetTaxonByTaxonomyFilter(string serializedTaxonomyFilter)
+        /// <summary>
+        /// Constructs collection of news items.
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>Collection of <see cref="NewsItem"/></returns>
+        public static IEnumerable<NewsItem> AsNewsItems(this IEnumerable<ItemViewModel> items)
         {
-            var taxonomyDictionary = (Dictionary<string, string>)ServiceStack.Text.JsonObject.Parse(serializedTaxonomyFilter);
+            var newsItems = items.Select(i=>(Telerik.Sitefinity.News.Model.NewsItem)i.DataItem).ToList();
 
-            if (taxonomyDictionary != null && taxonomyDictionary.ContainsKey("Tags"))
-            {
-                var tagString = taxonomyDictionary["Tags"];
-
-                // remove deserialized object unnecessarily symbols
-                var tagGuid = tagString.Substring(2, tagString.Length - 4);
-
-                Guid taxonId = Guid.Parse(tagGuid);
-
-                TaxonomyManager manager = TaxonomyManager.GetManager();
-
-                var taxon = (Telerik.Sitefinity.Taxonomies.Model.Taxon)manager.GetItem(typeof(Telerik.Sitefinity.Taxonomies.Model.Taxon), taxonId);
-
-                return taxon;
-            }
-
-            return null;
+            return newsItems;
         }
 
-        #endregion
+        /// <summary>
+        /// Constructs collection of news items. 
+        /// </summary>
+        /// <param name="items">The items.</param>
+        /// <returns>Collection of <see cref="NewsItem"/></returns>
+        public static T GetDataItem<T>(this ItemViewModel item) where T: class
+        {
+            return item.DataItem as T;
+        }
 
+
+        #endregion
     }
 }

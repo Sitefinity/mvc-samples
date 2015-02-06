@@ -1,6 +1,9 @@
-﻿@model Telerik.Sitefinity.Frontend.News.Mvc.Models.INewsModel
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
+@using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Modules.Pages;
 @using SitefinityWebApp.Mvc.HtmlHelpers;
 @using DevMagazine.Core.Mvc.Helpers;
 
@@ -14,11 +17,11 @@
     <div id="container" class="container">
         <div class="row text-center">
             <h4>Topic</h4>
-            <h1>@Html.RenderTopicTitle(Model.SerializedTaxonomyFilter)</h1>
+            <h1>@SitefinityContext.Page.Title</h1>
         </div>
         <hr />
         <div id="news-container">
-            @Html.Partial("_RecentByTopic.Author", Model.Items)
+            @Html.Partial("_RecentByTopic.Author", Model.Items.AsNewsItems().ToList())
 
             <div class="row text-center u-mt4" id="paging-wrapper" >
                 <a id="showMoreArticles" href="#" data-page="@Model.CurrentPage" data-url="@Html.GetCurrentNodeUrl()" class="@Html.RenderTextIfTrue("hidden", (Model.CurrentPage >= Model.TotalPagesCount))">

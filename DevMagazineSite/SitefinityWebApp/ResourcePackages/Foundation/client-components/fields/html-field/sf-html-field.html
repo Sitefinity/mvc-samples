@@ -1,0 +1,28 @@
+﻿<textarea id="editor" style="height: 340px;"
+    kendo-editor ng-model="ngModel"
+    k-encoded="false"
+    k-stylesheets='["/ResourcePackages/Foundation/assets/dist/css/styles.min.css"]',
+    k-tools='[
+    "formatting",
+    "bold", "italic", "underline", "trikethrough",
+    "justifyLeft", "justifyCenter", "justifyRight",
+    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+    {
+        name: "createLink",
+        template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openLinkSelector()\" title=\"Insert hyperlink\"><span class=\"k-tool-icon k-createLink\">Create Link</span></a>"
+    },
+    "unlink", "insertImage",
+    "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
+    "cleanFormatting",
+    {
+        name: "fullscreen",
+        template: "<a class=\"k-button js-custom-tool\" ng-click=\"toggleFullScreen()\"><span class=\"k-icon k-i-maximize k-tool-icon\"></span></a>"
+    },
+    {
+        name: "htmlView",
+        template: "<button class=\"k-button pull-right js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
+    }
+    ]'>
+</textarea>
+
+<sf-link-selector-modal id="linkSelectorModal"></sf-link-selector-modal>

@@ -1,6 +1,8 @@
 ﻿@model Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models.DynamicContentListViewModel
 
 @using SitefinityWebApp.Mvc.ViewModels;
+@using SitefinityWebApp.Mvc.HtmlHelpers;
+@using Telerik.Sitefinity.DynamicModules.Model;
 
 @(Html.Partial("_LatestIssue", IssueViewModel.GetIssue(
-    (Telerik.Sitefinity.DynamicModules.Model.DynamicContent)Model.Items.FirstOrDefault().DataItem)))
+    Model.Items.FirstOrDefault().GetDataItem<DynamicContent>())))

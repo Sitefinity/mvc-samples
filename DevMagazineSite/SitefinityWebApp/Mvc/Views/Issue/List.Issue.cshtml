@@ -3,6 +3,7 @@
 @using Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models;
 @using Telerik.Sitefinity.DynamicModules.Model;
 @using SitefinityWebApp.Mvc.ViewModels;
+@using SitefinityWebApp.Mvc.HtmlHelpers;
 
 <section class="section section--gray">
     @Html.Partial("List.LatestIssueRight")
@@ -16,13 +17,13 @@
             <div class="row">
                 @foreach (var issue in Model.Items.Take(3))
                 {
-                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
+                    @Html.Partial("IssueElement", IssueViewModel.GetIssue(issue.GetDataItem<DynamicContent>()))
                 }
             </div>
             <div class="row">
                 @foreach (var issue in Model.Items.Skip(3).Take(3))
                 {
-                    @Html.Partial("IssueElement", IssueViewModel.GetIssue((DynamicContent)issue.DataItem))
+                    @Html.Partial("IssueElement", IssueViewModel.GetIssue(issue.GetDataItem<DynamicContent>()))
                 }
             </div>
 
