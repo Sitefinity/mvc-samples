@@ -1,14 +1,29 @@
+// Import Foundation from npm
 @import "../../../node_modules/zurb-foundation-5/scss/foundation.scss";
-@import "navigation/_side-nav";
-@import "navigation/_sitemap";
-@import "navigation/_tabs-nav";
-@import "news/_News";
-@import "searchBox/_sf-search-box";
-@import "searchResults/sf-search-results";
-@import "_sf-social-share-sprite"
-@import "_sf-social-share"
 
+//Loading
+@import "sitefinity/loading";
 
-// Ugly fix for content block editor
-body[contenteditable="true"]
-  padding-top: 1px
+// Content block
+@import "sitefinity/sf-content-block";
+
+// Gallery
+@import "sitefinity/gallery/gallery";
+
+// News
+@import "sitefinity/news/News";
+
+// Navigation
+@import "sitefinity/navigation/side-nav";
+@import "sitefinity/navigation/sitemap";
+@import "sitefinity/navigation/tabs-nav";
+
+// Search
+@import "sitefinity/searchBox/sf-search-box";
+@import "sitefinity/searchResults/sf-search-results";
+
+// Social share
+// Due to some unfortunate circumstances, these files must be
+// directly in the `sass` folder :/
+@import "sf-social-share-sprite"
+@import "sf-social-share"

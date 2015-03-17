@@ -5,7 +5,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.min.js")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.min.js"))
 
 <div class="@Model.CssClass">
 
@@ -90,6 +90,6 @@
     }
 }
 
-@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.topbar.min.js")
-@Html.Script("/ResourcePackages/Foundation/assets/dist/js/foundation.init.js")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.topbar.min.js"))
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.init.js"))
 

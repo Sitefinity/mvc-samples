@@ -12,7 +12,7 @@ chosen, when they need to be customized and where is the proper place for this c
 please visit the following documentation section:
 http://documentation.telerik.com/openaccess-orm/targets-files
 
-Copyright (C) 2007-2014 Telerik AD. All rights reserved.
+Copyright (C) 2007-2015 Telerik AD. All rights reserved.
 *************************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">

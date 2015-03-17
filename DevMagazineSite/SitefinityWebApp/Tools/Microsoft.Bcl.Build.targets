@@ -1,0 +1,185 @@
+<!--
+***********************************************************************************************
+Microsoft.Bcl.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BclBuildImported>true</BclBuildImported>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(TargetFrameworkIdentifier)' != 'Silverlight' and '$(OutputType)' != 'AppContainerExe'">
+    <!-- 
+      Workaround MSBuild issue that prevents System.Runtime 2.5 and System.Threading.Tasks 2.5 from
+      satisfying indirect dependencies on System.Runtime 1.5 and System.Threading.Tasks 1.5 respectively.  
+    -->
+    <AutoUnifyAssemblyReferences>false</AutoUnifyAssemblyReferences>
+
+    <!-- MSBuild by default doesn't pass the Web.Config ResolveAssemblyReference, in which case, set it so that it sees binding redirects -->
+    <AppConfig Condition="'$(AppConfig)' == '' And '$(WebProjectOutputDir)' != '' And Exists('$(ProjectConfigFileName)')">$(ProjectConfigFileName)</AppConfig>
+  </PropertyGroup>
+
+  <!-- Workaround issue that incorrectly unifies references not in the current profile to the version in the superset of all profiles. -->
+  <Target Name="_BclBuildSetFullFrameworkFolderToProfile" AfterTargets="GetReferenceAssemblyPaths" Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable'">
+    <PropertyGroup>
+      <_FullFrameworkReferenceAssemblyPaths>$(TargetFrameworkDirectory)</_FullFrameworkReferenceAssemblyPaths>
+    </PropertyGroup>
+  </Target>
+
+  <!--
+    *******************************************************************************************************************
+    *******************************************************************************************************************
+                                                                                         EnsureBindingRedirects Section
+    *******************************************************************************************************************
+    *******************************************************************************************************************
+    -->
+  <PropertyGroup>
+    <__IntermediateAppConfig>$(IntermediateOutputPath)$(MSBuildProjectFile).App.config</__IntermediateAppConfig>
+
+    <SkipEnsureBindingRedirects Condition="'$(TargetFrameworkIdentifier)' == 'Silverlight' or '$(OutputType)' == 'AppContainerExe'">true</SkipEnsureBindingRedirects>
+  </PropertyGroup>
+
+  <UsingTask TaskName="EnsureBindingRedirects" AssemblyFile="$(MSBuildThisFileDirectory)Microsoft.Bcl.Build.Tasks.dll" />
+
+  <!-- 
+    ===================================================================================================================
+                                                                                  BclBuildDetermineReferencesToRedirect
+                              
+    Determine which references are opted in for binding redirects
+    ===================================================================================================================
+    -->
+  <Target Name="BclBuildDetermineReferencesToRedirect" BeforeTargets="BclBuildEnsureBindingRedirects" Condition="'$(SkipEnsureBindingRedirects)' != 'true'">
+    <!-- Convention is a file next to the reference with name "ensureRedirect.xml" -->
+    <ItemGroup>
+      <_EnsureBindingRedirectReference Include="@(Reference)"
+                                       Condition="'%(Reference.HintPath)' != '' and Exists('$([System.IO.Path]::GetDirectoryName(&quot;%(Reference.HintPath)&quot;))\\ensureRedirect.xml')" />
+    </ItemGroup>
+  </Target>
+
+  <!-- 
+    ===================================================================================================================
+                                                                                         BclBuildEnsureBindingRedirects
+                              
+    Generate a new app.config with merged binding redirects if we have binding redirects to ensure and it's out of date
+    ===================================================================================================================
+    -->
+  <Target Name="BclBuildEnsureBindingRedirects"
+          DependsOnTargets="BclBuildDetermineReferencesToRedirect"
+          BeforeTargets="ResolveAssemblyReferences"
+          Condition="'@(_EnsureBindingRedirectReference)' != '' and '$(SkipEnsureBindingRedirects)' != 'true'"
+          Inputs="$(MSBuildAllProjects);$(AppConfig);@(_EnsureBindingRedirectReference->'%(HintPath)')"
+          Outputs="$(__IntermediateAppConfig)">
+
+    <EnsureBindingRedirects References="@(_EnsureBindingRedirectReference->'%(HintPath)')"
+                            SourceAppConfigPath="$(AppConfig)"
+                            DestinationAppConfigPath="$(__IntermediateAppConfig)">
+      <Output TaskParameter="DestinationAppConfigPath" ItemName="FileWrites"/>
+    </EnsureBindingRedirects>
+  </Target>
+
+  <!-- 
+    ===================================================================================================================
+                                                                                  BclBuildUpdateAppConfigWithTargetPath
+                              
+    Update project properties to point to the generated app.config
+    ===================================================================================================================
+    -->
+  <Target Name="BclBuildUpdateAppConfigWithTargetPath"
+          DependsOnTargets="BclBuildDetermineReferencesToRedirect;BclBuildEnsureBindingRedirects"
+          BeforeTargets="ResolveAssemblyReferences"
+          Condition="'@(_EnsureBindingRedirectReference)' != '' and '$(SkipEnsureBindingRedirects)' != 'true'">
+    <PropertyGroup>
+      <AppConfig>$(__IntermediateAppConfig)</AppConfig>
+    </PropertyGroup>
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="@(AppConfigWithTargetPath)" />
+      <AppConfigWithTargetPath Include="$(AppConfig)">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
+
+
+  <!--
+    *******************************************************************************************************************
+    *******************************************************************************************************************
+                                                                                      ValidatePackageReferences Section
+    
+    This group of targets enables validation of nuget package references when building inside VisualStudio.
+    *******************************************************************************************************************
+    *******************************************************************************************************************
+    -->
+
+  <!-- 
+    ===================================================================================================================
+                                                                                  BclBuildAddProjectReferenceProperties
+                              
+    Adds properties to be set when resolving project references.  The properties ensure that the references get built
+    in the context of the referencer (by changing the set of properties used to build the project) and pass down the
+    context needed to validate the referencing project.
+    ===================================================================================================================
+    -->
+  <Target Name="BclBuildAddProjectReferenceProperties"
+          BeforeTargets="AssignProjectConfiguration"
+          Condition="'$(BuildingInsideVisualStudio)' == 'true'">
+    <PropertyGroup>
+      <_BclBuildProjectReferenceProperties>BclBuildReferencingProject=$(MSBuildProjectFullPath);BclBuildReferencingProjectConfig=$(MSBuildProjectDirectory)\packages.config</_BclBuildProjectReferenceProperties>
+      <_BclBuildProjectReferenceProperties Condition="'$(SkipValidatePackageReferences)' != ''">$(_BclBuildProjectReferenceProperties);SkipValidatePackageReferences=$(SkipValidatePackageReferences)</_BclBuildProjectReferenceProperties>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference>
+        <AdditionalProperties>$(_BclBuildProjectReferenceProperties);%(ProjectReference.AdditionalProperties)</AdditionalProperties>
+      </ProjectReference>
+    </ItemGroup>
+  </Target>
+
+  <!-- 
+    ===================================================================================================================
+                                                                                            BclBuildSetRunningFullBuild
+                              
+    Determines when a full build is running as opposed to a single target.
+    ===================================================================================================================
+    -->
+  <Target Name="BclBuildSetRunningFullBuild"
+          BeforeTargets="BuildOnlySettings">
+    <PropertyGroup>
+      <BclBuildRunningFullBuild>true</BclBuildRunningFullBuild>
+    </PropertyGroup>
+  </Target>
+
+  <!-- 
+    ===================================================================================================================
+                                                                                    GetTargetPath/BclBuildGetTargetPath
+                              
+    MSBuild will only build a target once for a given set of properties.
+    
+    We need that single build of GetTargetPath to run during project reference resolution, so that we can detect a 
+    referencing project that doesn't have Bcl.Build.
+    
+    To accomplish this we replace GetTargetPath with BclBuildGetTargetPath when running a full build.
+    ===================================================================================================================
+    -->
+  <Target
+      Name="GetTargetPath"
+      Condition="'$(BclBuildRunningFullBuild)' != 'true'"
+      DependsOnTargets="$(GetTargetPathDependsOn)"
+      Returns="$(TargetPath)"/>
+
+  <Target
+      Name="BclBuildGetTargetPath"
+      Condition="'$(BclBuildRunningFullBuild)' == 'true'"
+      AfterTargets="GetTargetPath"
+      Returns="$(TargetPath)">
+    <PropertyGroup>
+      <!-- Reset BclBuildRunningFullBuild, it will be set again when doing a full build. -->
+      <BclBuildRunningFullBuild>false</BclBuildRunningFullBuild>
+    </PropertyGroup>
+  </Target>
+</Project>

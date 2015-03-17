@@ -15,7 +15,8 @@
     "grunt-spritesmith": "^3.5.0",
     "grunt-uncss": "^0.3.6",
     "load-grunt-tasks": "^2.0.0",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "magnific-popup": "^1.0.0"
   },
   "author": {
     "name": "SitefinityUX Team",

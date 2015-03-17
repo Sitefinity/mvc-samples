@@ -13,7 +13,7 @@
     Html.Raw(String.Format("<div class=\"{0} row collapse\">", Model.CssClass)) :
     Html.Raw("<div class=\"row collapse\">"))
     <div class="small-10 columns">
-        <input type="search" id="@Html.Raw(searchTextBoxId)" value="@Html.Raw(ViewBag.SearchQuery)"/>
+        <input type="search" placeholder="@Model.BackgroundHint" id="@Html.Raw(searchTextBoxId)" value="@Html.Raw(ViewBag.SearchQuery)"/>
     </div>
     <div class="small-2 columns">
         <button type="button" class="button postfix" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</button>
