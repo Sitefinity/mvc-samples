@@ -119,7 +119,7 @@ module.exports = function (grunt) {
       all: {
         src: 'assets/src/images/social-share/*.png',
         dest: 'assets/src/images/social-share-sprite.png',
-        destCss: 'assets/src/sass/_sf-social-share-sprite.sass',
+        destCss: 'assets/src/sass/_sf-social-share-sprite.scss',
         cssTemplate: 'assets/src/sass/social-share-sprite.mustache'
       }
     },
@@ -155,7 +155,7 @@ module.exports = function (grunt) {
   // Tasks
   // default task runs csslint once on startup on documentation's css
   grunt.registerTask('default', [
-    // 'clean:all',
+    'clean:all',
     'newer:sprite',
     'sass:dist',
     'cssmin',

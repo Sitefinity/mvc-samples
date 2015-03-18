@@ -1,0 +1,43 @@
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")' type="text/css" />
+</head>
+<body>
+      @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
+  @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
+  {
+    @Html.Script(ScriptRef.MicrosoftAjax)
+    @Html.Script(ScriptRef.MicrosoftAjaxCore)
+    @Html.Script(ScriptRef.JQuery)
+
+    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js")
+    @Html.Script(ScriptRef.KendoAll)
+    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js")
+    @Html.InlineEditingManager(false)
+  }
+
+    @Html.SfPlaceHolder("ContainerPlaceholder")
+
+    <!-- <script src="/ResourcePackages/Bootstrap/vendor/jquery/dist/jquery.js"></script> -->
+    <script src="/ResourcePackages/Bootstrap/assets/dist/js/all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".js-nav-fixed").fixit({
+                top: 0,
+                fixClass: "is-fixed",
+                dummyClass: "fixed-dummy",
+                classOnly: true,
+                renderDummy: true
+            });
+        });
+
+    </script>
+</body>
+</html>

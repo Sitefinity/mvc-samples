@@ -1,0 +1,15 @@
+.Issue-cover {
+  border-bottom: 1px solid #d6d6d6;
+}
+
+//max-width:991px
+@media (max-width: $screen-sm-max) {
+  .image-issue {
+    display:block;
+    margin:0 auto;
+  }
+
+  .media {
+    margin-bottom:30px;
+  }
+}

@@ -1,7 +1,7 @@
-<textarea id="editor" style="height: 340px;"
-    kendo-editor ng-model="sfModel"
+﻿<textarea id="editor" style="height: 340px;"
+    kendo-editor ng-model="ngModel"
     k-encoded="false"
-    k-stylesheets='[getPackageResourceUrl("/ResourcePackages/SemanticUI/assets/dist/css/styles.min.css")]',
+    k-stylesheets='["/ResourcePackages/SemanticUI/assets/dist/css/styles.min.css"]',
     k-tools='[
     "formatting",
     "bold", "italic", "underline", "trikethrough",
@@ -11,16 +11,12 @@
         name: "createLink",
         template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openLinkSelector()\" title=\"Insert hyperlink\"><span class=\"k-tool-icon k-createLink\">Create Link</span></a>"
     },
-    "unlink",
-    {
-        name: "insertImage",
-        template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openImageSelector()\" title=\"Select image\"><span class=\"k-tool-icon k-insertImage\">Select image</span></a>"
-    },
+    "unlink", "insertImage",
     "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
     "cleanFormatting",
     {
         name: "fullscreen",
-        template: "<a class=\"k-button js-custom-tool custom-tool\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
+        template: "<a class=\"k-button js-custom-tool\" ng-click=\"toggleFullScreen()\"><span class=\"k-icon k-i-maximize k-tool-icon\"></span></a>"
     },
     {
         name: "htmlView",
@@ -30,12 +26,3 @@
 </textarea>
 
 <sf-link-selector-modal id="linkSelectorModal"></sf-link-selector-modal>
-
-<div class="imagePropertiesModal"
-     template-url="{{imagePropertiesDialog}}"
-     modal
-     size="normal"
-     existing-scope="true"
-     window-class="sf-designer-dlg sf-timespan-selector-dlg"
-     dialog-controller="sfImagePropertiesController">
-</div>

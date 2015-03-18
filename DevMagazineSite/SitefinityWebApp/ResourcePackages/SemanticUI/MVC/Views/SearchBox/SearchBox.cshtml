@@ -10,10 +10,10 @@
  }
 
 @(!String.IsNullOrEmpty(Model.CssClass) ?
-    Html.Raw(String.Format("<div class=\"{0} sf-search-box ui action left icon input\">", Model.CssClass)) :
-    Html.Raw("<div class=\"sf-search-box ui action left icon input\">"))
+    Html.Raw(String.Format("<div class=\"{0} ui action left icon input\">", Model.CssClass)) :
+    Html.Raw("<div class=\"ui action left icon input\">"))
     <i class="search icon"></i>
-    <input type="text" placeholder="@Model.BackgroundHint" id="@Html.Raw(searchTextBoxId)" value="@Html.Raw(ViewBag.SearchQuery)"/>
+    <input type="text" id="@Html.Raw(searchTextBoxId)" value="@Html.Raw(ViewBag.SearchQuery)"/>
     <a href="#" class="ui teal button" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</a>
 </div>
 

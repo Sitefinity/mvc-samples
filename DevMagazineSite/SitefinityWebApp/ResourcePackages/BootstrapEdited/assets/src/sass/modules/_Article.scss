@@ -1,0 +1,15 @@
+//Responsive
+
+//max-width:767px
+@media (max-width: $screen-xs-max) {
+  .article {
+    margin-bottom:20px;
+  }
+}
+
+//min-width: 768px and max-width: 991px
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .article {
+    margin-bottom:45px;
+  }
+}

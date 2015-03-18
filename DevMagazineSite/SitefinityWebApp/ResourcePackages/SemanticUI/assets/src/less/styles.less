@@ -1,28 +1,15 @@
-// Import Semantic UI from npm
-// It's a bit ugly to include the CSS as we don't have
-// any way to define and overwrite Semantic UI variables
-// in our own .less files, but currently there's no other way
 @import (inline) "../../../node_modules/semantic-ui/dist/semantic.css";
+@import "navigation/_vertical-menu";
+@import "navigation/_sitemap-menu";
+@import "searchBox/_sf-search-box";
+@import "searchResults/_sf-search-results";
 
-// Loading
-@import "sitefinity/_loading";
-
-// Content block
-@import "sitefinity/_sf-content-block";
-
-// Gallery
-@import "sitefinity/gallery/_gallery";
-
-// Navigation
-@import "sitefinity/navigation/_vertical-menu";
-@import "sitefinity/navigation/_sitemap-menu";
-
-// Search
-@import "sitefinity/searchBox/_sf-search-box";
-@import "sitefinity/searchResults/_sf-search-results";
-
-// Social share
-// Due to some unfortunate circumstances, these files must be
-// directly in the `less` folder :/
 @import "_sf-social-share.less";
 @import "_sf-social-share-sprite.less";
+
+
+// Ugly fix for content block editor
+body[contenteditable="true"] {
+  padding-top: 1px
+}
+
