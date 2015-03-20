@@ -125,7 +125,7 @@ module.exports = function (grunt) {
                   {
                       expand: true,
                       cwd: '<%= src.path %>/images',
-                      src: ['**/*.{png,jpg,gif,jpeg', '!/**/social-share/**],
+                      src: ['**/*.{png,jpg,gif,jpeg}'],
                       dest: '<%= dist.path %>/images'
                   }
                 ]

@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")' type="text/css" />
+    <link rel="stylesheet" href='~/ResourcePackages/BootstrapCustom/assets/dist/css/styles.min.css' type="text/css" />
 </head>
 <body>
       @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
@@ -25,8 +25,8 @@
 
     @Html.SfPlaceHolder("ContainerPlaceholder")
 
-    <!-- <script src="/ResourcePackages/Bootstrap/vendor/jquery/dist/jquery.js"></script> -->
-    <script src="/ResourcePackages/Bootstrap/assets/dist/js/all.min.js"></script>
+	<script src="~/ResourcePackages/BootstrapCustom/assets/dist/js/all.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $(".js-nav-fixed").fixit({

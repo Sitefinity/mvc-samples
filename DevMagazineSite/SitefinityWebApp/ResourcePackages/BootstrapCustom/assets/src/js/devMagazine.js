@@ -30,7 +30,7 @@
     });
 
     // handle articles endless paging
-    $('#showMoreArticles').live('click', function (e) {
+    $('#showMoreArticles').on('click', function (e) {
         e.preventDefault();
         var button = $(this).hide(),
         pageNum = Number(button.attr("data-page")),
@@ -42,7 +42,7 @@
     });
 
     // handle search endless paging
-    $('#showMoreResults').live('click', function (e) {
+    $('#showMoreResults').on('click', function (e) {
         e.preventDefault();
         var button = $(this).hide(),
         pageNum = Number(button.attr("data-page")),
@@ -55,7 +55,7 @@
     });
 
     // handle issues' endless paging
-    $('#showMoreIssues').live('click', function (e) {
+    $('#showMoreIssues').on('click', function (e) {
         e.preventDefault();
         var button = $(this).hide(),
         pageNum = Number(button.attr("data-page")),
