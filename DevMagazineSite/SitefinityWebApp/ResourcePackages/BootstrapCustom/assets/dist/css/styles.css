@@ -4339,6 +4339,22 @@ hr {
 .glyph-bordered.glyphicon-chevron-down:before {
   margin-left: -1px; }
 
+ul.sf-autocomplete {
+  position: absolute;
+  padding: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  list-style: none; }
+  ul.sf-autocomplete a {
+    padding: 3px;
+    display: block;
+    color: #000; }
+    ul.sf-autocomplete a.ui-state-focus {
+      background-color: #eee; }
+    ul.sf-autocomplete a:hover {
+      cursor: pointer;
+      text-decoration: none; }
+
 .navbar-default {
   background-color: #596c9b;
   border: none;

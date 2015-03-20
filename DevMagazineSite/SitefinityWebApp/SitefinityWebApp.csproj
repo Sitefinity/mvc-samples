@@ -985,6 +985,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Sitefinity\" />
+    <Folder Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\GeoLocation\GeoLiteCity.dat" />
@@ -1295,18 +1296,7 @@
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\modules\_Pagination.scss" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\modules\_Search.scss" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\modules\_Social.scss" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\gallery\_gallery.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\navigation\_navbar.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\navigation\_sitemap.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\navigation\_stacked.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\profile\sf-profile.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\searchBox\_sf-search-box.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\searchResults\_sf-search-results.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\_loading.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\_sf-content-block.sass" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\_variables.sass" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\social-share-sprite.mustache" />
-    <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\styles.sass" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\styles.scss" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\_bootstrap.scss" />
     <Content Include="ResourcePackages\BootstrapCustom\assets\src\sass\_layout.scss" />
