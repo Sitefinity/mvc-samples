@@ -10,19 +10,6 @@
     <link rel="stylesheet" href='~/ResourcePackages/BootstrapCustom/assets/dist/css/styles.min.css' type="text/css" />
 </head>
 <body>
-      @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
-  @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
-  {
-    @Html.Script(ScriptRef.MicrosoftAjax)
-    @Html.Script(ScriptRef.MicrosoftAjaxCore)
-    @Html.Script(ScriptRef.JQuery)
-
-    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js")
-    @Html.Script(ScriptRef.KendoAll)
-    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js")
-    @Html.InlineEditingManager(false)
-  }
-
     @Html.SfPlaceHolder("ContainerPlaceholder")
 
 	<script src="~/ResourcePackages/BootstrapCustom/assets/dist/js/all.min.js"></script>
