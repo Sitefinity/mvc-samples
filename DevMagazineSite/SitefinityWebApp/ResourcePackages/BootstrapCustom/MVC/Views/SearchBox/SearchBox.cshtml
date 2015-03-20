@@ -20,17 +20,11 @@
     </li>
 </ul>
 
-@* The inline editing functionality is loading jQuery too. *@
-@if (!SystemManager.IsDesignMode && !ControlExtensions.InlineEditingIsEnabled())
-{
-    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQuery))
-}
-
 @* Avoid conflicts because the designer is loading jQuery too. *@
 @if (!SystemManager.IsDesignMode)
 {
-
-    @Html.Script(ResourceHelper.GetWebResourceUrl(ScriptRef.JQueryUI))
+    @Html.Script(ScriptRef.JQuery)
+    @Html.Script(ScriptRef.JQueryUI)
 }
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
