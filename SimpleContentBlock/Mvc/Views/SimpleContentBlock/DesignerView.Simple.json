@@ -1,0 +1,9 @@
+﻿{
+    "priority": 1,
+	"scripts" : [
+		"client-components/selectors/taxonomies/sf-taxonomy-service.js",
+		"client-components/selectors/media/sf-media-markup-service.js",
+		"client-components/fields/html-field/sf-html-field.js"
+	],
+	"components" : ["sf-services", "sf-fields", "sf-link-selector-modal", "sf-expander", "sf-image-field", "sf-document-field","sf-video-field", "sf-thumbnail-size-selection"]
+}
