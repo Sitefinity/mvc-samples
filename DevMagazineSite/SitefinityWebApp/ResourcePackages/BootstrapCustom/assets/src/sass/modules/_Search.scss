@@ -1,12 +1,11 @@
 .Search {
   color: #fff;
   margin-left: -15px;
-  margin-right: -15px;
 
   > [type="search"] {
     position: relative;
     z-index: 1;
-    width: 100px;
+    width: 80px;
     padding: 35px 5px 34px 5px;
     color: #fff;
     font-size: 20px;
@@ -51,8 +50,12 @@
 .is-fixed {
   .Search {
     > [type="search"] {
+      width: 40px;
       padding: 10px 5px 10px 40px;
       font-size: 16px;
+      &:focus {
+        width: 200px;
+      }
     }
 
     > label {
@@ -60,6 +63,7 @@
       top: 0;
       right: -35px;
     }
+
   }
 }
 

@@ -4,7 +4,7 @@
   border-radius: 0;
   min-height: 0;
   margin-bottom: 0;
-
+  overflow: hidden;
   .navbar-nav {
     font-size: 0;
 
@@ -43,7 +43,7 @@
     }
   }
 
-  .navbar-brand {
+  a.navbar-brand {
   	padding-top: 38px;
   	padding-bottom: 37px;
     color: #fff;
@@ -62,6 +62,86 @@
     }
   }
 
+  .profile-thumb{
+    height: 95px;
+    margin-right: -35px;
+    float: right;
+    overflow: hidden;
+    position: relative;
+    color: #CCC;
+    a,
+    .btn-link{
+      color: #fff;
+      padding: 0;
+    }
+    p{
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    img,
+    .glyphicon{
+      width: 95px;
+      height: 95px;
+      display: inline-block;
+    }
+    .glyphicon{
+      font-size: 30px;
+      margin-top: 30px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    button.open-login{
+      padding: 0;
+      vertical-align: top;
+      position: relative;
+      z-index: 9999;
+      border: none;
+      background: #596c9b;
+        &:focus{
+        background-color: rgba(0, 0, 0, 0.003);
+        cursor: default;
+        + .details{
+          width: 250px;
+        }
+      }
+    }
+    .details{
+      width: 0;
+      padding-top: 15px;
+      padding-left: 15px;
+      display: inline-block;
+      transition: 0.2s;
+      &:hover{
+        width: 250px;
+      }
+    }
+    &.not-logged{
+      button.open-login{
+        line-height: normal;
+        margin-left: 0;
+      }
+      .details{
+        font-size: 20px;
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 15px;
+        white-space: nowrap;
+        a{
+          padding: 35px 15px;
+          font-size: 20px;
+          transition: 0.2s;
+          vertical-align: middle;
+          float: left;
+          border: none;
+          &:hover{
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.15);
+          }
+        }
+      }
+    }
+
+  }
+
   &.is-fixed {
     position: fixed;
     top: 0;
@@ -73,16 +153,62 @@
 
     .navbar-nav > li {
       & > a {
+        font-size: 16px;
         padding-top: 10px;
         padding-bottom: 10px;
-        font-size: 16px;
       }
     }
 
     .navbar-brand {
-      padding-top: 10px;
+      padding-top: 8px;
       padding-bottom: 10px;
 	    font-size:18px;
+    }
+
+    .profile-thumb{
+      font-size: 14px;
+      height: 40px;
+      img,
+      .glyphicon{
+        width: 40px;
+        height: 40px;
+      }
+      .glyphicon{
+        font-size: 14px;
+        margin-top: 13px;
+      }
+      p{
+        display: none;
+      }
+      .details{
+        font-size: 14px;
+        padding-top: 10px;
+        .btn-link{
+          margin-left: 15px;
+        }
+
+      }
+      button.open-login{
+        &:focus{
+        + .details{
+            width: 250px;
+          }
+        }
+      }
+      &.not-logged{
+      
+      .details{
+        padding-top: 0;
+        padding-left: 0;
+        a{
+          font-size: 16px;
+          padding: 12px 15px;
+          vertical-align: middle;
+          line-height: normal;
+          float: left;
+        }
+      }
+    }
     }
   }
 }
@@ -170,3 +296,4 @@
     }
   }
 }
+

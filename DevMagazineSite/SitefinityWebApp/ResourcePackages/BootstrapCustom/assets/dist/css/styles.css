@@ -4360,7 +4360,8 @@ ul.sf-autocomplete {
   border: none;
   border-radius: 0;
   min-height: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  overflow: hidden; }
   .navbar-default .navbar-nav {
     font-size: 0; }
     .navbar-default .navbar-nav > li {
@@ -4381,7 +4382,7 @@ ul.sf-autocomplete {
         color: #fff;
         font-size: 20px;
         transition: font-size 0.1s linear, padding-top 0.1s linear, padding-bottom 0.1s linear, background-color 0.15s ease-in; }
-  .navbar-default .navbar-brand {
+  .navbar-default a.navbar-brand {
     padding-top: 38px;
     padding-bottom: 37px;
     color: #fff;
@@ -4389,9 +4390,69 @@ ul.sf-autocomplete {
     font-family: "Roboto Light", Arial;
     height: auto;
     transition: font-size 0.1s linear, padding-top 0.1s linear, padding-bottom 0.1s linear, background-color 0.15s ease-in; }
-    .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    .navbar-default a.navbar-brand:hover, .navbar-default a.navbar-brand:focus {
       background-color: rgba(0, 0, 0, 0.15);
       color: #fff; }
+  .navbar-default .profile-thumb {
+    height: 95px;
+    margin-right: -35px;
+    float: right;
+    overflow: hidden;
+    position: relative;
+    color: #CCC; }
+    .navbar-default .profile-thumb a, .navbar-default .profile-thumb .btn-link {
+      color: #fff;
+      padding: 0; }
+    .navbar-default .profile-thumb p {
+      font-size: 14px;
+      margin-bottom: 5px; }
+    .navbar-default .profile-thumb img, .navbar-default .profile-thumb .glyphicon {
+      width: 95px;
+      height: 95px;
+      display: inline-block; }
+    .navbar-default .profile-thumb .glyphicon {
+      font-size: 30px;
+      margin-top: 30px;
+      color: rgba(255, 255, 255, 0.5); }
+    .navbar-default .profile-thumb button.open-login {
+      padding: 0;
+      vertical-align: top;
+      position: relative;
+      z-index: 9999;
+      border: none;
+      background: #596c9b; }
+      .navbar-default .profile-thumb button.open-login:focus {
+        background-color: rgba(0, 0, 0, 0.003);
+        cursor: default; }
+        .navbar-default .profile-thumb button.open-login:focus + .details {
+          width: 250px; }
+    .navbar-default .profile-thumb .details {
+      width: 0;
+      padding-top: 15px;
+      padding-left: 15px;
+      display: inline-block;
+      transition: 0.2s; }
+      .navbar-default .profile-thumb .details:hover {
+        width: 250px; }
+    .navbar-default .profile-thumb.not-logged button.open-login {
+      line-height: normal;
+      margin-left: 0; }
+    .navbar-default .profile-thumb.not-logged .details {
+      font-size: 20px;
+      padding-top: 0;
+      padding-left: 0;
+      padding-right: 15px;
+      white-space: nowrap; }
+      .navbar-default .profile-thumb.not-logged .details a {
+        padding: 35px 15px;
+        font-size: 20px;
+        transition: 0.2s;
+        vertical-align: middle;
+        float: left;
+        border: none; }
+        .navbar-default .profile-thumb.not-logged .details a:hover {
+          text-decoration: none;
+          background: rgba(0, 0, 0, 0.15); }
   .navbar-default.is-fixed {
     position: fixed;
     top: 0;
@@ -4401,13 +4462,40 @@ ul.sf-autocomplete {
     margin-top: 0;
     transform: translateZ(0); }
     .navbar-default.is-fixed .navbar-nav > li > a {
+      font-size: 16px;
       padding-top: 10px;
-      padding-bottom: 10px;
-      font-size: 16px; }
+      padding-bottom: 10px; }
     .navbar-default.is-fixed .navbar-brand {
-      padding-top: 10px;
+      padding-top: 8px;
       padding-bottom: 10px;
       font-size: 18px; }
+    .navbar-default.is-fixed .profile-thumb {
+      font-size: 14px;
+      height: 40px; }
+      .navbar-default.is-fixed .profile-thumb img, .navbar-default.is-fixed .profile-thumb .glyphicon {
+        width: 40px;
+        height: 40px; }
+      .navbar-default.is-fixed .profile-thumb .glyphicon {
+        font-size: 14px;
+        margin-top: 13px; }
+      .navbar-default.is-fixed .profile-thumb p {
+        display: none; }
+      .navbar-default.is-fixed .profile-thumb .details {
+        font-size: 14px;
+        padding-top: 10px; }
+        .navbar-default.is-fixed .profile-thumb .details .btn-link {
+          margin-left: 15px; }
+      .navbar-default.is-fixed .profile-thumb button.open-login:focus + .details {
+        width: 250px; }
+      .navbar-default.is-fixed .profile-thumb.not-logged .details {
+        padding-top: 0;
+        padding-left: 0; }
+        .navbar-default.is-fixed .profile-thumb.not-logged .details a {
+          font-size: 16px;
+          padding: 12px 15px;
+          vertical-align: middle;
+          line-height: normal;
+          float: left; }
 
 .navbar-nav {
   float: none;
@@ -4539,12 +4627,11 @@ ul.sf-autocomplete {
 
 .Search {
   color: #fff;
-  margin-left: -15px;
-  margin-right: -15px; }
+  margin-left: -15px; }
   .Search > [type="search"] {
     position: relative;
     z-index: 1;
-    width: 100px;
+    width: 80px;
     padding: 35px 5px 34px 5px;
     color: #fff;
     font-size: 20px;
@@ -4573,8 +4660,11 @@ ul.sf-autocomplete {
     top: -100%; }
 
 .is-fixed .Search > [type="search"] {
+  width: 40px;
   padding: 10px 5px 10px 40px;
   font-size: 16px; }
+  .is-fixed .Search > [type="search"]:focus {
+    width: 200px; }
 .is-fixed .Search > label {
   font-size: 14px;
   top: 0;
