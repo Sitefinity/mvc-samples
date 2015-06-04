@@ -13,7 +13,7 @@ The following sample demonstrates how to create a simple MVC Books widget while 
 3. Reference the **BooksWidget.dll** from your Sitefinity’s web application.
 
 # Creating the Books widget
-Project Feather makes it possible to have MVC widgets that are stored in separate assemblies. In the following sample List widget will be created in a separate assembly. In order to do that you need to perform the following actions:
+Project Feather makes it possible to have MVC widgets that are stored in separate assemblies. In the following sample Books widget will be created in a separate assembly. In order to do that you need to perform the following actions:
 * Create a new class library named **BooksWidget** using .NET Framework 4.5.
 * Run these commands in the Package Manager Console to install the required Nuget packages:
 
