@@ -7,7 +7,7 @@ using Telerik.Sitefinity.Mvc;
 
 namespace BooksWidget.Mvc.Controllers
 {
-    [ControllerToolboxItem(Name = "Books", SectionName = "Samples", Title = "Books")]
+    [ControllerToolboxItem(Name = "Books", SectionName = "Feather samples", Title = "Books")]
     public class BooksController : Controller
     {
         [RelativeRoute("{page:int:min(1)?}")]
@@ -45,7 +45,7 @@ namespace BooksWidget.Mvc.Controllers
 
         private const int PageSize = 5;
 
-        private static List<Book> _library = new List<Book>(10)
+        private static readonly List<Book> _library = new List<Book>(10)
             {
                 new Book("Beatrix Potter", "The Tale Of Peter Rabbit"),
                 new Book("Julia Donaldson", "The Gruffalo"),

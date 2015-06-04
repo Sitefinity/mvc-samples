@@ -1,4 +1,4 @@
-﻿(function ($) {
+﻿; (function ($) {
     var initializeBooksWidget = function (element) {
         var widget = $(element);
         var currentPage = widget.find('input[data-role=current-page]').val();
@@ -29,4 +29,4 @@
             initializeBooksWidget(value);
         });
     });
-})(jQuery)
+})(jQuery);
