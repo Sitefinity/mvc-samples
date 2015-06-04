@@ -213,7 +213,7 @@ Create Points and Vote actions with a direct route so they can be accessed with 
      }
 ```
 
-Last but not least you should add `ControllerToolboxItem `attribute to the `BooksController` class. This way Sitefinity will automatically add the List widget in the toolbox. Here is a sample usage of the `ControllerToolboxItem `attribute:
+Last but not least you should add `ControllerToolboxItem `attribute to the `BooksController` class. This way Sitefinity will automatically add the Books widget in the toolbox. Here is a sample usage of the `ControllerToolboxItem `attribute:
 ```csharp
    [ControllerToolboxItem(Name = "Books", SectionName = "Feather samples", Title = "Books")]
 ```
