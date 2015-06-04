@@ -26,7 +26,7 @@ For example, let's have a widget with the following implementation:
 	}
 ```
 
-If this widget is added to a page with URL _~/my-page_ then you get to routes:
+If this widget is added to a page with URL _~/my-page_ then you get two routes:
 	1. ~/my-page/my-sample-path : Displays the page and renders "This is Action1" where the widget is placed.
 	2. ~/my-sample-path : Renders "This is Action2" as plain text.
 	
