@@ -41,12 +41,9 @@
 
           if (!string.IsNullOrEmpty(ViewBag.Error))
             {
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="alert alert-danger">
-                            @ViewBag.Error
-                        </div>
-                    </div>
+
+                <div class="alert alert-danger">
+                    @ViewBag.Error
                 </div>
 
             }
@@ -55,99 +52,87 @@
                 <label>
                     @Html.Resource("FirstName")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
-                    </div>
-                </div>
+
+                @Html.TextBox("Profile[FirstName]", null, new { @class = "form-control" })
+
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("LastName")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
-                    </div>
-                </div>
+
+                @Html.TextBox("Profile[LastName]", null, new { @class = "form-control" })
+
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("Email")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                      @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
                       
-                        @if (Html.ValidationMessageFor(m => m.Email) != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
-                            </div>
-                        } 
+                @if (Html.ValidationMessageFor(m => m.Email) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(m => m.Email)</span>
                     </div>
-                </div>
+                } 
+
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("UserName")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                         
-                        @if (Html.ValidationMessageFor(m => m.UserName) != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessageFor(m => m.UserName)</span>
-                            </div>
-                        } 
+                @if (Html.ValidationMessageFor(m => m.UserName) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(m => m.UserName)</span>
                     </div>
-                </div>
+                } 
+
             </div>
         
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
 
-                        @if (Html.ValidationMessageFor(m => m.Password) != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
-                            </div>
-                        } 
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+
+                @if (Html.ValidationMessageFor(m => m.Password) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block"> @Html.ValidationMessageFor(m => m.Password)</span>
                     </div>
-                </div>
+                } 
+
             </div>
         
            <div class="form-group">
                 <label>
                     @Html.Resource("ReTypePassword")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
+
+                @Html.PasswordFor(m => m.ReTypePassword, new { @class = "form-control" })
                         
-                        @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
-                            </div>
-                        } 
+                @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(m => m.ReTypePassword)</span>
                     </div>
-                </div>
+                } 
+
             </div>
 
 
             <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
-            <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+            <a class="btn btn-link" href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
          }
 
         

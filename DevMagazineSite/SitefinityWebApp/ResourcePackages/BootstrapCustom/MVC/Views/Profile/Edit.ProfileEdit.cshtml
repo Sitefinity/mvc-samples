@@ -9,7 +9,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
 
-<div class=" @Model.CssClass">
+<div class="@Model.CssClass">
     @if (Model.ShowProfileChangedMsg)
     {
         <div class="alert alert-success">@Html.Resource("ChangesAreSaved")</div>
@@ -17,7 +17,7 @@
 
     @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        
+    <h1>Profile</h1>
     <div class="row sf-profile">
         <div class="col-md-3">
             @Html.HiddenFor(u => u.DeletePicture, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-delete-picture" } })
@@ -25,23 +25,38 @@
 
             <div class="sf-profile-avatar">
                 <img data-sf-role="edit-profile-user-image" src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100"/>
-                <a class="glyphicon glyphicon-remove-sign" href="#" data-sf-role="edit-profile-delete-picture-button"></a>
+                @*<a class="sf-remove glyphicon glyphicon-remove-sign" href="#" data-sf-role="edit-profile-delete-picture-button"></a>*@
             </div>
 
             <div>
                 <input type="file" data-sf-role="edit-profile-upload-picture-input" name="UploadedImage" style="display: none;" />
-
                 <a href="#" data-sf-role="edit-profile-upload-picture-button">@Html.Resource("EditProfileUploadImage")</a>
             </div>
 
         </div> 
+        
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+
+            <div class="alert alert-danger">
+                @ViewBag.ErrorMessage
+            </div>
+
+        }
          
         <div class="col-md-9">
             <div class="form-group">
-                 <label>
-                     @Html.Resource("EditProfileFirstName")
-                 </label>
-               @Html.TextBoxFor(u => u.Profile["FirstName"], new { @class = "form-control" })
+                <label>
+                    @Html.Resource("EditProfileFirstName")
+                </label>
+                @Html.TextBoxFor(u => u.Profile["FirstName"], new { @class = "form-control" })
+                
+                @if (Html.ValidationMessageFor(u => u.Profile["FirstName"]) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["FirstName"])</span>
+                    </div>
+                } 
             </div>
         
             <div class="form-group">
@@ -49,6 +64,13 @@
                     @Html.Resource("EditProfileLastName")
                 </label>
                 @Html.TextBoxFor(u => u.Profile["LastName"], new { @class = "form-control" })
+                
+                @if (Html.ValidationMessageFor(u => u.Profile["LastName"]) != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessageFor(u => u.Profile["LastName"])</span>
+                    </div>
+                } 
             </div>
 
             <div class="form-group">
@@ -59,9 +81,9 @@
 
             </div>
         
-            <div><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></div>
+            <p><a href="#" data-sf-role="edit-profile-change-password-button">@Html.Resource("EditProfileChangePasswordButton")</a></p>
 
-            <div data-sf-role="edit-profile-change-password-holder">
+            <div data-sf-role="edit-profile-change-password-holder" style="display:none">
 
                 <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
             
@@ -69,21 +91,43 @@
                     <label>
                         @Html.Resource("EditProfileOldPassword")
                     </label>
-                     @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control" })
+
+                    @Html.PasswordFor(u => u.OldPassword, new { @class = "form-control", autocomplete = "off" })
+
+                    @if (Html.ValidationMessageFor(u => u.OldPassword) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.OldPassword)</span>
+                        </div>
+                    } 
                 </div>
 
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileNewPassword")
                     </label>
-                      @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })
+                    @Html.PasswordFor(u => u.NewPassword, new { @class = "form-control" })
+
+                    @if (Html.ValidationMessageFor(u => u.NewPassword) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.NewPassword)</span>
+                        </div>
+                    } 
                 </div>
 
                 <div class="form-group">
                     <label>
                         @Html.Resource("EditProfileRepeatPassword")
                     </label>
-                     @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })
+                    @Html.PasswordFor(u => u.RepeatPassword, new { @class = "form-control" })
+                    
+                    @if (Html.ValidationMessageFor(u => u.RepeatPassword) != null)
+                    {
+                        <div class="has-error">
+                            <span class="help-block">@Html.ValidationMessageFor(u => u.RepeatPassword)</span>
+                        </div>
+                    } 
                 </div>
             </div>
 
