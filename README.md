@@ -11,6 +11,16 @@ This repository contains samples related to [Project Feather](http://projectfeat
 
 [feather-packages](https://github.com/Sitefinity/feather-packages) - This repository contains front-end packages for the Feather project.
 
+# Sitefinity  compatibility
+
+| Feather version | Sitefinity version |
+|----|----|
+| v.1.2.120.0 - latest | 8.0.5700.0 to 8.0.9999 |
+| v.1.1.20.3 - 1.1.110.0 | 7.3.5600.0 to 7.3.9999 |
+| v.1.0.0.0 - 1.0.10.2 | 7.2.5300.0 to 7.2.9999 |
+| v.0.5.1000.4  | 7.1.5208.0 to 7.1.9999 |
+| v.0.4.1000.2  | 7.1.5200.0 to 7.1.9999 |
+| v0.1.1000.1 - v.0.3.1000.4  | 7.0.5100.0 to 7.0.9999 |
 
 # Documentation
 
