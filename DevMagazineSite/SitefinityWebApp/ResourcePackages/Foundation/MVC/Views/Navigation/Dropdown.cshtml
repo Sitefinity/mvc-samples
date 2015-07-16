@@ -5,7 +5,8 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script("//cdn.jsdelivr.net/foundation/5.2.3/js/foundation.min.js")
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(Url.WidgetContent("assets/dist/js/foundation.min.js"), "top")
 
 <select class="nav-select">
     @foreach (var node in Model.Nodes)
