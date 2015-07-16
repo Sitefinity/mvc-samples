@@ -1,0 +1,14 @@
+//Responsive
+
+//max-width:767px
+@media (max-width: $screen-xs-max) {
+  .media {
+  	margin-bottom:15px;
+  	.media-body {
+  	  clear:both;
+  	}
+  	.pull-left {
+  	  margin-bottom:10px;
+  	}
+  }
+}

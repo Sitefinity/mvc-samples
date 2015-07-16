@@ -1,0 +1,41 @@
+.Author--small {
+  .media-heading {
+    font-weight: bold;
+  }
+
+  .date-created {
+    color: #999;
+  }
+}
+
+
+.Author--header {
+
+  width: 770px;
+  margin: 0 auto;
+
+  .text-muted {
+    margin-bottom: 20px
+  }
+}
+
+
+.Author--big
+  >.pull-left {
+    margin-right:70px;
+  }
+
+.Author {
+  .list-unstyled {
+      margin-bottom:25px;
+    }
+  }
+
+//Responsive
+
+//max-width:767px
+@media (max-width: $screen-xs-max) {
+  .Author--header {
+    width:auto;
+    }
+}

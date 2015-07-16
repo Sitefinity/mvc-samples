@@ -1,0 +1,36 @@
+// SiteMap
+.sitemap
+  display: table
+  width: 100%
+  margin: 0
+  overflow: hidden
+
+  > li
+    display: table-cell
+    list-style: none
+    border-left: 1px solid #ccc
+
+    &:first-child
+      border-left-width: 0
+
+    > ul ul
+      margin-left: 20px
+
+  ul
+    overflow: hidden
+    margin: 0
+
+    li
+      list-style-type: none
+
+    a
+      display: block
+      padding: 10px 15px
+      font-size: 0.8125rem
+
+    .active a
+      color: #1cc7ff
+
+  a
+    display: block
+    padding: 10px 15px
