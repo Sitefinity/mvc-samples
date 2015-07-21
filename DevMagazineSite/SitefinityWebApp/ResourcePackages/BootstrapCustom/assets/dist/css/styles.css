@@ -4214,6 +4214,10 @@ hr {
   .row ~ .row {
     margin-top: 30px; }
 
+.sf-designer-dlg .row, .modal-dialog .row {
+  padding-top: 0;
+  padding-bottom: 0; }
+
 .row--border {
   border-bottom: 1px solid #d6d6d6; }
 
