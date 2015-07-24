@@ -1,0 +1,129 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration.RegistrationViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Utilities;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+
+<div class="@Model.CssClass">
+    @if (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg)
+    {
+        <h3>
+            @Html.Resource("VisitYourEmail")
+        </h3>
+
+        <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
+        <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+
+        <div data-sf-role="confirmationResendInfo" style="display:none;">
+            @string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)
+            <a data-sf-role="sendAgainLink">@Html.Resource("SendAgain")</a>
+        </div>
+
+        <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
+    }
+    else if (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg)
+    {
+        <h3>@Html.Resource("ThankYou")</h3>
+        <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>
+
+    }
+    else
+    {
+    <div class="ui form">
+
+        @using (Html.BeginFormSitefinity())
+        {
+            @Html.ValidationSummary(true);
+
+            if (!string.IsNullOrEmpty(ViewBag.Error))
+            {
+                <p class="ui red label">
+                   @ViewBag.Error
+                </p>
+            }
+
+            <div class="field">
+                <label>
+                    @Html.Resource("FirstName")
+                </label>
+                @Html.TextBox("Profile[FirstName]")
+            </div>
+
+            <div class="field">
+                <label>
+                    @Html.Resource("LastName")
+                    @Html.TextBox("Profile[LastName]")
+                </label>
+            </div>
+
+            <div class="field">
+                <label>
+                    @Html.Resource("Email")
+                    @Html.TextBoxFor(m => m.Email, new { type = "email" })
+                </label>
+                @if (Html.ValidationMessageFor(m => m.Email) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                }
+            </div>
+
+			if(!Model.EmailAddressShouldBeTheUsername){
+            <div class="field">
+                <label>
+                    @Html.Resource("UserName")
+                </label>
+                @Html.TextBoxFor(m => m.UserName)
+                @if (Html.ValidationMessageFor(m => m.UserName) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                }
+            </div>
+			}
+			
+            <div class="field">
+                <label>
+                    @Html.Resource("Password")
+                </label>
+                @Html.PasswordFor(m => m.Password)
+                @if (Html.ValidationMessageFor(m => m.Password) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                }
+            </div>
+
+            <div class="field">
+                <label>
+                    @Html.Resource("ReTypePassword")
+                </label>
+                @Html.PasswordFor(m => m.ReTypePassword)
+                @if (Html.ValidationMessageFor(m => m.ReTypePassword) != null)
+                {
+                    <div class="ui red pointing prompt label transition visible">
+                        @Html.ValidationMessageFor(m => m.ReTypePassword)
+                    </div>
+                }
+            </div>
+
+            
+            <input type="submit" class="ui submit button" value="@Html.Resource("Register")" />
+           
+         }
+
+        <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+
+    </div>
+    }
+</div>
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom")

@@ -5,6 +5,8 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery)
+@Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <select class="nav-select form-control">
@@ -20,7 +22,7 @@
     var selectedAttribute = "";
     prefix += "-";
 
-    if (Model.CurrentSiteMapNode != null && node.OriginalSiteMapNode !=null && Model.CurrentSiteMapNode.Key == node.OriginalSiteMapNode.Key)
+    if (Model.CurrentSiteMapNode != null && Model.CurrentSiteMapNode.Key == node.OriginalSiteMapNode.Key)
     {
         selectedAttribute = "selected";
     }

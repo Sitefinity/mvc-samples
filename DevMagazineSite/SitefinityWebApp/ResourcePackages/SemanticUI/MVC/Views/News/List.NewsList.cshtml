@@ -1,29 +1,30 @@
 @model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
-@using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-@using Telerik.Sitefinity.Web.DataResolving;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Web.DataResolving;
 
 <div class="@Model.CssClass">
     <div class="ui very relaxed list">
         @foreach (var item in Model.Items)
         {
+            var navigateUrl = HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage);
+            
 			<div class="item" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
-				<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">@item.Fields.Title</a>
+				<a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
+              
 
 				<div>
 					@item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
-          @Html.Resource("By")
-          @DataResolver.Resolve(item.DataItem, "Author", null)
+                    @Html.Resource("By")
+                    @DataResolver.Resolve(item.DataItem, "Author", null)
+                    @Html.CommentsCount((string)navigateUrl, item.DataItem)
 				</div>
 
-				<br />
-
 				<div @Html.InlineEditingFieldAttributes("Summary", "ShortText")>@Html.Raw(item.Fields.Summary)</div>
-
-				<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">@Html.Resource("FullStory")</a>
-			</div>
+				<a href="@navigateUrl">@Html.Resource("FullStory")</a>
+			
+            </div>
         }
     </div>
 

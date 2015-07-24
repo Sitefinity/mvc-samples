@@ -6,10 +6,10 @@
 @using Telerik.Sitefinity.Modules.Libraries;
 @using Telerik.Sitefinity.Libraries.Model;
 
-<div class=" @Model.CssClass">
+<div class="row @Model.CssClass" >
+    <div class="col-md-8 col-md-offset-2 row--border ">
+            <div class="row text-center">
 
-            <div class="row">
-                <div class="col-md-8">
                      @if (@Model.Results.TotalCount > 0)
                      {
                         <h1>@Model.Results.TotalCount @Html.Raw(Model.ResultText)</h1>
@@ -18,8 +18,8 @@
                      {
                         <h1>@Html.Resource("No") @Html.Raw(Model.ResultText)</h1>
                      }
-                </div>
-                <div class="col-md-4">
+
+
                     @if (Model.AllowSorting && @Model.Results.TotalCount > 0)
                     {
                         <span>@Html.Resource("SortBy")</span>
@@ -29,7 +29,7 @@
                             <option value="@OrderByOptions.Oldest" @(Model.OrderBy == OrderByOptions.Oldest ? "selected=selected" : "")>@Html.Resource("OldestFirst")</option>
                         </select>
                     }
-                </div>
+
             </div>
 
             @if (Model.Languages.Length > 1)
@@ -49,17 +49,17 @@
                         }
                     }
                 </div>
-            }   
-             
-            <div class="sf-search-results media-list">
+            }
+
+            <div class="sf-search-results media-list u-mb4">
                 @foreach (var item in Model.Results.Data)
                 {
                     var hasLink = item.GetValue("Link") != null && !String.IsNullOrEmpty(item.GetValue("Link").ToString());
-                    <div class="media sf-media">
+                    <div class="media sf-media u-mb3">
 
                     @if (((Telerik.Sitefinity.Services.Search.Model.Document)item).ItemType.ToString() == typeof(Telerik.Sitefinity.Libraries.Model.Image).ToString())
                     {
-            
+
                     <div class="media-left sf-img-thmb">
                         <a href="@item.GetValue("Link")">
                             <img src="@item.GetValue("Link")" alt="@item.GetValue("Title")" width="120"/>
@@ -75,15 +75,15 @@
                         if (video != null)
                         {
                             var thumbUrl = video.ThumbnailUrl;
-                        
+
                         <div class="media-left">
                             <div class="sf-video-thmb">
 
                                 <a href="@item.GetValue("Link")">
                                     <img src="@thumbUrl" alt="@item.GetValue("Title")" width="120"/>
-                               
+
                                     <div class="sf-icon-play"></div>
-                                
+
                                 </a>
                             </div>
                         </div>
@@ -95,8 +95,8 @@
                     {
 
                     }
-                    
-                    
+
+
                     <div class="media-body sf-media-body">
 
                         <h3>
@@ -119,32 +119,36 @@
                  </div>
                 }
 
-                </div>
+          </div>
+    </div>
+ </div>
 
-                @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
-                {
-                    if (Model.CurrentPage == Model.TotalPagesCount)
-                    {
-                        <em class="text-muted">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
-                    }
-                    else
-                    {
-                        <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
-                    }
-                    
-                    <div>
-                            @Html.Action("Index", "ContentPager", new
-                       {
-                           currentPage = Model.CurrentPage,
-                           totalPagesCount = Model.TotalPagesCount,
-                           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
-                       })
-                    </div>
 
-                }
-        
-        
+<div class="row text-center u-mt4">
+    @if (Model.DisplayMode == ListDisplayMode.Paging && Model.TotalPagesCount != null && Model.TotalPagesCount > 1)
+    {
+        if (Model.CurrentPage == Model.TotalPagesCount)
+        {
+            <em class="text-muted">@((Model.ItemsPerPage * Model.TotalPagesCount) - Model.Results.TotalCount) of @Model.Results.TotalCount results</em>
+        }
+        else
+        {
+            <em class="text-muted">@Model.ItemsPerPage of @Model.Results.TotalCount results</em>
+        }
+
+        <div>
+                @Html.Action("Index", "ContentPager", new
+            {
+                currentPage = Model.CurrentPage,
+                totalPagesCount = Model.TotalPagesCount,
+                redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+            })
+        </div>
+
+    }
+
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {

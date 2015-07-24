@@ -1,0 +1,48 @@
+.Btn {
+  display: inline-block;
+  padding: 16px 67px;
+  color: #fff;
+  background-color: #596c9b;
+  transition-property: background-color;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  border-radius: 50px;
+  -webkit-appearance: none;
+  font-size: 22px;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    text-decoration:none;
+    background-color: darken(#596c9b, 20%);
+  }
+}
+
+.Btn--download-issue {
+  position: relative;
+  top: -110px;
+  width: 240px;
+  display: block;
+  left: 50%;
+  margin-left: -120px;
+  margin-bottom: -60px;
+
+  //max-width:991px
+  @media (max-width: $screen-sm-max) {
+
+  }
+}
+
+.Btn--download-issue-2 {
+  position: relative;
+  top: -30px;
+}
+
+//max-width:991px
+@media (max-width: $screen-sm-max) {
+ .Btn {
+    padding: 10px 50px;
+ }
+}

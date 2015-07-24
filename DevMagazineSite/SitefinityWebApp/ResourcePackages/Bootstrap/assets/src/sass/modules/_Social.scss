@@ -1,0 +1,29 @@
+.Social {
+  text-align: center;
+
+  li {
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+  a {
+    font-size: 100px;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+
+    &:before {
+      color: #596c9b;
+      transition: color .15s ease-in;
+    }
+
+    &:hover,
+    &:focus {
+
+      &:before {
+        color: darken(#596c9b, 20%);
+      }
+    }
+  }
+}

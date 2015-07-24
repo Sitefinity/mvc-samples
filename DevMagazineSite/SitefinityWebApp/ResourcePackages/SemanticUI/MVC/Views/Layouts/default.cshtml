@@ -1,29 +1,40 @@
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+﻿@using System.Web.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
 
 <!DOCTYPE html>
-<html>
+<html @Html.RenderLangAttribute()>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
     <title></title>
-    <link rel="stylesheet" href='@Url.WidgetContent("~/ResourcePackages/SemanticUI/assets/dist/css/styles.min.css")' type="text/css" />
+
+    @Html.Section("head")
+    @Html.StyleSheet(Url.WidgetContent("~/ResourcePackages/SemanticUI/assets/dist/css/styles.min.css"), "head")
 </head>
+
 <body>
-  @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
-  @if (!SitefinityContext.IsBackend && ControlExtensions.InlineEditingIsEnabled())
-  {
-    @Html.Script(ScriptRef.MicrosoftAjax)
-    @Html.Script(ScriptRef.MicrosoftAjaxCore)
-    @Html.Script(ScriptRef.JQuery)
+    @Html.Section("top")
 
-    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js")
-    @Html.Script(ScriptRef.KendoAll)
-    @Html.Script("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js")
-    @Html.InlineEditingManager(false)
-  }
+    <div class="sfPublicWrapper" id="PublicWrapper">
+        @Html.SfPlaceHolder("Contentplaceholder1")
+    </div>
 
-  @Html.SfPlaceHolder("Contentplaceholder1")
+    @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@
+    @if (Html.ShouldRenderInlineEditing())
+    {
+        @Html.Script(ScriptRef.MicrosoftAjax, "top")
+        @Html.Script(ScriptRef.MicrosoftAjaxCore, "top")
+        @Html.Script(ScriptRef.JQuery, "top")
+
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.jquery.ba-outside-events.min.js"), "top")
+        @Html.Script(ScriptRef.KendoAll, "top")
+        @Html.Script(Url.EmbeddedResource("Telerik.Sitefinity.Resources.Reference", "Telerik.Sitefinity.Resources.Scripts.RequireJS.require.min.js"), "top")
+        @Html.InlineEditingManager(false)
+    }
+
+    @Html.Section("bottom")
 </body>
 </html>
