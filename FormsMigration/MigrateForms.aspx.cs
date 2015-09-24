@@ -82,7 +82,7 @@ namespace SitefinityWebApp
             }
             else
             {
-                this.CopyFormCommonData(thisFormMaster, duplicateForm, manager);
+                this.CopyFormCommonData(thisFormMaster, duplicateForm, formDescription.Id, manager);
 
                 // Get permissions from ParentForm, because FormDraft is no ISecuredObject
                 duplicateForm.CopySecurityFrom(thisFormMaster.ParentForm as ISecuredObject, null, null);
