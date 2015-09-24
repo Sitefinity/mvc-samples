@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Sitefinity;
@@ -11,6 +12,8 @@ using Telerik.Sitefinity.Fluent;
 using Telerik.Sitefinity.Fluent.Forms;
 using Telerik.Sitefinity.Forms.Model;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers;
+using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
+using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.BackendConfigurators;
 using Telerik.Sitefinity.Model.Localization;
 using Telerik.Sitefinity.Modules;
@@ -18,6 +21,7 @@ using Telerik.Sitefinity.Modules.Forms;
 using Telerik.Sitefinity.Modules.Forms.Web.UI.Fields;
 using Telerik.Sitefinity.Modules.GenericContent.Web.UI;
 using Telerik.Sitefinity.Mvc;
+using Telerik.Sitefinity.Mvc.Proxy;
 using Telerik.Sitefinity.Pages.Model;
 using Telerik.Sitefinity.Security;
 using Telerik.Sitefinity.Security.Model;
@@ -167,25 +171,35 @@ namespace SitefinityWebApp
             var formField = controlType as IFormFieldControl;
             if (formField != null)
             {
-                var newController = (IFormFieldControl)Activator.CreateInstance(fieldConfiguration.BackendFieldType);
-                //newControl.MetaField = formField.MetaField;
+                var newController = Activator.CreateInstance(fieldConfiguration.BackendFieldType);
 
-                //if (newControl is FieldControl)
-                //{
-                //    ((FieldControl)newControl).Title = formField.MetaField.Title;
-                //    var fieldController = formField as IFormFieldController<IFormFieldModel>;
-                //    if (fieldController != null)
-                //    {
-                //        ((FieldControl)newControl).ValidatorDefinition = fieldController.Model.ValidatorDefinition;
-                //        if (fieldConfiguration.FieldConfigurator != null)
-                //        {
-                //            fieldConfiguration.FieldConfigurator.FormId = formId;
-                //            fieldConfiguration.FieldConfigurator.Configure((FieldControl)newControl, fieldController);
-                //        }
-                //    }
-                //}
+                var fieldController = newController as IFormFieldController<IFormFieldModel>;
+                var elementController = newController as IFormElementController<IFormElementModel>;
 
-                //return (Control)newControl;
+                if (fieldController != null)
+                {
+                    var fieldControl = formField as FieldControl;
+                    if (fieldControl != null)
+                    {
+                        fieldController.MetaField = formField.MetaField;
+                        fieldController.MetaField.Title = fieldControl.Title;
+                        fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
+                        if (fieldConfiguration.FieldConfigurator != null)
+                        {
+                            fieldConfiguration.FieldConfigurator.FormId = formId;
+                            fieldConfiguration.FieldConfigurator.Configure(fieldControl, fieldController);
+                        }
+                    }
+                }
+                else if (elementController != null)
+                { 
+                }
+
+                var mvcProxy = new MvcControllerProxy();
+                mvcProxy.ControllerName = fieldConfiguration.BackendFieldType.FullName;
+                mvcProxy.Settings = new ControllerSettings((Controller)fieldController);
+
+                return (Control)mvcProxy;
             }
 
             return control;
