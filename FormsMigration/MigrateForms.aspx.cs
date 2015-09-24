@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using Telerik.Sitefinity.Forms.Model;
 using Telerik.Sitefinity.Frontend.ContentBlock.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers;
@@ -167,12 +168,12 @@ namespace SitefinityWebApp
 
             var controlType = control.GetType();
 
-            FieldConfiguration fieldConfiguration = null;
+            ElementConfiguration elementConfiguration = null;
             foreach (var pair in this.fieldMap)
             {
                 if (pair.Key.IsAssignableFrom(controlType))
                 {
-                    fieldConfiguration = pair.Value;
+                    elementConfiguration = pair.Value;
                     if (pair.Value == null)
                         return null;
 
@@ -180,17 +181,25 @@ namespace SitefinityWebApp
                 }
             }
 
-            if (fieldConfiguration == null)
-                fieldConfiguration = this.fieldMap[typeof(FormTextBox)];
+            if (elementConfiguration == null)
+                elementConfiguration = this.fieldMap[typeof(FormTextBox)];
 
             var mvcProxy = new MvcControllerProxy();
-            mvcProxy.ControllerName = fieldConfiguration.BackendFieldType.FullName;
+            mvcProxy.ControllerName = elementConfiguration.BackendFieldType.FullName;
 
-            var newController = Activator.CreateInstance(fieldConfiguration.BackendFieldType);
+            var newController = Activator.CreateInstance(elementConfiguration.BackendFieldType);
 
-            var fieldController = newController as IFormFieldController<IFormFieldModel>;
             var elementController = newController as IFormElementController<IFormElementModel>;
             var formField = control as IFormFieldControl;
+
+            if (elementConfiguration.ElementConfigurator != null)
+            {
+                elementConfiguration.ElementConfigurator.FormId = formId;
+                elementConfiguration.ElementConfigurator.Configure(control, elementController);
+            }
+
+
+            var fieldController = elementController as IFormFieldController<IFormFieldModel>;
 
             if (fieldController != null && formField != null)
             {
@@ -199,18 +208,16 @@ namespace SitefinityWebApp
                 {
                     fieldController.MetaField = formField.MetaField;
                     fieldController.MetaField.Title = fieldControl.Title;
+                    fieldController.Model.CssClass = fieldControl.CssClass;
                     fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
-                    if (fieldConfiguration.FieldConfigurator != null)
-                    {
-                        fieldConfiguration.FieldConfigurator.FormId = formId;
-                        fieldConfiguration.FieldConfigurator.Configure(fieldControl, fieldController);
-                    }
                 }
 
                 mvcProxy.Settings = new ControllerSettings((Controller)fieldController);
             }
             else if (elementController != null)
             {
+                elementController.Model.CssClass = ((WebControl)control).CssClass;
+
                 mvcProxy.Settings = new ControllerSettings((Controller)elementController);
             }
 
@@ -218,18 +225,18 @@ namespace SitefinityWebApp
         }
 
         private static readonly Type formFileUploadType = TypeResolutionService.ResolveType("Telerik.Sitefinity.Modules.Forms.Web.UI.Fields.FormFileUpload");
-        private readonly Dictionary<Type, FieldConfiguration> fieldMap = new Dictionary<Type, FieldConfiguration>()
+        private readonly Dictionary<Type, ElementConfiguration> fieldMap = new Dictionary<Type, ElementConfiguration>()
             {
-                { typeof(FormCheckboxes), new FieldConfiguration(typeof(CheckboxesFieldController), new CheckboxesFieldConfigurator()) },
-                { typeof(FormDropDownList), new FieldConfiguration(typeof(DropdownListFieldController), new DropdownFieldConfigurator()) },
-                { typeof(FormMultipleChoice), new FieldConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
-                { typeof(FormParagraphTextBox), new FieldConfiguration(typeof(ParagraphTextFieldController), null) },
-                { typeof(FormTextBox), new FieldConfiguration(typeof(TextFieldController), null) },
-                { MigrateForms.formFileUploadType, new FieldConfiguration(typeof(FileFieldController), null) },
-                { typeof(FormSubmitButton), new FieldConfiguration(typeof(SubmitButtonController), null) },
-                { typeof(FormCaptcha),  new FieldConfiguration(typeof(CaptchaController), null) },
-                { typeof(FormSectionHeader),  new FieldConfiguration(typeof(SectionHeaderController), null) },
-                { typeof(FormInstructionalText),  new FieldConfiguration(typeof(ContentBlockController), null) }
+                { typeof(FormCheckboxes), new ElementConfiguration(typeof(CheckboxesFieldController), new CheckboxesFieldConfigurator()) },
+                { typeof(FormDropDownList), new ElementConfiguration(typeof(DropdownListFieldController), new DropdownFieldConfigurator()) },
+                { typeof(FormMultipleChoice), new ElementConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
+                { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), null) },
+                { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },
+                { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), null) },
+                { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), null) },
+                { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), null) },
+                { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },
+                { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), null) }
             };
 
         private readonly Dictionary<string, string> layoutMap = new Dictionary<string, string>()
