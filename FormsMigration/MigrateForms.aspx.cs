@@ -50,7 +50,7 @@ namespace SitefinityWebApp
         public IList<FormDescription> GetFormDescriptions()
         {
             var formsManager = FormsManager.GetManager();
-            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc).ToList();
+            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc && f.Title == "TestMe").ToList();
 
             return formDescriptions;
         }
@@ -103,9 +103,9 @@ namespace SitefinityWebApp
             formTo.SubmitActionAfterUpdate = formFrom.SubmitActionAfterUpdate;
             formTo.RedirectPageUrlAfterUpdate = formFrom.RedirectPageUrlAfterUpdate;
 
-            LocalizationHelper.CopyLstring(formFrom.SuccessMessage, formTo.SuccessMessage, null, null);
+            LocalizationHelper.CopyLstring(formFrom.SuccessMessage, formTo.SuccessMessage);
 
-            LocalizationHelper.CopyLstring(formFrom.SuccessMessageAfterFormUpdate, formTo.SuccessMessageAfterFormUpdate, null, null);
+            LocalizationHelper.CopyLstring(formFrom.SuccessMessageAfterFormUpdate, formTo.SuccessMessageAfterFormUpdate);
 
             this.CopyControls(formFrom.Controls, formTo.Controls);
 
@@ -116,7 +116,67 @@ namespace SitefinityWebApp
             where SrcT : ControlData
             where TrgT : ControlData
         {
-            throw new NotImplementedException();
+            var traverser = new FormControlTraverser<SrcT, TrgT>(source, target, this.CopyControl<SrcT, TrgT>);
+            traverser.CopyControls("Body", "Body");
+        }
+
+        private TrgT CopyControl<SrcT, TrgT>(SrcT currentSourceControl)
+            where SrcT : ControlData
+            where TrgT : ControlData
+        {
+            var manager = FormsManager.GetManager();
+            var newControl = manager.CreateControl<TrgT>();
+            manager.CopyControl(currentSourceControl, newControl);
+
+            return newControl;
+        }
+
+        private class FormControlTraverser<SrcT, TrgT>
+            where SrcT : ControlData
+            where TrgT : ControlData
+        {
+            public FormControlTraverser(IEnumerable<SrcT> source, IList<TrgT> target, Func<SrcT, TrgT> copyControlDelegate)
+            {
+                this._source = source;
+                this._target = target;
+                this._copyControlDelegate = copyControlDelegate;
+            }
+
+            public void CopyControls(string sourcePlaceholder, string targetPlaceholder)
+            {
+                var controlsToCopy = this._source.Where(c => c.PlaceHolder == sourcePlaceholder).ToDictionary(c => c.SiblingId);
+
+                var currentSourceSiblingId = Guid.Empty;
+                var currentTargetSiblingId = Guid.Empty;
+                while (controlsToCopy.Count > 0)
+                {
+                    if (!controlsToCopy.ContainsKey(currentSourceSiblingId))
+                        break;
+
+                    var currentSourceControl = controlsToCopy[currentSourceSiblingId];
+                    var newControl = this._copyControlDelegate(currentSourceControl);
+                    newControl.PlaceHolder = targetPlaceholder;
+                    newControl.SiblingId = currentTargetSiblingId;
+
+                    this._target.Add(newControl);
+                    controlsToCopy.Remove(currentSourceSiblingId);
+
+                    currentSourceSiblingId = currentSourceControl.Id;
+                    currentTargetSiblingId = newControl.Id;
+
+                    if (currentSourceControl.PlaceHolders != null && newControl.PlaceHolders != null)
+                    {
+                        for (var i = 0; i < currentSourceControl.PlaceHolders.Length; i++)
+                        {
+                            this.CopyControls(currentSourceControl.PlaceHolders[i], newControl.PlaceHolders[Math.Min(i, newControl.PlaceHolders.Length - 1)]);
+                        }
+                    }
+                }
+            }
+
+            private readonly IEnumerable<SrcT> _source;
+            private readonly IList<TrgT> _target;
+            private readonly Func<SrcT, TrgT> _copyControlDelegate;
         }
     }
 }
