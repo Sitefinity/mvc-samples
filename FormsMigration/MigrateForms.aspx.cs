@@ -10,6 +10,7 @@ using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.BackendConfigurators;
+using Telerik.Sitefinity.Frontend.GridSystem;
 using Telerik.Sitefinity.Model.Localization;
 using Telerik.Sitefinity.Modules.Forms;
 using Telerik.Sitefinity.Modules.Forms.Web.UI.Fields;
@@ -49,14 +50,6 @@ namespace SitefinityWebApp
             }
 
             formsManager.SaveChanges();
-        }
-
-        public IList<FormDescription> GetFormDescriptions()
-        {
-            var formsManager = FormsManager.GetManager();
-            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc).ToList();
-
-            return formDescriptions;
         }
 
         public virtual FormDescription Duplicate(FormDescription formDescription, string formName, FormsManager manager)
@@ -128,23 +121,39 @@ namespace SitefinityWebApp
             where SrcT : ControlData
             where TrgT : ControlData
         {
-            TrgT migratedCotnrolData;
+            TrgT migratedControlData;
             if (!sourceControl.IsLayoutControl)
             {
                 var migratedControl = this.ConfigureFormControl(sourceControl, sourceControl.ContainerId, manager);
 
                 // Placeholder is updated later.
-                migratedCotnrolData = manager.CreateControl<TrgT>(migratedControl, "Body");
+                migratedControlData = manager.CreateControl<TrgT>(migratedControl, "Body");
             }
             else
             {
-                migratedCotnrolData = manager.CreateControl<TrgT>();
-                manager.CopyControl(sourceControl, migratedCotnrolData);
+                migratedControlData = manager.CreateControl<TrgT>();
+                manager.CopyControl(sourceControl, migratedControlData);
+
+                this.ConfigureLayoutControl<TrgT>(migratedControlData);
             }
 
-            migratedCotnrolData.Caption = sourceControl.Caption;
+            migratedControlData.Caption = sourceControl.Caption;
 
-            return migratedCotnrolData;
+            return migratedControlData;
+        }
+
+        private void ConfigureLayoutControl<TrgT>(TrgT migratedControlData)
+            where TrgT : ControlData
+        {
+            var layoutProperty = migratedControlData.Properties.FirstOrDefault(c => c.Name == "Layout");
+            if (layoutProperty == null)
+                return;
+
+            if (layoutProperty.Value != null && layoutProperty.Value.StartsWith("~/") && this.layoutMap.ContainsKey(layoutProperty.Value))
+            {
+                migratedControlData.ObjectType = typeof(GridControl).FullName;
+                layoutProperty.Value = this.layoutMap[layoutProperty.Value];
+            }
         }
 
         /// <summary>
@@ -174,7 +183,6 @@ namespace SitefinityWebApp
 
             if (elementConfiguration == null)
                 elementConfiguration = this.fieldMap[typeof(FormTextBox)];
-
 
             var mvcProxy = new MvcControllerProxy();
             mvcProxy.ControllerName = elementConfiguration.BackendFieldType.FullName;
@@ -229,6 +237,20 @@ namespace SitefinityWebApp
                 { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), null) },
                 { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },
                 { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), new ContentBlockConfigurator()) }
+            };
+
+        private readonly Dictionary<string, string> layoutMap = new Dictionary<string, string>()
+            {
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column1Template.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-12.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+9.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template2.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-4+8.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template3.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-6+6.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template4.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-8+4.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template5.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-9+3.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column3Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-4+4+4.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column3Template2.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+6+3.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column4Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+3+3+3.html" },
+                { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column5Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-2+3+2+3+2.html" }
             };
 
         private class FormControlTraverser<SrcT, TrgT>
