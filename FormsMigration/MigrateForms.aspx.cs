@@ -54,7 +54,7 @@ namespace SitefinityWebApp
         public IList<FormDescription> GetFormDescriptions()
         {
             var formsManager = FormsManager.GetManager();
-            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc && f.Title == "TestMe").ToList();
+            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc).ToList();
 
             return formDescriptions;
         }
@@ -187,7 +187,7 @@ namespace SitefinityWebApp
             if (elementConfiguration.ElementConfigurator != null)
             {
                 elementConfiguration.ElementConfigurator.FormId = formId;
-                elementConfiguration.ElementConfigurator.Configure(control, elementController);
+                elementConfiguration.ElementConfigurator.Configure(control, (Controller)elementController);
             }
 
 
@@ -228,7 +228,7 @@ namespace SitefinityWebApp
                 { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), null) },
                 { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), null) },
                 { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },
-                { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), null) }
+                { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), new ContentBlockConfigurator()) }
             };
 
         private class FormControlTraverser<SrcT, TrgT>

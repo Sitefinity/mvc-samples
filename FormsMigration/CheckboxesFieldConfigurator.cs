@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Mvc;
 using System.Web.UI;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
@@ -23,8 +24,9 @@ namespace SitefinityWebApp
         }
 
         /// <inheritDocs/>
-        public void Configure(Control webFormsControl, IFormElementController<IFormElementModel> formFieldController)
+        public void Configure(Control webFormsControl, Controller controller)
         {
+            var formFieldController = (IFormElementController<IFormElementModel>)controller;
             var checkboxesControl = (FormCheckboxes)webFormsControl;
             var checkboxesFieldModel = (ICheckboxesFieldModel)formFieldController.Model;
             var initialChoices = new List<string>();

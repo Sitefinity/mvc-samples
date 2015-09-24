@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Mvc;
 using System.Web.UI;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
@@ -20,8 +21,9 @@ namespace SitefinityWebApp
         }
 
         /// <inheritDocs/>
-        public void Configure(Control webFormsControl, IFormElementController<IFormElementModel> formElementController)
+        public void Configure(Control webFormsControl, Controller controller)
         {
+            var formElementController = (IFormElementController<IFormElementModel>)controller;
             var sectionControl = (FormSectionHeader)webFormsControl;
             var sectionElementModel = (ISectionHeaderModel)formElementController.Model;
             sectionElementModel.Text = sectionControl.Title;
