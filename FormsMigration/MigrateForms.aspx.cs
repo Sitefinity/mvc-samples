@@ -169,39 +169,39 @@ namespace SitefinityWebApp
             if (fieldConfiguration == null)
                 fieldConfiguration = this.fieldMap[typeof(FormTextBox)];
 
+
+            var mvcProxy = new MvcControllerProxy();
+            mvcProxy.ControllerName = fieldConfiguration.BackendFieldType.FullName;
+
+            var newController = Activator.CreateInstance(fieldConfiguration.BackendFieldType);
+
+            var fieldController = newController as IFormFieldController<IFormFieldModel>;
+            var elementController = newController as IFormElementController<IFormElementModel>;
             var formField = control as IFormFieldControl;
-            if (formField != null)
+
+            if (fieldController != null && formField != null)
             {
-                var newController = Activator.CreateInstance(fieldConfiguration.BackendFieldType);
-
-                var fieldController = newController as IFormFieldController<IFormFieldModel>;
-                var elementController = newController as IFormElementController<IFormElementModel>;
-
-                if (fieldController != null)
+                var fieldControl = formField as FieldControl;
+                if (fieldControl != null)
                 {
-                    var fieldControl = formField as FieldControl;
-                    if (fieldControl != null)
+                    fieldController.MetaField = formField.MetaField;
+                    fieldController.MetaField.Title = fieldControl.Title;
+                    fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
+                    if (fieldConfiguration.FieldConfigurator != null)
                     {
-                        fieldController.MetaField = formField.MetaField;
-                        fieldController.MetaField.Title = fieldControl.Title;
-                        fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
-                        if (fieldConfiguration.FieldConfigurator != null)
-                        {
-                            fieldConfiguration.FieldConfigurator.FormId = formId;
-                            fieldConfiguration.FieldConfigurator.Configure(fieldControl, fieldController);
-                        }
+                        fieldConfiguration.FieldConfigurator.FormId = formId;
+                        fieldConfiguration.FieldConfigurator.Configure(fieldControl, fieldController);
                     }
                 }
-                else if (elementController != null)
-                { 
-                }
 
-                var mvcProxy = new MvcControllerProxy();
-                mvcProxy.ControllerName = fieldConfiguration.BackendFieldType.FullName;
                 mvcProxy.Settings = new ControllerSettings((Controller)fieldController);
-
-                return (Control)mvcProxy;
             }
+            else if (elementController != null)
+            {
+                mvcProxy.Settings = new ControllerSettings((Controller)elementController);
+            }
+
+            return (Control)mvcProxy;
 
             return control;
         }
@@ -210,8 +210,8 @@ namespace SitefinityWebApp
         private readonly Dictionary<Type, FieldConfiguration> fieldMap = new Dictionary<Type, FieldConfiguration>()
             {
                 { typeof(FormCheckboxes), new FieldConfiguration(typeof(CheckboxesFieldController), new CheckboxesFieldConfigurator()) },
-                { typeof(FormDropDownList), new FieldConfiguration(typeof(DropdownListFieldController), null) },
-                { typeof(FormMultipleChoice), new FieldConfiguration(typeof(MultipleChoiceFieldController), null) },
+                { typeof(FormDropDownList), new FieldConfiguration(typeof(DropdownListFieldController), new DropdownFieldConfigurator()) },
+                { typeof(FormMultipleChoice), new FieldConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
                 { typeof(FormParagraphTextBox), new FieldConfiguration(typeof(ParagraphTextFieldController), null) },
                 { typeof(FormTextBox), new FieldConfiguration(typeof(TextFieldController), null) },
                 { MigrateForms.formFileUploadType, new FieldConfiguration(typeof(FileFieldController), null) },
