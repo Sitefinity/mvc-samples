@@ -123,14 +123,14 @@ namespace SitefinityWebApp
             traverser.CopyControls("Body", "Body");
         }
 
-        private TrgT CopyControl<SrcT, TrgT>(SrcT currentSourceControl, FormsManager manager)
+        private TrgT CopyControl<SrcT, TrgT>(SrcT sourceControl, FormsManager manager)
             where SrcT : ControlData
             where TrgT : ControlData
         {
             TrgT migratedCotnrolData;
-            if (!currentSourceControl.IsLayoutControl)
+            if (!sourceControl.IsLayoutControl)
             {
-                var migratedControl = this.ConfigureFormControl(currentSourceControl, currentSourceControl.ContainerId, manager);
+                var migratedControl = this.ConfigureFormControl(sourceControl, sourceControl.ContainerId, manager);
 
                 // Placeholder is updated later.
                 migratedCotnrolData = manager.CreateControl<TrgT>(migratedControl, "Body");
@@ -138,8 +138,10 @@ namespace SitefinityWebApp
             else
             {
                 migratedCotnrolData = manager.CreateControl<TrgT>();
-                manager.CopyControl(currentSourceControl, migratedCotnrolData);
+                manager.CopyControl(sourceControl, migratedCotnrolData);
             }
+
+            migratedCotnrolData.Caption = sourceControl.Caption;
 
             return migratedCotnrolData;
         }
