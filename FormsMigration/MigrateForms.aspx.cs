@@ -217,7 +217,7 @@ namespace SitefinityWebApp
                 { typeof(FormSubmitButton), new FieldConfiguration(typeof(SubmitButtonController), null) },
                 { typeof(FormCaptcha),  new FieldConfiguration(typeof(CaptchaController), null) },
                 { typeof(FormSectionHeader),  new FieldConfiguration(typeof(SectionHeaderController), null) },
-                { typeof(FormInstructionalText),  new FieldConfiguration(typeof(ContentBlock), null) },
+                { typeof(FormInstructionalText),  new FieldConfiguration(typeof(ContentBlock), null) }
             };
     }
 }
