@@ -11,6 +11,7 @@ using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Fluent;
 using Telerik.Sitefinity.Fluent.Forms;
 using Telerik.Sitefinity.Forms.Model;
+using Telerik.Sitefinity.Frontend.ContentBlock.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
@@ -19,7 +20,6 @@ using Telerik.Sitefinity.Model.Localization;
 using Telerik.Sitefinity.Modules;
 using Telerik.Sitefinity.Modules.Forms;
 using Telerik.Sitefinity.Modules.Forms.Web.UI.Fields;
-using Telerik.Sitefinity.Modules.GenericContent.Web.UI;
 using Telerik.Sitefinity.Mvc;
 using Telerik.Sitefinity.Mvc.Proxy;
 using Telerik.Sitefinity.Pages.Model;
@@ -218,7 +218,7 @@ namespace SitefinityWebApp
                 { typeof(FormSubmitButton), new FieldConfiguration(typeof(SubmitButtonController), null) },
                 { typeof(FormCaptcha),  new FieldConfiguration(typeof(CaptchaController), null) },
                 { typeof(FormSectionHeader),  new FieldConfiguration(typeof(SectionHeaderController), null) },
-                { typeof(FormInstructionalText),  new FieldConfiguration(typeof(ContentBlock), null) }
+                { typeof(FormInstructionalText),  new FieldConfiguration(typeof(ContentBlockController), null) }
             };
     }
 }
