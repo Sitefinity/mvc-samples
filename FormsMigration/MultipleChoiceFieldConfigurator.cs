@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.BackendConfigurators;
@@ -12,7 +13,7 @@ using Telerik.Sitefinity.Web.UI.Fields;
 
 namespace SitefinityWebApp
 {
-    internal class MultipleChoiceFieldConfigurator : IFieldConfigurator
+    internal class MultipleChoiceFieldConfigurator : IElementConfigurator
     {
         /// <inheritDocs/>
         public Guid FormId
@@ -22,7 +23,7 @@ namespace SitefinityWebApp
         }
 
         /// <inheritDocs/>
-        public void Configure(FieldControl webFormsControl, IFormFieldController<IFormFieldModel> formFieldController)
+        public void Configure(Control webFormsControl, IFormElementController<IFormElementModel> formFieldController)
         {
             var multipleChoiceControl = (FormMultipleChoice)webFormsControl;
             var multipleChoiceFieldModel = (IMultipleChoiceFieldModel)formFieldController.Model;
