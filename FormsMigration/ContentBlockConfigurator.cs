@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.UI;
@@ -26,10 +27,9 @@ namespace SitefinityWebApp
         {
             var contentBlockController = (ContentBlockController)formElementController;
             var instructionalTextControl = (FormInstructionalText)webFormsControl;
-            var contentBlockModel = new ContentBlockModel(string.Empty, instructionalTextControl.Html, false, Guid.Empty);
 
-            typeof(ContentBlockController).GetProperty("Model").SetValue(
-            contentBlockController, contentBlockModel, null);
+            var contentBlockModel = typeof(ContentBlockController).GetProperty("Model", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(contentBlockController, null);
+            ((ContentBlockModel)contentBlockModel).Content = instructionalTextControl.Html;
         }
     }
 }
