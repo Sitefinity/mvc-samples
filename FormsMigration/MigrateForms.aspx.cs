@@ -115,9 +115,10 @@ namespace SitefinityWebApp
             formTo.SubmitActionAfterUpdate = formFrom.SubmitActionAfterUpdate;
             formTo.RedirectPageUrlAfterUpdate = formFrom.RedirectPageUrlAfterUpdate;
 
-            LocalizationHelper.CopyLstring(formFrom.SuccessMessage, formTo.SuccessMessage, null, null);
+            var noCulture = ((CultureInfo)null).GetLstring();
+            LocalizationHelper.CopyLstring(formFrom.SuccessMessage, formTo.SuccessMessage, noCulture, noCulture);
 
-            LocalizationHelper.CopyLstring(formFrom.SuccessMessageAfterFormUpdate, formTo.SuccessMessageAfterFormUpdate, null, null);
+            LocalizationHelper.CopyLstring(formFrom.SuccessMessageAfterFormUpdate, formTo.SuccessMessageAfterFormUpdate, noCulture, noCulture);
 
             this.CopyControls(formFrom.Controls, formTo.Controls, manager, formId);
 
@@ -168,7 +169,7 @@ namespace SitefinityWebApp
             if (fieldConfiguration == null)
                 fieldConfiguration = this.fieldMap[typeof(FormTextBox)];
 
-            var formField = controlType as IFormFieldControl;
+            var formField = control as IFormFieldControl;
             if (formField != null)
             {
                 var newController = Activator.CreateInstance(fieldConfiguration.BackendFieldType);
