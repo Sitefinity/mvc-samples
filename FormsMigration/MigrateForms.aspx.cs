@@ -233,7 +233,7 @@ namespace SitefinityWebApp
                 { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), null) },
                 { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },
                 { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), null) },
-                { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), null) },
+                { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), new ButtonElementConfigurator()) },
                 { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), null) },
                 { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },
                 { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), new ContentBlockConfigurator()) }
