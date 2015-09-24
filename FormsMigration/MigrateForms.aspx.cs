@@ -181,17 +181,17 @@ namespace SitefinityWebApp
 
             var newController = Activator.CreateInstance(elementConfiguration.BackendFieldType);
 
-            var elementController = newController as IFormElementController<IFormElementModel>;
             var formField = control as IFormFieldControl;
 
             if (elementConfiguration.ElementConfigurator != null)
             {
                 elementConfiguration.ElementConfigurator.FormId = formId;
-                elementConfiguration.ElementConfigurator.Configure(control, (Controller)elementController);
+                elementConfiguration.ElementConfigurator.Configure(control, (Controller)newController);
             }
 
 
-            var fieldController = elementController as IFormFieldController<IFormFieldModel>;
+            var elementController = newController as IFormElementController<IFormElementModel>;
+            var fieldController = newController as IFormFieldController<IFormFieldModel>;
 
             if (fieldController != null && formField != null)
             {
