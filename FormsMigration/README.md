@@ -48,8 +48,8 @@ default                 -> *TextFieldController*
 
 ### How do we map existing layouts to grid widgets?
 
-Layout title       -> Grid widget 
-==================================
+**Layout title**       -> **Grid widget**
+
 
 *100%*             -> *grid-12* 
 
