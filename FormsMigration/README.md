@@ -22,6 +22,55 @@ Please have in mind that styles that you use in the form will not be loaded sinc
 5. Navigate your website on the fronend to http://[*mywebsite.com*]/MigrateForms.aspx, where [*mywebsite.com*] is the name of your domain.
 6. Click the button *Duplicate forms to MVC* and wait.
 
+### How do we map existing fields?
+
+*FormCheckboxes*        -> *CheckboxesFieldController* 
+
+*FormDropDownList*      -> *DropdownListFieldController* 
+
+*FormMultipleChoice*    -> *MultipleChoiceFieldController* 
+
+*FormParagraphTextBox*  -> *ParagraphTextFieldController* 
+
+*FormTextBox*           -> *TextFieldController* 
+
+*FormFileUpload*        -> *FileFieldController* 
+
+*FormCaptcha*           -> *CaptchaController* 
+
+*FormSectionHeader*     -> *SectionHeaderController* 
+
+*FormInstructionalText* -> *ContentBlockController* 
+
+*FormSubmitButton*      -> *SubmitButtonController* 
+
+default                 -> *TextFieldController* 
+
+### How do we map existing layouts to grid widgets?
+
+Layout title       -> Grid widget 
+==================================
+
+*100%*             -> *grid-12* 
+
+*25% + 75%*        -> *grid-3+9* 
+
+*33% + 67%*        -> *grid-4+8* 
+
+*50% + 50%*        -> *grid-6+6* 
+
+*67% + 33%*        -> *grid-8+4* 
+
+*75% + 25%*        -> *grid-9+3* 
+
+*33% + 34% + 33%*  -> *grid-4+4+4* 
+
+*"25% + 50% + 25%* -> *grid-3+6+3* 
+
+*4 x 25%*          -> *grid-3+3+3+3* 
+
+*5 x 20%*          -> *grid-2+3+2+3+2* 
+
 ### What will happen to my custom fields?
 
 By default your custom fields are migrated to TextField. in case you want to change this you can create your own custom MVC field and drag it to the forms manually. Another option is to add mapping for your custom fields in the upgrade script. 
