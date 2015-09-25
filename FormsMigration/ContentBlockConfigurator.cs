@@ -23,6 +23,8 @@ namespace SitefinityWebApp
 
             var contentBlockModel = typeof(ContentBlockController).GetProperty("Model", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(contentBlockController, null);
             ((ContentBlockModel)contentBlockModel).Content = instructionalTextControl.Html;
+
+            contentBlockController.Content = instructionalTextControl.Html;
         }
     }
 }
