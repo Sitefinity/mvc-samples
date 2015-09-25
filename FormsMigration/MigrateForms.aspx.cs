@@ -193,7 +193,6 @@ namespace SitefinityWebApp
 
             if (elementConfiguration.ElementConfigurator != null)
             {
-                elementConfiguration.ElementConfigurator.FormId = formId;
                 elementConfiguration.ElementConfigurator.Configure(control, (Controller)newController);
             }
 
@@ -236,7 +235,7 @@ namespace SitefinityWebApp
                 { typeof(FormMultipleChoice), new ElementConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
                 { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), null) },
                 { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },
-                { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), null) },
+                { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), new FileFieldConfigurator()) },
                 { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), new ButtonElementConfigurator()) },
                 { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), new CaptchaConfigurator()) },
                 { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },

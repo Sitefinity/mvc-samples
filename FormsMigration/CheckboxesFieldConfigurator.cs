@@ -17,13 +17,6 @@ namespace SitefinityWebApp
     internal class CheckboxesFieldConfigurator : IElementConfigurator
     {
         /// <inheritDocs/>
-        public Guid FormId
-        {
-            get;
-            set;
-        }
-
-        /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller controller)
         {
             var formFieldController = (IFormElementController<IFormElementModel>)controller;

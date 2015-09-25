@@ -10,14 +10,6 @@ namespace SitefinityWebApp
     public interface IElementConfigurator
     {
         /// <summary>
-        /// Gets or sets the form identifier.
-        /// </summary>
-        /// <value>
-        /// The form identifier.
-        /// </value>
-        Guid FormId { get; set; }
-
-        /// <summary>
         /// Configures the specified webforms control.
         /// </summary>
         /// <param name="webFormsControl">The webforms control.</param>

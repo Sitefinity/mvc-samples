@@ -14,13 +14,6 @@ namespace SitefinityWebApp
     internal class CaptchaConfigurator: IElementConfigurator
     {
         /// <inheritDocs/>
-        public Guid FormId
-        {
-            get;
-            set;
-        }
-
-        /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller controller)
         {
             var formElementController = (IFormElementController<IFormElementModel>)controller;

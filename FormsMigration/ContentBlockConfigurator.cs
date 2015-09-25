@@ -16,13 +16,6 @@ namespace SitefinityWebApp
     internal class ContentBlockConfigurator: IElementConfigurator
     {
         /// <inheritDocs/>
-        public Guid FormId
-        {
-            get;
-            set;
-        }
-
-        /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller formElementController)
         {
             var contentBlockController = (ContentBlockController)formElementController;
