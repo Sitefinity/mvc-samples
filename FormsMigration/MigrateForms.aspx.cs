@@ -18,6 +18,7 @@ using Telerik.Sitefinity.Mvc.Proxy;
 using Telerik.Sitefinity.Pages.Model;
 using Telerik.Sitefinity.Security;
 using Telerik.Sitefinity.Security.Model;
+using Telerik.Sitefinity.Services;
 using Telerik.Sitefinity.Utilities.TypeConverters;
 using Telerik.Sitefinity.Web.UI.Fields;
 
@@ -27,10 +28,10 @@ namespace SitefinityWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.MigrateButton.Click += MigrateButton_Click;
+            this.MigrateButton.Click += this.MigrateButton_Click;
         }
 
-        void MigrateButton_Click(object sender, EventArgs e)
+        private void MigrateButton_Click(object sender, EventArgs e)
         {
             this.Migrate();
         }
@@ -47,9 +48,44 @@ namespace SitefinityWebApp
                 var duplicateForm = this.Duplicate(formDescription, formName, formsManager);
                 duplicateForm.Framework = FormFramework.Mvc;
                 duplicateForm.Title = formDescription.Title + "_MVC";
+
+                this.TransferResponses(formDescription, duplicateForm, formsManager);
             }
 
             formsManager.SaveChanges();
+
+            // Restart to apply the metatypes.
+            SystemManager.RestartApplication(true);
+        }
+
+        private void TransferResponses(FormDescription originalForm, FormDescription duplicateForm, FormsManager manager)
+        {
+            // If the original form does not have a type for its entries then there is nothing to transfer.
+            if (manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, originalForm.Name) == null)
+                return;
+
+            // Create live versions of the controls that have a true Published property. Still the form should not be published.
+            var draft = manager.Lifecycle.Edit(duplicateForm);
+            manager.Lifecycle.Publish(draft);
+            manager.Lifecycle.Unpublish(duplicateForm);
+
+            // If a type was create while publishing we should delete it. We will use the type of the original form.
+            var metaType = manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, duplicateForm.Name);
+            if (metaType != null)
+            {
+                manager.GetMetadataManager().Delete(metaType);
+            }
+
+            // Take the original form name. As a result the new form seizes the original meta type and all its items (the responses).
+            duplicateForm.Name = originalForm.Name;
+
+            if (!manager.GetForms().Any(f => f.Name == originalForm.Name + "_legacy"))
+                originalForm.Name = originalForm.Name + "_legacy";
+            else
+                originalForm.Name = originalForm.Name + Guid.NewGuid().ToString("N");
+
+            // Create a new dynamic type for the old form.
+            manager.BuildDynamicType(originalForm);
         }
 
         public virtual FormDescription Duplicate(FormDescription formDescription, string formName, FormsManager manager)
@@ -72,10 +108,6 @@ namespace SitefinityWebApp
                 // Get permissions from ParentForm, because FormDraft is no ISecuredObject
                 duplicateForm.CopySecurityFrom(thisFormMaster.ParentForm as ISecuredObject, null, null);
             }
-
-            duplicateForm.Controls
-                .ToList()
-                .ForEach(c => c.Published = false);
 
             return duplicateForm;
         }
