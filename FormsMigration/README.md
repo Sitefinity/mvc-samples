@@ -7,7 +7,9 @@ The new forms will be named just like the existing ones and will have "_MVC" suf
 The newly created MVC forms use new Feather MVC fields in the place of the existing WebForms equivalent, and the settings and configuration that you made over the fields are migrated too.
 
 Furthermore the layouts that you have in your existing forms will be migrated, to their Feather Grid equivalent, so the positions of the widgets will be preserved. Still we don't migrate modifications that you have made over the existing layout widget, so we recommend you check the final look of your form after the migration.
-Please have in mind that styles that you use in the form will not be loaded since the new MVC forms are based on the Feather methodology of using Resource packages, therefore you may need to style them additionally after the migration.
+Please have in mind that styles that you use in the form will not be loaded since the new MVC forms are based on the Feather methodology of using [Resource packages](http://docs.sitefinity.com/feather-resource-packages), therefore you may need to style them additionally after the migration.
+
+Form responses and subscriptions are also migrated. The responses are not copied, they are linked to the new form instead. The original form will have no responses after the migration.
 
 ###  Prerequisites
 - .NET Framework 4.5 or higher
