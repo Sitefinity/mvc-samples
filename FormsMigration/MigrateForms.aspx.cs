@@ -9,7 +9,6 @@ using Telerik.Sitefinity.Frontend.ContentBlock.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Controllers.Base;
 using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields;
-using Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.BackendConfigurators;
 using Telerik.Sitefinity.Frontend.GridSystem;
 using Telerik.Sitefinity.Model.Localization;
 using Telerik.Sitefinity.Modules.Forms;
@@ -36,10 +35,10 @@ namespace SitefinityWebApp
             this.Migrate();
         }
 
-        public void Migrate()
+        private void Migrate()
         {
             var formsManager = FormsManager.GetManager();
-            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc).ToList();
+            var formDescriptions = formsManager.GetForms().Where(f => f.Framework != FormFramework.Mvc).ToArray();
 
             foreach (var formDescription in formDescriptions)
             {
@@ -54,41 +53,11 @@ namespace SitefinityWebApp
 
             formsManager.SaveChanges();
 
-            // Restart to apply the metatypes.
+            // Restart to apply the meta types changes.
             SystemManager.RestartApplication(true);
         }
 
-        private void TransferResponses(FormDescription originalForm, FormDescription duplicateForm, FormsManager manager)
-        {
-            // If the original form does not have a type for its entries then there is nothing to transfer.
-            if (manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, originalForm.Name) == null)
-                return;
-
-            // Create live versions of the controls that have a true Published property. Still the form should not be published.
-            var draft = manager.Lifecycle.Edit(duplicateForm);
-            manager.Lifecycle.Publish(draft);
-            manager.Lifecycle.Unpublish(duplicateForm);
-
-            // If a type was create while publishing we should delete it. We will use the type of the original form.
-            var metaType = manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, duplicateForm.Name);
-            if (metaType != null)
-            {
-                manager.GetMetadataManager().Delete(metaType);
-            }
-
-            // Take the original form name. As a result the new form seizes the original meta type and all its items (the responses).
-            duplicateForm.Name = originalForm.Name;
-
-            if (!manager.GetForms().Any(f => f.Name == originalForm.Name + "_legacy"))
-                originalForm.Name = originalForm.Name + "_legacy";
-            else
-                originalForm.Name = originalForm.Name + Guid.NewGuid().ToString("N");
-
-            // Create a new dynamic type for the old form.
-            manager.BuildDynamicType(originalForm);
-        }
-
-        public virtual FormDescription Duplicate(FormDescription formDescription, string formName, FormsManager manager)
+        private FormDescription Duplicate(FormDescription formDescription, string formName, FormsManager manager)
         {
             var duplicateForm = manager.CreateForm(formName);
             var thisFormMaster = manager.Lifecycle.GetMaster(formDescription);
@@ -96,17 +65,17 @@ namespace SitefinityWebApp
             // Form has been unpublished
             if (thisFormMaster == null)
             {
-                this.CopyFormCommonData(formDescription, duplicateForm, formDescription.Id, manager);
+                this.CopyFormCommonData(formDescription, duplicateForm, manager);
 
                 // Get permissions from ParentForm, because FormDraft is no ISecuredObject
-                duplicateForm.CopySecurityFrom(formDescription as ISecuredObject, null, null);
+                duplicateForm.CopySecurityFrom((ISecuredObject)formDescription, null, null);
             }
             else
             {
-                this.CopyFormCommonData(thisFormMaster, duplicateForm, formDescription.Id, manager);
+                this.CopyFormCommonData(thisFormMaster, duplicateForm, manager);
 
                 // Get permissions from ParentForm, because FormDraft is no ISecuredObject
-                duplicateForm.CopySecurityFrom(thisFormMaster.ParentForm as ISecuredObject, null, null);
+                duplicateForm.CopySecurityFrom((ISecuredObject)thisFormMaster.ParentForm, null, null);
             }
 
             return duplicateForm;
@@ -118,7 +87,7 @@ namespace SitefinityWebApp
         /// </summary>
         /// <param name="formFrom">The source object.</param>
         /// <param name="formTo">The target object.</param>
-        public void CopyFormCommonData<TControlA, TControlB>(IFormData<TControlA> formFrom, IFormData<TControlB> formTo, Guid formId, FormsManager manager)
+        private void CopyFormCommonData<TControlA, TControlB>(IFormData<TControlA> formFrom, IFormData<TControlB> formTo, FormsManager manager)
             where TControlA : ControlData
             where TControlB : ControlData
         {
@@ -133,15 +102,14 @@ namespace SitefinityWebApp
             formTo.RedirectPageUrlAfterUpdate = formFrom.RedirectPageUrlAfterUpdate;
 
             LocalizationHelper.CopyLstring(formFrom.SuccessMessage, formTo.SuccessMessage);
-
             LocalizationHelper.CopyLstring(formFrom.SuccessMessageAfterFormUpdate, formTo.SuccessMessageAfterFormUpdate);
 
-            this.CopyControls(formFrom.Controls, formTo.Controls, manager, formId);
+            this.CopyControls(formFrom.Controls, formTo.Controls, manager);
 
             manager.CopyPresentation(formFrom.Presentation, formTo.Presentation);
         }
 
-        public void CopyControls<SrcT, TrgT>(IEnumerable<SrcT> source, IList<TrgT> target, FormsManager manager, Guid formId)
+        private void CopyControls<SrcT, TrgT>(IEnumerable<SrcT> source, IList<TrgT> target, FormsManager manager)
             where SrcT : ControlData
             where TrgT : ControlData
         {
@@ -156,7 +124,7 @@ namespace SitefinityWebApp
             TrgT migratedControlData;
             if (!sourceControl.IsLayoutControl)
             {
-                var migratedControl = this.ConfigureFormControl(sourceControl, sourceControl.ContainerId, manager);
+                var migratedControl = this.ConfigureFormControl(sourceControl, manager);
 
                 // Placeholder is updated later.
                 migratedControlData = manager.CreateControl<TrgT>(migratedControl, "Body");
@@ -188,13 +156,7 @@ namespace SitefinityWebApp
             }
         }
 
-        /// <summary>
-        /// Prepares a Form control for display in the backend.
-        /// </summary>
-        /// <param name="formControl">The form control.</param>
-        /// <param name="formId">Id of the form that hosts the field.</param>
-        /// <returns>The configured form control.</returns>
-        public Control ConfigureFormControl(ControlData formControlData, Guid formId, FormsManager manager)
+        private Control ConfigureFormControl(ControlData formControlData, FormsManager manager)
         {
             Control control = manager.LoadControl(formControlData, null);
 
@@ -259,32 +221,107 @@ namespace SitefinityWebApp
             return (Control)mvcProxy;
         }
 
+        private void TransferResponses(FormDescription originalForm, FormDescription duplicateForm, FormsManager manager)
+        {
+            // If the original form does not have a type for its entries then there is nothing to transfer.
+            if (manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, originalForm.Name) == null)
+                return;
+
+            // Create live versions of the controls that have a true Published property. Still the form should not be published.
+            var draft = manager.Lifecycle.Edit(duplicateForm);
+            manager.Lifecycle.Publish(draft);
+            manager.Lifecycle.Unpublish(duplicateForm);
+
+            // If a type was create while publishing we should delete it. We will use the type of the original form.
+            var metaType = manager.GetMetadataManager().GetMetaType(manager.Provider.FormsNamespace, duplicateForm.Name);
+            if (metaType != null)
+            {
+                manager.GetMetadataManager().Delete(metaType);
+            }
+
+            // Take the original form name. As a result the new form seizes the original meta type and all its items (the responses).
+            duplicateForm.Name = originalForm.Name;
+
+            if (!manager.GetForms().Any(f => f.Name == originalForm.Name + "_legacy"))
+                originalForm.Name = originalForm.Name + "_legacy";
+            else
+                originalForm.Name = originalForm.Name + Guid.NewGuid().ToString("N");
+
+            // Create a new dynamic type for the old form.
+            manager.BuildDynamicType(originalForm);
+        }
+
         private static readonly Type formFileUploadType = TypeResolutionService.ResolveType("Telerik.Sitefinity.Modules.Forms.Web.UI.Fields.FormFileUpload");
+
+        /// <summary>
+        /// Mapping of WebForms form fields to MVC form field controllers.
+        /// </summary>
         private readonly Dictionary<Type, ElementConfiguration> fieldMap = new Dictionary<Type, ElementConfiguration>()
             {
+                // Checkboxes
                 { typeof(FormCheckboxes), new ElementConfiguration(typeof(CheckboxesFieldController), new CheckboxesFieldConfigurator()) },
+
+                // Dropdown list
                 { typeof(FormDropDownList), new ElementConfiguration(typeof(DropdownListFieldController), new DropdownFieldConfigurator()) },
+
+                // Multiple choice
                 { typeof(FormMultipleChoice), new ElementConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
+
+                // Paragraph text box
                 { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), null) },
+
+                // Textbox
                 { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },
+
+                // File upload
                 { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), new FileFieldConfigurator()) },
+
+                // Submit button
                 { typeof(FormSubmitButton), new ElementConfiguration(typeof(SubmitButtonController), new ButtonElementConfigurator()) },
+
+                // Forms Captcha
                 { typeof(FormCaptcha),  new ElementConfiguration(typeof(CaptchaController), new CaptchaConfigurator()) },
+
+                // Section header
                 { typeof(FormSectionHeader),  new ElementConfiguration(typeof(SectionHeaderController), new SectionElementConfigurator()) },
+
+                // Instruction text
                 { typeof(FormInstructionalText),  new ElementConfiguration(typeof(ContentBlockController), new ContentBlockConfigurator()) }
             };
 
+        /// <summary>
+        /// Mapping of layout control templates to corresponding grid widget templates.
+        /// </summary>
         private readonly Dictionary<string, string> layoutMap = new Dictionary<string, string>()
             {
+                // 100%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column1Template.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-12.html" },
+
+                // 25% + 75%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+9.html" },
+
+                // 33% + 67%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template2.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-4+8.html" },
+
+                // 50% + 50%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template3.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-6+6.html" },
+
+                // 67% + 33%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template4.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-8+4.html" },
+
+                // 75% + 25%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column2Template5.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-9+3.html" },
+
+                // 33% + 34% + 33%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column3Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-4+4+4.html" },
+
+                // 25% + 50% + 25%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column3Template2.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+6+3.html" },
+
+                // 4 x 25%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column4Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-3+3+3+3.html" },
+
+                // 5 x 20%
                 { "~/SFRes/Telerik.Sitefinity.Resources.Templates.Layouts.Column5Template1.ascx", "~/Frontend-Assembly/Telerik.Sitefinity.Frontend/GridSystem/Templates/grid-2+3+2+3+2.html" }
             };
 
