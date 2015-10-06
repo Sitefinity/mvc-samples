@@ -20,7 +20,6 @@ namespace SitefinityWebApp
             var sectionControl = (FormSectionHeader)webFormsControl;
             var sectionElementModel = (ISectionHeaderModel)formElementController.Model;
             sectionElementModel.Text = sectionControl.Title;
-            sectionElementModel.HeadingType = (HeadingType)Enum.Parse(typeof(HeadingType), sectionControl.WrapperTag.ToString().ToLowerInvariant());
         }
     }
 }
