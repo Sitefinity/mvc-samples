@@ -33,6 +33,7 @@ namespace SitefinityWebApp
         private void MigrateButton_Click(object sender, EventArgs e)
         {
             this.Migrate();
+            this.Label1.Text = "Done migrating!";
         }
 
         private void Migrate()
@@ -185,17 +186,9 @@ namespace SitefinityWebApp
 
             var formField = control as IFormFieldControl;
 
-            if (elementConfiguration.ElementConfigurator != null)
+            if (newController is IFormFieldController<IFormFieldModel> && formField != null)
             {
-                elementConfiguration.ElementConfigurator.Configure(control, (Controller)newController);
-            }
-
-
-            var elementController = newController as IFormElementController<IFormElementModel>;
-            var fieldController = newController as IFormFieldController<IFormFieldModel>;
-
-            if (fieldController != null && formField != null)
-            {
+                var fieldController = (IFormFieldController<IFormFieldModel>)newController;
                 var fieldControl = formField as FieldControl;
                 if (fieldControl != null)
                 {
@@ -204,19 +197,19 @@ namespace SitefinityWebApp
                     fieldController.Model.CssClass = fieldControl.CssClass;
                     fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
                 }
-
-                mvcProxy.Settings = new ControllerSettings((Controller)fieldController);
             }
-            else if (elementController != null)
+            else if (newController is IFormElementController<IFormElementModel> != null)
             {
+                var elementController = (IFormElementController<IFormElementModel>)newController;
                 elementController.Model.CssClass = ((WebControl)control).CssClass;
+            }
 
-                mvcProxy.Settings = new ControllerSettings((Controller)elementController);
-            }
-            else
+            if (elementConfiguration.ElementConfigurator != null)
             {
-                mvcProxy.Settings = new ControllerSettings((Controller)newController);
+                elementConfiguration.ElementConfigurator.Configure(control, (Controller)newController);
             }
+
+            mvcProxy.Settings = new ControllerSettings((Controller)newController);
 
             return (Control)mvcProxy;
         }
@@ -268,7 +261,7 @@ namespace SitefinityWebApp
                 { typeof(FormMultipleChoice), new ElementConfiguration(typeof(MultipleChoiceFieldController), new MultipleChoiceFieldConfigurator()) },
 
                 // Paragraph text box
-                { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), null) },
+                { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), new ParagraphFieldConfigurator()) },
 
                 // Textbox
                 { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },

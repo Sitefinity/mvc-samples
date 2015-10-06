@@ -19,7 +19,7 @@ namespace SitefinityWebApp
         /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller controller)
         {
-            var formFieldController = (IFormElementController<IFormElementModel>)controller;
+            var formFieldController = (IFormFieldController<IFormFieldModel>)controller;
             var multipleChoiceControl = (FormMultipleChoice)webFormsControl;
             var multipleChoiceFieldModel = (IMultipleChoiceFieldModel)formFieldController.Model;
             var initialChoices = new List<string>();
@@ -30,6 +30,8 @@ namespace SitefinityWebApp
             }
 
             multipleChoiceFieldModel.SerializedChoices = JsonConvert.SerializeObject(initialChoices);
+            multipleChoiceFieldModel.HasOtherChoice = multipleChoiceControl.EnableAddOther;
+            formFieldController.MetaField.DefaultValue = multipleChoiceControl.FirstItemIsSelected ? multipleChoiceControl.Choices[0].Value : "";
         }
     }
 }

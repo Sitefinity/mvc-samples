@@ -19,7 +19,7 @@ namespace SitefinityWebApp
         /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller controller)
         {
-            var formFieldController = (IFormElementController<IFormElementModel>)controller;
+            var formFieldController = (IFormFieldController<IFormFieldModel>)controller;
             var dropdownControl = (FormDropDownList)webFormsControl;
             var dropdownFieldModel = (IDropdownListFieldModel)formFieldController.Model;
             var initialChoices = new List<string>();
@@ -30,6 +30,7 @@ namespace SitefinityWebApp
             }
 
             dropdownFieldModel.SerializedChoices = JsonConvert.SerializeObject(initialChoices);
+            formFieldController.MetaField.DefaultValue = dropdownControl.DefaultSelectedTitle;
         }
     }
 }

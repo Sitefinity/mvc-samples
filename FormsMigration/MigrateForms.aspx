@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:Label ID="Label1" runat="server" ></asp:Label>
         <asp:Button ID="MigrateButton" runat="server" Text="Duplicate forms to MVC" />
     </div>
     </form>
