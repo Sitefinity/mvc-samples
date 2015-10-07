@@ -198,7 +198,7 @@ namespace SitefinityWebApp
                     fieldController.Model.ValidatorDefinition = fieldControl.ValidatorDefinition;
                 }
             }
-            else if (newController is IFormElementController<IFormElementModel> != null)
+            else if (newController is IFormElementController<IFormElementModel>)
             {
                 var elementController = (IFormElementController<IFormElementModel>)newController;
                 elementController.Model.CssClass = ((WebControl)control).CssClass;
