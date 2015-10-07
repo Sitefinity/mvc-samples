@@ -264,7 +264,7 @@ namespace SitefinityWebApp
                 { typeof(FormParagraphTextBox), new ElementConfiguration(typeof(ParagraphTextFieldController), new ParagraphFieldConfigurator()) },
 
                 // Textbox
-                { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), null) },
+                { typeof(FormTextBox), new ElementConfiguration(typeof(TextFieldController), new TextFieldConfigurator()) },
 
                 // File upload
                 { MigrateForms.formFileUploadType, new ElementConfiguration(typeof(FileFieldController), new FileFieldConfigurator()) },
