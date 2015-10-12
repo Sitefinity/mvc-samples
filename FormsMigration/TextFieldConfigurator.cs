@@ -23,7 +23,7 @@ namespace SitefinityWebApp
             var textBoxControl = (FormTextBox)webFormsControl;
             var textFieldModel = (ITextFieldModel)formFieldController.Model;
 
-            formFieldController.MetaField.Description = textBoxControl.Example;
+            textFieldModel.MetaField.Description = textBoxControl.Example;
         }
     }
 }

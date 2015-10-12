@@ -19,7 +19,7 @@ namespace SitefinityWebApp
         /// <inheritDocs/>
         public void Configure(Control webFormsControl, Controller controller)
         {
-            var formFieldController = (IFormElementController<IFormElementModel>)controller;
+            var formFieldController = (IFormFieldController<IFormFieldModel>)controller;
             var fileFieldModel = (IFileFieldModel)formFieldController.Model;
             fileFieldModel.AllowMultipleFiles = (bool)webFormsControl.GetType().GetProperty("AllowMultipleAttachments").GetValue(webFormsControl, null);
             var allowedTypes = webFormsControl.GetType().GetProperty("AllowedFileTypes").GetValue(webFormsControl, null).ToString();
@@ -27,6 +27,7 @@ namespace SitefinityWebApp
             fileFieldModel.MaxFileSizeInMb = (int)webFormsControl.GetType().GetProperty("MaxFileSizeInMb").GetValue(webFormsControl, null);
             fileFieldModel.MinFileSizeInMb = (int)webFormsControl.GetType().GetProperty("MinFileSizeInMb").GetValue(webFormsControl, null);
             fileFieldModel.OtherFileTypes = (Array)webFormsControl.GetType().GetProperty("OtherFileTypes").GetValue(webFormsControl, null);
+            fileFieldModel.MetaField.Description = (string)webFormsControl.GetType().GetProperty("Example").GetValue(webFormsControl, null);
         }
     }
 }

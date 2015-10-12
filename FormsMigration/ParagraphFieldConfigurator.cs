@@ -24,6 +24,7 @@ namespace SitefinityWebApp
             var paragraphFieldModel = (IParagraphTextFieldModel)formFieldController.Model;
 
             paragraphFieldModel.MetaField.DefaultValue = paragraphControl.DefaultStringValue;
+            paragraphFieldModel.MetaField.Description = paragraphControl.Example;
         }
     }
 }
