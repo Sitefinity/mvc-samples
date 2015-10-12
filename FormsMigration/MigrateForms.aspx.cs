@@ -241,6 +241,9 @@ namespace SitefinityWebApp
                 originalForm.Name = originalForm.Name + Guid.NewGuid().ToString("N");
 
             // Create a new dynamic type for the old form.
+            foreach (var control in originalForm.Controls)
+                control.Published = false;
+
             manager.BuildDynamicType(originalForm);
         }
 
