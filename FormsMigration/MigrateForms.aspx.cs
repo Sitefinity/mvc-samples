@@ -239,6 +239,8 @@ namespace SitefinityWebApp
                 originalForm.Name = originalForm.Name + "_legacy";
             else
                 originalForm.Name = originalForm.Name + Guid.NewGuid().ToString("N");
+				
+			duplicateForm.FormEntriesSeed = originalForm.FormEntriesSeed;
 
             // Create a new dynamic type for the old form.
             foreach (var control in originalForm.Controls)
