@@ -7,6 +7,7 @@
 @using DevMagazine.Core.Mvc.Helpers;
 @using Telerik.Sitefinity.News.Model;
 @using SitefinityWebApp.Mvc.ViewModels;
+
 @using SitefinityWebApp.Mvc.HtmlHelpers;
 @using Telerik.Sitefinity.Web.DataResolving;
 
@@ -35,7 +36,7 @@
                 @Html.RenderImage(cover, "", "400", "428")
             </div>
 
-            <a href="@document.MediaUrl" class="Btn Btn--download-issue-2">Download</a>
+            <a href="/get-whitepaper/?issue=@item.DataItem.Id" class="Btn Btn--download-issue-2">Download</a>
         </div>
     </div>
 
