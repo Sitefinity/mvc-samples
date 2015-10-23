@@ -10,9 +10,10 @@ The following sample demonstrates how to create use [Kendo Gird](http://docs.tel
 
 ### Installing the Kendo Books widget
 1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
-2. Add reference to Kendo.Mvc.dll in **KendoBooksWidget** project. 
-2. Build the **KendoBooksWidget** project. 
-3. Reference the **KendoBooksWidget.dll** from your Sitefinity’s web application.
+2. Open **KendoBooksWidget** project in Visual Studion.
+3. Add reference to Kendo.Mvc.dll in **KendoBooksWidget** project. See [Kendo documentation](http://docs.telerik.com/kendo-ui/aspnet-mvc/introduction#install-location) for more inforamtion about usage of this reference.
+4. Build the **KendoBooksWidget** project. 
+5. Reference the **KendoBooksWidget.dll** from your Sitefinity’s web application.
 
 Now the "Kendo Books" widget will be available in your Sitefinity Toolbox in the section "Feather samples" and you can use it on your pages.
 
