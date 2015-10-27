@@ -5,6 +5,7 @@
 }
 
 @using DevMagazine.Core.Mvc.Helpers;
+@using SitefinityWebApp.Mvc.Helpers;
 @using SitefinityWebApp.Mvc.ViewModels;
 
 <div class="row">
@@ -36,6 +37,6 @@
     </div>
     <div class="col-md-5 text-center">
         @Html.RenderImage(issue.Cover, "image-issue", "482", "379")
-        <a class="Btn Btn--download-issue" href="@issue.PrintedVersion.DownloadUrl">Download</a>
+        <a class="Btn Btn--download-issue" href="/get-whitepaper/?issue=@issue.Id">Download</a>
     </div>
 </div>

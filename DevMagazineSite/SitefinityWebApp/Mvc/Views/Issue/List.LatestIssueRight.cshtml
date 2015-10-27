@@ -28,7 +28,7 @@
                 var issueType = TypeResolutionService.ResolveType("Telerik.Sitefinity.DynamicTypes.Model.Issues.Issue");
             }
             @Html.RenderImage(cover, "image-issue", "463", "380")
-            <a class="Btn Btn--download-issue" href="@document.MediaUrl">Download</a>
+            <a class="Btn Btn--download-issue" href="/get-whitepaper/?issue=@issue.Id">Download</a>
         </div>
 
         <div class="col-md-7">

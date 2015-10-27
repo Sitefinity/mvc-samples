@@ -1,0 +1,11 @@
+@model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
+
+<div class="@Model.CssClass container">
+    <div class="jumbotron" style="background: url('@Model.SelectedSizeUrl') center center; background-size: cover;">
+        <h1>@Html.Raw(Model.Heading)</h1>
+        <p>@Html.Raw(Model.Description)</p>
+        @if (!string.IsNullOrEmpty(Model.ActionName))
+        {
+            <p><a href="@Model.ActionUrl" class="btn btn-primary btn-lg" role="button" >@Model.ActionName</a></p>
+        }
+    </div>
