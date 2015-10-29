@@ -1,8 +1,7 @@
 .Btn {
+  @include button-variant(#fff, #596c9b, darken(#596c9b, 5%));
   display: inline-block;
   padding: 16px 67px;
-  color: #fff;
-  background-color: #596c9b;
   transition-property: background-color;
   transition-duration: .2s;
   transition-timing-function: ease;
@@ -38,6 +37,11 @@
 .Btn--download-issue-2 {
   position: relative;
   top: -30px;
+}
+
+.Btn--sm {
+  padding: 10px 16px;
+  font-size: 18px;
 }
 
 //max-width:991px
