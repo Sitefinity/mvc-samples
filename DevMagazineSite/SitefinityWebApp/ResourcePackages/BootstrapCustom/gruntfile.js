@@ -24,6 +24,7 @@ module.exports = function (grunt) {
             sass: '**/*.{scss,sass}',
         },
         dist: {
+
             path: 'assets/dist'
         },
 
@@ -134,21 +135,21 @@ module.exports = function (grunt) {
 
         webfont: {
             icons: {
-                src: '<%= src.path %>/icons/*.svg',
-                dest: 'assets/dist/fonts',
-                destCss: '<%= src.path %>/sass/modules/',
+                src: 'assets/src/icons/*.svg',
+                dest: 'assets/dist/fonts/',
+                destCss: 'assets/src/sass/icons/',
                 options: {
-                    destHtml: './',
+                    destHtml: '',
                     engine: 'node',
-                    font: 'icon-font',
+                    font: 'sf-icon-font',
                     stylesheet: 'scss',
                     partialPrefix: true,
                     relativeFontPath: '../fonts/',
-                    template: 'icon-font.css',
-                    order: 'eot,svg,woff,ttf',
+                    template: 'feather-icons.css',
+                    types: 'eot,woff,ttf,svg',
+                    order: 'eot,woff,ttf,svg',
                     startCodepoint: 0x00b1,
                     normalize: true,
-                    // if you decide to change the next two 4096 numbers I will murder you
                     fontHeight: 4096,
                     ascent: 4096,
                     descent: 0
