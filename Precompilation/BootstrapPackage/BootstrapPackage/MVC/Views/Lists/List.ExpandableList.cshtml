@@ -1,0 +1,72 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
+
+@Html.Script(ScriptRef.JQuery)
+
+<div class="@Model.CssClass" data-sf-role="lists">
+
+    <div class="sf-list sf-list--expandable clearfix">
+    
+        <div class="pull-right">
+            <a  href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
+            <a class="pull-right" href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
+        </div>
+
+        <div class="sf-list-item pull-left">
+            @foreach (var item in Model.Items)
+            {
+
+                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+                    @item.Fields.Title
+                </h3>
+
+        
+                foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
+                {
+                    <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
+                        <a href="#" @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="text-muted sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</a>
+                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content">
+                            @Html.Raw(@listItem.Fields.Content)
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Lists/lists.js"))
+
+<script type="text/javascript">
+    $('[data-sf-role=toggleLink]').on('click', function () {
+        var link = $(this);
+        var icon = link.find('.sf-icon');
+        if (link.hasClass("expanded")) {
+            icon.removeClass('glyphicon-chevron-down');
+            icon.addClass('glyphicon-chevron-right');
+        }
+        else {
+            icon.removeClass('glyphicon-chevron-right');
+            icon.addClass('glyphicon-chevron-down');
+        }
+    });
+
+    $('[data-sf-role=expandAll]').on('click', function () {
+        var wrapper = $(this).closest('[data-sf-role=lists]');
+        var links = wrapper.find('[data-sf-role=toggleLink]');
+        var icons = links.find(".sf-icon");
+        icons.removeClass('glyphicon-chevron-right');
+        icons.addClass('glyphicon-chevron-down');
+    });
+
+    $('[data-sf-role=collapseAll]').on('click', function () {
+        var wrapper = $(this).closest('[data-sf-role=lists]');
+        var links = wrapper.find('[data-sf-role=toggleLink]');
+        var icons = links.find(".sf-icon");
+        icons.removeClass('glyphicon-chevron-down');
+        icons.addClass('glyphicon-chevron-right');
+    });
+</script>
