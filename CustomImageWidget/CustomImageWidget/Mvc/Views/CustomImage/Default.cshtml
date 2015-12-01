@@ -1,0 +1,8 @@
+﻿@model CustomImageWidget.Mvc.Models.CustomImageViewModel
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.SelectedSizeUrl))
+    {
+        <img src="@Model.SelectedSizeUrl"  title="@Model.ImageTitle" alt="@Model.ImageAlternativeText"/>
+    }
+</div>
