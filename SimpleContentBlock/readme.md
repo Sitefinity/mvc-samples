@@ -15,7 +15,7 @@ application on root level with path
 **client-components\\fields\\html-field** and inside of it create a file
 named ***sf-html-field.sf-cshtml**.* This way you override the default
 view for the html field which is used by the Feather Content Block
-widget designer. The current file content is
+widget designer. The default file content is
 [here](https://github.com/Sitefinity/feather/blob/master/Telerik.Sitefinity.Frontend/client-components/fields/html-field/sf-html-field.sf-cshtml).
 As you can see all of the available tools are listed in the **k-tools**
 attribute value. Altering, removing or adding additional tools there
