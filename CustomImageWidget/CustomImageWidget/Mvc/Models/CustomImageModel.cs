@@ -12,7 +12,7 @@ using SfImage = Telerik.Sitefinity.Libraries.Model.Image;
 namespace CustomImageWidget.Mvc.Models
 {
     /// <summary>
-    /// 
+    /// This class defines model for Custom Image widget.
     /// </summary>
     public class CustomImageModel : ICustomImageModel
     {
