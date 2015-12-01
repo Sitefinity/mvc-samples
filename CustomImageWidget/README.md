@@ -50,6 +50,7 @@ Perform the following:
 # Create the controller
 
 Perform the following:
+
 1. In folder MVC/Controllers, create a new class that derives from the System.Web.Mvc.Controller class and name it CustomImageController.
 2. Add the following properties to the CustomImageController class:
 
