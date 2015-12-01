@@ -150,7 +150,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="MVC\Views\Author\Author.Default.cshtml" />
-    <EmbeddedResource Include="MVC\Views\Author\Author.djvadjva.cshtml" />
     <EmbeddedResource Include="MVC\Views\Author\DesignerView.Simple.cshtml" />
     <EmbeddedResource Include="MVC\Views\Author\DesignerView.Simple.json" />
     <None Include="packages.config" />

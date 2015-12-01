@@ -97,8 +97,8 @@ AuthorModel.cs and AuthorViewModel.cs files and place them into
 MVC\\Models\\Author folder. The model has 7 properties which it uses to
 populate the ViewModel’s 6 properties. It also has the GetViewModel
 method and two private methods that help extract the image URL and the
-Sitefinity page URL for the ViewModel. The code for the model is here,
-and for the view model – here.
+Sitefinity page URL for the ViewModel. The code for the model is [TODO](),
+and for the view model – [TODO]().
 
 Create the controller
 ---------------------
@@ -108,7 +108,7 @@ place it in the MVC\\Controllers folder. It has two properties – the
 model which it will use to get a view model and the widget template to
 be used. In its only action (Index) it will return it’s view and pass it
 the view model created by the model. The code for the controller is
-here.
+[TODO]().
 
 Create the view
 ---------------
@@ -116,7 +116,7 @@ Create the view
 Finally we need the view – this is the markup that in combination with
 the view model will produce the visual part of our widget. We create
 Author.Default.cshtml file and place it in the MVC\\Views\\Author
-folder. The code is here.
+folder. The code is [TODO]().
 
 _**NOTE that the view must be built as an embedded resource (from the
 file properties) as well as every other cshtml, js or json file.**_
@@ -145,19 +145,18 @@ your own custom designer means that you have to plugin to the existing
 angular app. Don’t worry if you have little or no knowledge in angular –
 Feather keeps things simple so you only need to follow the conventions
 and you will be fine. We will start with creating the markup for the
-Designer. We will use several Feather client components – the html field
-(explained here) for the Description property, the image field
+Designer. We will use several Feather client components - the image field
 (explained [here](http://docs.sitefinity.com/feather-image-field)) for
 the Profile picture property, the page selector (explained
 [here](http://docs.sitefinity.com/feather-page-selector)) for the
-Sitefinity page url property, the expander and the style-dropdown
+Sitefinity page url property, the expander (explained [TODO]()) and the style-dropdown
 component, enabling us to leverage from the Feather pre-defined styles
 explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles).
 Following the Feather convention (explained
 [here](http://docs.sitefinity.com/feather-create-custom-designer-views)),
 we name our custom designer markup DesignerView.Simple.cshtml and place
-it in MVC\\Views\\Author folder. The designer markup is here.
+it in MVC\\Views\\Author folder. The designer markup is [TODO]().
 
 Now we need to add our json file. It is used to specify the priority of
 the designer view and its dependencies. Following the
@@ -165,9 +164,8 @@ the designer view and its dependencies. Following the
 Feather convention we name our custom designer json file
 DesignerView.Simple.json and place it in MVC\\Views\\Author folder. It
 includes the priority (1 – meaning that this will be the default
-designer view – the highest priority) and the used components -
-"sf-html-field", "sf-image-field", "sf-page-selector", "sf-expander" and
-"sf-style-dropdown". The json content is here.
+designer view – the highest priority) and the used components - "sf-image-field", "sf-page-selector", "sf-expander" and
+"sf-style-dropdown". The json content is [TODO]().
 
 Finally, as we mentioned in the beginning we need to plugin to the
 existing Angular application. In few words - we need to define our
@@ -183,7 +181,7 @@ for the “designer” module that Feather has. Also, following the
 instructions for using the Feather pre-defined styles (explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles)), we
 add a value to the “designer” module holding the predefined values for
-css classes for our Default view. The js code is here.
+css classes for our Default view. The js code is [TODO]().
 
 _**NOTE that the designer view, json and javascript files must be built
 as an embedded resource (from the file properties).**_

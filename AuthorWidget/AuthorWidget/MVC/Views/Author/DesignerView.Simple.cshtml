@@ -7,11 +7,14 @@
             <input class="form-control" id="nameInput" type="text" ng-model="properties.Name.PropertyValue" />
         </div>
     </div>
-</div>
 
-<expander expander-title="Description">
-    <sf-html-field class="kendo-content-block" sf-model="properties.Description.PropertyValue"></sf-html-field>
-</expander>
+    <label for="descriptionInput">Description</label>
+    <div class="row">
+        <div class="col-xs-11">
+            <input class="form-control" id="descriptionInput" type="text" ng-model="properties.Description.PropertyValue" />
+        </div>
+    </div>
+</div>
 
 <expander expander-title="Links">
     <label class="full-width">Page url</label>
