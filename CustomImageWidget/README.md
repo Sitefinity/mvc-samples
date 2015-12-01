@@ -122,7 +122,7 @@ To create the Default view, use the following code:
 
 1. In Mvc/Models folder create file named ICustomImageModel.cs used to define the models's interface:
 
-````C#
+    ````C#
     public interface ICustomImageModel
     {
         /// <summary>
@@ -148,11 +148,11 @@ To create the Default view, use the following code:
         CustomImageViewModel GetViewModel();
     }
 
-````
+    ````
 
 2. In Mvc/Models folder create file named CustomImageModel.cs used to define the models's logic:
 
-````C#
+    ````C#
 
     public class CustomImageModel : ICustomImageModel
     {
@@ -232,12 +232,12 @@ To create the Default view, use the following code:
         }
     }
 
-````
+    ````
 
 3. Crete view model class named CustomImageViewModel.cs inside Mvc/Models folder and paste the following inside:
 
 
-````C#
+    ````C#
 public class CustomImageViewModel
     {
         /// <summary>
@@ -256,11 +256,11 @@ public class CustomImageViewModel
         public string SelectedSizeUrl { get; set; }
     }
 
-````
+    ````
 
 4. Now you need to map the model's class to its interface in Ninject, so it can be resolved correctly. To do this create class named InterfaceMappings.cs on root level of your class library project and paste the following inside:
 
-````C#
+    ````C#
 public class InterfaceMappings : NinjectModule
     {
         /// <summary>
@@ -272,4 +272,4 @@ public class InterfaceMappings : NinjectModule
         }
     }
 
-````
+    ````
