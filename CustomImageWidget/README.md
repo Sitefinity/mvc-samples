@@ -19,7 +19,10 @@ Perform the following:
 
 2.	Install Telerik.Sitefinity.Feather.Core.StandAlone NuGet package using the following command:
 
+    ````
+
     Install-Package Telerik.Sitefinity.Feather.Core.StandAlone
+    ````
 
     NOTE: Make sure that you have set the Feather package source as explained in Feather: [Get started](http://docs.sitefinity.com/feather-get-started)
 3.	Modify the AssemblyInfo.cs of the CustomImageWidget by adding the following snippet:
