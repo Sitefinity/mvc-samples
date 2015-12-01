@@ -11,7 +11,7 @@ The following tutorial demonstrates how to create custom MVC Image widget based 
 
 # Create the Custom Image widget
 
-Feather makes it possible to have MVC widgets that are stored in separate assemblies. The following sample creates the simple Image widget in a separate assembly. In fact you can create Image widget follwoing the common conception of [creating widgets ](http://docs.sitefinity.com/feather-create-widgets) so we describe shortly how to create the custom widget and will go in more details about using client components in widget's custom designer.
+Feather makes it possible to have MVC widgets that are stored in separate assemblies. The following sample creates the simple Image widget in a separate assembly. In fact you can create Image widget following the common conception of [creating widgets ](http://docs.sitefinity.com/feather-create-widgets) so we describe shortly how to create the custom widget and will go in more details about using client components in widget's custom designer.
 
 Perform the following:
 
@@ -154,7 +154,7 @@ To create the Default view, use the following code:
 
     ````
 
-2. In Mvc/Models folder create file named CustomImageModel.cs used to define the models's logic:
+2. In Mvc/Models folder create file named CustomImageModel.cs used to define the model's logic:
 
     ````C#
 
@@ -280,7 +280,7 @@ public class InterfaceMappings : NinjectModule
 
 # Create the designer
 
-Now we are going to crete designer which uses Feather's [sfImageField component](http://docs.sitefinity.com/feather-image-field) for uploading actual image to the widget. 
+Now we are going to create designer which uses Feather's [sfImageField component](http://docs.sitefinity.com/feather-image-field) for uploading actual image to the widget. 
 
 1. Create DesignerView.Simple.cshtml file inside Mvc/Views/CustomImage and embed it in the project. Now add definition of sf-image-field client component in it:
 
@@ -302,7 +302,7 @@ Now we are going to crete designer which uses Feather's [sfImageField component]
    
    ````
 
-   Note that sf-model attribute is bound to image id, and if you choose and upload image through hte selector and save the designer the *ImageId* property of the model will be automatically persisted in the data base. 
+   Note that sf-model attribute is bound to image id, and if you choose and upload image through the selector and save the designer the *ImageId* property of the model will be automatically persisted in the data base. 
 
 2. [Define required dependencies](http://docs.sitefinity.com/feather-use-components-to-resolve-script-dependencies) for the designer through json file. Create DesignerView.Simple.json file inside Mvc/View/CustomImage and set it to embedded resource. At the following content in it:
 
@@ -326,4 +326,4 @@ More information about widget designer framework that Feather provides could be 
 
 
 Now the custom image widget will be ready so you can build its project and add reference to the CustomImageWidget.dll from your Sitefinity’s web application. 
-The widget will apear in your page toolbox.
+The widget will appear in your page toolbox.
