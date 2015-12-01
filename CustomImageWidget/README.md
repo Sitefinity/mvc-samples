@@ -118,7 +118,7 @@ To create the Default view, use the following code:
 
 **NOTE:** You can create a Razor view in a class library project by selecting HTML Page from the Add New Item dialog, and then renaming the file extension to .cshtml. In the file properties, set the view as Embedded Resource.
 
-# Create the model
+# Create the model and view models
 
 1. In Mvc/Models folder create file named ICustomImageModel.cs used to define the models's interface:
 
@@ -229,6 +229,46 @@ To create the Default view, use the following code:
             imageUrl = originalImageUrl;
 
             return imageUrl;
+        }
+    }
+
+````
+
+3. Crete view model class named CustomImageViewModel.cs inside Mvc/Models folder and paste the following inside:
+
+
+````C#
+public class CustomImageViewModel
+    {
+        /// <summary>
+        /// Gets or sets the image title.
+        /// </summary>
+        public string ImageTitle { get; set; }
+
+        /// <summary>
+        /// Gets or sets the image alternative text.
+        /// </summary>
+        public string ImageAlternativeText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selected size image URL.
+        /// </summary>
+        public string SelectedSizeUrl { get; set; }
+    }
+
+````
+
+4. Now you need to map the model's class to its interface in Ninject, so it can be resolved correctly. To do this create class named InterfaceMappings.cs on root level of your class library project and paste the following inside:
+
+````C#
+public class InterfaceMappings : NinjectModule
+    {
+        /// <summary>
+        /// Loads the module into the kernel.
+        /// </summary>
+        public override void Load()
+        {
+            Bind<ICustomImageModel>().To<CustomImageModel>();
         }
     }
 
