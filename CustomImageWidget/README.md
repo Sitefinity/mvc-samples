@@ -36,15 +36,19 @@ Perform the following:
 
 •	MVC\Views
 
-•	MVC\Views\CustomImageWidget
+•	MVC\Views\CustomImage
 
 •	MVC\Controllers
 
 •	MVC\Models
 
-•	MVC\Scripts\CustomImageWidget
+•	MVC\Scripts\CustomImage
 
 # Create the controller
+
+Perform the following:
+1. In folder MVC/Controllers, create a new class that derives from the System.Web.Mvc.Controller class and name it CustomImageController.
+2. Add the following properties to the CustomImageController class:
 
 ````C#
 
@@ -91,6 +95,141 @@ Perform the following:
         private ICustomImageModel model;
 
         #endregion
+    }
+
+````
+
+# Create the view
+
+Create a Default view, used by the CustomImageController. To do this, you must create a new Razor view named Default and to place it in the MVC/Views/CustomImage folder. 
+To create the Default view, use the following code:
+
+````
+@model CustomImageWidget.Mvc.Models.CustomImageViewModel
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.SelectedSizeUrl))
+    {
+        <img src="@Model.SelectedSizeUrl"  title="@Model.ImageTitle" alt="@Model.ImageAlternativeText"/>
+    }
+</div>
+
+````
+
+**NOTE:** You can create a Razor view in a class library project by selecting HTML Page from the Add New Item dialog, and then renaming the file extension to .cshtml. In the file properties, set the view as Embedded Resource.
+
+# Create the model
+
+1. In Mvc/Models folder create file named ICustomImageModel.cs used to define the models's interface:
+
+````C#
+    public interface ICustomImageModel
+    {
+        /// <summary>
+        /// Gets or sets the image identifier.
+        /// </summary>
+        /// <value>
+        /// The image identifier.
+        /// </value>
+        Guid ImageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the image provider.
+        /// </summary>
+        /// <value>
+        /// The name of the image provider.
+        /// </value>
+        string ImageProviderName { get; set; }
+
+        /// <summary>
+        /// Gets the view model.
+        /// </summary>
+        /// <returns></returns>
+        CustomImageViewModel GetViewModel();
+    }
+
+````
+
+2. In Mvc/Models folder create file named CustomImageModel.cs used to define the models's logic:
+
+````C#
+
+    public class CustomImageModel : ICustomImageModel
+    {
+        /// <summary>
+        /// Gets or sets the image identifier.
+        /// </summary>
+        /// <value>
+        /// The image identifier.
+        /// </value>
+        public Guid ImageId
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the image provider.
+        /// </summary>
+        /// <value>
+        /// The name of the image provider.
+        /// </value>
+        public string ImageProviderName
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets the view model.
+        /// </summary>
+        /// <returns></returns>
+        public CustomImageViewModel GetViewModel()
+        {
+            var viewModel = new CustomImageViewModel();
+            SfImage image;
+            if (this.ImageId != Guid.Empty)
+            {
+                image = this.GetImage();
+                if (image != null)
+                {
+                    viewModel.SelectedSizeUrl = this.GetSelectedSizeUrl(image);
+                    viewModel.ImageAlternativeText = image.AlternativeText;
+                    viewModel.ImageTitle = image.Title;
+                }
+            }
+
+            return viewModel;
+        }
+
+        /// <summary>
+        /// Gets the image.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual SfImage GetImage()
+        {
+            LibrariesManager librariesManager = LibrariesManager.GetManager(this.ImageProviderName);
+            return librariesManager.GetImages().Where(i => i.Id == this.ImageId).Where(PredefinedFilters.PublishedItemsFilter<Telerik.Sitefinity.Libraries.Model.Image>()).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Gets the selected size URL.
+        /// </summary>
+        /// <param name="image">The image.</param>
+        /// <returns></returns>
+        protected virtual string GetSelectedSizeUrl(SfImage image)
+        {
+            if (image.Id == Guid.Empty)
+                return string.Empty;
+
+            string imageUrl;
+
+            var urlAsAbsolute = Config.Get<SystemConfig>().SiteUrlSettings.GenerateAbsoluteUrls;
+            var originalImageUrl = image.ResolveMediaUrl(urlAsAbsolute);
+            imageUrl = originalImageUrl;
+
+            return imageUrl;
+        }
     }
 
 ````
