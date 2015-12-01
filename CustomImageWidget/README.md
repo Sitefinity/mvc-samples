@@ -1,7 +1,7 @@
 Create custom image widget
 ======
 
-The following tutorial demonstrates how to create custom MVC Image widget based on the Feather UI framework. The CustomImage widget displays an image and provide the option to upload the image through designer using build-in sfImageFiled.
+The following tutorial demonstrates how to create custom MVC Image widget based on the Feather UI framework. The CustomImage widget displays an image and provide the option to upload the image through designer using build-in [sfImageFiled](http://docs.sitefinity.com/feather-image-field) component.
 
 # Install the Custom Image widget
 
