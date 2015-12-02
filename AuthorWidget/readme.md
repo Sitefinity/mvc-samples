@@ -149,19 +149,16 @@ Designer. We will use several Feather client components - the image field
 (explained [here](http://docs.sitefinity.com/feather-image-field)) for
 the Profile picture property, the page selector (explained
 [here](http://docs.sitefinity.com/feather-page-selector)) for the
-Sitefinity page url property, the expander (explained [TODO]()) and the style-dropdown
+Sitefinity page url property, the expander (explained [here](https://github.com/Sitefinity/feather-docs/wiki/Expander-directive)) and the style-dropdown
 component, enabling us to leverage from the Feather pre-defined styles
 explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles).
-Following the Feather convention (explained
-[here](http://docs.sitefinity.com/feather-create-custom-designer-views)),
+Following the Feather convention,
 we name our custom designer markup DesignerView.Simple.cshtml and place
 it in MVC\\Views\\Author folder. The designer markup is [TODO]().
 
 Now we need to add our json file. It is used to specify the priority of
-the designer view and its dependencies. Following the
-[abovementioned](http://docs.sitefinity.com/feather-create-custom-designer-views)
-Feather convention we name our custom designer json file
+the designer view and its dependencies. Following the Feather convention we name our custom designer json file
 DesignerView.Simple.json and place it in MVC\\Views\\Author folder. It
 includes the priority (1 – meaning that this will be the default
 designer view – the highest priority) and the used components - "sf-image-field", "sf-page-selector", "sf-expander" and
