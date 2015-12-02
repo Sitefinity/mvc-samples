@@ -49,11 +49,11 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 # Contributing
 
-The Feather Comunity is essential for keeping Feather great. 
+The Feather Community is essential for keeping Feather great. 
 We want to keep it as easy as possible to make you part of this project.
 You can contribute your samples directly to this repository. 
 
 A simple [pull request](https://help.github.com/articles/setting-guidelines-for-repository-contributors/)
-is all you need to make your sample available for the Feather Comunity.
-Keep in mind that your sample will be more valuable if it is well structured, documented and solves a well defined problem. 
+is all you need to make your sample available for the Feather Community.
+Keep in mind that your sample will be more valuable if it is well structured, documented and solves a well-defined problem. 
 A readme file is highly desired to help users understand what is the purpose of your sample or how and what problem you are solving.
