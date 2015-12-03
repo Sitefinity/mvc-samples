@@ -38,3 +38,5 @@ In order to change the default "formatting" tool options, we need to specify exp
 	
 The above object has 11 items - the first 8 are the default ones. The last 3 ("Highlight Error", "Highlight OK" and "Inline Code")
 add a class (respectfully "hlError", "hlOK" and "inlineCode") to the selection.
+
+To run this sample, get the sf-html-field.sf-cshtml file from this SitefinityWebApp/client-components/fields/html-field folder in this repository and place it in client-components\fields\html-field folder of your Sitefinity web application.
