@@ -116,7 +116,7 @@ Create the view
 Finally we need the view – this is the markup that in combination with
 the view model will produce the visual part of our widget. We create
 Author.Default.cshtml file and place it in the MVC\\Views\\Author
-folder. The code is [here](AuthorWidget/MVC/Views/Author/Author.Default.cshtml).
+folder. The code for the view is [here](AuthorWidget/MVC/Views/Author/Author.Default.cshtml).
 
 _**NOTE that the view must be built as an embedded resource (from the
 file properties) as well as every other cshtml, js or json file.**_
@@ -155,14 +155,14 @@ explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles).
 Following the Feather convention,
 we name our custom designer markup DesignerView.Simple.cshtml and place
-it in MVC\\Views\\Author folder. The designer markup is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.cshtml).
+it in MVC\\Views\\Author folder. The designer view markup is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.cshtml).
 
 Now we need to add our json file. It is used to specify the priority of
 the designer view and its dependencies. Following the Feather convention we name our custom designer json file
 DesignerView.Simple.json and place it in MVC\\Views\\Author folder. It
 includes the priority (1 – meaning that this will be the default
 designer view – the highest priority) and the used components - "sf-image-field", "sf-page-selector", "sf-expander" and
-"sf-style-dropdown". The json content is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.json).
+"sf-style-dropdown". The designer json content is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.json).
 
 Finally, as we mentioned in the beginning we need to plugin to the
 existing Angular application. In few words - we need to define our
@@ -178,7 +178,7 @@ for the “designer” module that Feather has. Also, following the
 instructions for using the Feather pre-defined styles (explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles)), we
 add a value to the “designer” module holding the predefined values for
-css classes for our Default view. The js code is [here](AuthorWidget/MVC/Scripts/Author/designerview-simple.js).
+css classes for our Default view. The designer javascript code is [here](AuthorWidget/MVC/Scripts/Author/designerview-simple.js).
 
 _**NOTE that the designer view, json and javascript files must be built
 as an embedded resource (from the file properties).**_
