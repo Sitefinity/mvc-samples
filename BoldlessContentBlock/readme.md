@@ -20,3 +20,5 @@ As you can see all of the available tools are listed in the **k-tools**
 attribute value.
 
 In order to remove the Bold button, we only need to delete the "bold" tool. The resulting file is [TODO]() and you should have the same folder structure as in this repository.
+
+To run this sample, get the sf-html-field.sf-cshtml file from this SitefinityWebApp/client-components/fields/html-field folder in this repository and place it in client-components\fields\html-field folder of your Sitefinity web application.
