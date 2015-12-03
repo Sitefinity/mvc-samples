@@ -17,7 +17,6 @@ namespace SingleDynamicContent.Mvc.Controllers
     [ControllerToolboxItem(Name = "SingleDynamicContent", Title = "Single Dynamic Content", SectionName = "MvcWidgets")]
     public class SingleDynamicContentController : Controller
     {
-
         #region Properties
 
         [TypeConverter(typeof(ExpandableObjectConverter))]
