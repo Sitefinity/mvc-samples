@@ -27,3 +27,5 @@ The extension of the template file depends on your view engine – for Razor the
 The following image illustrates the folder structure of a custom designer view for a dynamic content type with name Country:
 
 ![img](http://docs.sitefinity.com/sf-images/default-source/feather/customDynamicDesignerView2.JPG)
+
+To run this sample, get the DesignerView.MyView.cshtml file from this SitefinityWebApp\MVC\Views\Country folder in this repository and place it in the MVC\Views\Country folder of your Sitefinity web application.
