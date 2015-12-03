@@ -97,8 +97,8 @@ AuthorModel.cs and AuthorViewModel.cs files and place them into
 MVC\\Models\\Author folder. The model has 7 properties which it uses to
 populate the ViewModel’s 6 properties. It also has the GetViewModel
 method and two private methods that help extract the image URL and the
-Sitefinity page URL for the ViewModel. The code for the model is [TODO](),
-and for the view model – [TODO]().
+Sitefinity page URL for the ViewModel. The code for the model is [here](AuthorWidget/MVC/Models/Author/AuthorModel.cs),
+and for the view model – [here](AuthorWidget/MVC/Models/Author/AuthorViewModel.cs).
 
 Create the controller
 ---------------------
@@ -108,7 +108,7 @@ place it in the MVC\\Controllers folder. It has two properties – the
 model which it will use to get a view model and the widget template to
 be used. In its only action (Index) it will return it’s view and pass it
 the view model created by the model. The code for the controller is
-[TODO]().
+[here](AuthorWidget/MVC/Controllers/AuthorController.cs).
 
 Create the view
 ---------------
@@ -116,7 +116,7 @@ Create the view
 Finally we need the view – this is the markup that in combination with
 the view model will produce the visual part of our widget. We create
 Author.Default.cshtml file and place it in the MVC\\Views\\Author
-folder. The code is [TODO]().
+folder. The code is [here](AuthorWidget/MVC/Views/Author/Author.Default.cshtml).
 
 _**NOTE that the view must be built as an embedded resource (from the
 file properties) as well as every other cshtml, js or json file.**_
@@ -155,14 +155,14 @@ explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles).
 Following the Feather convention,
 we name our custom designer markup DesignerView.Simple.cshtml and place
-it in MVC\\Views\\Author folder. The designer markup is [TODO]().
+it in MVC\\Views\\Author folder. The designer markup is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.cshtml).
 
 Now we need to add our json file. It is used to specify the priority of
 the designer view and its dependencies. Following the Feather convention we name our custom designer json file
 DesignerView.Simple.json and place it in MVC\\Views\\Author folder. It
 includes the priority (1 – meaning that this will be the default
 designer view – the highest priority) and the used components - "sf-image-field", "sf-page-selector", "sf-expander" and
-"sf-style-dropdown". The json content is [TODO]().
+"sf-style-dropdown". The json content is [here](AuthorWidget/MVC/Views/Author/DesignerView.Simple.json).
 
 Finally, as we mentioned in the beginning we need to plugin to the
 existing Angular application. In few words - we need to define our
@@ -178,7 +178,7 @@ for the “designer” module that Feather has. Also, following the
 instructions for using the Feather pre-defined styles (explained
 [here](http://docs.sitefinity.com/feather-add-predefined-styles)), we
 add a value to the “designer” module holding the predefined values for
-css classes for our Default view. The js code is [TODO]().
+css classes for our Default view. The js code is [here](AuthorWidget/MVC/Scripts/Author/designerview-simple.js).
 
 _**NOTE that the designer view, json and javascript files must be built
 as an embedded resource (from the file properties).**_
