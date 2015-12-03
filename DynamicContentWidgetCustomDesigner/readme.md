@@ -28,4 +28,4 @@ The following image illustrates the folder structure of a custom designer view f
 
 ![img](http://docs.sitefinity.com/sf-images/default-source/feather/customDynamicDesignerView2.JPG)
 
-To run this sample, get the DesignerView.MyView.cshtml file from this SitefinityWebApp\MVC\Views\Country folder in this repository and place it in the MVC\Views\Country folder of your Sitefinity web application.
+To run this sample, get the DesignerView.MyView.cshtml file from this SitefinityWebApp/MVC/Views/Country folder in this repository and place it in the MVC\Views\Country folder of your Sitefinity web application.
