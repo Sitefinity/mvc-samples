@@ -1,11 +1,6 @@
 *Customize the Content block toolbar*
 =====================================
 
-### Installing the Simple content block widget
-1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
-4. Build the **SimpleContentBlock** project. 
-5. Reference the **SimpleContentBlock.dll** from your Sitefinity’s web application.
-
 The content block widget in Feather uses the Kendo editor
 ([link](http://demos.telerik.com/kendo-ui/editor/index)). It enables you
 to specify which tools are available in the editor toolbar. The
@@ -24,3 +19,9 @@ widget (explained
 github sample
 ([here](https://github.com/Sitefinity/feather-samples/tree/master/SimpleContentBlock))
 as a start.
+
+To run this sample:
+
+1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
+4. Build the **SimpleContentBlock** project. 
+5. Reference the **SimpleContentBlock.dll** from your Sitefinity’s web application.
