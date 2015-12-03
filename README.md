@@ -58,4 +58,4 @@ is all you need to make your sample available for the Feather Community.
 Keep in mind that your sample will be more valuable if it is well structured, documented and solves a well-defined problem. 
 A readme file is highly desired to help users understand what is the purpose of your sample or how and what problem you are solving.
 A great sample addresses a single problem, describes it well, describes all its prerequisites to work, has clean, structured and well-documented code, describes the way it solves the problem and works out of the box. 
-You can reference the [AuthorWidget](https://github.com/Sitefinity/feather-samples/tree/master/AuthorWidget) sample as a guide - it has all the above mentioned features and it works out of the box. 
+You can reference the [AuthorWidget](AuthorWidget) sample as a guide - it has all the above mentioned features and it works out of the box. 
