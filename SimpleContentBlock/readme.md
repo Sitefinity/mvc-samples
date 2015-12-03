@@ -9,7 +9,7 @@ tools. You are able to alter this list of tools in several ways,
 depending on the scope of the changes you wish to achieve.
 
 You can change the Content Block toolbar globally (for the default
-Feather Content Block widget) as described [TODO]().
+Feather Content Block widget) as described [here](../BoldlessContentBlock) and [here](../CustomStylesContentBlock).
 
 You can also decide that you don’t want to alter the default Feather
 Content Block widget designer but create your own with different set of
