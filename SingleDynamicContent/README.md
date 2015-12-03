@@ -1,7 +1,7 @@
 Create custom dynamic content widget for displaying single item
 ======
 
-The following tutorial demonstrates how to create custom MVC widget for displaying single dynamic content item based on the Feather UI framework. The *Single Dynamic Content* widget provide the option to change the dynamic content type and the dynamic content item displayed in it in the designer through build-in [sfDynamicItemsSelector component](http://docs.sitefinity.com/feather-dynamic-items-selector) client component.
+The following tutorial demonstrates how to create custom MVC widget for displaying single dynamic content item based on the Feather UI framework. The *Single Dynamic Content* widget provide the option to change the dynamic content type and the dynamic content item displayed in it in the designer through build-in [sfDynamicItemsSelector](http://docs.sitefinity.com/feather-dynamic-items-selector) client component.
 
 # Install the *Single Dynamic Content* widget
 
