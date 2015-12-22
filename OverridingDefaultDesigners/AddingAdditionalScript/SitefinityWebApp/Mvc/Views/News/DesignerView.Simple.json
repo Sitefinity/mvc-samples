@@ -1,0 +1,7 @@
+﻿{
+	"priority": 1,
+	"scripts": [
+		"Mvc/Scripts/News/my-custom-script.js"
+	],
+	"components": ["sf-provider-selector", "sf-news-selector", "sf-filter-selector", "sf-page-selector", "sf-expander", "sf-style-dropdown", "sf-image-field"]
+}
