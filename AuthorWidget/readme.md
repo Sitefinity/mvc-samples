@@ -11,7 +11,7 @@ a complex designer leveraging the built-in client components of Feather.
 
 1.  **.NET Framework 4.5 or higher**
 
-2.  **Sitefinity 8.2**
+2.  **Sitefinity 8.2 and above**
 
 Install the Author widget
 =========================
@@ -38,18 +38,13 @@ Setup your project
 1.  Create a new class library project named AuthorWidget.
 
 2.  In Visual Studio, in the Package Manager Console, make sure
-    AuthorWidget project is selected as default project. Run the
-    following packages to install the required packages:
+    AuthorWidget project is selected as default project. Install Telerik.Sitefinity.Feather.Core.StandAlone NuGet package using the following command:
 
-    a.  Install-Package Telerik.Sitefinity.Core -Version 8.2.5900.0
-
-    b.  Install-Package Telerik.Sitefinity.Content -Version 8.2.5900.0
-
-    c.  Install-Package Telerik.DataAccess.Core -Version 2015.3.926.1
-
-    d.  Install-Package Telerik.Sitefinity.Mvc -Version 1.4.360.0
-
-    e.  Install-Package Telerik.Sitefinity.Feather.Core -Version 1.4.360.0
+    ````
+    Install-Package Telerik.Sitefinity.Feather.Core.StandAlone
+    ````
+    
+    NOTE: Make sure that you have set the Feather package source as explained in Feather: [Get started](http://docs.sitefinity.com/feather-get-started)
 
 3.  Add the following references to your project:
 

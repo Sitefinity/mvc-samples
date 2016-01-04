@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using Telerik.Sitefinity.Modules.Blogs;
 using Telerik.Sitefinity.Modules.GenericContent;
 using Telerik.Sitefinity.Modules.Libraries;
 using Telerik.Sitefinity.Services;
