@@ -3,7 +3,15 @@ Create custom image widget
 
 The following tutorial demonstrates how to create custom MVC Image widget based on the Feather UI framework. The CustomImage widget displays an image and provide the option to upload the image through designer using build-in [sfImageFiled](http://docs.sitefinity.com/feather-image-field) component.
 
+**PREREQUISITES: You are working with:**
+
+1.  **.NET Framework 4.5 or higher**
+
+2.  **Sitefinity 8.2** and above
+
 # Install the Custom Image widget
+
+Instead of building the widget step by step, you can get it from the repository and use it directly.
 
 1.	Clone the feather-samples repository.
 2.	Build the CustomImageWidget project.
@@ -20,7 +28,6 @@ Perform the following:
 2.	Install Telerik.Sitefinity.Feather.Core.StandAlone NuGet package using the following command:
 
     ````
-
     Install-Package Telerik.Sitefinity.Feather.Core.StandAlone
     ````
 
@@ -55,9 +62,8 @@ Perform the following:
 2. Add the following properties to the CustomImageController class:
 
 ````C#
-
-[ControllerToolboxItem(Name = "CustomImage_MVC", Title = "Custom Image", SectionName = "CustomWidgets", ModuleName = "Libraries")]
-    public class CustomImageController: Controller
+    [ControllerToolboxItem(Name = "CustomImage_MVC", Title = "Custom Image", SectionName = "CustomWidgets", ModuleName = "Libraries")]
+    public class CustomImageController : Controller
     {
         /// <summary>
         /// Gets the Image widget model.
@@ -66,12 +72,12 @@ Perform the following:
         /// The model.
         /// </value>
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public virtual ICustomImageModel Model
+        public virtual CustomImageModel Model
         {
             get
             {
                 if (this.model == null)
-                    this.model = ControllerModelFactory.GetModel<ICustomImageModel>(this.GetType());
+                    this.model = new CustomImageModel();
 
                 return this.model;
             }
@@ -96,7 +102,7 @@ Perform the following:
 
         #region Private fields
 
-        private ICustomImageModel model;
+        private CustomImageModel model;
 
         #endregion
     }
@@ -124,41 +130,11 @@ To create the Default view, use the following code:
 
 # Create the model and view models
 
-1. In Mvc/Models folder create file named ICustomImageModel.cs used to define the models's interface:
-
-    ````C#
-    public interface ICustomImageModel
-    {
-        /// <summary>
-        /// Gets or sets the image identifier.
-        /// </summary>
-        /// <value>
-        /// The image identifier.
-        /// </value>
-        Guid ImageId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the image provider.
-        /// </summary>
-        /// <value>
-        /// The name of the image provider.
-        /// </value>
-        string ImageProviderName { get; set; }
-
-        /// <summary>
-        /// Gets the view model.
-        /// </summary>
-        /// <returns></returns>
-        CustomImageViewModel GetViewModel();
-    }
-
-    ````
-
-2. In Mvc/Models folder create file named CustomImageModel.cs used to define the model's logic:
+1. In Mvc/Models folder create file named CustomImageModel.cs used to define the model's logic:
 
     ````C#
 
-    public class CustomImageModel : ICustomImageModel
+    public class CustomImageModel
     {
         /// <summary>
         /// Gets or sets the image identifier.
@@ -238,11 +214,11 @@ To create the Default view, use the following code:
 
     ````
 
-3. Crete view model class named CustomImageViewModel.cs inside Mvc/Models folder and paste the following inside:
+2. Crete view model class named CustomImageViewModel.cs inside Mvc/Models folder and paste the following inside:
 
 
     ````C#
-public class CustomImageViewModel
+    public class CustomImageViewModel
     {
         /// <summary>
         /// Gets or sets the image title.
@@ -262,44 +238,26 @@ public class CustomImageViewModel
 
     ````
 
-4. Now you need to map the model's class to its interface in Ninject, so it can be resolved correctly. To do this create class named InterfaceMappings.cs on root level of your class library project and paste the following inside:
-
-    ````C#
-public class InterfaceMappings : NinjectModule
-    {
-        /// <summary>
-        /// Loads the module into the kernel.
-        /// </summary>
-        public override void Load()
-        {
-            Bind<ICustomImageModel>().To<CustomImageModel>();
-        }
-    }
-
-    ````
-
 # Create the designer
 
 Now we are going to create designer which uses Feather's [sfImageField component](http://docs.sitefinity.com/feather-image-field) for uploading actual image to the widget. 
 
-1. Create DesignerView.Simple.cshtml file inside Mvc/Views/CustomImage and embed it in the project. Now add definition of sf-image-field client component in it:
+1. Create DesignerView.Simple.cshtml file inside Mvc/Views/CustomImage and embed it in the project (set it's build action to Embedded resource from file properties). Now add definition of sf-image-field client component in it:
 
    ````
-
-@using Telerik.Sitefinity.Mvc;
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-
-<form>
-    <div class="form-group">
-        <label for="image-field" class="m-top-sm">@Html.Resource("Image")</label>
-        <sf-image-field class="sf-Media--info modal-settings modal-settings-space"
-            sf-model="properties.ImageId.PropertyValue"
-            sf-image="selectedImage"
-            sf-provider="properties.ImageProviderName.PropertyValue"
-            id="image-field"></sf-image-field>
-    </div>
-</form>
-   
+    @using Telerik.Sitefinity.Mvc;
+    @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+    
+    <form>
+        <div class="form-group">
+            <label for="image-field" class="m-top-sm">@Html.Resource("Image")</label>
+            <sf-image-field class="sf-Media--info modal-settings modal-settings-space"
+                sf-model="properties.ImageId.PropertyValue"
+                sf-image="selectedImage"
+                sf-provider="properties.ImageProviderName.PropertyValue"
+                id="image-field"></sf-image-field>
+        </div>
+    </form>   
    ````
 
    Note that sf-model attribute is bound to image id, and if you choose and upload image through the selector and save the designer the *ImageId* property of the model will be automatically persisted in the data base. 
@@ -307,11 +265,10 @@ Now we are going to create designer which uses Feather's [sfImageField component
 2. [Define required dependencies](http://docs.sitefinity.com/feather-use-components-to-resolve-script-dependencies) for the designer through json file. Create DesignerView.Simple.json file inside Mvc/View/CustomImage and set it to embedded resource. At the following content in it:
 
    ````
-{
-	"priority": 1,
-	"components": ["sf-image-field"]
-}
-
+    {
+	   "priority": 1,
+	   "components": ["sf-image-field"]
+    }
    ````
 
 3. Now inject the angular modules required by the sfImageField component- create designerview-simple.js file inside the Mvc/Scripts/CustomImage folder, embed it in the project and add the following content in it:
@@ -323,7 +280,7 @@ Now we are going to create designer which uses Feather's [sfImageField component
     ````
 
 More information about widget designer framework that Feather provides could be found [here](http://docs.sitefinity.com/feather-widget-designers-framework).
-
+The last two steps can be skipped if you are using Feather version >= 1.4.410.0, since it resolves json and js dependencies automatically.
 
 Now the custom image widget will be ready so you can build its project and add reference to the CustomImageWidget.dll from your Sitefinity’s web application. 
 The widget will appear in your page toolbox.

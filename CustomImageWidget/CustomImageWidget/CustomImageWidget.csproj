@@ -157,11 +157,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceMappings.cs" />
     <Compile Include="Mvc\Controllers\CustomImageController.cs" />
     <Compile Include="Mvc\Models\CustomImageModel.cs" />
     <Compile Include="Mvc\Models\CustomImageViewModel.cs" />
-    <Compile Include="Mvc\Models\ICustomImageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

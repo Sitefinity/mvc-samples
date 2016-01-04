@@ -21,12 +21,12 @@ namespace CustomImageWidget.Mvc.Controllers
         /// The model.
         /// </value>
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public virtual ICustomImageModel Model
+        public virtual CustomImageModel Model
         {
             get
             {
                 if (this.model == null)
-                    this.model = ControllerModelFactory.GetModel<ICustomImageModel>(this.GetType());
+                    this.model = new CustomImageModel();
 
                 return this.model;
             }
@@ -51,7 +51,7 @@ namespace CustomImageWidget.Mvc.Controllers
 
         #region Private fields
 
-        private ICustomImageModel model;
+        private CustomImageModel model;
 
         #endregion
     }
