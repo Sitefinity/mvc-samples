@@ -11,6 +11,7 @@ The following tutorial demonstrates how to create custom MVC Image widget based 
 
 # Install the Custom Image widget
 
+Installing the widget is an alternative to building it yourself.
 Instead of building the widget step by step, you can get it from the repository and use it directly.
 
 1.	Clone the feather-samples repository.
@@ -240,7 +241,7 @@ To create the Default view, use the following code:
 
 # Create the designer
 
-Now we are going to create designer which uses Feather's [sfImageField component](http://docs.sitefinity.com/feather-image-field) for uploading actual image to the widget. 
+Now we are going to create designer which uses Feather's [Image Field component](http://docs.sitefinity.com/feather-image-field) for uploading actual image to the widget. 
 
 1. Create DesignerView.Simple.cshtml file inside Mvc/Views/CustomImage and embed it in the project (set it's build action to Embedded resource from file properties). Now add definition of sf-image-field client component in it:
 
@@ -271,7 +272,7 @@ Now we are going to create designer which uses Feather's [sfImageField component
     }
    ````
 
-3. Now inject the angular modules required by the sfImageField component- create designerview-simple.js file inside the Mvc/Scripts/CustomImage folder, embed it in the project and add the following content in it:
+3. Now inject the angular modules required by the Image Field component- create designerview-simple.js file inside the Mvc/Scripts/CustomImage folder, embed it in the project and add the following content in it:
 
     ````JavaScript
      var designerModule = angular.module('designer');
@@ -282,5 +283,8 @@ Now we are going to create designer which uses Feather's [sfImageField component
 More information about widget designer framework that Feather provides could be found [here](http://docs.sitefinity.com/feather-widget-designers-framework).
 The last two steps can be skipped if you are using Feather version >= 1.4.410.0, since it resolves json and js dependencies automatically.
 
-Now the custom image widget will be ready so you can build its project and add reference to the CustomImageWidget.dll from your Sitefinity’s web application. 
+You can now build your library, place the produced dll into your
+Sitefinity web application bin folder and test the widget and its
+designer by placing it on a page or simply build your Sitefinity web application 
+if it is already refferencing your library.
 The widget will appear in your page toolbox.
