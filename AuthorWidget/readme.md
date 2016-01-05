@@ -16,7 +16,7 @@ a complex designer leveraging the built-in client components of Feather.
 Install the Author widget
 =========================
 
-Instead of building the widget step by step, you can get it from the repository and use it directly.
+Installing the widget is an alternative to building it yourself. Instead of building the widget step by step, you can get it from the repository and use it directly.
 
 1.  Clone
     the [feather-samples](https://github.com/Sitefinity/feather-samples) repository
@@ -392,6 +392,7 @@ DesignerView.Simple.json and place it in MVC\\Views\\Author folder. It
 includes the priority (1 – meaning that this will be the default
 designer view – the highest priority) and the used components - "sf-image-field", "sf-page-selector", "sf-expander" and
 "sf-style-dropdown". 
+This step can be skipped if you are using Feather version >= 1.4.410.0, since it resolves json dependencies automatically.
 
 The json content is the following:
 
@@ -442,3 +443,4 @@ You can now build your library, place the produced dll into your
 Sitefinity web application bin folder and test the widget and its
 designer by placing it on a page or simply build your Sitefinity web application 
 if it is already refferencing your library.
+The widget will appear in your page toolbox.
