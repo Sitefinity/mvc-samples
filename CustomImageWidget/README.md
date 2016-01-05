@@ -9,7 +9,7 @@ The following tutorial demonstrates how to create custom MVC Image widget based 
 
 2.  **Sitefinity 8.2** and above
 
-# Install the Custom Image widget
+# Install the custom Image widget
 
 Instead of building the widget step by step, you can get it from the repository and use it directly.
 
