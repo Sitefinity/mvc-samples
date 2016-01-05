@@ -6,6 +6,8 @@ This tutorial demonstrates how to create custom designer views for dynamic conte
 For more information on creating custom designer view for content controls, 
 see [Feather: Create custom designer views](http://docs.sitefinity.com/feather-create-custom-designer-views).
 
+This sample requires you to create a dynamic type Countries to work.
+
 Create the template file
 ------------------------
 
