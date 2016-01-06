@@ -35,7 +35,7 @@ Perform the following:
     NOTE: Make sure that you have set the Feather package source as explained in Feather: [Get started](http://docs.sitefinity.com/feather-get-started)
 3.	Modify the AssemblyInfo.cs of the CustomImageWidget by adding the following snippet:
 
-   ````
+   ````C#
  using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
  [assembly: ControllerContainer]
  
@@ -115,7 +115,7 @@ Perform the following:
 Create a Default view, used by the CustomImageController. To do this, you must create a new Razor view named Default and to place it in the MVC/Views/CustomImage folder. 
 To create the Default view, use the following code:
 
-````
+````C#
 @model CustomImageWidget.Mvc.Models.CustomImageViewModel
 
 <div>
@@ -245,7 +245,7 @@ Now we are going to create designer which uses Feather's [Image Field component]
 
 1. Create DesignerView.Simple.cshtml file inside Mvc/Views/CustomImage and embed it in the project (set it's build action to Embedded resource from file properties). Now add definition of sf-image-field client component in it:
 
-   ````
+   ````C#
     @using Telerik.Sitefinity.Mvc;
     @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
     
@@ -265,7 +265,7 @@ Now we are going to create designer which uses Feather's [Image Field component]
 
 2. [Define required dependencies](http://docs.sitefinity.com/feather-use-components-to-resolve-script-dependencies) for the designer through json file. Create DesignerView.Simple.json file inside Mvc/View/CustomImage and set it to embedded resource. At the following content in it:
 
-   ````
+   ````JSON
     {
 	   "priority": 1,
 	   "components": ["sf-image-field"]
@@ -274,7 +274,7 @@ Now we are going to create designer which uses Feather's [Image Field component]
 
 3. Now inject the angular modules required by the Image Field component- create designerview-simple.js file inside the Mvc/Scripts/CustomImage folder, embed it in the project and add the following content in it:
 
-    ````JavaScript
+    ````JS
      var designerModule = angular.module('designer');
      angular.module('designer').requires.push('sfFields');
      angular.module('designer').requires.push('sfSelectors');
