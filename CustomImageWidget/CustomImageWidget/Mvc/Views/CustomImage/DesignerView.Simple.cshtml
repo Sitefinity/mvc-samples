@@ -1,0 +1,13 @@
+﻿@using Telerik.Sitefinity.Mvc;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<form>
+    <div class="form-group">
+        <label for="image-field" class="m-top-sm">@Html.Resource("Image")</label>
+        <sf-image-field class="sf-Media--info modal-settings modal-settings-space"
+            sf-model="properties.ImageId.PropertyValue"
+            sf-image="selectedImage"
+            sf-provider="properties.ImageProviderName.PropertyValue"
+            id="image-field"></sf-image-field>
+    </div>
+</form>
