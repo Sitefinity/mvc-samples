@@ -1,0 +1,36 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginStatus.LoginStatusViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+<div class="@Model.CssClass">
+    <div data-sf-role="sf-logged-in-view" style="display: none" class="media">
+
+        <div class="media-left">
+            <img data-sf-role="sf-logged-in-avatar" width="80" height="80" class="media-object"  />
+        </div>
+        <div class="media-body">
+
+            <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
+            <p data-sf-role="sf-logged-in-email"></p>
+            <button class="btn btn-default" data-sf-role="sf-logged-in-log-out-btn">@Html.Resource("Logout")</button>
+        </div>
+
+    </div>
+
+    <div data-sf-role="sf-logged-out-view" style="display: none">
+
+        <button class="btn btn-default" data-sf-role="login-status-button">@Html.Resource("Login")</button>
+        <a href="@(Model.RegistrationPageUrl ?? "#")">@Html.Resource("RegisterNow")</a>
+
+    </div>
+</div>
+
+<input type="hidden" data-sf-role="sf-status-json-endpoint-url" value="@Url.Action("Status")"/>
+<input type="hidden" data-sf-role="sf-logout-redirect-url" value="@Model.LogoutPageUrl"/>
+<input type="hidden" data-sf-role="sf-login-redirect-url" value="@Model.LoginPageUrl" />
+<input type="hidden" data-sf-role="sf-is-design-mode-value" value="@ViewBag.IsDesignMode.ToString()" />
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom")
