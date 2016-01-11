@@ -46,3 +46,16 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+# Contributing
+
+The Feather Community is essential for keeping Feather great. 
+We want to keep it as easy as possible to make you part of this project.
+You can contribute your samples directly to this repository. 
+
+A simple [pull request](https://help.github.com/articles/setting-guidelines-for-repository-contributors/)
+is all you need to make your sample available for the Feather Community.
+Keep in mind that your sample will be more valuable if it is well structured, documented and solves a well-defined problem. 
+A readme file is highly desired to help users understand what is the purpose of your sample or how and what problem you are solving.
+A great sample addresses a single problem, describes it well, describes all its prerequisites to work, has clean, structured and well-documented code, describes the way it solves the problem and works out of the box. 
+You can reference the [AuthorWidget](AuthorWidget) sample as a guide - it has all the above mentioned features and it works out of the box. 
