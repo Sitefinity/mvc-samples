@@ -1,0 +1,10 @@
+﻿@model AuthorWidget.MVC.Models.Author.AuthorViewModel
+
+<div class="@Model.CssClass">
+    <img src="@Model.ImageUrl" alt="@Model.Name" width="100" height="100"/>
+    <h3>@Model.Name</h3>
+    <a href="@Model.PageUrl">View Page</a>
+    <br />
+    <a href="@Model.AmazonUrl">Visit Amazon</a>
+    <p>@Model.Description</p>
+</div>

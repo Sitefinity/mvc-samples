@@ -1,0 +1,66 @@
+﻿@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="form-group">
+    <label for="nameInput">Name</label>
+    <div class="row">
+        <div class="col-xs-11">
+            <input class="form-control" id="nameInput" type="text" ng-model="properties.Name.PropertyValue" />
+        </div>
+    </div>
+
+    <label for="descriptionInput">Description</label>
+    <div class="row">
+        <div class="col-xs-11">
+            <input class="form-control" id="descriptionInput" type="text" ng-model="properties.Description.PropertyValue" />
+        </div>
+    </div>
+</div>
+
+<expander expander-title="Links">
+    <label class="full-width">Page url</label>
+    <sf-list-selector
+        sf-page-selector
+        sf-sortable="true"
+        sf-selected-item-id="properties.PageId.PropertyValue">
+    </sf-list-selector>
+    <br />
+    <div class="form-group">
+        <label for="amazonLink">Amazon url</label>
+        <div class="row">
+            <div class="col-xs-11">
+                <input class="form-control" id="amazonLink" type="text" ng-model="properties.AmazonUrl.PropertyValue" />
+            </div>
+        </div>
+    </div>
+</expander>
+
+<expander expander-title="Image">
+    <sf-image-field
+        sf-model="properties.ImageId.PropertyValue" 
+        sf-provider="properties.ImageProviderName.PropertyValue"
+        class="sf-Media--info modal-settings">
+    </sf-image-field>
+</expander>
+
+<expander expander-title="MoreOptions">
+    <style-dropdown selected-class="properties.CssClass.PropertyValue" view-name="properties.Template.PropertyValue"></style-dropdown>
+
+    <div class="form-group">
+        <label for="templateName">Template</label>
+        <div class="row">
+            <div class="col-xs-6">
+                <select id="templateName" ng-model="properties.Template.PropertyValue" class="form-control">
+                    @foreach (var viewName in Html.GetViewNames("Author", @"Author\.(?<viewName>[\w\s]*)$"))
+                    {
+                        <option value="@viewName">@viewName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="imageCssClass">CssClasses</label>
+        <input type="text" id="imageCssClass" ng-model="properties.CssClass.PropertyValue" class="form-control" />
+    </div>
+</expander>
