@@ -1,4 +1,4 @@
-**Create an Author widget (Feather)**
+**How to create a custom widget with multiple selectors**
 =====================================
 
 The following tutorial demonstrates how to create a simple MVC Author
