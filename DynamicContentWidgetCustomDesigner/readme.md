@@ -1,4 +1,4 @@
-Create custom designer views for dynamic content widgets
+How to make custom designer for dynamic widget
 =====================================
 
 All Sitefinity and Feather widgets have designers where you configure widget properties. 
