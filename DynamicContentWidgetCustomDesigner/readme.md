@@ -7,6 +7,8 @@ For more information on creating custom designer view for content controls,
 see [Feather: Create custom designer views](http://docs.sitefinity.com/feather-create-custom-designer-views).
 
 This sample requires you to create a dynamic type Countries to work.
+It has to have a singilar item Country with two properties of type short text - Title and Continent.
+You can use the structure and the items for the Countries module by using the Countries.zip file for the structure and the Default_Countries_items.xlsx for the items.
 
 Create the template file
 ------------------------
