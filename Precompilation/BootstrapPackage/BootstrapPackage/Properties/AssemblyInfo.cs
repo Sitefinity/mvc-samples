@@ -10,7 +10,7 @@ using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BootstrapPackage")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright © 2005-2016 Telerik AD")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
