@@ -14,7 +14,7 @@ using Telerik.Sitefinity.Services;
 
 namespace SingleDynamicContent.Mvc.Controllers
 {
-    [ControllerToolboxItem(Name = "SingleDynamicContent", Title = "Single Dynamic Content", SectionName = "MvcWidgets")]
+    [ControllerToolboxItem(Name = "SingleDynamicContent", Title = "Single Dynamic Content", SectionName = "Feather samples")]
     public class SingleDynamicContentController : Controller
     {
         #region Properties

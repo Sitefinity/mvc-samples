@@ -3,7 +3,7 @@ using Telerik.Sitefinity.Mvc;
 
 namespace SimpleContentBlock.Mvc.Controllers
 {
-    [ControllerToolboxItem(Name = "SimpleContentBlock", Title = "Simple Content Block", SectionName = "SimpleContentBlock")]
+    [ControllerToolboxItem(Name = "SimpleContentBlock", Title = "Simple Content Block", SectionName = "Feather samples")]
     public class SimpleContentBlockController : Controller
     {
         public string Text { get; set; }

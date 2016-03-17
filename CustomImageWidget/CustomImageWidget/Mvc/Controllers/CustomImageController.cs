@@ -11,7 +11,7 @@ using Telerik.Sitefinity.Mvc;
 
 namespace CustomImageWidget.Mvc.Controllers
 {
-    [ControllerToolboxItem(Name = "CustomImage_MVC", Title = "Custom Image", SectionName = "CustomWidgets", ModuleName = "Libraries")]
+    [ControllerToolboxItem(Name = "CustomImage_MVC", Title = "Custom Image", SectionName = "Feather samples", ModuleName = "Libraries")]
     public class CustomImageController: Controller
     {
         /// <summary>
