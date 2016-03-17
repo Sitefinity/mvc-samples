@@ -1,4 +1,4 @@
-**Create a custom widget with multiple selectors**
+﻿**Create a custom widget with multiple selectors**
 =====================================
 
 The following tutorial demonstrates how to create a simple MVC Author
@@ -21,9 +21,11 @@ Installing the widget is an alternative to building it yourself. Instead of buil
 1.  Clone
     the [feather-samples](https://github.com/Sitefinity/feather-samples) repository
 
-2.  Build the AuthorWidget project
+2.  Check if version of Feather nugets refernced in **AuthorWidget** project is the same as the version that you have in your project. It they are different make sure to upgrade the **AuthorWidget** project to your version.
 
-3.  Reference the AuthorWidget.dll from your Sitefinity web application
+3.  Build the AuthorWidget project
+
+4.  Reference the AuthorWidget.dll from your Sitefinity web application
 
 Create the Author widget
 ========================
