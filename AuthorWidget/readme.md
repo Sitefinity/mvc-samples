@@ -21,7 +21,7 @@ Installing the widget is an alternative to building it yourself. Instead of buil
 1.  Clone
     the [feather-samples](https://github.com/Sitefinity/feather-samples) repository
 
-2.  Check if version of Feather nugets refernced in **AuthorWidget** project is the same as the version that you have in your project. It they are different make sure to upgrade the **AuthorWidget** project to your version.
+2.  Check if version of Feather nugets referenced in **AuthorWidget** project is the same as the version that you have in your project. It they are different make sure to upgrade the **AuthorWidget** project to your version.
 
 3.  Build the AuthorWidget project
 

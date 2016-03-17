@@ -7,7 +7,7 @@ The following tutorial demonstrates how to create custom MVC widget for displayi
 
 1.	Clone the feather-samples repository.
 2.	Open the SingleDynamicContent project in Visual Studio.
-3.      Check if version of Feather nugets refernced in SingleDynamicContent project is the same as the version that you have in your project. It they are different make sure to upgrade the SingleDynamicContent project to your version.
+3.      Check if version of Feather nugets referenced in SingleDynamicContent project is the same as the version that you have in your project. It they are different make sure to upgrade the SingleDynamicContent project to your version.
 4.      Build SingleDynamicContent project.
 5.	Reference the SingleDynamicContent.dll from your Sitefinity’s web application.
 6.      Build your Sitefinity web application.

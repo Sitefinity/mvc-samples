@@ -23,6 +23,6 @@ as a start.
 To run this sample:
 
 1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
-2. Check if version of Feather nugets refernced in it is the same as the version that you have in your project. It they are different make sure to upgrade the **SimpleContentBlock** project to your version.
+2. Check if version of Feather nugets referenced in it is the same as the version that you have in your project. It they are different make sure to upgrade the **SimpleContentBlock** project to your version.
 3. Build the **SimpleContentBlock** project. 
 4. Reference the **SimpleContentBlock.dll** from your Sitefinity’s web application.
