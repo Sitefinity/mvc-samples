@@ -1,4 +1,4 @@
-Add image field in a custom designer view
+﻿Add image field in a custom designer view
 ======
 
 The following tutorial demonstrates how to create custom MVC Image widget based on the Feather UI framework. The CustomImage widget displays an image and provide the option to upload the image through designer using build-in [sfImageFiled](http://docs.sitefinity.com/feather-image-field) component.
@@ -15,8 +15,9 @@ Installing the widget is an alternative to building it yourself.
 Instead of building the widget step by step, you can get it from the repository and use it directly.
 
 1.	Clone the feather-samples repository.
-2.	Build the CustomImageWidget project.
-3.	Reference the CustomImageWidget.dll from your Sitefinity’s web application.
+2.       Check if version of Feather nugets referenced in **CustomImageWidget** project is the same as the version that you have in your project. It they are different make sure to upgrade the **CustomImageWidget** project to your version.
+3.	Build the CustomImageWidget project.
+4.	Reference the CustomImageWidget.dll from your Sitefinity’s web application.
 
 # Create the Custom Image widget
 
