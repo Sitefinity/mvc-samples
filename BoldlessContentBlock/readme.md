@@ -1,4 +1,4 @@
-*Remove the "Bold" button from Content block*
+﻿*Remove the "Bold" button from Content block*
 =====================================
 
 The content block widget in Feather uses the Kendo editor
@@ -12,7 +12,7 @@ Feather Content Block widget) by replacing the default view that Feather
 uses. You need to create a folder structure in your Sitefinity web
 application on root level with path
 **client-components\\fields\\html-field** and inside of it create a file
-named ***sf-html-field.sf-cshtml**.* This way you override the default
+named **sf-html-field.sf-cshtml**. This way you override the default
 view for the html field which is used by the Feather Content Block
 widget designer. The default file content is
 [here](https://github.com/Sitefinity/feather/blob/master/Telerik.Sitefinity.Frontend/client-components/fields/html-field/sf-html-field.sf-cshtml).

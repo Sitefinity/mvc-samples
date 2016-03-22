@@ -2,5 +2,11 @@
 
 <h3>
     Output some data from the model here:
-    @Model.Item.Id;
+	
+	@if(Model.Item != null){
+        @Html.Raw(Model.Item.Id);
+	}
+	else{
+	    @Html.Raw("No items found for the selected type!");
+	}
 </h3>

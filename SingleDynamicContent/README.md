@@ -1,4 +1,4 @@
-Custom widget for displaying a single dynamic content type
+﻿Custom widget for displaying a single dynamic content type
 ======
 
 The following tutorial demonstrates how to create custom MVC widget for displaying single dynamic content item based on the Feather UI framework. The *Single Dynamic Content* widget provide the option to change the dynamic content type and the dynamic content item displayed in it in the designer through build-in [sfDynamicItemsSelector](http://docs.sitefinity.com/feather-dynamic-items-selector) client component.
@@ -6,9 +6,11 @@ The following tutorial demonstrates how to create custom MVC widget for displayi
 # Install the *Single Dynamic Content* widget
 
 1.	Clone the feather-samples repository.
-2.	Open the SingleDynamicContent project in Visual Studio and build it.
-3.	Reference the SingleDynamicContent.dll from your Sitefinity’s web application.
-4.  Build your Sitefinity web application.
+2.	Open the SingleDynamicContent project in Visual Studio.
+3.      Check if version of Feather nugets referenced in SingleDynamicContent project is the same as the version that you have in your project. It they are different make sure to upgrade the SingleDynamicContent project to your version.
+4.      Build SingleDynamicContent project.
+5.	Reference the SingleDynamicContent.dll from your Sitefinity’s web application.
+6.      Build your Sitefinity web application.
 
 # Create the *Single Dynamic Content* widget
 
@@ -122,7 +124,7 @@ Perform the following:
 
 ````
 
-As you can see the Controller exposes public property for ItemType. By editing this property value you can change the type of dynamic content that will be displayed inside the widget. Current sample sets for default itemType *Telerik.Sitefinity.DynamicTypes.Model.Athletes.Athlete* still we are going to expose option in the widget designer to change this type during the setup of the widget.
+    NOTE: As you can see the Controller exposes public property for ItemType. By editing this property value you can change the type of dynamic content that will be displayed inside the widget. Current sample sets for default itemType **Telerik.Sitefinity.DynamicTypes.Model.Athletes.Athlete** still we are going to expose option in the widget designer to change this type during the setup of the widget. This way the backend user will be able to edit the ItemType by opening the widget for edit and changing the value directly in the designer.
 
 # Create the view
 
@@ -134,7 +136,13 @@ To create the Default view, use the following code:
 
 <h3>
     Output some data from the model here:
-    @Model.Item.Id;
+	
+    @if(Model.Item != null){
+        @Html.Raw(Model.Item.Id);
+    }
+    else{
+	@Html.Raw("No items found for the selected type!");
+    }
 </h3>
 
 ````

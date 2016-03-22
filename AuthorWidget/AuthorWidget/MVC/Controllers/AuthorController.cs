@@ -7,7 +7,7 @@ using Telerik.Sitefinity.Mvc;
 
 namespace AuthorWidget.MVC.Controllers
 {
-    [ControllerToolboxItem(Name = "Author", Title = "Author", SectionName = "Custom")]
+    [ControllerToolboxItem(Name = "Author", Title = "Author", SectionName = "Feather samples")]
     public class AuthorController : Controller
     {
         [TypeConverter(typeof(ExpandableObjectConverter))]
