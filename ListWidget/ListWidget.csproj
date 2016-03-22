@@ -42,8 +42,14 @@
     <Reference Include="Ninject">
       <HintPath>packages\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine">
       <HintPath>packages\Sitefinity.RazorEngine.3.0.8.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc">
+      <HintPath>packages\RazorGenerator.Mvc.2.3.12\lib\net40\RazorGenerator.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,11 +84,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Sitefinity.Frontend">
-      <HintPath>packages\Telerik.Sitefinity.Feather.Core.1.4.360.0\lib\net45\Telerik.Sitefinity.Frontend.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend, Version=1.5.470.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Telerik.Sitefinity.Feather.Core.1.5.470.0\lib\net45\Telerik.Sitefinity.Frontend.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Mvc">
-      <HintPath>packages\Telerik.Sitefinity.Mvc.1.4.360.0\lib\net45\Telerik.Sitefinity.Mvc.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Data">
+      <HintPath>packages\Telerik.Sitefinity.Feather.Core.1.5.470.0\lib\net45\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Mvc, Version=1.5.470.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Telerik.Sitefinity.Mvc.1.5.470.0\lib\net45\Telerik.Sitefinity.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.Design">
       <HintPath>packages\Telerik.Web.UI.2014.2.618.40\lib\net40\Telerik.Web.Design.dll</HintPath>
@@ -97,8 +108,12 @@
     <Reference Include="Telerik.Web.UI.Skins">
       <HintPath>packages\Telerik.Web.UI.2014.2.618.40\lib\net40\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="Mvc\Controllers\ListController.cs" />
     <Compile Include="ListMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
