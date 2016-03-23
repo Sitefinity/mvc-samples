@@ -5,12 +5,9 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery)
-@Html.Script("http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"))
 
 <div class="@Model.CssClass">
-    @Html.Action("GetView", new { viewName = "Dropdown", model= Model})
+    @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
 
     <ul class="nav nav-sitemap">
         @foreach (var node in Model.Nodes)
@@ -23,7 +20,7 @@
 @helper RenderRootLevelNode(NodeViewModel node)
 {
     <li>
-        <a href="@node.Url" target="@node.LinkTarget"><b>@node.Title</b></a>
+        <a href="@node.Url" target="@node.LinkTarget"><strong>@node.Title</strong></a>
         @if (node.ChildNodes.Count > 0)
         {
             <ul class="nav nav-stacked">

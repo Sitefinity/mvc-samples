@@ -10,40 +10,28 @@
  }
 
 @(!String.IsNullOrEmpty(Model.CssClass) ?
-    Html.Raw(String.Format("<ul class=\"{0} nav navbar-nav navbar-right\">", Model.CssClass)) :
-    Html.Raw("<ul class=\"nav navbar-nav navbar-right\">"))
-    <li><a href="/issues">Issues</a></li>
-    <li class="Search">
-        <label class="glyphicon glyphicon-search"></label>
-        <input type="search" id="@Html.Raw(searchTextBoxId)" class="js-search-field" value="@Html.Raw(ViewBag.SearchQuery)"/>
-        @*<button type="button" class="btn btn-primary" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</button>*@
-    </li>
-</ul>
+    Html.Raw(String.Format("<div class=\"{0} form-inline\">", Model.CssClass)) :
+    Html.Raw("<div class=\"form-inline\">"))
+    <div class="form-group">
+        <input type="search" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@Html.Raw(searchTextBoxId)" class="form-control" value="@Html.Raw(ViewBag.SearchQuery)"/>
+    </div>
+    <button type="button" class="btn btn-primary" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</button>
+	
+	<input type="hidden" data-sf-role="resultsUrl" value="@Html.Raw(Model.ResultsUrl)" />
+    <input type="hidden" data-sf-role="indexCatalogue" value="@Html.Raw(Model.IndexCatalogue)" />
+    <input type="hidden" data-sf-role="wordsMode" value="@Html.Raw(Model.WordsMode.ToString())" />
+    <input type="hidden" data-sf-role="disableSuggestions" value='@(Model.DisableSuggestions ? Html.Raw("true") : Html.Raw("false"))' />
+    <input type="hidden" data-sf-role="minSuggestionLength" value="@Html.Raw(Model.MinSuggestionLength)" />
+    <input type="hidden" data-sf-role="suggestionFields" value="@Html.Raw(Model.SuggestionFields)" />
+    <input type="hidden" data-sf-role="language" value="@Html.Raw(Model.Language)" />
+    <input type="hidden" data-sf-role="suggestionsRoute" value="@Html.Raw(Model.SuggestionsRoute)" />
+    <input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
+    <input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />
+</div>
 
-@* Avoid conflicts because the designer is loading jQuery too. *@
-@if (!SystemManager.IsDesignMode)
-{
-    @Html.Script(ScriptRef.JQuery)
-    @Html.Script(ScriptRef.JQueryUI)
-}
+@* The inline editing functionality is loading jQuery too. *@
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(ScriptRef.JQueryUI, "top", true)
 
-<script type="text/javascript">
-    (function(){
-        var serverData = {
-            resultsUrl: '@Html.Raw(Model.ResultsUrl)',
-            indexCatalogue: '@Html.Raw(Model.IndexCatalogue)',
-            wordsMode: '@Html.Raw(Model.WordsMode.ToString())',
-            disableSuggestions: @(Model.DisableSuggestions ? Html.Raw("true") : Html.Raw("false")),
-            minSuggestionLength: '@Html.Raw(Model.MinSuggestionLength)',
-            suggestionFields: '@Html.Raw(Model.SuggestionFields)',
-            language: '@Html.Raw(Model.Language)',
-            suggestionsRoute: '@Html.Raw(Model.SuggestionsRoute)',        
-            searchTextBoxSelector: '#' + '@Html.Raw(searchTextBoxId)',
-            searchButtonSelector: '#' + '@Html.Raw(searchButtonId)'
-        };
-
-        featherSearchBoxWidget(serverData);
-    })();
-</script>
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"), "bottom")
