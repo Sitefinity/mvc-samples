@@ -1,0 +1,11 @@
+﻿@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="sf-Code">
+<pre>
+@ViewBag.DesignModeContent
+@if(!ViewBag.HasDescription)
+{
+    @Html.Resource("IncludedInHead");
+}
+</pre>
+</div>
