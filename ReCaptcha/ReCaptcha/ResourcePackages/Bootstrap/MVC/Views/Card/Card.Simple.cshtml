@@ -1,0 +1,20 @@
+@model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
+
+<div class="@Model.CssClass">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@Model.SelectedSizeUrl" title="@Model.ImageTitle" alt="@Model.ImageAlternativeText" class="img-responsive">
+        </div>
+        <div class="col-md-6 ">
+            <div class="caption">
+                <h3>@Html.Raw(Model.Heading)</h3>
+                <p>@Html.Raw(Model.Description)</p>
+
+                @if (!string.IsNullOrEmpty(Model.ActionName))
+                {
+                    <p><a href="@Model.ActionUrl" class="btn btn-primary" role="button" >@Model.ActionName</a></p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
