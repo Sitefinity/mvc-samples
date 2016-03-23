@@ -15,7 +15,9 @@ This repository contains front-end packages for [Project Feather](http://project
 
 | Feather version | Sitefinity version |
 |----|----|
-| v.1.3.300.1 - latest | 8.1.5800.0 to 8.1.9999 |
+| v.1.5.460.0 - latest | 9.0.6000.0 to 9.0.9999 |
+| v.1.4.360.0 - 1.4.450.0 | 8.2.5900.0 to 8.2.9999 |
+| v.1.3.300.1 - 1.3.350.0 | 8.1.5800.0 to 8.1.9999 |
 | v.1.2.120.0 - 1.2.290.1 | 8.0.5700.0 to 8.0.9999 |
 | v.1.1.20.3 - 1.1.110.0 | 7.3.5600.0 to 7.3.9999 |
 | v.1.0.0.0 - 1.0.10.2 | 7.2.5300.0 to 7.2.9999 |
@@ -27,7 +29,7 @@ This repository contains front-end packages for [Project Feather](http://project
 
 This project has been released under the Apache License, version 2.0, the text of which is included below. This license applies ONLY to the project-specific source of each repository and does not extend to Telerik Sitefinity CMS itself, or any other 3rd party libraries used in a repository. For licensing information about Telerik Sitefinity CMS, see the [License Agreements page](http://www.sitefinity.com/purchase/license-agreement) at [Sitefinity.com](http://www.sitefinity.com/).
 
-Copyright © 2015 Telerik
+Copyright © 2005-2016 Telerik AD
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

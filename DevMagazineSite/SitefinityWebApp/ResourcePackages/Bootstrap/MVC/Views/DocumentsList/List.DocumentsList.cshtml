@@ -15,7 +15,7 @@
 					</i>
 				</div>
 				<div class="media-body">
-					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
+					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
 							<strong>@item.Fields.Title</strong>
 					</a>
 					<span class="text-muted">(@(((DocumentItemViewModel)item).Extension))</span>
