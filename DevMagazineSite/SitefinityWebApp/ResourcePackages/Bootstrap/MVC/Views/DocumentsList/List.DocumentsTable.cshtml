@@ -24,7 +24,7 @@
                         <i class="icon-file icon-txt icon-sm">
                             <span class="icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
                         </i> 
-                        <a class="sf-title" href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage)">
+                        <a class="sf-title" href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
                             @item.Fields.Title
                         </a>
                     </td>
