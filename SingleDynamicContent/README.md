@@ -124,7 +124,8 @@ Perform the following:
 
 ````
 
-    NOTE: As you can see the Controller exposes public property for ItemType. By editing this property value you can change the type of dynamic content that will be displayed inside the widget. Current sample sets for default itemType **Telerik.Sitefinity.DynamicTypes.Model.Athletes.Athlete** still we are going to expose option in the widget designer to change this type during the setup of the widget. This way the backend user will be able to edit the ItemType by opening the widget for edit and changing the value directly in the designer.
+
+NOTE: As you can see the Controller exposes public property for ItemType. By editing this property value you can change the type of dynamic content that will be displayed inside the widget. Current sample sets for default itemType **Telerik.Sitefinity.DynamicTypes.Model.Athletes.Athlete** still we are going to expose option in the widget designer to change this type during the setup of the widget. This way the backend user will be able to edit the ItemType by opening the widget for edit and changing the value directly in the designer.
 
 # Create the view
 
@@ -154,7 +155,7 @@ You can modify this view to output the values of all fields for the specified dy
 
 In Mvc/Models folder create file named SingleDynamicContentModel.cs used to define the model's interface:
 
-    ````C#
+````C#
     public class SingleDynamicContentModel
     {
         #region Properties
@@ -217,7 +218,7 @@ In Mvc/Models folder create file named SingleDynamicContentModel.cs used to defi
         #endregion
     }
 
-    ````
+````
 
 # Create the designer
 
