@@ -22,17 +22,17 @@
     },
     {
         name: "insertVideo",
-        template: "<a href=\"\" class=\"k-button custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\"></span></a>"
+		template: "<a href=\"\" class=\"k-tool custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\"></span></a>"
     },
     "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
     "cleanFormatting",
-    {
+     {
         name: "fullscreen",
-        template: "<a class=\"k-button js-custom-tool custom-tool\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
-    },
+        template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"Fullscreen\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
+	},
     {
         name: "htmlView",
-        template: "<button class=\"custom-tool k-button pull-right js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
+        template: "<button class=\"custom-tool btn btn-default btn-xs pull-right js-htmlview js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
     }
     ]'>
 </textarea>
