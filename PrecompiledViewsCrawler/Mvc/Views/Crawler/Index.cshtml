@@ -5,29 +5,36 @@
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" />
 <script src="~/Scripts/jquery.min.js"></script>
 <script type="text/javascript">
-    function crawl() {
-        var loadingLabel = $("#loadingLabel");
-        var url = "/Precompilation/Crawler/Crawl";
+    $(document).ready(function () {
+        $crawlbutton = $("#crawl-button");
+        $crawlbutton.on("click", function () {
+            var $this = $(this);
 
-        loadingLabel.show();
+            var loadingLabel = $("#loadingLabel");
+            var url = "/Precompilation/Crawler/Crawl";
 
-        $.ajax({
-            url: url,
-            contentType: "application/html; charset=utf-8",
-            headers: {
-                "Cache-Control": "no cache"
-            },
-            success: function (data) {
-                var content = $("#results").html();
-                $("#results").html(content + data);
-                loadingLabel.hide();
-            },
-            cache: false
+            $this.prop("disabled", true);
+            loadingLabel.show();
+
+            $.ajax({
+                url: url,
+                contentType: "application/html; charset=utf-8",
+                headers: {
+                    "Cache-Control": "no cache"
+                },
+                success: function (data) {
+                    var content = $("#results").html();
+                    $("#results").html(content + data);
+                    $this.prop("disabled", false);
+                    loadingLabel.hide();
+                },
+                cache: false
+            });
         });
-    }
+    });
 </script>
 
-<button class="btn btn-default" onclick="crawl()">Start</button>
-<label id="loadingLabel" style="display:none">Loading...</label>
+<button id="crawl-button" class="btn btn-default">Start</button>
+<label id="loadingLabel" style="display: none">Loading...</label>
 
 <div id="results"></div>
