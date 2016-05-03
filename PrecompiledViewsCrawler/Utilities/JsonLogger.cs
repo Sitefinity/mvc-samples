@@ -1,48 +1,42 @@
 ﻿using System.IO;
-using System.Linq;
 using System.Web.Hosting;
-
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace PrecompiledViewsCrawler.Utilities
 {
-    internal static class JsonLogger
+    public class JsonLogger : IJsonLogger
     {
-        static JsonLogger()
-        {
-            Result = new JArray();
-        }
+        // TODO: Refactor file write
 
-        public static void AddToLog(JObject obj)
+        public void SaveToFile(object data, string fileName)
         {
-            var oldObj = Result.FirstOrDefault(x => x["viewPath"].ToString() == obj["viewPath"].ToString() && x["url"].ToString() == obj["url"].ToString());
-            if (oldObj == null)
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            string path = this.MapLogFilePath(fileName);
+            bool shouldPlaceComma = true;
+
+            if (!File.Exists(path))
             {
-                Result.Add(obj);
-                return;
+                shouldPlaceComma = false;
+                using (File.Create(path)) { }
             }
 
-            Result.Remove(oldObj);
-            Result.Add(obj);
-        }
-
-        public static void SaveToFile(string virtualPath = JsonLogger.LogVirtualPath)
-        {
-            string absolutePath = HostingEnvironment.MapPath(virtualPath);
-            using (StreamWriter file = File.CreateText(absolutePath))
-            using (JsonTextWriter writer = new JsonTextWriter(file))
+            using (StreamWriter file = File.AppendText(path))
             {
-                writer.WriteRaw(BeautifyResult(Result));
+                if (shouldPlaceComma)
+                {
+                    file.WriteLine(Comma);
+                }
+
+                file.Write(json);
             }
         }
 
-        private static string BeautifyResult(JArray result)
+        private string MapLogFilePath(string fileName)
         {
-            return JsonConvert.SerializeObject(result, Formatting.Indented);
+            return HostingEnvironment.MapPath(LogDirectory + fileName);
         }
 
-        private static readonly JArray Result;
-        private const string LogVirtualPath = "~/App_Data/Sitefinity/Logs/PrecompilationStatistics.json";
+        private const string LogDirectory = "~/App_Data/Sitefinity/Logs/";
+        private const string Comma = ",";
     }
 }

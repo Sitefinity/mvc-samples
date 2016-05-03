@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Precompilation crawler";
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" type="text/css" />
+<script src="~/Scripts/jquery.min.js"></script>
+<script type="text/javascript">
+    function crawl() {
+        var loadingLabel = $("#loadingLabel");
+        var url = "/Precompilation/Crawler/Crawl";
+
+        loadingLabel.show();
+
+        $.ajax({
+            url: url,
+            contentType: "application/html; charset=utf-8",
+            headers: {
+                "Cache-Control": "no cache"
+            },
+            success: function (data) {
+                var content = $("#results").html();
+                $("#results").html(content + data);
+                loadingLabel.hide();
+            },
+            cache: false
+        });
+    }
+</script>
+
+<button class="btn btn-default" onclick="crawl()">Start</button>
+<label id="loadingLabel" style="display:none">Loading...</label>
+
+<div id="results"></div>

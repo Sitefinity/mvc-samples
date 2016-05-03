@@ -1,0 +1,29 @@
+﻿@model PrecompiledViewsCrawler.Mvc.Models.CrawlResultViewModel
+
+<div>
+    <hr />
+    <h3>@Model.StartTime</h3>
+    <table class="table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Widget</th>
+                <th>Url</th>
+                <th>View</th>
+                <th>Precompiled</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CrawlItems)
+            {
+                <tr>
+                    <td>@item.WidgetName</td>
+                    <td>@item.Url</td>
+                    <td>@item.ViewName</td>
+                    <td>@(item.IsPrecompiled ? "Yes" : "No")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h3>@Model.EndTime</h3>
+    <hr />
+</div>

@@ -1,7 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using PrecompiledViewsCrawler.Mvc.Controllers.Infrastructure.ActionFilters;
 
-namespace PrecompiledViewsCrawler
+namespace PrecompiledViewsCrawler.Configurations
 {
     public static class CrawlerConfig
     {

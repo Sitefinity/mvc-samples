@@ -5,12 +5,11 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Hosting;
 using System.Web.Mvc;
-
 using Telerik.Sitefinity.Frontend.Mvc.Controllers;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 
-namespace PrecompiledViewsCrawler
+namespace PrecompiledViewsCrawler.Mvc.Controllers.Infrastructure.ActionFilters
 {
     public class ViewEngineFilterAttribute : ActionFilterAttribute
     {
@@ -35,7 +34,6 @@ namespace PrecompiledViewsCrawler
                 this.RemoveExtendedPrecompiledMvcEngineWrapper(((Controller)filterContext.Controller).ViewEngineCollection);
             }
 
-            FrontendControllerFactory.EnhanceViewEngines(controller);
             base.OnActionExecuting(filterContext);
         }
 
@@ -165,10 +163,28 @@ namespace PrecompiledViewsCrawler
 
         private void RegisterPrecompiledViewEngines(IEnumerable<Assembly> assemblies, Controller controller, Type viewEngineType)
         {
+            MethodInfo getEnhanceAttributeMethod = typeof(FrontendControllerFactory).GetMethod("GetEnhanceAttribute", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo getControllerPathTransformationsMethod = typeof(FrontendControllerFactory).GetMethod("GetControllerPathTransformations", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo getViewEngineMethod = typeof(ControllerExtensions).GetMethod("GetViewEngine", BindingFlags.NonPublic | BindingFlags.Static);
+
+            EnhanceViewEnginesAttribute enhanceAttribute = getEnhanceAttributeMethod.Invoke(
+                    ControllerBuilder.Current.GetControllerFactory(),
+                    new object[] { controller.GetType() })
+                as EnhanceViewEnginesAttribute;
+
+            IList<Func<string, string>> pathTransformations = (IList<Func<string, string>>)getControllerPathTransformationsMethod.Invoke(
+                    ControllerBuilder.Current.GetControllerFactory(),
+                    new object[] { controller, enhanceAttribute.VirtualPath });
+
             var precompiledAssemblies = assemblies.Where(a => a.GetCustomAttribute<ControllerContainerAttribute>() != null).Select(a => new PrecompiledViewAssemblyWrapper(a, null)).ToArray();
             if (precompiledAssemblies.Length > 0)
             {
-                controller.ViewEngineCollection.Insert(0, Activator.CreateInstance(viewEngineType, precompiledAssemblies) as IViewEngine);
+                IViewEngine transformedViewEngine = getViewEngineMethod.Invoke(
+                        new { },
+                        new object[] { Activator.CreateInstance(viewEngineType, precompiledAssemblies) as IViewEngine, pathTransformations })
+                    as IViewEngine;
+
+                controller.ViewEngineCollection.Insert(0, transformedViewEngine);
             }
 
             var precompiledResourcePackages = this.PrecompiledResourcePackages(assemblies);
@@ -180,7 +196,11 @@ namespace PrecompiledViewsCrawler
                 var packageAssemblies = precompiledResourcePackages[package];
                 if (packageAssemblies.Count > 0)
                 {
-                    controller.ViewEngineCollection.Insert(0, Activator.CreateInstance(viewEngineType, packageAssemblies, null, package) as IViewEngine);
+                    IViewEngine transformedViewEngine = getViewEngineMethod.Invoke(
+                        new { },
+                        new object[] { Activator.CreateInstance(viewEngineType, packageAssemblies, null, package) as IViewEngine, pathTransformations })
+                    as IViewEngine;
+                    controller.ViewEngineCollection.Insert(0, transformedViewEngine);
                 }
             }
         }
