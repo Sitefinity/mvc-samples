@@ -189,8 +189,9 @@
     <Reference Include="Telerik.Sitefinity.Utilities">
       <HintPath>..\packages\Telerik.Sitefinity.Core.9.0.6000.0\lib\net40\Telerik.Sitefinity.Utilities.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx">
-      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.1.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,7 @@
     <Compile Include="Mvc\Models\CrawlResultViewModel.cs" />
     <Compile Include="Mvc\Models\ICrawlResultViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Utilities\DefaultCrawlResultBuilder.cs" />
     <Compile Include="Utilities\ICrawlResultBuilder.cs" />
     <Compile Include="Mvc\Controllers\Infrastructure\ActionFilters\ViewEngineFilterAttribute.cs" />

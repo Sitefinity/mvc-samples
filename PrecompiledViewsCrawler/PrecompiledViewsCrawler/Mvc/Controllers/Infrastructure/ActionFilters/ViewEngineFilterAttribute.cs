@@ -184,7 +184,10 @@ namespace PrecompiledViewsCrawler.Mvc.Controllers.Infrastructure.ActionFilters
                         new object[] { Activator.CreateInstance(viewEngineType, precompiledAssemblies) as IViewEngine, pathTransformations })
                     as IViewEngine;
 
-                controller.ViewEngineCollection.Insert(0, transformedViewEngine);
+                if (transformedViewEngine != null)
+                {
+                    controller.ViewEngineCollection.Insert(0, transformedViewEngine);
+                }
             }
 
             var precompiledResourcePackages = this.PrecompiledResourcePackages(assemblies);
@@ -200,7 +203,11 @@ namespace PrecompiledViewsCrawler.Mvc.Controllers.Infrastructure.ActionFilters
                         new { },
                         new object[] { Activator.CreateInstance(viewEngineType, packageAssemblies, null, package) as IViewEngine, pathTransformations })
                     as IViewEngine;
-                    controller.ViewEngineCollection.Insert(0, transformedViewEngine);
+
+                    if (transformedViewEngine != null)
+                    {
+                        controller.ViewEngineCollection.Insert(0, transformedViewEngine);
+                    }
                 }
             }
         }
