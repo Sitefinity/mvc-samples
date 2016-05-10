@@ -43,7 +43,7 @@ and make the following changes:
 @using SitefinityWebApp.Mvc.Helpers
     ````
 
-    * Add the following code bellow the <time>..</time>
+    * Add the following code bellow the ````<time>..</time>````
 
     ````
 <br><time>@item.NextOccurrenceEventDates()</time>
