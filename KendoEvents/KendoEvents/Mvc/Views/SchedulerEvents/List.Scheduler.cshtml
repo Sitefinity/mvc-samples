@@ -1,0 +1,54 @@
+﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+@Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css", "head")
+@Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.blueopal.min.css", "head")
+
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script(ScriptRef.KendoAll, "top", false)
+
+<div>
+    <div id="scheduler">
+	</div>
+</div>
+
+<script>
+    $("#scheduler").kendoScheduler({
+        dataSource: {
+            batch: true, // Enable batch updates
+            transport: {
+                read: {
+                    url: '@Url.Content("/web-interface/events")',
+                    dataType: "json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            schema: {
+                model: {
+                    id: "Id", // The "id" of the event is the "taskId" field
+                    fields: {
+                        // Describe the scheduler event fields and map them to the fields returned by the remote service
+                        taskId: {
+                            from: "Id"
+                        },
+                        title: { from: "Title", defaultValue: "No title", validation: { required: true } },
+                        start: { type: "date", from: "Start" },
+                        end: { type: "date", from: "End" },
+                        description: { from: "Description" },
+                        recurrenceId: { from: "RecurrenceID" },
+                        recurrenceRule: { from: "RecurrenceRule" },
+                        recurrenceException: { from: "RecurrenceException" },
+                        isAllDay: { type: "boolean", from: "IsAllDay" }
+                    }
+                }
+            }
+        }
+    });
+</script>
