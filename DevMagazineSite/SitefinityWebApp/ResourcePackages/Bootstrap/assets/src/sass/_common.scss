@@ -1,0 +1,27 @@
+.u-toe {
+	@include text-overflow;
+}
+
+pre {
+	@extend .sf-p-xxs; //0
+	border: $pre-border-width;
+	background: $pre-background;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: $pre-font-size;
+}
+
+//Creating tag classes
+
+$sizes-names: "xxs","xs", "s", "m", "l", "xl", "xxl", "xxxl";
+$sizes: $spacing-size-xxs,
+	$spacing-size-xs,
+	$spacing-size-s,
+	$spacing-size-m,
+	$spacing-size-l,
+	$spacing-size-xl,
+	$spacing-size-xxl,
+	$spacing-size-xxxl;
+$property-name: "";
+
+@include create-spacing-class($sizes-names, $sizes, "margin", "m");
+@include create-spacing-class($sizes-names, $sizes, "padding", "p");

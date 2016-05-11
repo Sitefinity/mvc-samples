@@ -1,0 +1,29 @@
+.sf-lang-selector {
+	&.list-inline {
+		>li {
+			@extend .sf-pr-xxs;
+		}
+	}
+
+	a {
+		@extend .sf-pt-xs; //5px
+		@extend .sf-pb-xs; //5px
+		@extend .sf-pl-s; //10px
+		@extend .sf-pr-s; //10px
+		display: block;
+		font-size: $lang-selector-anchor-font-size;
+		border-radius: $lang-selector-anchor-border-radius;
+
+		&.selected {
+			background-color: $lang-selector-anchor--selected-background;
+			color: $lang-selector-anchor--selected-color;
+		}
+	}
+	
+	label {
+		select {
+			display: block;
+			font-weight: normal;
+		}
+	}
+}
