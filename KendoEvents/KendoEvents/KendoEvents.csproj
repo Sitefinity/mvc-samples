@@ -243,7 +243,14 @@
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="Mvc\Views\SchedulerEvents\List.Scheduler.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\DesignerView.Simple.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\DesignerView.Simple.json" />
+    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\Detail.EventDetails.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\List.EventsList.cshtml" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="client-components\sf-events-date-filter-selector.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets" Condition="Exists('..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets')" />

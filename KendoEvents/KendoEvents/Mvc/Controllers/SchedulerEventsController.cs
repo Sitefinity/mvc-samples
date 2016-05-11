@@ -20,7 +20,7 @@ namespace KendoEvents.Mvc.Controllers
     /// The controller for Events Scheduler widget.
     /// </summary>
     [ControllerToolboxItem(Name = "SchedulerEvents_MVC", Title = "Scheduler Events", SectionName = ToolboxesConfig.ContentToolboxSectionName, ModuleName = "Events")]
-    public class SchedulerEventsController : Controller, IContentLocatableView
+    public class SchedulerEventsController : EventController
     {
         /// <summary>
         /// Gets the model.
@@ -29,7 +29,7 @@ namespace KendoEvents.Mvc.Controllers
         /// The model.
         /// </value>
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public virtual IEventModel Model
+        public override IEventModel Model
         {
             get
             {
@@ -38,39 +38,6 @@ namespace KendoEvents.Mvc.Controllers
 
                 return this.model;
             }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the canonical URL tag should be added to the page when the canonical meta tag should be added to the page.
-        /// If the value is not set, the settings from SystemConfig -> ContentLocationsSettings -> DisableCanonicalURLs will be used. 
-        /// </summary>
-        /// <value>The disable canonical URLs.</value>
-        public bool? DisableCanonicalUrlMetaTag
-        {
-            get
-            {
-                return this.disableCanonicalUrlMetaTag;
-            }
-
-            set
-            {
-                this.disableCanonicalUrlMetaTag = value;
-            }
-        }
-
-        /// <summary>
-        /// The default action
-        /// </summary>
-        /// <param name="page">The page.</param>
-        /// <returns></returns>
-        public ActionResult Index(int? page)
-        {
-            var viewModel = this.Model.CreateListViewModel(null, page: page ?? 1);
-
-            if (SystemManager.CurrentHttpContext != null)
-                this.AddCacheDependencies(this.Model.GetKeysOfDependentObjects(viewModel));
-
-            return this.View("List.Scheduler", viewModel);
         }
 
         /// <summary>
@@ -86,28 +53,6 @@ namespace KendoEvents.Mvc.Controllers
             return this.Json(events, JsonRequestBehavior.AllowGet);
         }
 
-        /// <summary>
-        /// Gets the information for all of the content types that a control is able to show.
-        /// </summary>
-        /// <returns>
-        /// List of location info of the content that this control is able to show.
-        /// </returns>
-        [NonAction]
-        public virtual IEnumerable<IContentLocationInfo> GetLocations()
-        {
-            return this.Model.GetLocations();
-        }
-
-        /// <summary>
-        /// Called when a request matches this controller, but no method with the specified action name is found in the controller.
-        /// </summary>
-        /// <param name="actionName">The name of the attempted action.</param>
-        protected override void HandleUnknownAction(string actionName)
-        {
-            this.Index(null).ExecuteResult(this.ControllerContext);
-        }
-
         private SchedulerEventsModel model;
-        private bool? disableCanonicalUrlMetaTag;
     }
 }
