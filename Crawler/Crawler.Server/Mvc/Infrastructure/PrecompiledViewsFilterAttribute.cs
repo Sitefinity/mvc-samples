@@ -28,15 +28,7 @@ namespace Crawler.Server.Mvc.Infrastructure
                 return;
             }
 
-            bool requestContainsCrawlerHeader = filterContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null;
-            if (requestContainsCrawlerHeader)
-            {
-                precompiledViewEngineInstaller.RegisterPrecompiledViewEngine(controller, typeof(PrecompiledViewEngine));
-            }
-            else
-            {
-                precompiledViewEngineInstaller.RemovePrecompiledViewEngine(controller.ViewEngineCollection);
-            }
+            precompiledViewEngineInstaller.RegisterPrecompiledViewEngine(controller, typeof(PrecompiledViewEngine));
 
             base.OnActionExecuting(filterContext);
         }

@@ -60,13 +60,16 @@ namespace Crawler.Server.Mvc.Infrastructure
         protected override bool FileExists(ControllerContext controllerContext, string virtualPath)
         {
             bool isPrecompiled = base.FileExists(controllerContext, virtualPath);
-            if (string.IsNullOrEmpty(virtualPath))
+            if (controllerContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null)
             {
-                return isPrecompiled;
-            }
+                if (string.IsNullOrEmpty(virtualPath))
+                {
+                    return isPrecompiled;
+                }
 
-            var viewInfo = this.GetViewInfo(controllerContext, virtualPath, isPrecompiled);
-            this.RegisterCrawlItem(viewInfo);
+                var viewInfo = this.GetViewInfo(controllerContext, virtualPath, isPrecompiled);
+                this.RegisterCrawlItem(viewInfo);
+            }
 
             return isPrecompiled;
         }
@@ -80,8 +83,11 @@ namespace Crawler.Server.Mvc.Infrastructure
         /// <returns></returns>
         protected override IView CreateView(ControllerContext controllerContext, string viewPath, string masterPath)
         {
-            var viewInfo = this.GetViewInfo(controllerContext, masterPath, true);
-            this.RegisterCrawlItem(viewInfo);
+            if (controllerContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null)
+            {
+                var viewInfo = this.GetViewInfo(controllerContext, masterPath, true);
+                this.RegisterCrawlItem(viewInfo);
+            }
 
             return base.CreateView(controllerContext, viewPath, masterPath);
         }
@@ -94,8 +100,11 @@ namespace Crawler.Server.Mvc.Infrastructure
         /// <returns></returns>
         protected override IView CreatePartialView(ControllerContext controllerContext, string partialPath)
         {
-            var viewInfo = this.GetViewInfo(controllerContext, partialPath, true);
-            this.RegisterCrawlItem(viewInfo);
+            if (controllerContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null)
+            {
+                var viewInfo = this.GetViewInfo(controllerContext, partialPath, true);
+                this.RegisterCrawlItem(viewInfo);
+            }
 
             return base.CreatePartialView(controllerContext, partialPath);
         }
