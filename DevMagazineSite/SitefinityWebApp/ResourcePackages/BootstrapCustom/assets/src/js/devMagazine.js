@@ -40,6 +40,17 @@
 
         endlessPagingHandler(m, $("#news-container"), "#news-container");
     });
+	
+	$('#showMoreEvents').on('click', function (e) {
+        e.preventDefault();
+        var button = $(this).hide(),
+        pageNum = Number(button.attr("data-page")),
+        url = button.attr("data-url"),
+        ajaxLoader = $('#endless-paging').show(),
+        m = url + "/" + (pageNum + 1) + "/";
+
+        endlessPagingHandler(m, $("#events-container"), "#events-container");
+    });
 
     // handle search endless paging
     $('#showMoreResults').on('click', function (e) {
