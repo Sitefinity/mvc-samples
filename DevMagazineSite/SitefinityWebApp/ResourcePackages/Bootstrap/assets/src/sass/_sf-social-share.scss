@@ -9,9 +9,6 @@
 }
 
 .sf-share-button {
-	@extend .sf-pt-xs;
-	@extend .sf-pb-xxs;
-	@extend .sf-pr-xs;
 	padding-left: 2px;
 	display: inline-block;
 	border: $share-button-border-width solid $share-button-border-color;
