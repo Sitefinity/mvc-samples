@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using Crawler.Client.Configurations;
+using Crawler.Server.Mvc.Configurations;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Data;
 
-namespace Crawler.Client
+namespace Crawler.Server
 {
     public class Initializer
     {

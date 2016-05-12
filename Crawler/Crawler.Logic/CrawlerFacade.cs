@@ -5,34 +5,34 @@ using Crawler.Server;
 namespace Crawler.Core
 {
     /// <summary>
-    /// This class provides a facade for requesting Sitefinity pages
+    /// Crawler facade class
     /// </summary>
-    public class PageCrawler
+    public class CrawlerFacade
     {
         /// <summary>
         /// Starts crawling.
         /// </summary>
         public void Start()
         {
-            using (var pageOperator = new PageOperator())
+            using (var pagesService = new MvcPagesService())
             {
-                IEnumerable<string> pageUrls = pageOperator.GetPageUrls();
+                IEnumerable<string> pageUrls = pagesService.GetAllLiveHybridMvcPageUrls();
                 this.RequestPages(pageUrls);
             }
         }
 
         private void RequestPages(IEnumerable<string> pageUrls)
         {
-            foreach (var item in pageUrls)
+            foreach (var pageUrl in pageUrls)
             {
-                if (!string.IsNullOrEmpty(item))
+                if (!string.IsNullOrEmpty(pageUrl))
                 {
-                    this.MakeWebRequest(item, isCrawled: true);
+                    this.CrawlPage(pageUrl);
                 }
             }
         }
 
-        private HttpWebRequest CreateStandardWebRequest(string pageUrl)
+        private HttpWebRequest CreateWebRequest(string pageUrl)
         {
             var webRequest = WebRequest.Create(pageUrl) as HttpWebRequest;
             if (webRequest == null)
@@ -40,21 +40,19 @@ namespace Crawler.Core
                 return null;
             }
 
-            webRequest.Timeout = 120 * 1000; // 120 sec
+            webRequest.Timeout = 2 * 60 * 1000; // 2 minutes
             webRequest.CookieContainer = new CookieContainer();
 
             return webRequest;
         }
 
-        private HttpWebResponse MakeWebRequest(string pageUrl, bool isCrawled = false)
+        private HttpWebResponse CrawlPage(string pageUrl)
         {
-            var webRequest = this.CreateStandardWebRequest(pageUrl);
-            if (isCrawled)
-            {
-                webRequest.Headers.Add(CrawlerRequestConstants.HeaderName, CrawlerRequestConstants.HeaderValue);
-            }
+            var webRequest = this.CreateWebRequest(pageUrl);
+            webRequest.Headers.Add(CrawlerRequestConstants.HeaderName, CrawlerRequestConstants.HeaderValue);
 
             var webResponse = webRequest.GetResponse() as HttpWebResponse;
+
             return webResponse;
         }
     }

@@ -2,7 +2,7 @@
 using System.Web.Routing;
 using Crawler.Server.Mvc.Infrastructure;
 
-namespace Crawler.Client.Configurations
+namespace Crawler.Server.Mvc.Configurations
 {
     /// <summary>
     /// Configuration class.
@@ -16,7 +16,7 @@ namespace Crawler.Client.Configurations
         /// <param name="routeCollection">The route collection.</param>
         public static void RegisterCrawler(GlobalFilterCollection filterCollection, RouteCollection routeCollection)
         {
-            filterCollection.Add(new ViewEngineFilterAttribute());
+            filterCollection.Add(new PrecompiledViewsFilterAttribute());
             RouteCollectionExtensions.MapRoute(routeCollection, "Crawler", "Precompilation/{controller}/{action}/{id}", new { controller = "Crawler", action = "Index", id = 0 });
         }
     }

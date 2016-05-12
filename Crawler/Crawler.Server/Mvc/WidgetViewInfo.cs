@@ -1,4 +1,4 @@
-﻿namespace Crawler.Server.Mvc.Models
+﻿namespace Crawler.Server.Mvc
 {
     /// <summary>
     /// View model for the widget view info

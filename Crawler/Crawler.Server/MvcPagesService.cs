@@ -23,53 +23,53 @@ using Telerik.Sitefinity.Web;
 namespace Crawler.Server
 {
     /// <summary>
-    /// This class provides methods to operate with Sitefinity pages
+    /// This class provides API for getting page information of live pages that contain MVC widgets
     /// </summary>
-    public class PageOperator : IDisposable
+    public class MvcPagesService : IDisposable
     {
-        public PageOperator()
+        public MvcPagesService()
         {
-            this.StashCacheSettings();
+            SystemConfig systemConfig = Config.Get<SystemConfig>();
+            OutputCacheElement cacheSettings = systemConfig.CacheSettings;
+
+            this.SaveCacheSettings(cacheSettings);
         }
 
         /// <summary>
-        /// Gets the page urls...
+        /// Gets the page and widget URLs for all live pages that contain MVC widgets
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> GetPageUrls()
+        public IEnumerable<string> GetAllLiveHybridMvcPageUrls()
         {
+            // Get all live pages containg MVC widgets
             var pageManager = PageManager.GetManager();
-            var pages = this.GetPageInfo(pageManager);
+            var pages = this.GetAllLiveHybridMvcPages(pageManager);
 
             var pageUrls = new HashSet<string>();
-
-            var controllerFactory = ControllerBuilder.Current.GetControllerFactory() as FrontendControllerFactory;
-            if (controllerFactory == null)
-            {
-                return null;
-            }
-
             foreach (PageData page in pages)
             {
                 PageNode pageNode = page.NavigationNode;
 
                 var pageCultures = pageNode.AvailableCultures;
 
+                // Take default page URL in case no cultures are specified
                 string defaultPageUrl = UrlPath.ResolveAbsoluteUrl(pageNode.GetFullUrl());
                 pageUrls.Add(defaultPageUrl);
 
+                // Take all culture defined page URLs
                 foreach (CultureInfo cultureInfo in pageCultures)
                 {
                     string cultureDefinedPageUrl = UrlPath.ResolveAbsoluteUrl(pageNode.GetFullUrl(cultureInfo, fallbackToAnyLanguage: false));
                     pageUrls.Add(cultureDefinedPageUrl);
                 }
 
-                foreach (PageControl control in page.Controls)
+                // Take URL requesting details view for all MVC widgets on the page
+                foreach (PageControl mvcWidget in page.Controls)
                 {
-                    var controlUrl = this.GetPageControlUrl(pageNode.Id, control, controllerFactory);
-                    if (!string.IsNullOrEmpty(controlUrl))
+                    var mvcWidgetUrl = this.GetMvcWidgetDetailsUrl(pageNode.Id, mvcWidget);
+                    if (!string.IsNullOrEmpty(mvcWidgetUrl))
                     {
-                        pageUrls.Add(controlUrl);
+                        pageUrls.Add(mvcWidgetUrl);
                     }
                 }
             }
@@ -77,22 +77,39 @@ namespace Crawler.Server
             return pageUrls;
         }
 
-        private IEnumerable<PageData> GetPageInfo(PageManager pageManager)
+        /// <summary>
+        /// Gets all live pages containing MVC widgets.
+        /// </summary>
+        /// <param name="pageManager">The page manager.</param>
+        /// <returns></returns>
+        public IEnumerable<PageData> GetAllLiveHybridMvcPages(PageManager pageManager)
         {
             IEnumerable<PageData> pages = pageManager
                 .GetPageDataList()
                 .Where(pageData =>
                     pageData.Status == ContentLifecycleStatus.Live &&
                     pageData.Status != ContentLifecycleStatus.Deleted &&
-                    pageData.Controls.Where(objectData => objectData.ObjectType == WidgetWrapperTypeName).Any())
+                    pageData.Controls.Any(objectData => objectData.ObjectType == WidgetWrapperTypeName))
                 .ToList();
 
             return pages;
         }
 
-        private string GetPageControlUrl(Guid navigationNodeId, PageControl control, FrontendControllerFactory controllerFactory)
+        /// <summary>
+        /// Gets the MVC widget URL requesting details view.
+        /// </summary>
+        /// <param name="navigationNodeId">The id of the page navigation node.</param>
+        /// <param name="mvcWidget">The MVC widget.</param>
+        /// <returns></returns>
+        public string GetMvcWidgetDetailsUrl(Guid navigationNodeId, PageControl mvcWidget)
         {
-            string controllerName = control.Properties.FirstOrDefault(p => p.Name == ControllerPropertyName).Value;
+            var controllerFactory = ControllerBuilder.Current.GetControllerFactory() as FrontendControllerFactory;
+            if (controllerFactory == null)
+            {
+                return null;
+            }
+
+            string controllerName = mvcWidget.Properties.FirstOrDefault(p => p.Name == ControllerPropertyName).Value;
             var controllerInfo = ControllerStore.Controllers().FirstOrDefault(c => c.ControllerType.ToString() == controllerName);
             var controllerType = controllerInfo.ControllerType;
 
@@ -107,23 +124,34 @@ namespace Crawler.Server
                 return null;
             }
 
-            var firstItem = this.GetControlItem(modelPropertyInfo, controller);
-            if (firstItem == null)
+            var widgetDataItem = this.GetMvcWidgetDataItem(modelPropertyInfo, controller);
+            if (widgetDataItem == null)
             {
                 return null;
             }
 
-            return HyperLinkHelpers.GetDetailPageUrl(firstItem, navigationNodeId);
+            return HyperLinkHelpers.GetDetailPageUrl(widgetDataItem, navigationNodeId);
         }
 
-        private IDataItem GetControlItem(PropertyInfo modelPropertyInfo, object convertedController)
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            SystemConfig systemConfig = Config.Get<SystemConfig>();
+            OutputCacheElement cacheSettings = systemConfig.CacheSettings;
+
+            this.RestoreCacheSettings(this.cacheSettingsCopy, cacheSettings);
+        }
+
+        private IDataItem GetMvcWidgetDataItem(PropertyInfo modelPropertyInfo, object widgetController)
         {
             if (modelPropertyInfo == null)
             {
                 return null;
             }
 
-            var model = modelPropertyInfo.GetValue(convertedController, null) as ContentModelBase;
+            var model = modelPropertyInfo.GetValue(widgetController, null) as ContentModelBase;
             if (model == null)
             {
                 return null;
@@ -132,37 +160,31 @@ namespace Crawler.Server
             var modelContentType = model.ContentType;
             var manager = ManagerBase.GetMappedManager(modelContentType, null);
 
-            var firstItem = manager.GetItems(modelContentType, null, null, 0, 1).OfType<IDataItem>().FirstOrDefault();
+            int defaultSkip = 0;
+            int defaultTake = 1;
+            var firstItem = manager
+                .GetItems(modelContentType, default(string), default(string), defaultSkip, defaultTake)
+                .OfType<IDataItem>()
+                .FirstOrDefault();
 
             return firstItem as ILocatable;
         }
 
-        private void StashCacheSettings()
+        private void SaveCacheSettings(OutputCacheElement cacheSettings)
         {
-            SystemConfig systemConfig = Config.Get<SystemConfig>();
-            OutputCacheElement cacheSettings = systemConfig.CacheSettings;
-
-            this.SaveCacheSettings(cacheSettings);
+            this.CopyCacheSettings(cacheSettings);
             this.DisableCacheSettings(cacheSettings);
         }
 
-        private void RestoreSettings()
-        {
-            SystemConfig systemConfig = Config.Get<SystemConfig>();
-            OutputCacheElement cacheSettings = systemConfig.CacheSettings;
-
-            this.RestoreCacheSettings(this.currentCacheSettings, cacheSettings);
-        }
-
-        private void SaveCacheSettings(OutputCacheElement cacheSettings)
+        private void CopyCacheSettings(OutputCacheElement cacheSettings)
         {
             if (cacheSettings == null)
             {
-                this.currentCacheSettings = null;
+                this.cacheSettingsCopy = null;
                 return;
             }
 
-            this.currentCacheSettings = new CacheSettingsPoco
+            this.cacheSettingsCopy = new CacheSettingsPOCO
             {
                 EnableClientCache = cacheSettings.EnableClientCache,
                 EnableOutputCache = cacheSettings.EnableOutputCache
@@ -180,33 +202,28 @@ namespace Crawler.Server
             cacheSettings.EnableOutputCache = false;
         }
 
-        private OutputCacheElement RestoreCacheSettings(CacheSettingsPoco cacheSettingsModel, OutputCacheElement cacheSettings)
+        private OutputCacheElement RestoreCacheSettings(CacheSettingsPOCO cacheSettingsCopy, OutputCacheElement cacheSettings)
         {
             if (cacheSettings == null)
             {
                 return null;
             }
 
-            if (cacheSettingsModel == null)
+            if (cacheSettingsCopy == null)
             {
                 return cacheSettings;
             }
 
-            cacheSettings.EnableClientCache = cacheSettingsModel.EnableClientCache;
-            cacheSettings.EnableOutputCache = cacheSettingsModel.EnableOutputCache;
+            cacheSettings.EnableClientCache = cacheSettingsCopy.EnableClientCache;
+            cacheSettings.EnableOutputCache = cacheSettingsCopy.EnableOutputCache;
 
             return cacheSettings;
         }
 
-        private CacheSettingsPoco currentCacheSettings;
+        private CacheSettingsPOCO cacheSettingsCopy;
 
         private const string ModelPropertyName = "Model";
         private const string ControllerPropertyName = "ControllerName";
         private const string WidgetWrapperTypeName = "Telerik.Sitefinity.Mvc.Proxy.MvcControllerProxy";
-
-        public void Dispose()
-        {
-            this.RestoreSettings();
-        }
     }
 }

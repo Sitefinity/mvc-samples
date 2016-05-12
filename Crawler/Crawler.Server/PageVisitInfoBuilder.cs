@@ -1,7 +1,7 @@
-﻿using Crawler.Server.Mvc.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Crawler.Server.Mvc;
 
 namespace Crawler.Server
 {
@@ -20,19 +20,19 @@ namespace Crawler.Server
             viewsInfo = new List<WidgetViewInfo>();
         }
 
-        public static void AddItem(WidgetViewInfo newItem)
+        public static void AddItem(WidgetViewInfo viewInfo)
         {
-            var oldItem = viewsInfo.FirstOrDefault(x => x.ViewName == newItem.ViewName && x.Url == newItem.Url);
-            if (oldItem == null)
+            var existingViewInfo = viewsInfo.FirstOrDefault(x => x.ViewName == viewInfo.ViewName && x.Url == viewInfo.Url);
+            if (existingViewInfo == null)
             {
-                viewsInfo.Add(newItem);
+                viewsInfo.Add(viewInfo);
                 return;
             }
 
-            if (newItem.IsPrecompiled)
+            if (viewInfo.IsPrecompiled)
             {
-                viewsInfo.Remove(oldItem);
-                viewsInfo.Add(newItem);
+                viewsInfo.Remove(existingViewInfo);
+                viewsInfo.Add(viewInfo);
             }
         }
 

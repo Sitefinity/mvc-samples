@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Web;
 using System.Web.UI;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 
@@ -38,5 +37,4 @@ using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ControllerContainer]
-[assembly: PreApplicationStartMethod(typeof(Crawler.Client.Initializer), "Start")]
 [assembly: WebResource("Crawler.Client.Resources.Styles.bootstrap.min.css", "text/css")]

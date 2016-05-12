@@ -3,7 +3,7 @@
     /// <summary>
     /// Model class for Sitefinity cache settings
     /// </summary>
-    public class CacheSettingsPoco
+    internal class CacheSettingsPOCO
     {
         /// <summary>
         /// Gets or sets a value indicating whether output cache is enabled.

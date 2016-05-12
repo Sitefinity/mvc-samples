@@ -143,13 +143,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cache\CacheSettingsPoco.cs" />
+    <Compile Include="Cache\CacheSettingsPOCO.cs" />
+    <Compile Include="Mvc\Configurations\CrawlerConfig.cs" />
     <Compile Include="CrawlerRequestConstants.cs" />
-    <Compile Include="Mvc\Models\WidgetViewInfo.cs" />
+    <Compile Include="Initializer.cs" />
+    <Compile Include="Mvc\Infrastructure\PrecompiledViewEngineManager.cs" />
+    <Compile Include="Mvc\WidgetViewInfo.cs" />
     <Compile Include="PageVisitInfoBuilder.cs" />
-    <Compile Include="PageOperator.cs" />
-    <Compile Include="Mvc\Infrastructure\ExtendedPrecompiledViewEngine.cs" />
-    <Compile Include="Mvc\Infrastructure\ViewEngineFilterAttribute.cs" />
+    <Compile Include="MvcPagesService.cs" />
+    <Compile Include="Mvc\Infrastructure\PrecompiledViewEngine.cs" />
+    <Compile Include="Mvc\Infrastructure\PrecompiledViewsFilterAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -180,7 +180,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageCrawler.cs" />
+    <Compile Include="CrawlerFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
