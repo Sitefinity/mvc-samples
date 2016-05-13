@@ -8,19 +8,32 @@ namespace Crawler.Server
     /// <summary>
     /// This class provides methods for operating with widget views info.
     /// </summary>
-    public static class PageVisitInfoBuilder
+    public static class ViewInfoBuilder
     {
-        public static IEnumerable<WidgetViewInfo> ViewsInfo
+        /// <summary>
+        /// Gets the views information.
+        /// </summary>
+        /// <value>
+        /// The views information.
+        /// </value>
+        public static IEnumerable<ViewInfo> ViewsInfo
         {
             get { return viewsInfo; }
         }
 
+        /// <summary>
+        /// Initializes the view info collection.
+        /// </summary>
         public static void Initialize()
         {
-            viewsInfo = new List<WidgetViewInfo>();
+            viewsInfo = new List<ViewInfo>();
         }
 
-        public static void AddItem(WidgetViewInfo viewInfo)
+        /// <summary>
+        /// Adds view information.
+        /// </summary>
+        /// <param name="viewInfo">The view information.</param>
+        public static void Add(ViewInfo viewInfo)
         {
             var existingViewInfo = viewsInfo.FirstOrDefault(x => x.ViewName == viewInfo.ViewName && x.Url == viewInfo.Url);
             if (existingViewInfo == null)
@@ -36,11 +49,14 @@ namespace Crawler.Server
             }
         }
 
+        /// <summary>
+        /// Clears the view info collection.
+        /// </summary>
         public static void Dispose()
         {
             viewsInfo.Clear();
         }
 
-        private static ICollection<WidgetViewInfo> viewsInfo;
+        private static ICollection<ViewInfo> viewsInfo;
     }
 }

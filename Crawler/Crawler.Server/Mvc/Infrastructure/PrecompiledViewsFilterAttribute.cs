@@ -20,7 +20,7 @@ namespace Crawler.Server.Mvc.Infrastructure
         /// <param name="filterContext">The filter context.</param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var precompiledViewEngineInstaller = new PrecompiledViewEngineManager();
+            var precompiledViewEngineManager = new PrecompiledViewEngineManager();
 
             Controller controller = filterContext.Controller as Controller;
             if (controller == null)
@@ -28,7 +28,7 @@ namespace Crawler.Server.Mvc.Infrastructure
                 return;
             }
 
-            precompiledViewEngineInstaller.RegisterPrecompiledViewEngine(controller, typeof(PrecompiledViewEngine));
+            precompiledViewEngineManager.RegisterPrecompiledViewEngine(controller, typeof(PrecompiledViewEngine));
 
             base.OnActionExecuting(filterContext);
         }

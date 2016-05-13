@@ -148,8 +148,8 @@
     <Compile Include="CrawlerRequestConstants.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="Mvc\Infrastructure\PrecompiledViewEngineManager.cs" />
-    <Compile Include="Mvc\WidgetViewInfo.cs" />
-    <Compile Include="PageVisitInfoBuilder.cs" />
+    <Compile Include="Mvc\ViewInfo.cs" />
+    <Compile Include="ViewInfoBuilder.cs" />
     <Compile Include="MvcPagesService.cs" />
     <Compile Include="Mvc\Infrastructure\PrecompiledViewEngine.cs" />
     <Compile Include="Mvc\Infrastructure\PrecompiledViewsFilterAttribute.cs" />

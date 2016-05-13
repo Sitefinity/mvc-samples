@@ -26,16 +26,16 @@ namespace Crawler.Core
             {
                 // Register start time and initialize view info builder
                 DateTime startTime = DateTime.UtcNow;
-                PageVisitInfoBuilder.Initialize();
+                ViewInfoBuilder.Initialize();
 
                 // Visit pages and collect views information
                 IEnumerable<string> pageUrls = pagesService.GetAllLiveHybridMvcPageUrls();
                 this.RequestPages(pageUrls);
-                IEnumerable<WidgetViewInfo> viewsInfo = this.GetViewsInfo();
+                IEnumerable<ViewInfo> viewsInfo = this.GetViewsInfo();
 
                 // Register end time and release collected views info
                 DateTime endTime = DateTime.UtcNow;
-                PageVisitInfoBuilder.Dispose();
+                ViewInfoBuilder.Dispose();
 
                 var visitInfo = new CrawlerVisitDTO()
                 {
@@ -62,14 +62,14 @@ namespace Crawler.Core
             this.logger.SaveToFile(new { StartTime = visitInfo.StartTime, PageVisitInfo = visitInfo.ViewsInfo, EndTime = visitInfo.EndTime }, fileName);
         }
 
-        private IEnumerable<WidgetViewInfo> GetViewsInfo()
+        private IEnumerable<ViewInfo> GetViewsInfo()
         {
-            if (PageVisitInfoBuilder.ViewsInfo == null)
+            if (ViewInfoBuilder.ViewsInfo == null)
             {
                 return null;
             }
 
-            return new List<WidgetViewInfo>(PageVisitInfoBuilder.ViewsInfo);
+            return new List<ViewInfo>(ViewInfoBuilder.ViewsInfo);
         }
 
         private void RequestPages(IEnumerable<string> pageUrls)

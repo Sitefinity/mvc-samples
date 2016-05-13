@@ -68,7 +68,7 @@ namespace Crawler.Server.Mvc.Infrastructure
                 }
 
                 var viewInfo = this.GetViewInfo(controllerContext, virtualPath, isPrecompiled);
-                this.RegisterCrawlItem(viewInfo);
+                this.RegisterViewInfo(viewInfo);
             }
 
             return isPrecompiled;
@@ -86,7 +86,7 @@ namespace Crawler.Server.Mvc.Infrastructure
             if (controllerContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null)
             {
                 var viewInfo = this.GetViewInfo(controllerContext, masterPath, true);
-                this.RegisterCrawlItem(viewInfo);
+                this.RegisterViewInfo(viewInfo);
             }
 
             return base.CreateView(controllerContext, viewPath, masterPath);
@@ -103,13 +103,13 @@ namespace Crawler.Server.Mvc.Infrastructure
             if (controllerContext.HttpContext.Request.Headers.GetValues(CrawlerRequestConstants.HeaderName) != null)
             {
                 var viewInfo = this.GetViewInfo(controllerContext, partialPath, true);
-                this.RegisterCrawlItem(viewInfo);
+                this.RegisterViewInfo(viewInfo);
             }
 
             return base.CreatePartialView(controllerContext, partialPath);
         }
 
-        private void RegisterCrawlItem(WidgetViewInfo viewInfo)
+        private void RegisterViewInfo(ViewInfo viewInfo)
         {
             var viewName = viewInfo.ViewName.Split(new[] { PathSeparatorChar }).Last();
             if (viewName.EndsWith(MobileRazorViewSuffix) || string.IsNullOrEmpty(viewName))
@@ -117,7 +117,7 @@ namespace Crawler.Server.Mvc.Infrastructure
                 return;
             }
 
-            PageVisitInfoBuilder.AddItem(viewInfo);
+            ViewInfoBuilder.Add(viewInfo);
         }
 
         private string GetViewNameFromVirtualPath(string virtualPath)
@@ -125,12 +125,12 @@ namespace Crawler.Server.Mvc.Infrastructure
             return virtualPath.Split(new[] { PathSeparatorChar }).Last();
         }
 
-        private WidgetViewInfo GetViewInfo(ControllerContext controllerContext, string virtualPath, bool isPrecompiled)
+        private ViewInfo GetViewInfo(ControllerContext controllerContext, string virtualPath, bool isPrecompiled)
         {
             string viewName = this.GetViewNameFromVirtualPath(virtualPath);
             string widgetControllerName = controllerContext.Controller.GetType().Name;
             string widgetName = widgetControllerName.Replace(ControllerSuffix, string.Empty);
-            WidgetViewInfo viewInfo = new WidgetViewInfo()
+            ViewInfo info = new ViewInfo()
             {
                 WidgetName = widgetName,
                 Url = controllerContext.HttpContext.Request.Url.AbsoluteUri,
@@ -139,7 +139,7 @@ namespace Crawler.Server.Mvc.Infrastructure
                 IsPrecompiled = isPrecompiled
             };
 
-            return viewInfo;
+            return info;
         }
 
         private const char PathSeparatorChar = '/';

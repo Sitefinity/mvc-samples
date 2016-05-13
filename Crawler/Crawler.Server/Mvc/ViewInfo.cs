@@ -3,7 +3,7 @@
     /// <summary>
     /// View model for the widget view info
     /// </summary>
-    public class WidgetViewInfo
+    public class ViewInfo
     {
         /// <summary>
         /// Gets or sets the name of the widget.

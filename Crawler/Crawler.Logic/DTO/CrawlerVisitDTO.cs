@@ -13,6 +13,6 @@ namespace Crawler.Core.DTO
 
         public DateTime EndTime { get; set; }
 
-        public IEnumerable<WidgetViewInfo> ViewsInfo { get; set; }
+        public IEnumerable<ViewInfo> ViewsInfo { get; set; }
     }
 }
