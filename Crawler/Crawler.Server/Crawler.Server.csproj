@@ -100,10 +100,10 @@
       <HintPath>..\packages\Telerik.Sitefinity.Core.9.0.6000.0\lib\net40\Telerik.Sitefinity.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.5.490.0\lib\net45\Telerik.Sitefinity.Frontend.dll</HintPath>
+      <HintPath>..\ReferenceAssemblies\Telerik.Sitefinity.Frontend.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.Data">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.5.490.0\lib\net45\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+      <HintPath>..\ReferenceAssemblies\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Model">
       <HintPath>..\packages\Telerik.Sitefinity.Core.9.0.6000.0\lib\net40\Telerik.Sitefinity.Model.dll</HintPath>

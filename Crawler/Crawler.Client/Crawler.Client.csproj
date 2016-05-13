@@ -36,10 +36,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -88,10 +84,10 @@
       <HintPath>..\packages\Telerik.Sitefinity.Core.9.0.6000.0\lib\net40\Telerik.Sitefinity.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.5.490.0\lib\net45\Telerik.Sitefinity.Frontend.dll</HintPath>
+      <HintPath>..\ReferenceAssemblies\Telerik.Sitefinity.Frontend.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Frontend.Data">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.1.5.490.0\lib\net45\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+      <HintPath>..\ReferenceAssemblies\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Mvc">
       <HintPath>..\packages\Telerik.Sitefinity.Mvc.1.5.490.0\lib\net45\Telerik.Sitefinity.Mvc.dll</HintPath>
@@ -102,9 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
-    <Compile Include="JsonLogger.cs" />
     <Compile Include="Mvc\Controllers\CrawlerController.cs" />
-    <Compile Include="Mvc\Models\PageVisitInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +116,9 @@
       <Project>{656d076f-9077-44b5-8c3c-040e5e01e1e7}</Project>
       <Name>Crawler.Server</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mvc\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

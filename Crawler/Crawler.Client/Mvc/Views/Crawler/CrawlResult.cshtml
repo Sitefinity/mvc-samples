@@ -1,4 +1,4 @@
-﻿@model MvcCrawler.Client.Mvc.Models.PageVisitInfo
+﻿@model Crawler.Core.DTO.CrawlerVisitDTO
 
 <div>
     <hr />
@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.CrawlItems)
+            @foreach (var item in Model.ViewsInfo)
             {
                 <tr>
                     <td>@item.WidgetName</td>

@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using Crawler.Server;
+using System;
+using Crawler.Server.Mvc;
+using Crawler.Core.DTO;
 
 namespace Crawler.Core
 {
@@ -9,16 +12,64 @@ namespace Crawler.Core
     /// </summary>
     public class CrawlerFacade
     {
+        public CrawlerFacade()
+        {
+            this.logger = new JsonLogger();
+        }
+
         /// <summary>
-        /// Starts crawling.
+        /// Visits pages and collects visit info
         /// </summary>
-        public void Start()
+        public CrawlerVisitDTO Run(bool saveVisitInfoToFile = true)
         {
             using (var pagesService = new MvcPagesService())
             {
+                // Register start time and initialize view info builder
+                DateTime startTime = DateTime.UtcNow;
+                PageVisitInfoBuilder.Initialize();
+
+                // Visit pages and collect views information
                 IEnumerable<string> pageUrls = pagesService.GetAllLiveHybridMvcPageUrls();
                 this.RequestPages(pageUrls);
+                IEnumerable<WidgetViewInfo> viewsInfo = this.GetViewsInfo();
+
+                // Register end time and release collected views info
+                DateTime endTime = DateTime.UtcNow;
+                PageVisitInfoBuilder.Dispose();
+
+                var visitInfo = new CrawlerVisitDTO()
+                {
+                    StartTime = startTime,
+                    EndTime = endTime,
+                    ViewsInfo = viewsInfo
+                };
+
+                if (saveVisitInfoToFile)
+                {
+                    this.SaveVisitInfoToFile(visitInfo, FileName);
+                }
+
+                return visitInfo;
             }
+        }
+
+        /// <summary>
+        /// Saves the crawler visit information to file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        public void SaveVisitInfoToFile(CrawlerVisitDTO visitInfo, string fileName)
+        {
+            this.logger.SaveToFile(new { StartTime = visitInfo.StartTime, PageVisitInfo = visitInfo.ViewsInfo, EndTime = visitInfo.EndTime }, fileName);
+        }
+
+        private IEnumerable<WidgetViewInfo> GetViewsInfo()
+        {
+            if (PageVisitInfoBuilder.ViewsInfo == null)
+            {
+                return null;
+            }
+
+            return new List<WidgetViewInfo>(PageVisitInfoBuilder.ViewsInfo);
         }
 
         private void RequestPages(IEnumerable<string> pageUrls)
@@ -55,5 +106,8 @@ namespace Crawler.Core
 
             return webResponse;
         }
+
+        private readonly JsonLogger logger;
+        private const string FileName = "PrecompiledViewsUsage.json";
     }
 }

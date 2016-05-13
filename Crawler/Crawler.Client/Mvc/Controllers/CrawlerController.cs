@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Crawler.Client.Mvc.Models;
+using Crawler.Core;
 
 namespace Crawler.Client.Mvc.Controllers
 {
@@ -9,6 +9,11 @@ namespace Crawler.Client.Mvc.Controllers
     /// <seealso cref="System.Web.Mvc.Controller" />
     public class CrawlerController : Controller
     {
+        public CrawlerController()
+        {
+            this.crawler = new CrawlerFacade();
+        }
+
         /// <summary>
         /// Renders the main view.
         /// </summary>
@@ -25,9 +30,10 @@ namespace Crawler.Client.Mvc.Controllers
         /// <returns>The partial view.</returns>
         public ActionResult Crawl()
         {
-            var pageVisitInfo = new PageVisitInfo();
-            pageVisitInfo.CollectInfo();
-            return this.PartialView("CrawlResult", pageVisitInfo);
+            var visitInfo = this.crawler.Run();
+            return this.PartialView("CrawlResult", visitInfo);
         }
+
+        private readonly CrawlerFacade crawler;
     }
 }
