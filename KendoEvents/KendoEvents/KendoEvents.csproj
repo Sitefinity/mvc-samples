@@ -261,11 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\List.Scheduler.cshtml" />
-    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\DesignerView.Simple.cshtml" />
-    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\DesignerView.Simple.json" />
-    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\Detail.EventDetails.cshtml" />
-    <EmbeddedResource Include="Mvc\Views\SchedulerEvents\List.EventsList.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

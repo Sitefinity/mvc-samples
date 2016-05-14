@@ -1,8 +1,10 @@
 ﻿@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
 
+@using ServiceStack.Text;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Web.DataResolving;
+@using Telerik.Sitefinity.Frontend.Events.Mvc.Controllers;
 
 @Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css", "head")
 @Html.StyleSheet("http://kendo.cdn.telerik.com/2016.1.112/styles/kendo.blueopal.min.css", "head")
@@ -22,12 +24,12 @@
             batch: true, // Enable batch updates
             transport: {
                 read: {
-                    url: '@Url.Content("/web-interface/events")',
+                    url: '@Url.Content("~/web-interface/events")',
                     dataType: "json"
                 },
                 parameterMap: function (options, operation) {
-                    if (operation !== "read" && options.models) {
-                        return { models: kendo.stringify(options.models) };
+                    if (operation === "read") {
+                        return @Html.Raw(JsonSerializer.SerializeToString(((EventController)Html.ViewContext.Controller).Model));
                     }
                 }
             },
