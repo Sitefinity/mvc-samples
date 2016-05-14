@@ -108,7 +108,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Crawler.Logic\Crawler.Core.csproj">
+    <ProjectReference Include="..\Crawler.Core\Crawler.Core.csproj">
       <Project>{dc668b5d-ef44-443c-887f-3f0d5b775f01}</Project>
       <Name>Crawler.Core</Name>
     </ProjectReference>

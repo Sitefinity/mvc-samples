@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler.Core", "Crawler.Logic\Crawler.Core.csproj", "{DC668B5D-EF44-443C-887F-3F0D5B775F01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler.Core", "Crawler.Core\Crawler.Core.csproj", "{DC668B5D-EF44-443C-887F-3F0D5B775F01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{84F34FD1-DA7A-4A72-AE19-FBB0C4DDF6C4}"
 	ProjectSection(SolutionItems) = preProject
