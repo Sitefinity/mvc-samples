@@ -5,17 +5,17 @@ using System.Web.Mvc;
 namespace Crawler.Server.Mvc.Infrastructure
 {
     /// <summary>
-    /// Filter that registers the extended precompiled view engine when that is required. 
+    /// Filter that registers the precompiled view engine. 
     /// </summary>
     /// <seealso cref="System.Web.Mvc.ActionFilterAttribute" />
-    internal class PrecompiledViewsFilterAttribute : ActionFilterAttribute
+    internal class PrecompiledViewFilterAttribute : ActionFilterAttribute
     {
-        public PrecompiledViewsFilterAttribute()
+        public PrecompiledViewFilterAttribute()
         {
         }
 
         /// <summary>
-        /// Registers the precompiled view engine if the request contains the crawler header.
+        /// Registers the precompiled view engine.
         /// </summary>
         /// <param name="filterContext">The filter context.</param>
         public override void OnActionExecuting(ActionExecutingContext filterContext)

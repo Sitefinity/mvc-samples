@@ -1,7 +1,7 @@
 ﻿namespace Crawler.Server.Mvc
 {
     /// <summary>
-    /// View model for the widget view info
+    /// Class containing view information.
     /// </summary>
     public class ViewInfo
     {

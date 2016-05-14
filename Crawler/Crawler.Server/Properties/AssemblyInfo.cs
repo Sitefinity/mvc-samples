@@ -34,4 +34,4 @@ using System.Web;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: PreApplicationStartMethod(typeof(Crawler.Server.Initializer), "Start")]
+[assembly: PreApplicationStartMethod(typeof(Crawler.Server.Initializer), "Initialize")]

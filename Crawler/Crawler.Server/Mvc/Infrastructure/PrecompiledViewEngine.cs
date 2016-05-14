@@ -111,6 +111,7 @@ namespace Crawler.Server.Mvc.Infrastructure
 
         private void RegisterViewInfo(ViewInfo viewInfo)
         {
+            // Checks whether the view information is not a mobile version and registers it
             var viewName = viewInfo.ViewName.Split(new[] { PathSeparatorChar }).Last();
             if (viewName.EndsWith(MobileRazorViewSuffix) || string.IsNullOrEmpty(viewName))
             {
@@ -127,6 +128,7 @@ namespace Crawler.Server.Mvc.Infrastructure
 
         private ViewInfo GetViewInfo(ControllerContext controllerContext, string virtualPath, bool isPrecompiled)
         {
+            // Gets view information from the controller context
             string viewName = this.GetViewNameFromVirtualPath(virtualPath);
             string widgetControllerName = controllerContext.Controller.GetType().Name;
             string widgetName = widgetControllerName.Replace(ControllerSuffix, string.Empty);

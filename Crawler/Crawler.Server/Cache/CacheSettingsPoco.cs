@@ -1,7 +1,7 @@
 ﻿namespace Crawler.Server.Cache
 {
     /// <summary>
-    /// Model class for Sitefinity cache settings
+    /// Class for holding information regarding Sitefinity cache settings
     /// </summary>
     internal class CacheSettingsPOCO
     {
