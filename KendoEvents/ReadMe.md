@@ -9,7 +9,8 @@ The following sample demonstrates how to add a calendar view using [Kendo Schedu
 ### Using the Calendar view of the Events widget
 1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
 1. Open **KendoEvents** project in Visual Studion.
+1. Check if version of Feather nugets referenced in KendoEvents project is the same as the version that you have in your project. It they are different make sure to upgrade the KendoEvents project to your version.
 1. Build the **KendoEvents** project. 
 1. Reference the **KendoEvents.dll** from your Sitefinity’s web application.
-1. Copy `KendoEvents/Mvc/Views/Event/List.Scheduler.cshtml` to `~/Mvc/Views/Event/List.Scheduler.cshtml`.
+1. Copy `KendoEvents/Mvc/Views/Event/List.Scheduler.cshtml` to your web site root path `~/Mvc/Views/Event/List.Scheduler.cshtml`.
 1. **Scheduler** is now an available option to choose a view in list settings of any Event widget instance.
