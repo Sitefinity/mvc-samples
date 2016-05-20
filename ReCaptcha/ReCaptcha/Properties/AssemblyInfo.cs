@@ -1,4 +1,4 @@
-﻿using ReCaptcha;
+using ReCaptcha;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
@@ -11,7 +11,7 @@ using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ReCaptcha")]
-[assembly: AssemblyCopyright("Copyright © 2005-2016 Telerik AD")]
+[assembly: AssemblyCopyright("Copyright � 2005-2016 Telerik AD")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -38,4 +38,3 @@ using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 
 [assembly: ControllerContainer(typeof(Initializer), "Initialize")]
 
-[assembly: Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes.ResourcePackage]
