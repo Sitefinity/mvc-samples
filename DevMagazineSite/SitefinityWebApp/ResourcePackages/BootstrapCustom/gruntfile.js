@@ -24,6 +24,7 @@ module.exports = function (grunt) {
             sass: '**/*.{scss,sass}',
         },
         dist: {
+
             path: 'assets/dist'
         },
 
