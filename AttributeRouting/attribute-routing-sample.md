@@ -23,7 +23,7 @@ make sure that the BooksWidget project is selected as default project in the pac
 ```
    Install-Package Telerik.Sitefinity.Core
    Install-Package Telerik.Sitefinity.Mvc
-   Install-Package Telerik.Sitefefinity.Frontend
+   Install-Package Telerik.Sitefefinity.Feather.Core
 ```
 
 * Modify the `AssemblyInfo.cs` of the **BooksWidget** by adding the following snippet:
