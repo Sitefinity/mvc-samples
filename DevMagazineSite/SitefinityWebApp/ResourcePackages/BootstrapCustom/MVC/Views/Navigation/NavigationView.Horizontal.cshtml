@@ -48,6 +48,10 @@
             </ul>
         </li>
     }
+    else if (@node.Title == "Events" || @node.Title == "Issues")
+    {
+        <li class="@GetClass(node) pull-right"><a href="@node.Url" target="@node.LinkTarget">@node.Title</a></li>
+    }
     else
     {
         <li class="@GetClass(node)"><a href="@node.Url" target="@node.LinkTarget">@node.Title</a></li>

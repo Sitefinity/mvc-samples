@@ -29,6 +29,7 @@
 
             @{
                 var cover = item.RelatedItem("IssueCover").GetDataItem<Image>();
+                var defaultArticleImagePath = @"/images/default-source/issue-covers/sampleimage3.png";
                 var document = item.RelatedItem("IssueDocument").GetDataItem<Document>();
             }
 
@@ -48,7 +49,9 @@
                 <div class="col-md-8">
                     <a href="@Html.GetItemDefaultUrl(featuredArticle.DataItem)">
                         @if (featuredArticle.RelatedItem("Image") != null){
-                            Html.RenderImage(featuredArticle.RelatedItem("Image").GetDataItem<Image>(), "", "198", "780");
+                            @Html.RenderImage(featuredArticle.RelatedItem("Image").GetDataItem<Image>(), "", "198", "780");
+                        } else {
+                          <img src="@defaultArticleImagePath" alt="article-image" />
                         }
                     </a>
                 </div>

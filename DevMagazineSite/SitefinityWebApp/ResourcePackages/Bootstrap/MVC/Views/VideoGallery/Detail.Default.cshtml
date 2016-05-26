@@ -21,7 +21,7 @@
 
     @if (ViewBag.ItemIndex != null)
     {
-        <div class="sf-Gallery-navigation m-bottom-lg text-center">
+        <div class="sf-Gallery-navigation text-center">
             @{
                 var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
                 var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;

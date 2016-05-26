@@ -6,7 +6,7 @@
     k-stylesheets='[getPackageResourceUrl("/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")]',
     k-tools='[
     "formatting",
-    "bold", "italic", "underline", "trikethrough",
+    "bold", "italic", "underline",
     "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
     "insertUnorderedList", "insertOrderedList", "indent", "outdent",
     {
