@@ -1,0 +1,15 @@
+.sf-event-title {
+	display: inline-block;
+}
+
+.sf-event-type {
+	display: inline-block;
+	@extend .sf-ml-s; //10px
+	width: $event-type-width;
+	height: $event-type-height;
+	border-radius: $event-type-border-radius;
+}
+
+.sf-event-addToList {
+	display: inline-block;
+}

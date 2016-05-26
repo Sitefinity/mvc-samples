@@ -39,6 +39,13 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
+			css: {
+				files: [{
+					src: [
+						'<%= dist.path %>/**/*.css',
+					]
+				}]
+			},
 			images: {
 				files: [{
 					src: [
@@ -52,9 +59,14 @@ module.exports = function (grunt) {
 			options: {
 				outputStyle: 'nested'
 			},
-			dist: {
+			sitefinityBootstrap: {
 				files: {
-					'<%= dist.path %>/css/styles.css': '<%= src.path %>/sass/styles.sass'
+					'<%= dist.path %>/css/sitefinity.bootstrap.css': '<%= src.path %>/sass/sitefinity.bootstrap.scss'
+				}
+			},
+			sitefinity: {
+				files: {
+					'<%= dist.path %>/css/sitefinity.css': '<%= src.path %>/sass/sitefinity.scss'
 				}
 			}
 		},
@@ -100,9 +112,10 @@ module.exports = function (grunt) {
 			minify: {
 				expand: true,
 				cwd: '<%= dist.path %>/css/',
-				src: ['*.css', '!*.min.css'],
+				src: ['*.css','!*.min.css'],
 				dest: '<%= dist.path %>/css/',
-				ext: '.min.css'
+				ext: '.min.css',
+				extDot: 'last'
 			}
 		},
 
@@ -147,7 +160,7 @@ module.exports = function (grunt) {
 			all: {
 				src: 'assets/src/images/sprite/*.png',
 				dest: 'assets/src/images/sprite.png',
-				destCss: 'assets/src/sass/_sf-sprite.sass',
+				destCss: 'assets/src/sass/_sf-sprite.scss',
 				cssTemplate: 'assets/src/sass/sf-sprite.mustache'
 			}
 		},
@@ -158,7 +171,7 @@ module.exports = function (grunt) {
 			},
 			styles: {
 				files: ['<%= src.path %>/**/*.{scss,sass}'],
-				tasks: ['sass:dist', 'cssmin']
+				tasks: ['sass:sitefinityBootstrap', 'cssmin']
 			},
 			images: {
 				files: ['<%= src.path %>/**/*.{png,jpg,gif,jpeg}'],
@@ -189,7 +202,17 @@ module.exports = function (grunt) {
 	// Runs once
 	grunt.registerTask('build', [
 		'newer:sprite',
-		'sass:dist',
+		'sass:sitefinityBootstrap',
+		'cssmin',
+		'uglify:dist',
+		'newer:imagemin'
+	]);
+
+	// task that generates Sitefinity styles without bootstrap sources
+	grunt.registerTask('sitefinity', [
+		'clean:css',
+		'newer:sprite',
+		'sass:sitefinity',
 		'cssmin',
 		'uglify:dist',
 		'newer:imagemin'
@@ -197,7 +220,7 @@ module.exports = function (grunt) {
 
 	// default task runs csslint once on startup on documentation's css
 	grunt.registerTask('default', [
-		// 'clean:all',
+		'clean:css',
 		'build',
 		'concurrent:dev'
 	]);

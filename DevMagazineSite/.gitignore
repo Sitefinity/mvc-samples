@@ -191,4 +191,4 @@ OauthExternalAuthentication/obj/Debug/DesignTimeResolveAssemblyReferencesInput.c
 OauthExternalAuthentication/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 
 # Ignore search indexes and Data configuration Uncoment if you want to ignore it
-# **/App_Data/Sitefinity/Search/
+**/App_Data/Sitefinity/Search/

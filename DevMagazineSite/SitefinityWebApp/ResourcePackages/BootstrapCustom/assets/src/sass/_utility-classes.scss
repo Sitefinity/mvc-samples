@@ -18,5 +18,7 @@
 }
 
 // Example usage
-@include create-util-class("mt", "margin-top", 0, 10, 10);
-@include create-util-class("mb", "margin-bottom", 0, 10, 10);
+@include create-util-class("mt", "margin-top", -5, 10, 10);
+@include create-util-class("mb", "margin-bottom", -5, 10, 10);
+@include create-util-class("pt", "padding-top", 0, 10, 10);
+@include create-util-class("pb", "padding-bottom", 0, 10, 10);

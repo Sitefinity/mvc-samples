@@ -1,0 +1,16 @@
+.sf-site-selector {
+	a, span, strong {
+		@extend .sf-pt-xs; //5px
+		@extend .sf-pb-xs; //5px
+		@extend .sf-pl-s; //10px
+		@extend .sf-pr-s; //10px
+		display: inline-block;
+		font-size: $site-selector-font-size;
+		border-radius: $site-selector-border-radius;
+		
+		&.selected {
+			background-color: $site-selector--selected-background;
+			color: $site-selector--selected-color;
+		}
+	}
+}
