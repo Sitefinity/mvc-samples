@@ -7,7 +7,7 @@
 <div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
     <h3 class="sf-event-title">
         <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
-        
+
     </h3>
     <span class="sf-event-type" style="background:@Model.Item.EventCalendarColour()"></span>
 
@@ -38,7 +38,7 @@
             }
         </address>
     }
-    
+
     <div class="text-muted sf-mb-m">
         @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactName))
         {
@@ -57,7 +57,7 @@
             @Model.Item.Fields.ContactCell
             <br>
         }
-        
+
         @if (!string.IsNullOrEmpty(Model.Item.Fields.ContactEmail))
         {
             <address class="sf-mb-xxs"><a href="mailto:@(Model.Item.Fields.ContactEmail)" target="_blank">@Model.Item.Fields.ContactEmail</a></address>
@@ -71,13 +71,13 @@
     </div>
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Location))
-    {        
+    {
         <p class="text-muted"> @*How to find us field*@
         @Model.Item.Fields.Location</p>
     }
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Description))
-    {        
+    {
         <p class="text-muted">
             @Model.Item.Fields.Description
         </p>
@@ -101,15 +101,15 @@
     </div>
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Summary))
-    {        
+    {
         <p class="text-muted" @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</p>
     }
 
     @if (!string.IsNullOrEmpty(Model.Item.Fields.Content))
-    {        
+    {
         <p @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</p>
     }
-    
+
     @if (Model.EnableSocialSharing)
     {
         @Html.SocialShareOptions()
