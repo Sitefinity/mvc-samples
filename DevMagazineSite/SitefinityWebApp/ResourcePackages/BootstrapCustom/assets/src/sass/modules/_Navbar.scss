@@ -44,6 +44,7 @@
   }
 
   .navbar-brand {
+    font-weight: bold;
   	padding-top: 38px;
   	padding-bottom: 37px;
     color: #fff;
@@ -57,7 +58,6 @@
 
     &:hover,
     &:focus {
-      background-color: rgba(0, 0, 0, .15);
       color: #fff;
     }
   }

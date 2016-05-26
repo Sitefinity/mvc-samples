@@ -40,7 +40,7 @@
 
         endlessPagingHandler(m, $("#news-container"), "#news-container");
     });
-	
+
 	$('#showMoreEvents').on('click', function (e) {
         e.preventDefault();
         var button = $(this).hide(),
@@ -82,7 +82,7 @@
       var $searchField = $(".js-search-field")
 
       if ($searchTerm.length > 0) {
-        $searchField.focus().val($searchTerm.html()); 
+        $searchField.focus().val($searchTerm.html());
       }
     }
 
