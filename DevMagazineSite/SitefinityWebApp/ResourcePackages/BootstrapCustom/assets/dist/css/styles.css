@@ -5075,7 +5075,6 @@ hr {
 
 .glyph-bordered {
   border: .2em solid;
-  border-color: inherit;
   border-radius: 50%;
   padding: .4em;
   font-size: .8em; }
@@ -5087,8 +5086,8 @@ hr {
   display: inline-block;
   margin-left: -1px;
   width: 15px;
-  height: 14px;
-  line-height: 15px; }
+  height: 15px;
+  line-height: 18px; }
 
 ul.sf-autocomplete {
   position: absolute;
