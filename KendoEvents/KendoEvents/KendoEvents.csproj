@@ -254,13 +254,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvc\Controllers\SchedulerEventsController.cs" />
+    <Compile Include="Mvc\Models\CalendarViewModel.cs" />
     <Compile Include="Mvc\Models\SchedulerEventsModel.cs" />
     <Compile Include="Mvc\Models\SchedulerEventViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets" Condition="Exists('..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets')" />

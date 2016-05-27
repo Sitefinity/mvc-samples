@@ -19,5 +19,18 @@ namespace KendoEvents.Mvc.Controllers
 
             return this.Json(events, JsonRequestBehavior.AllowGet);
         }
+
+        /// <summary>
+        /// Gets the calendars.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        [Route("web-interface/calendars/")]
+        public ActionResult GetCalendars(SchedulerEventsModel model)
+        {
+            var calendars = model.GetCalendars();
+
+            return this.Json(calendars, JsonRequestBehavior.AllowGet);
+        }
     }
 }

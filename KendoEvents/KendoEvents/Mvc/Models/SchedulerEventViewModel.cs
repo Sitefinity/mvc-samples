@@ -23,9 +23,11 @@ namespace KendoEvents.Mvc.Models
             this.Title = item.Title;
             this.Description = item.Description;
             this.Start = item.StartDate;
-            this.End = item.EndDate ?? DateTime.MaxValue;
-            this.RecurrenceID = item.Event.Id;
+            this.End = item.EndDate != null ? (item.Event.AllDayEvent ? item.EndDate.Value.AddDays(-1) : item.EndDate.Value) : DateTime.MaxValue;
+            this.RecurrenceID = item.IsRecurrent ? item.Event.Id : (Guid?)null;
             this.IsAllDay = item.Event.AllDayEvent;
+            this.CalendarId = item.Event.ParentId;
+            this.Color = item.Event.Parent.Color;
         }
 
         /// <summary>
@@ -136,6 +138,22 @@ namespace KendoEvents.Mvc.Models
         ///   <c>true</c> if [is all day]; otherwise, <c>false</c>.
         /// </value>
         public bool IsAllDay { get; set; }
+
+        /// <summary>
+        /// Gets or sets the calendar identifier.
+        /// </summary>
+        /// <value>
+        /// The calendar identifier.
+        /// </value>
+        public Guid CalendarId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the color.
+        /// </summary>
+        /// <value>
+        /// The color.
+        /// </value>
+        public string Color { get; set; }
 
         private DateTime start;
         private DateTime end;

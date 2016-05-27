@@ -30,5 +30,18 @@ namespace KendoEvents.Mvc.Models
 
             return schedulerEvents.ToList();
         }
+
+        /// <summary>
+        /// Gets the calendars.
+        /// </summary>
+        /// <returns></returns>
+        public IList<CalendarViewModel> GetCalendars()
+        {
+            var manager = (EventsManager)this.GetManager();
+            var allCalendars = manager.GetCalendars();
+            var calendars = allCalendars.Select(e => new CalendarViewModel(e));
+
+            return calendars.ToList();
+        }
     }
 }

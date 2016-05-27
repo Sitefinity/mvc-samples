@@ -48,10 +48,39 @@
                         recurrenceId: { from: "RecurrenceID" },
                         recurrenceRule: { from: "RecurrenceRule" },
                         recurrenceException: { from: "RecurrenceException" },
-                        isAllDay: { type: "boolean", from: "IsAllDay" }
+                        isAllDay: { type: "boolean", from: "IsAllDay" },
+						calendarId: { from: "CalendarId", defaultValue: '045b2da5-a247-6ea2-811c-ff0000a3df5c'}
                     }
                 }
             }
-        }
+        },
+		resources: [
+            {
+                field: "calendarId",
+				dataValueField: "calendarId",
+				dataSource: {
+					transport: {
+						read: {
+							url: '@Url.Content("~/web-interface/calendars")',
+							dataType: "json"
+						},
+						parameterMap: function (options, operation) {
+							if (operation === "read") {
+								return @Html.Raw(JsonSerializer.SerializeToString(((EventController)Html.ViewContext.Controller).Model));
+							}
+						}
+					},
+					schema: {
+						model: {
+							id: "CalendarId", // The "id" of the calendar is the "CalendarId" field
+							fields: {
+								calendarId: { from: "CalendarId"},
+								color: { from: "Color"}
+							}
+						}
+					}
+				}
+			}
+		]
     });
 </script>
