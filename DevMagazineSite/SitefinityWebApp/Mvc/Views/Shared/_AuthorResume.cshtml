@@ -8,22 +8,20 @@
 }
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <hr />
-        <div class="media Author Author--big">
+    <hr />
+    <div class="media Author Author--big">
 
-            <a class="pull-left" href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">
-                @Html.RenderImage(Model.Avatar, "media-object img-circle", "128", "128")
-            </a>
-            <div class="media-body">
-                <h3 class="media-heading"><a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">@Model.Name</a></h3>
-                <p class="text-muted">@Model.JobTitle</p>
-                <p>@Html.Raw(Model.Bio)</p>
-                <h5>More from @Model.Name</h5>
+        <a class="pull-left" href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">
+            @Html.RenderImage(Model.Avatar, "media-object img-circle", "128", "128")
+        </a>
+        <div class="media-body">
+            <h3 class="media-heading"><a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)">@Model.Name</a></h3>
+            <p class="text-muted">@Model.JobTitle</p>
+            <p>@Html.Raw(Model.Bio)</p>
+            <h5>More from @Model.Name</h5>
 
-                @Html.Partial("~/Mvc/Views/Shared/_ListArticles.cshtml", authorLast5Articles)
-                <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
-            </div>
+            @Html.Partial("~/Mvc/Views/Shared/_ListArticles.cshtml", authorLast5Articles)
+            <a href="@Html.GetItemDefaultUrl(AuthorViewModel.AuthorType, Model.ProviderName, Model.Id)"><span class="glyphicon glyphicon-chevron-right glyph-bordered"></span>All articles</a>
         </div>
     </div>
 </div>

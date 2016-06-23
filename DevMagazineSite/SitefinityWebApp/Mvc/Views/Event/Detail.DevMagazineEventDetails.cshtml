@@ -5,7 +5,7 @@
 @using Telerik.Sitefinity.Web.DataResolving;
     <div class="row @Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
       <div class="text-center">
-        <h1 class="sf-event-title u-mt0 u-mb2">
+        <h1 class="u-mt0 u-mb2">
             <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
 
         </h1>
