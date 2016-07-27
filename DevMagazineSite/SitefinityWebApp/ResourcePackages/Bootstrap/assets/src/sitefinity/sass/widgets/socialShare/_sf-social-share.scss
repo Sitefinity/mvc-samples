@@ -1,0 +1,38 @@
+.sf-social-share {
+	li {
+		display: inline-block;
+		vertical-align: top;
+	}
+	span {
+		display: inline-block;
+	}
+}
+
+.sf-share-button {
+	@extend .sf-pt-xs;
+	@extend .sf-pb-xxs;
+	@extend .sf-pr-xs;
+	padding-left: 2px;
+	display: inline-block;
+	border: $share-button-border-width solid $share-button-border-color;
+	border-radius: $share-button-border-radius;
+	vertical-align: top;
+	font-size: $share-button-font-size;
+	color: $share-button-color;
+	line-height: $share-button-line-height;
+	transition: background 0.2s ease;
+	
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		background: $share-button-focus-hover-background;
+		color: $share-button-focus-hover-color;
+	}
+	> span {
+		margin-top: -3px;
+	}
+		> strong {
+		vertical-align: top;
+		font-weight: 400;
+	}
+}

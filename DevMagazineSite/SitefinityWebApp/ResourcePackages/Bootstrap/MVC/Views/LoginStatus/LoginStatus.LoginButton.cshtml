@@ -3,7 +3,7 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery)
+@Html.Script(ScriptRef.JQuery, "top")
 
 <div class="@Model.CssClass">
     <div data-sf-role="sf-logged-in-view" style="display: none" class="media">
@@ -28,9 +28,9 @@
     </div>
 </div>
 
-<input type="hidden" data-sf-role="sf-status-json-endpoint-url" value="@Url.Action("Status")"/>
+<input type="hidden" data-sf-role="sf-status-json-endpoint-url" value="@Model.StatusServiceUrl"/>
 <input type="hidden" data-sf-role="sf-logout-redirect-url" value="@Model.LogoutPageUrl"/>
 <input type="hidden" data-sf-role="sf-login-redirect-url" value="@Model.LoginPageUrl" />
 <input type="hidden" data-sf-role="sf-is-design-mode-value" value="@ViewBag.IsDesignMode.ToString()" />
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"))
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom")

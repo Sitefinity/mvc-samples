@@ -1,0 +1,6 @@
+{
+  "concatJsFiles": [
+	"assets/src/project/js/jquery.fixit.js",
+	"assets/src/project/js/devMagazine.js"
+  ]
+}

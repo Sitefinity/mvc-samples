@@ -12,10 +12,10 @@
     <label for='@Html.UniqueId("Dropdown")'>
         @Model.MetaField.Title
     </label>
-    @if (!string.IsNullOrEmpty(Model.MetaField.Description)) 
-    { 
+    @if (!string.IsNullOrEmpty(Model.MetaField.Description))
+    {
         <p class="text-muted">@Model.MetaField.Description</p>
-    } 
+    }
 
     <select id='@Html.UniqueId("Dropdown")' data-sf-role="dropdown-list-field-select" name="@Model.MetaField.FieldName" @MvcHtmlString.Create(Model.ValidationAttributes) class="form-control">
     @foreach (var choice in Model.Choices)
@@ -26,7 +26,7 @@
         <option @optionAttributes value="@optionValue">@choice</option>
     }
     </select>
-    
+
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/DropdownListField/dropdown-list-field.js"), "bottom", false)
