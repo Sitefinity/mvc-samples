@@ -1,0 +1,19 @@
+@model IList<ConstructorInjection.Mvc.Models.AuthorViewModel>
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+<div>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <h3>
+                    <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@item.Name</span>
+                </h3>
+               <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@item.JobTitle</span>
+            </li>
+        }
+    </ul>
+</div>
