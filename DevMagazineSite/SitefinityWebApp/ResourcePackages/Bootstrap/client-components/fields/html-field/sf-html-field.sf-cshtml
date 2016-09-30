@@ -3,7 +3,7 @@
 	k-scope-field="editorWidget"
 	sf-toggle-commands="strikethrough, justifyFull, subscript, superscript, fontName, fontSize, foreColor, backColor, print"
     k-encoded="false"
-    k-stylesheets='[getPackageResourceUrl("/ResourcePackages/Bootstrap/assets/dist/css/styles.min.css")]',
+    k-stylesheets='["{{htmlFieldCssUrl}}"]',
     k-tools='[
     "formatting",
     "bold", "italic", "underline",
@@ -35,7 +35,7 @@
     },
     {
         name: "fullscreen",
-        template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"Fullscreen\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen glyphicon\"></span></a>"
+        template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"Fullscreen\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen sf-maximize\"></span></a>"
 	},
     {
         name: "htmlView",

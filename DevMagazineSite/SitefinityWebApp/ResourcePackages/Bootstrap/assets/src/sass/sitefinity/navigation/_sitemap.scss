@@ -40,8 +40,8 @@
 		display: block;
 
 		> li {
-			@extend sf-mt-xxs; //0
-			@extend sf-mb-xxs; //0
+			margin-top: 0; 
+			margin-bottom: 0; 
 			margin-left: 1%;
 			margin-right: 1%;
 			float: left;
