@@ -237,7 +237,7 @@ th {
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
   src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
-.glyphicon {
+.glyphicon, .k-scheduler .k-scheduler-layout .k-i-arrow-w, .k-scheduler .k-scheduler-layout .k-i-arrow-e, .k-scheduler .k-scheduler-layout .k-i-refresh {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -879,10 +879,10 @@ textarea {
   line-height: inherit; }
 
 a {
-  color: #428bca;
+  color: #223771;
   text-decoration: none; }
   a:hover, a:focus {
-    color: #2a6496;
+    color: #101a36;
     text-decoration: underline; }
   a:focus {
     outline: thin dotted;
@@ -2688,7 +2688,7 @@ select[multiple].input-lg,
     background-color: #fff; }
 
 .btn-link {
-  color: #428bca;
+  color: #223771;
   font-weight: normal;
   cursor: pointer;
   border-radius: 0; }
@@ -2700,7 +2700,7 @@ select[multiple].input-lg,
   .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
     border-color: transparent; }
   .btn-link:hover, .btn-link:focus {
-    color: #2a6496;
+    color: #101a36;
     text-decoration: underline;
     background-color: transparent; }
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
@@ -3191,7 +3191,7 @@ tbody.collapse.in {
         cursor: not-allowed; }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: #eeeeee;
-    border-color: #428bca; }
+    border-color: #223771; }
   .nav .nav-divider {
     height: 1px;
     margin: 9px 0;
@@ -3671,7 +3671,7 @@ tbody.collapse.in {
       padding: 6px 12px;
       line-height: 1.428571429;
       text-decoration: none;
-      color: #428bca;
+      color: #223771;
       background-color: #fff;
       border: 1px solid #ddd;
       margin-left: -1px; }
@@ -3687,7 +3687,7 @@ tbody.collapse.in {
   .pagination > li > a:hover, .pagination > li > a:focus,
   .pagination > li > span:hover,
   .pagination > li > span:focus {
-    color: #2a6496;
+    color: #101a36;
     background-color: #eeeeee;
     border-color: #ddd; }
   .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
@@ -3852,7 +3852,7 @@ a.label:hover, a.label:focus {
     padding: 1px 5px; }
   a.list-group-item.active > .badge,
   .nav-pills > .active > a > .badge {
-    color: #428bca;
+    color: #223771;
     background-color: #fff; }
   .nav-pills > li > a > .badge {
     margin-left: 3px; }
@@ -3917,7 +3917,7 @@ a.badge:hover, a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #428bca; }
+  border-color: #223771; }
 
 .alert {
   padding: 15px;
@@ -5070,7 +5070,7 @@ hr {
 .icon-twitter:before {
   content: "\b4"; }
 
-.glyphicon {
+.glyphicon, .k-scheduler .k-scheduler-layout .k-i-arrow-w, .k-scheduler .k-scheduler-layout .k-i-arrow-e, .k-scheduler .k-scheduler-layout .k-i-refresh {
   margin-bottom: 1px; }
 
 .glyph-bordered {
@@ -5445,6 +5445,96 @@ ul.sf-autocomplete {
 
 .Form-checkboxes label {
   font-weight: normal; }
+
+.k-scheduler .k-scheduler-toolbar {
+  padding-top: 30px; }
+  .k-scheduler .k-scheduler-toolbar .k-link {
+    color: #223771;
+    text-decoration: none; }
+    .k-scheduler .k-scheduler-toolbar .k-link:hover, .k-scheduler .k-scheduler-toolbar .k-link:focus {
+      color: #333; }
+  .k-scheduler .k-scheduler-toolbar .k-i-calendar {
+    display: none; }
+  .k-scheduler .k-scheduler-toolbar .k-scheduler-views .k-state-selected, .k-scheduler .k-scheduler-toolbar .k-scheduler-views .k-state-selected.k-state-hover {
+    color: #fff;
+    background-color: #596c9b;
+    border-color: #596c9b; }
+    .k-scheduler .k-scheduler-toolbar .k-scheduler-views .k-state-selected .k-link, .k-scheduler .k-scheduler-toolbar .k-scheduler-views .k-state-selected.k-state-hover .k-link {
+      color: #fff; }
+  .k-scheduler .k-scheduler-toolbar .k-scheduler-navigation > li,
+  .k-scheduler .k-scheduler-toolbar .k-scheduler-views > li {
+    padding-bottom: 4px; }
+
+.k-scheduler .k-scheduler-layout .k-scheduler-header th {
+  text-align: center; }
+
+.k-scheduler .k-scheduler-layout.k-scheduler-monthview .k-hidden,
+.k-scheduler .k-scheduler-layout.k-scheduler-monthview .k-scheduler-table td {
+  height: 90px !important; }
+
+.k-scheduler .k-scheduler-layout .k-i-arrow-w, .k-scheduler .k-scheduler-layout .k-i-arrow-e, .k-scheduler .k-scheduler-layout .k-i-refresh {
+  font-size: 10px;
+  line-height: 14px;
+  color: #fff;
+  background-image: none; }
+
+.k-scheduler .k-scheduler-layout .k-i-arrow-w:before {
+  content: "\e079"; }
+
+.k-scheduler .k-scheduler-layout .k-i-arrow-e:before {
+  content: "\e080"; }
+
+.k-scheduler .k-scheduler-layout .k-i-refresh:before {
+  content: "\e031"; }
+
+.k-scheduler .k-scheduler-layout .k-event,
+.k-scheduler .k-scheduler-layout .k-more-events {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important; }
+
+.k-scheduler .k-scheduler-layout .sf-event-link {
+  display: block;
+  padding-top: 2px;
+  color: #fff; }
+
+.k-scheduler .k-scheduler-layout .k-event {
+  background-color: #596c9b !important;
+  border-color: #596c9b !important; }
+
+.sf-tabs {
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  height: 40px; }
+  .sf-tabs__item {
+    margin: 0;
+    padding: 0;
+    height: 40px; }
+  .sf-tabs__link {
+    display: inline-block;
+    margin-left: -1px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #d6d6d6;
+    font-size: 20px;
+    color: #223771; }
+    .sf-tabs__link:hover, .sf-tabs__link:focus, .sf-tabs__link:active {
+      color: #333;
+      background-color: #ebebec; }
+    .sf-tabs__link.active {
+      color: #fff;
+      background-color: #596c9b;
+      cursor: default; }
+    .sf-tabs__item:first-child .sf-tabs__link {
+      margin-left: 0;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px; }
+    .sf-tabs__item:last-child .sf-tabs__link {
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px; }
 
 .sf-icon-blogger {
   background-image: url(../images/social-share-sprite.png);

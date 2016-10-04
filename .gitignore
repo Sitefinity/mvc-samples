@@ -112,6 +112,7 @@ UpgradeLog*.XML
 
 #NPM directory
 node_modules
+.idea
 
 *.jmconfig
 

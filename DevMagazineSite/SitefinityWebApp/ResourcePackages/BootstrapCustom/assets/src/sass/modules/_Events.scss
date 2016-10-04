@@ -1,0 +1,100 @@
+.k-scheduler {
+
+  .k-scheduler-toolbar {
+    padding-top: 30px;
+
+    .k-link {
+      color: $link-color;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: #333;
+      }
+    }
+
+    .k-i-calendar {
+      display: none;
+    }
+    
+    .k-scheduler-views {
+
+      .k-state-selected {
+
+        &, &.k-state-hover {
+          color: #fff;
+          background-color: $accent-color;
+          border-color: $accent-color;
+
+          .k-link {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .k-scheduler-navigation,
+    .k-scheduler-views {
+      > li {
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+  .k-scheduler-layout {
+
+    .k-scheduler-header {
+      th {
+        text-align: center;
+      }
+    }
+
+    &.k-scheduler-monthview .k-hidden,
+    &.k-scheduler-monthview .k-scheduler-table td {
+      height: 90px !important;
+    }
+
+    .k-i-arrow-w, .k-i-arrow-e, .k-i-refresh {
+      @extend .glyphicon;
+
+      font-size: 10px;
+      line-height: 14px;
+
+      color: #fff;
+      background-image: none;
+    }
+
+    .k-i-arrow-w {
+      &:before {
+        content: "\e079";
+      }
+    }
+    .k-i-arrow-e {
+      &:before {
+        content: "\e080";
+      }
+    }
+    .k-i-refresh {
+      &:before {
+        content: "\e031";
+      }
+    }
+
+    .k-event,
+    .k-more-events {
+      margin-top: 5px !important;
+      margin-bottom: 5px !important;
+    }
+
+    .sf-event-link {
+      display: block;
+      padding-top: 2px;
+      color: #fff;
+    }
+
+    .k-event {
+      background-color: $accent-color !important;
+      border-color: $accent-color !important;
+    }
+  }
+}

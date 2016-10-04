@@ -23,8 +23,8 @@
 		&,
 		&:hover,
 		&:focus {
-			background-color: #596c9b;
-			border-color: #596c9b;
+			background-color: $accent-color;
+			border-color: $accent-color;
 			border-radius: 50%;
 		}
 	}
