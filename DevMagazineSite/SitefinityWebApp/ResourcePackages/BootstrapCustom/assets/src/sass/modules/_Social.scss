@@ -14,7 +14,7 @@
     text-decoration: none;
 
     &:before {
-      color: #596c9b;
+      color: $accent-color;
       transition: color .15s ease-in;
     }
 
@@ -22,7 +22,7 @@
     &:focus {
 
       &:before {
-        color: darken(#596c9b, 20%);
+        color: darken($accent-color, 20%);
       }
     }
   }

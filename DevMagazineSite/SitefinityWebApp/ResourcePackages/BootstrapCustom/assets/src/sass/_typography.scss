@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.04em;
 
   a {
-    color: #223771;
+    color: $link-color;
 
     &:hover {
       text-decoration: none;
@@ -70,7 +70,7 @@ img {
 }
 
 hr {
-  border-top: 1px solid #d6d6d6;
+  border-top: 1px solid $hr-color;
 }
 
 //Responsive
