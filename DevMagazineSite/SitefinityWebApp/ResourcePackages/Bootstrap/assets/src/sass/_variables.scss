@@ -362,6 +362,21 @@ $share-button-line-height:                     1 !default;
 
 //#Size
 
-$event-type-width:                             10px;
-$event-type-height:                            10px;
+$event-type-width:                             15px;
+$event-type-height:                            15px;
 $event-type-border-radius:                     $round-border-radius;
+$event-item-margin:                            0;
+$event-item-padding:                           5px 7px;
+$event-item-min-height:                        100%;
+$event-type-all-border-width:                  1px;
+$calendarList-item-padding:                    5px 10px;
+$calendarList-item-border-radius:              5px;
+
+
+
+//## Colors
+
+$event-type-all-background:                    #fff;
+$event-type-all-border-color:                  #999;
+$calendarList-item--active-background:         #f2f2f2;
+$calendarList-title-font-weight:               bold;

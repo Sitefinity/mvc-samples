@@ -17,7 +17,7 @@
                 <h3 class="sf-event-title">
                     <a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
                 </h3>
-                <span class="sf-event-type"  data-calendar-color="@item.EventCalendarColour()" style="background-color:@item.EventCalendarColour()"></span>
+                <span data-calendar-color="@item.EventCalendarColour()"></span>
                 <p class="text-muted">
                     @*@If is on the same line, because otherwise there is an empty space before the comma*@
                     <time>@item.EventDates()</time>@if (!string.IsNullOrEmpty(item.Fields.City)){<span>, @item.Fields.City</span>}

@@ -1,5 +1,5 @@
 .Btn {
-  @include button-variant(#fff, #596c9b, darken(#596c9b, 5%));
+  @include button-variant(#fff, $accent-color, darken($accent-color, 5%));
   display: inline-block;
   padding: 16px 67px;
   transition-property: background-color;
@@ -15,7 +15,7 @@
   &:focus {
     color: #fff;
     text-decoration:none;
-    background-color: darken(#596c9b, 20%);
+    background-color: darken($accent-color, 20%);
   }
 }
 

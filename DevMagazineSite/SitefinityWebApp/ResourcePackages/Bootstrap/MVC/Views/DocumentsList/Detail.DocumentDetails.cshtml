@@ -9,34 +9,27 @@
         @Model.Item.Fields.Title
     </h1>
 
-
-    <p class="text-muted">
+    <div class="text-muted">
         @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
         @Html.Resource("By")
         @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
-    </p>
+    </div>
 
     <div>
         @Model.Item.Fields.Description
     </div>
 
-    <div class="media">
-        <div class="media-left">
-            <i class="icon-file icon-txt icon-md">
-                <span class="icon-txt-@Model.Extension">@Model.Extension</span>
-            </i>
-        </div>
-        <div class="media-body">
-            <div>
-                <a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
-                <span class="text-muted">(@Model.Extension)</span>
-            </div>
-            <span class="text-muted">@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
-        </div>
-    </div>
-
-    @if (Model.EnableSocialSharing)
-    {
-        @Html.SocialShareOptions()
+    <div>
+        <a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
+        (@Model.Extension)
+        <span>@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
+    </div>    
+    
+    @{        
+        if (Model.EnableSocialSharing)
+        {
+            var item = Model.Item.DataItem as Telerik.Sitefinity.Model.IHasTitle;
+            @Html.SocialShareOptions(item);
+        }
     }
 </div>
