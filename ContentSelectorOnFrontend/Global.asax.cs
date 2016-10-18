@@ -13,19 +13,18 @@ namespace SitefinityWebApp
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            Bootstrapper.Initialized += Bootstrapper_Initialized;
+            Bootstrapper.Bootstrapped += Bootstrapper_Bootstrapped;
         }
 
-        void Bootstrapper_Initialized(object sender, Telerik.Sitefinity.Data.ExecutedEventArgs e)
+        void Bootstrapper_Bootstrapped(object sender, EventArgs e)
         {
-            if (e.CommandName == "Bootstrapped")
+            if (System.Web.Routing.RouteTable.Routes["Classic"] == null)
             {
-                if (System.Web.Routing.RouteTable.Routes["Classic"] == null)
-                    System.Web.Mvc.RouteCollectionExtensions.MapRoute(System.Web.Routing.RouteTable.Routes,
-                 "Classic",
-                 "app",
-                 new { controller = "App", action = "Index" }
-             );
+                System.Web.Mvc.RouteCollectionExtensions.MapRoute(System.Web.Routing.RouteTable.Routes,
+                     "Classic",
+                     "app",
+                     new { controller = "App", action = "Index" }
+                 );
             }
         }
 
