@@ -1,0 +1,44 @@
+@model Telerik.Sitefinity.Frontend.Search.Mvc.Models.ISearchBoxModel
+
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+@{
+    var searchTextBoxId = Guid.NewGuid();
+    var searchButtonId = Guid.NewGuid();
+ }
+
+ @(!String.IsNullOrEmpty(Model.CssClass) ?
+     Html.Raw(String.Format("<div class=\"{0} pull-right Search\">", Model.CssClass)) :
+     Html.Raw("<div class=\"pull-right Search\">"))
+       <label class="glyphicon glyphicon-search"></label>
+       <input type="search" id="@Html.Raw(searchTextBoxId)" class="js-search-field" value="@Html.Raw(ViewBag.SearchQuery)"/>
+       @*<button type="button" class="btn btn-primary" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</button>*@
+     </div>
+
+@* The inline editing functionality is loading jQuery too. *@
+
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(ScriptRef.JQueryUI, "top", true)
+
+<!-- <script src="~/ResourcePackages/Bootstrap/Mvc/Scripts/SearchBox/Search-box.js"></script> -->
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"))
+<script type="text/javascript">
+    (function(){
+        var serverData = {
+            resultsUrl: '@Html.Raw(Model.ResultsUrl)',
+            indexCatalogue: '@Html.Raw(Model.IndexCatalogue)',
+            wordsMode: '@Html.Raw(Model.WordsMode.ToString())',
+            disableSuggestions: @(Model.DisableSuggestions ? Html.Raw("true") : Html.Raw("false")),
+            minSuggestionLength: '@Html.Raw(Model.MinSuggestionLength)',
+            suggestionFields: '@Html.Raw(Model.SuggestionFields)',
+            language: '@Html.Raw(Model.Language)',
+            suggestionsRoute: '@Html.Raw(Model.SuggestionsRoute)',
+            searchTextBoxSelector: '#' + '@Html.Raw(searchTextBoxId)',
+            searchButtonSelector: '#' + '@Html.Raw(searchButtonId)'
+        };
+
+        featherSearchBoxWidget(serverData);
+    })();
+</script>

@@ -6,15 +6,15 @@
 @using Telerik.Sitefinity.Services;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery)
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js",  "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
 
 <div class="@Model.CssClass">
     @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
     {
     <div>
-        @using (Html.BeginFormSitefinity())
+        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
         {
          @Html.ValidationSummary(true)
             <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
@@ -23,34 +23,30 @@
                 <label>
                     @Html.Resource("Username")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
-                        @if(Html.ValidationMessage("UserName")!=null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessage("UserName")</span>
-                            </div>
-                        }  
+
+                @Html.TextBoxFor(u => u.UserName, new { @class = "form-control" })
+                @if(Html.ValidationMessage("UserName")!=null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessage("UserName")</span>
                     </div>
-                </div>
+                }  
+
             </div>
 
             <div class="form-group">
                 <label>
                     @Html.Resource("Password")
                 </label>
-                <div class="row">
-                    <div class="col-xs-6">
-                        @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
-                        @if(Html.ValidationMessage("Password") != null)
-                        {
-                            <div class="has-error">
-                                <span class="help-block">@Html.ValidationMessage("Password")</span>
-                            </div>
-                        }  
-                   </div>
-                </div>
+
+                @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+                @if(Html.ValidationMessage("Password") != null)
+                {
+                    <div class="has-error">
+                        <span class="help-block">@Html.ValidationMessage("Password")</span>
+                    </div>
+                }  
+
             </div>
 
             if (Model.ShowRememberMe)
@@ -76,7 +72,9 @@
             if (Model.IncorrectCredentials)
             {
             
-            <p>@Html.Resource("IncorrectCredentialsMessage")</p>
+            <div class="has-error">
+                <span class="help-block">@Html.Resource("IncorrectCredentialsMessage")</span>
+            </div>
                 
             }
 
@@ -92,8 +90,8 @@
     
     else
     {
-        <p>@Html.Resource("AlreadyLogedIn")</p>
+        <p>@Html.Resource("AlreadyLoggedIn")</p>
     }
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"))
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom")

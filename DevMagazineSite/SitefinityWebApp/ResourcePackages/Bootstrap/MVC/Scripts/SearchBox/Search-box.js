@@ -1,9 +1,9 @@
-﻿function featherSearchBoxWidget(serverData) {
+function featherSearchBoxWidget(serverData) {
     jQuery(function () {
         /* jQuery elements */
         var searchTextBox = $(serverData.searchTextBoxSelector),
             searchButton = $(serverData.searchButtonSelector);
-        
+
         searchButton.click(function (e) {
             navigateToResults(e);
         });
@@ -86,7 +86,7 @@
                 }
             }
         }
-            
+
         /* Helper methods */
         function navigateToResults(e) {
             if (!e)
