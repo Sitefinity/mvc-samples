@@ -1,0 +1,93 @@
+.sf-Gallery
+	h2
+		margin-top: 10px
+
+.sf-Gallery-thumbs-container
+	overflow: hidden
+
+.sf-Gallery-thumbs
+	margin: 0 -5px
+	a
+		display: inline-block
+		margin: 0 5px 10px
+		border: 5px solid transparent
+		width: 130px
+		height: 130px
+		line-height: 120px
+		overflow: hidden
+		cursor: pointer
+
+		&.is-selected
+			border-color: #428BCA
+
+		> img
+			vertical-align: middle
+
+
+.sf-Gallery-image
+	position: relative
+	height: 600px
+	line-height: 600px
+	margin-top: 30px
+	text-align: center
+	background: #E4E4E4
+	border: 1px solid #E4E4E4
+
+	> img
+		max-height: 100%
+		width: auto
+		display: inline-block
+
+.sf-Gallery-next,
+.sf-Gallery-prev
+	cursor: pointer
+	position: absolute
+	height: 600px
+	width: 50%
+	padding: 0 50px
+	left: 0
+	top: 0
+	text-align: left
+	font-family: Verdana
+	color: #000
+	font-size: 40px
+	line-height: 600px
+	text-shadow: 0 0 3px #fff
+	opacity: 0
+	transition: opacity .2s ease
+	background: rgba(0,0,0,.1)
+	-webkit-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+
+	&:hover
+		opacity: 1
+		color: #000
+
+	&:before
+		content: ""
+		position: relative
+		display: inline-block
+		width: 0
+		height: 0
+		border: 30px solid transparent
+		border-right-color: #000
+
+.sf-Gallery-prev
+	background: linear-gradient(to right, rgba(0,0,0,.1) 0%,rgba(0,0,0,0) 100%)
+
+.sf-Gallery-next
+	background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,.1) 100%)
+	left: auto
+	right: 0
+	text-align: right
+
+	&:before
+		border-right-color: transparent
+		border-left-color: #000
+
+
+
+.sf-Gallery-navigation
+	margin: 5px 0 30px

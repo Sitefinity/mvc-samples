@@ -1,0 +1,18 @@
+//Arrays with
+$names: "1", "2", "3", "4", "5", "6";
+$sizes: 11, 13, 18, 24, 30, 36;
+$class: "sf-Tags-size";
+
+// Mixin for generating taxonomy sizes
+
+@mixin create-taxa-size-class {
+	@each $item in $names {
+		$i: index($names, $item);
+		.#{$class}#{$item} {
+			font-size: nth($sizes, $i) * 1px;
+		}
+	}
+}
+
+@include create-taxa-size-class;
+

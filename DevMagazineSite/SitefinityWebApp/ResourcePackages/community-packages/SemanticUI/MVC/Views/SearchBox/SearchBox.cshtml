@@ -1,0 +1,35 @@
+﻿@model Telerik.Sitefinity.Frontend.Search.Mvc.Models.ISearchBoxModel
+
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+@{
+    var searchTextBoxId = Guid.NewGuid();
+    var searchButtonId = Guid.NewGuid();
+ }
+
+@(!String.IsNullOrEmpty(Model.CssClass) ?
+    Html.Raw(String.Format("<div class=\"{0} sf-search-box ui action left icon input\">", Model.CssClass)) :
+    Html.Raw("<div class=\"sf-search-box ui action left icon input\">"))
+    <i class="search icon"></i>
+    <input type="text" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@Html.Raw(searchTextBoxId)" value="@Html.Raw(ViewBag.SearchQuery)"/>
+    <a href="#" class="ui teal button" id="@Html.Raw(searchButtonId)">@Html.Resource("SearchLabel")</a>
+	
+	<input type="hidden" data-sf-role="resultsUrl" value="@Html.Raw(Model.ResultsUrl)" />
+    <input type="hidden" data-sf-role="indexCatalogue" value="@Html.Raw(Model.IndexCatalogue)" />
+    <input type="hidden" data-sf-role="wordsMode" value="@Html.Raw(Model.WordsMode.ToString())" />
+    <input type="hidden" data-sf-role="disableSuggestions" value='@(Model.DisableSuggestions ? Html.Raw("true") : Html.Raw("false"))' />
+    <input type="hidden" data-sf-role="minSuggestionLength" value="@Html.Raw(Model.MinSuggestionLength)" />
+    <input type="hidden" data-sf-role="suggestionFields" value="@Html.Raw(Model.SuggestionFields)" />
+    <input type="hidden" data-sf-role="language" value="@Html.Raw(Model.Language)" />
+    <input type="hidden" data-sf-role="suggestionsRoute" value="@Html.Raw(Model.SuggestionsRoute)" />
+    <input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
+    <input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />	
+</div>
+
+@* The inline editing functionality is loading jQuery too. *@
+
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(ScriptRef.JQueryUI, "top", true)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"), "bottom")

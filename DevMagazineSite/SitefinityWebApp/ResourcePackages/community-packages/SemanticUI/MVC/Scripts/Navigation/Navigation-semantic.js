@@ -1,0 +1,3 @@
+﻿(function () {
+    $(".menu .dropdown").dropdown();
+})();

@@ -1,0 +1,21 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Helpers.ViewModels.PagerViewModel
+
+<div class="ui pagination menu">
+    <a class="item" href="@String.Format(Model.RedirectUrlTemplate, 1)"><i class="left arrow icon"></i></a></li>
+    @for (int i = 1; i <= Model.TotalPagesCount; i++)
+    {
+        if(Model.CurrentPage == i)
+        {
+            
+           <a class="item active" href="@String.Format(Model.RedirectUrlTemplate, i)">@i.ToString()</a>
+            
+        }
+        else
+        {
+            
+           <a class="item" href="@String.Format(Model.RedirectUrlTemplate, i)">@i.ToString()</a>
+            
+        }
+    }
+    <a class="item" href="@String.Format(Model.RedirectUrlTemplate, Model.TotalPagesCount)"><i class="icon right arrow"></i></a>
+</div>

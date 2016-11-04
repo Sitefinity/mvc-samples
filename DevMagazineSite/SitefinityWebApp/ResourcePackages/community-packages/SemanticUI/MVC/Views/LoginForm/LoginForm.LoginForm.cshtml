@@ -1,0 +1,88 @@
+@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm.LoginFormViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top")
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top")
+
+<div class="@Model.CssClass">
+    @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
+    {
+    <div>
+        @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, null, true))
+        {
+         @Html.ValidationSummary(true)
+            <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
+            
+            <div class="ui form">
+
+                @if (Model.IncorrectCredentials)
+                {
+            
+                <p class="ui red label">@Html.Resource("IncorrectCredentialsMessage")</p>
+                
+                }
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("Username")
+                    </label>
+                    @Html.TextBoxFor(u => u.UserName)
+                    @if(Html.ValidationMessage("UserName")!=null)
+                    {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("UserName")</div>
+                    }
+                </div>
+
+                <div class="field">
+                    <label>
+                        @Html.Resource("Password")
+                    </label>
+                        @Html.PasswordFor(u => u.Password)
+                        @if (Html.ValidationMessage("Password") != null)
+                        {
+                        <div class="ui red pointing prompt label transition visible">@Html.ValidationMessage("Password")</div>
+                        }
+                </div>
+
+                @if (Model.ShowRememberMe)
+                {
+
+                    <div class="field">
+                        <label>
+                            @Html.CheckBoxFor(u => u.RememberMe)
+                        </label>
+                        @Html.Resource("RememberMe")
+                    </div>
+                }
+
+               <input type="submit" class="ui submit button" value='@Html.Resource("LoginFormLogInButton")' />
+           
+
+            @if (Model.ShowForgotPasswordLink)
+            {
+                @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
+            }
+
+
+            @if (Model.ShowRegistrationLink)
+            {
+                <strong><a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a></strong>
+            }
+            </div>
+        }
+    </div>
+    }
+    
+    else
+    {
+        <p>@Html.Resource("AlreadyLoggedIn")</p>
+    }
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom")

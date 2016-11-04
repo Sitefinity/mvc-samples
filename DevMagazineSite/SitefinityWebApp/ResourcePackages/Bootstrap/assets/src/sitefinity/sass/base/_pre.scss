@@ -1,0 +1,12 @@
+
+
+pre {
+	@extend .sf-p-xxs; //0
+	border: $pre-border-width;
+	background: $pre-background;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: $pre-font-size;
+}
+
+
+

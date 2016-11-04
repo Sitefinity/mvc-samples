@@ -1,0 +1,31 @@
+// Tabs
+.tabs-nav
+  border-bottom: 1px solid #ddd
+  list-style: none
+  margin: 0
+
+  > li
+    float: left
+    margin-bottom: -1px
+
+    a
+      position: relative
+      display: block
+      padding: 10px 15px
+      margin-right: 2px
+      line-height: 1.42857143
+      border: 1px solid transparent
+
+  .active a
+    color: #555
+    background-color: #fff
+    border: 1px solid #ddd
+    border-bottom-color: transparent
+    cursor: default
+
+  // Put some space if there is a sub nav after the tabs nav
+  & ~ .sub-nav
+    margin-top: 5px
+    margin-left: 0
+    > li
+      margin-left: 0

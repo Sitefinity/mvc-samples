@@ -1,0 +1,92 @@
+@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(Url.WidgetContent("assets/dist/js/semantic.min.js"), "top")
+@Html.Script(Url.WidgetContent("MVC/Scripts/Navigation/Navigation-semantic.js"), "bottom")
+
+<div class="@Model.CssClass">
+@* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
+
+    <nav class="ui menu inverted">
+        @foreach (var node in Model.Nodes)
+        {
+            @RenderRootLevelNode(node);
+        }
+    </nav>
+</div>
+<!--
+<i class="dropdown icon" tabindex="0"></i>
+<span class="text">Shopping</span>
+<div class="menu" tabindex="-1">
+  <div class="header">Categories</div>
+  <div class="item">
+    <i class="dropdown icon" tabindex="0"></i>
+    <span class="text">Clothing</span>
+    <div class="menu">
+      <div class="item">Shirts</div>
+    </div>
+  </div>
+  <div class="item">Home Goods</div>
+</div> -->
+
+@*Here is specified the rendering for the root level*@
+@helper RenderRootLevelNode(NodeViewModel node)
+{
+    if (node.ChildNodes.Count > 0)
+    {
+        <div class="ui dropdown link item" tabindex="-1">
+            <i class="dropdown icon" tabindex="0"></i>
+            <span class="text">@node.Title</span>
+            <div class="menu" tabindex="-1">
+                @RenderSubLevelsRecursive(node)
+            </div>
+        </div>
+    }
+    else
+    {
+        <a class="item @GetClass(node)" href="@node.Url" target="@node.LinkTarget">@node.Title</a>
+    }
+}
+
+@*Here is specified the rendering for all child levels*@
+@helper RenderSubLevelsRecursive(NodeViewModel node)
+{
+    foreach (var childNode in node.ChildNodes)
+    {
+        if(childNode.ChildNodes.Count > 0)
+        {
+            <div class="ui dropdown link item" tabindex="0">
+                <i class="dropdown icon" tabindex="0"></i>
+                <span class="text">@childNode.Title</span>
+
+                <div class="menu">
+                    @RenderSubLevelsRecursive(childNode)
+                </div>
+            </div>
+        }
+        else
+        {
+            <a class="item" href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
+
+        }
+    }
+}
+
+@*Resolves the class that will be added for each node depending whether it is selected*@
+@helper GetClass(NodeViewModel node)
+{
+
+    if (node.IsCurrentlyOpened)
+    {
+        @Html.Raw("active");
+    }
+    else if (node.HasChildOpen)
+    {
+        @Html.Raw("active");
+    }
+}
