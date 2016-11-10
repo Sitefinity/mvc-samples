@@ -7195,8 +7195,7 @@ li {
   padding-bottom: 7px; }
 
 img {
-  max-width: 100%;
-  height: auto; }
+  max-width: 100%; }
 
 hr {
   border-top: 1px solid #d6d6d6; }
@@ -7242,6 +7241,9 @@ hr {
 
 .row--border {
   border-bottom: 1px solid #d6d6d6; }
+
+.img-circle {
+  object-fit: cover; }
 
 @media (max-width: 991px) {
   .container {
