@@ -18,7 +18,12 @@
 .row {
   padding-top: 15px;
   padding-bottom: 15px;
-  
+
+  &.-flex {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
   & ~ .row {
     margin-top: 30px;
   }

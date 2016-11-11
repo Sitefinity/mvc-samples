@@ -7232,6 +7232,9 @@ hr {
 .row {
   padding-top: 15px;
   padding-bottom: 15px; }
+  .row.-flex {
+    display: flex;
+    flex-wrap: wrap; }
   .row ~ .row {
     margin-top: 30px; }
 
