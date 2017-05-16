@@ -1,0 +1,28 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentDetailsViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <h1>
+        <span @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</span>
+        
+    </h1>
+    <div>
+        <span>@Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")</span>
+        <span>@Html.Resource("By")</span>
+        <span>@DataResolver.Resolve(@Model.Item.DataItem, "Author", null)</span>
+        @Html.CommentsCount("", @Model.Item.DataItem)
+    </div>
+	
+    <div @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.Raw(Model.Item.Fields.Summary)</div>
+
+    <div @Html.InlineEditingFieldAttributes("Content", "LongText")>@Html.Raw(Model.Item.Fields.Content)</div>
+    
+    @if (Model.EnableSocialSharing)
+    {
+        @Html.SocialShareOptions()
+    }
+    
+    @Html.CommentsList(@Model.Item.DataItem)
+</div>

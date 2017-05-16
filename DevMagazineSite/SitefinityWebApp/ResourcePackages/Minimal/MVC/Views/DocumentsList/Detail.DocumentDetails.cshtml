@@ -1,0 +1,33 @@
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentDetailsViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass">
+
+    <h1>
+        @Model.Item.Fields.Title
+    </h1>
+
+    <div class="text-muted">
+        @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+        @Html.Resource("By")
+        @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
+    </div>
+
+    <div>
+        @Model.Item.Fields.Description
+    </div>
+
+    <div>
+        <a href="@Model.Item.Fields.MediaUrl" target="_blank">Download</a>
+        (@Model.Extension)
+        <span>@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
+    </div>
+
+    @if (Model.EnableSocialSharing)
+    {
+        @Html.SocialShareOptions()
+    }
+</div>
+

@@ -1,0 +1,7 @@
+{
+  "concatJsFiles": [
+      "node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js",
+      "assets/src/project/js/jquery.fixit.js",
+      "assets/src/project/js/devMagazine.js"
+  ]
+}

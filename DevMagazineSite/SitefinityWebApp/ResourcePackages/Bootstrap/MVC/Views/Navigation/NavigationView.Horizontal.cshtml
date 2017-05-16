@@ -6,7 +6,7 @@
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top")
-@Html.Script(Url.WidgetContent("assets/dist/js/bootstrap.min.js"), "top")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Bootstrap/js/bootstrap.min.js"), "top", false)
 
 <div class="@Model.CssClass">
     @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@

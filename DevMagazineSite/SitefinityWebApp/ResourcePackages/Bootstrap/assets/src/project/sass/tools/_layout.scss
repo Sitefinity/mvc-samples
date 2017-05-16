@@ -1,0 +1,63 @@
+// Sections
+.section--gray {
+  background-color:$light-grey-bg-color;
+}
+
+.section--border .container {
+  border-bottom:1px solid $hr-color;
+}
+
+// Containers
+.container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+// Row
+.row {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  &.-flex {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  & ~ .row {
+    margin-top: 30px;
+  }
+}
+
+// Row in designer should not have padding-top
+.sf-designer-dlg, .modal-dialog {
+	.row {
+	  padding-top: 0;
+	  padding-bottom: 0;
+	}
+}
+
+.row--border {
+  border-bottom:1px solid $hr-color;
+}
+
+.img-circle {
+    object-fit: cover;
+}
+//Responsive
+
+//max-width:991px
+@media (max-width: $screen-sm-max) {
+ .container {
+  padding-top:15px;
+  padding-bottom:15px;
+ }
+
+ .row {
+  padding-top:0;
+  padding-bottom:0;
+    ~.row {
+      margin-top: 0;
+    }
+  }
+}

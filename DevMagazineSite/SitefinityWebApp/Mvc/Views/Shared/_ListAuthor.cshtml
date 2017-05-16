@@ -1,4 +1,4 @@
-﻿@model Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models.DynamicContentListViewModel
+@model Telerik.Sitefinity.Frontend.DynamicContent.Mvc.Models.DynamicContentListViewModel
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.RelatedData;
@@ -9,12 +9,12 @@
 @Html.Script(Telerik.Sitefinity.Modules.Pages.ScriptRef.JQuery)
 
 <h2>Authors</h2>
-<div class="row">
+<div class="row -flex">
     @foreach (var item in Model.Items)
-    { 
+    {
         using (Html.InlineEditingRegion(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id))
         {
-            <div class="col-md-2">
+            <div class="col-xs-6 col-sm-3 col-md-2">
                 <div class="text-center">
                     @{string detailsPageUrl = ViewBag.OpenInSamePage ?
                           (ViewBag.CurrentPageUrl + item.Fields.ItemDefaultUrl) :

@@ -1,0 +1,148 @@
+﻿@model Telerik.Sitefinity.Frontend.Comments.Mvc.Models.CommentsListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.StyleSheet(Url.WidgetContent("assets/dist/css/sf-ratings.css"), "head", false)
+
+<div id="comments-@HttpUtility.HtmlEncode(Model.ThreadKey)" data-sf-role="comments-wrapper" class="@Model.CssClass">
+    <input type="hidden" data-sf-role="comments-settings" value="@Model.SerializedWidgetSettings" />
+    <input type="hidden" data-sf-role="comments-resources" value="@Model.SerializedWidgetResources" />
+
+    <div>
+        <h3>
+            <span data-sf-role="comments-total-count"></span>
+            <span data-sf-role="comments-header"></span>
+        </h3>
+
+        @if (!Model.ThreadIsClosed)
+        {
+            <a href="#comment-submit-@HttpUtility.HtmlEncode(HttpUtility.UrlEncode(Model.ThreadKey))" data-sf-role="comments-new-form-button">@Html.Resource("WriteReview")</a>
+        }
+        
+        <span data-sf-role="comments-count-list-wrapper">
+            <span class="text-muted">@Html.Resource("AverageRating")</span>
+            @Html.CommentsCount(string.Empty, Model.ThreadKey, Model.ThreadType)
+        </span>
+        
+        <a href="#" data-sf-role="comments-sort-new-button" style="display:none;">@Html.Resource("NewestOnTop")</a>
+        <a href="#" data-sf-role="comments-sort-old-button" style="display:none;">@Html.Resource("OldestOnTop")</a>
+    </div>
+          
+    <div data-sf-role="list-loading-indicator" style="display:none;"></div>
+    <div data-sf-role="comments-container"></div>
+
+    @if(Model.EnablePaging)
+    {
+        <a href="#" data-sf-role="comments-load-more-button">@Html.Resource("LoadMoreReviews")</a>
+    }
+
+    @if (Model.ThreadIsClosed)
+    {
+        <div>@Html.Resource("ReviewsThreadIsClosedMessage")</div>
+    }
+    else 
+    {        
+        <div data-sf-role="comments-new-form" id="comment-submit-@HttpUtility.HtmlEncode(Model.ThreadKey)">
+            @if (Model.RequiresApproval)
+            {
+                <div data-sf-role="comments-new-pending-approval-message">@Html.Resource("ReviewPendingApproval")</div>
+            }
+
+            <img src="@Model.UserAvatarImageUrl"/>
+            <textarea data-sf-role="comments-new-message" placeholder="@Html.Resource("WriteReview")" ></textarea>
+            
+            <div>
+                <span>@Html.Resource("Rating")</span>
+                <div class="sf-Ratings">
+                    <div data-sf-role="submit-rating-container" class="sf-Ratings-stars">
+                    </div>
+                </div>
+            </div>
+
+            <div data-sf-role="comments-new-logged-out-view" style="display:none;">
+                <div>
+                    <label style="display: none;">@Html.Resource("YourName")</label>
+                    <input placeholder="@Html.Resource("YourName")" data-sf-role="comments-new-name" />
+                </div>
+
+                <div>
+                    <label style="display: none;">@Html.Resource("EmailOptional")</label>
+                    <input type="email" placeholder="@Html.Resource("EmailOptional")" data-sf-role="comments-new-email" />
+                </div>
+            </div>
+
+            @if (Model.RequiresCaptcha)
+            {
+                <div data-sf-role="captcha-container" style="display:none;">
+                    <div>
+                        <img data-sf-role="captcha-image" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")" />
+                    </div>
+                    <a data-sf-role="captcha-refresh-button"> @Html.Resource("NewCode") </a>
+                    <div>
+                        <label>@Html.Resource("TypeCodeAbove")
+                            <input type="text" data-sf-role="captcha-input" />
+                        </label>
+                    </div>
+                </div>
+            }
+            <button data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
+        </div>
+        
+        <p data-sf-role="review-new-form-replacement">@Html.Resource("UserAlreadySubmitedReview")</p>
+
+        if (Model.AllowSubscription)
+        {
+            <div>
+                <span data-sf-role="comments-subscribe-text"></span>
+                <a href="#" data-sf-role="comments-subscribe-button">
+                    <span data-sf-role="comments-subscribe-button-text"></span>
+                </a>
+            </div>
+        }
+
+        <div data-sf-role="error-message" style="display:none;">
+            <span></span>
+        </div>
+        
+        <div data-sf-role="submit-loading-indicator" style="display:none;"></div>
+        
+        if (Model.RequiresAuthentication)
+        {
+            <div data-sf-role="comments-new-requires-authentication"><a href='@Model.LoginPageUrl'>@Html.Resource("Login")</a>@Html.Resource("ToBeAbleToReview")</div>
+        }
+    }
+    
+    <div data-sf-role="single-comment-template" style="display:none;">
+        <div>
+            <img data-sf-role="comment-avatar" src="@Url.WidgetContent("assets/dist/img/dummy.jpg")"/>
+
+            <div>
+                <span data-sf-role="comment-name"></span> | 
+                <span data-sf-role="comment-date"></span>
+            </div>
+
+            <span data-sf-role="list-rating-wrapper" class="sf-Ratings" style="display: none;">
+
+                <span data-sf-role="list-rating-container" class="sf-Ratings-stars sf-Ratings-stars--ronly"></span>
+                <span class="text-muted sf-Ratings-average">
+                    (<span data-sf-role="list-rating-value"></span>)
+                </span>
+
+            </span>
+
+            <div data-sf-role="comment-message"></div>
+
+        </div>
+    </div>
+</div>
+
+@*Single rating template*@
+
+<div data-sf-role="rating-template"  style="display:none;"><span>&#9733;</span></div>
+
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Reviews/rating.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/comments-list.js"), "bottom", false)
+

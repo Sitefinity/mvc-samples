@@ -6,7 +6,7 @@
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", false)
-@Html.Script(Url.WidgetContent("assets/dist/js/bootstrap.min.js"), "top")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Bootstrap/js/bootstrap.min.js"), "top", false)
 
 <div class="@Model.CssClass">
     @* @Html.Action("GetView", new { viewName = "Dropdown",  model= Model}) *@
@@ -25,7 +25,7 @@
     <li class="dropdown @GetClass(node)">
         @if (node.ChildNodes.Count > 0)
         {
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">@node.Title
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle expandable-node">@node.Title
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -77,3 +77,5 @@
         @Html.Raw("active");
     }
 }
+
+@Html.Script(Url.WidgetContent("MVC/Scripts/Navigation/pills.js"), "bottom")

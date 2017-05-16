@@ -1,0 +1,12 @@
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Document.DocumentViewModel
+
+<div class="@Model.CssClass">
+    @if(!string.IsNullOrEmpty(Model.MediaUrl))
+    {
+        <div>
+            <a class="@String.Concat("sf", Model.Extension)" href="@Model.MediaUrl">@Model.Title</a>
+            <span>(@Model.Extension)</span>
+        </div>
+        <span>@Model.FileSize KB</span>
+    }
+</div>
