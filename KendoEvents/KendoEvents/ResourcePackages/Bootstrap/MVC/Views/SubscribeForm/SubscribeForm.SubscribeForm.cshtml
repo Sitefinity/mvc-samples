@@ -1,0 +1,82 @@
+@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.SubscribeFormViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
+
+<div class="@Model.CssClass">
+	@using (Html.BeginFormSitefinity())
+	{
+		<h3>@Html.Resource("Subscribe")</h3>
+	
+		<p class="text-muted">
+			@Html.Resource("SubscribeMail")
+		</p>
+	
+		if (ViewBag.IsSucceeded == true)
+		{
+			<div class="alert alert-success">
+				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
+			</div>
+		}
+	
+		@Html.ValidationSummary(true)
+		 if(!string.IsNullOrEmpty(ViewBag.Error))
+		{
+			<div class="alert alert-warning">
+				@ViewBag.Error
+			</div>
+		}
+	
+	@*
+	//Uncomment this if you want to show FirstName and LastName inputs
+	
+
+		<div class="form-group">
+			<label>@Html.Resource("FirstName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
+
+			<div class="form-inline">
+				@Html.TextBoxFor(u => u.FirstName, new { @class = "form-control"})
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label> @Html.Resource("LastName")</label><em class="text-muted"> @Html.Resource("Optional")</em> 
+
+			<div class="form-inline">
+				@Html.TextBoxFor(u => u.LastName, new { @class = "form-control" })
+			</div>   
+
+		</div>*@
+
+	<div class="form-group">
+
+		<label>
+		   @Html.Resource("Email")
+		</label>
+
+		<div class="form-inline">
+		   
+			@Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+
+			<button class="btn btn-primary" type="submit">@Html.Resource("ButtonSubscribe")</button>
+			
+		</div>
+
+		@if (Html.ValidationMessageFor(m => m.Email) != null)
+		{
+			<div class="has-error">
+				<span class="help-block">@Html.ValidationMessageFor(u => u.Email)</span>
+			</div>
+		}
+
+	</div>
+
+	}
+</div>

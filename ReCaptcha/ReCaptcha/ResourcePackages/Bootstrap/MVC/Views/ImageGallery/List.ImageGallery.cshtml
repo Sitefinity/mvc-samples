@@ -1,0 +1,42 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+<div class="sf-Gallery-thumbs-container">
+  <div class="sf-Gallery-thumbs @Model.CssClass">
+
+    @for (int i = 0; i < Model.Items.Count(); i++)
+    {
+        var item = Model.Items.ElementAt(i);
+        var thumbnailViewModel = (ThumbnailViewModel)item;
+        
+        var itemIndex = (Model.CurrentPage - 1) * ViewBag.ItemsPerPage + i + 1;
+		var detailPageUrl = ViewBag.OpenInSamePage ? HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex) :
+            HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
+
+      <a class="text-center"
+             href="@detailPageUrl"
+       title="@(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description)">
+            <img src="@(thumbnailViewModel.ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")'
+                      @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                      @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
+      </a>
+      }
+  </div>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

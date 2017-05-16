@@ -1,0 +1,78 @@
+// Icon with text
+.icon--text:before {
+	vertical-align: baseline;
+	margin-right: 0.3em;
+}
+
+// .icon-align {
+// 	position: relative;
+// 	display: inline-block;
+// 	margin-top: -4px;
+// 	font-size: $icon-align-font-size;
+// 	color: $icon-align-color;
+// }
+
+// .icon-no-image {
+// 	font-size: $icon-no-image-font-size;
+// 	color: $icon-no-image-color;
+// }
+
+.icon-txt {
+	position: relative;
+	display: inline-block;
+	line-height: normal;
+
+	&.icon-file {
+		color: $icon-file-color;
+	}
+
+	[class^="icon-txt-"] {
+		position: absolute;
+		top: 47%;
+		right: -3%;
+		padding: 0.2em 0.4em;
+		font-size: $icon-txt-font-size;
+		line-height: normal;
+		height: auto;
+		font-style: normal;
+		font-weight: bold;
+		text-transform: uppercase;
+		background-color: $icon-txt-background;
+		color: $icon-txt-color;
+	}
+	.icon-txt-xlsx {
+		background-color: $icon-txt-xlsx-background;
+	}
+	.icon-txt-doc,
+	.icon-txt-docx {
+		background-color: $icon-txt-doc-background;
+	}
+	.icon-txt-ppt,
+	.icon-txt-pptx {
+		background-color: $icon-txt-ppt-background;
+	}
+	.icon-txt-pdf {
+		background-color: $icon-txt-pdf-background;
+	}
+	.icon-txt-zip {
+		background-color: $icon-txt-zip-background;
+	}
+}
+
+//Icon sizes
+.icon-sm {
+	font-size: $icon-sm-font-size;
+
+	[class^=icon-txt-] {
+		top: 43%;
+		right: -20%;
+		padding: .1em .3em;
+		font-size: $icon-txt--sm-font-size;
+	}
+}
+.icon-md {
+	font-size: $icon-md-font-size;
+}
+.icon-lg {
+	font-size: $icon-lg-font-size;
+}

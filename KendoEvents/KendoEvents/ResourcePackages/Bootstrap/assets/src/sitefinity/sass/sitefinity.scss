@@ -1,0 +1,82 @@
+//Variables
+@import "settings/variables";
+
+//Mixins
+@import "tools/mixins";
+@import "tools/bootstrap-mixins";
+
+//Base - elements
+@import "base/pre";
+
+//Helper classes
+@import "utilities/spacing";
+@import "utilities/text";
+
+//Components
+//Icon font
+@import "components/icons/icons";
+//Loading
+@import "components/loading/loading";
+
+//---Sitefinity Widgets---//
+//Media
+@import "widgets/media/sf-media";
+
+// Content block
+@import "widgets/contentBlock/sf-content-block";
+
+// Gallery
+@import "widgets/gallery/gallery";
+
+// Navigation
+@import "widgets/navigation/navbar";
+@import "widgets/navigation/sitemap";
+@import "widgets/navigation/stacked";
+
+// Search
+@import "widgets/searchBox/sf-search-box";
+@import "widgets/searchResults/sf-search-results";
+
+// Profile
+@import "widgets/profile/sf-profile";
+
+// Document list
+@import "widgets/documentList/sf-document-list";
+
+// List
+@import "widgets/list/sf-list";
+
+// Language selector
+@import "widgets/languageSelector/sf-language-selector";
+
+// Comments and reviews
+@import "widgets/comments/sf-comments";
+@import "widgets/comments/sf-ratings";
+
+// Site selector
+@import "widgets/siteSelector/sf-site-selector";
+
+// Code widgets (Stylesheet, JavaScript, Embed code)
+@import "widgets/code/sf-code";
+
+// Taxonomies (Tags, Categories)
+@import "widgets/taxonomies/sf-tags";
+
+// Feed
+@import "widgets/feed/sf-feed";
+
+//Forms
+//File Field
+@import "widgets/fileField/sf-file-field";
+
+//Form navigation
+@import "widgets/formNavigation/sf-form-nav";
+
+//Events
+@import "widgets/event/sf-event";
+
+// Social share
+@import "widgets/socialShare/sf-social-share";
+
+// Login
+@import "widgets/login/sf-login";

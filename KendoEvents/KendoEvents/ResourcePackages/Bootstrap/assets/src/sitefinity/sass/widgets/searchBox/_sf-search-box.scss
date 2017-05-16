@@ -1,0 +1,22 @@
+ul.sf-autocomplete {
+	@extend .sf-p-xxs; //0
+	position: absolute;
+	background: $autocomplete-background;
+	border: $autocomplete-border-width solid $autocomplete-border-color;
+	list-style: none;
+
+	a {
+		padding: 3px;
+		display: block;
+		color: $autocomplete-anchor-color;
+
+		&.ui-state-focus {
+			background-color: $autocomplete-anchor-focus-background;
+		}
+
+		&:hover {
+			cursor:pointer;
+			text-decoration: none;
+		}
+	}
+}
