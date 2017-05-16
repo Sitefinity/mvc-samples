@@ -4858,6 +4858,9 @@ hr {
   padding-bottom: 15px; }
   .row ~ .row {
     margin-top: 30px; }
+  .row.row--flex {
+    display: flex;
+    flex-wrap: wrap; }
 
 .sf-designer-dlg .row, .modal-dialog .row {
   padding-top: 0;

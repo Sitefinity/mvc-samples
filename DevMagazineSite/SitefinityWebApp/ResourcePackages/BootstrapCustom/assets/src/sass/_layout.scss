@@ -22,6 +22,11 @@
   & ~ .row {
     margin-top: 30px;
   }
+
+  &.row--flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 // Row in designer should not have padding-top
