@@ -1,8 +1,6 @@
 The Feather Project
 =======
 
-This repository contains samples related to [Project Feather](http://projectfeather.sitefinity.com).
-
 # Related Repositories
 
 [feather](https://github.com/Sitefinity/feather) - This repository contains the core infrastructure related to the Feather project.
