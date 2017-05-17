@@ -1,0 +1,59 @@
+// Mixin for generating taxonomy sizes
+
+@mixin create-taxa-size-class($names, $sizes, $class) {
+	@each $item in $names {
+		$i: index($names, $item);
+		.#{$class}#{$item} {
+			font-size: nth($sizes, $i);
+		}
+	}
+}
+
+// Mixin for generating paddings and margins classes
+
+//padding-top-xs, margin-top-xs, padding-xs, margin-xs
+
+@mixin create-spacing-class($sizes-names, $sizes, $property-name, $class-name) {
+	@each $item in $sizes-names {
+		$i: index($sizes-names, $item);
+		.sf-#{$class-name}-#{$item} {
+			#{$property-name}: nth($sizes, $i);
+		}
+
+		.sf-#{$class-name}t-#{$item} {
+			#{$property-name}-top: nth($sizes, $i);
+		}
+
+		.sf-#{$class-name}b-#{$item} {
+			#{$property-name}-bottom: nth($sizes, $i);
+		}
+
+		.sf-#{$class-name}l-#{$item} {
+			#{$property-name}-left: nth($sizes, $i);
+		}
+
+		.sf-#{$class-name}r-#{$item} {
+			#{$property-name}-right: nth($sizes, $i);
+		}
+
+	}
+}
+
+// Mixin for generating colors for login external providers
+
+@mixin create-external-providers-colors($providers) {
+	@each $provider, $color in $providers {
+		.-sf-#{$provider}-button {
+			border-color: $color;
+			color: $color;
+
+			&:hover {
+				background-color: $color;
+				color: $white;
+				border-color: $transparent;
+			}
+		}
+	}
+}
+
+

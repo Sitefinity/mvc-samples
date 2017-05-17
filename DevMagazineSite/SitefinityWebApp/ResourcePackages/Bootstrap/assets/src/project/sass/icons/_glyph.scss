@@ -1,0 +1,24 @@
+.glyphicon {
+  margin-bottom: 1px;
+}
+
+.glyph-bordered {
+  border: .2em solid;
+  border-radius: 50%;
+  padding: .4em;
+  font-size: .8em;
+
+}
+
+.glyph-bordered.glyphicon-chevron-right {
+  margin-right: .4em;
+
+}
+
+.glyph-bordered.glyphicon-chevron-down:before {
+  display: inline-block;
+  margin-left: -1px;
+  width: 15px;
+  height: 15px;
+  line-height: 18px;
+}

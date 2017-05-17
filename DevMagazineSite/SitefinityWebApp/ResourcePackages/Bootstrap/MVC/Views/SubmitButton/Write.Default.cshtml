@@ -6,7 +6,7 @@
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 
-<div class="@Model.CssClass">
+<div class="@Model.CssClass form-group">
 	<button type="submit" @Html.SubmitButtonRequiredAttributes() class="sf-SubmitButton btn btn-primary">@Model.Label</button>
     @if (Model.AllowGoBack)
     {

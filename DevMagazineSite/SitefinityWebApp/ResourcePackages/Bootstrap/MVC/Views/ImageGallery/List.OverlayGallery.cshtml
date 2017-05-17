@@ -2,25 +2,32 @@
 
 @using Telerik.Sitefinity;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
 @using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery)
+@Html.Script(ScriptRef.JQuery, "top")
 
-<link rel="stylesheet" href='@Url.WidgetContent("assets/magnific/magnific-popup.css")'>
+@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), "head")
 
-@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"))
-@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"))
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), "bottom")
 
 <div class="sf-Gallery-thumbs-container">
-  <div class="sf-Gallery-thumbs clearfix @Model.CssClass">
+  <div class="sf-Gallery-thumbs @Model.CssClass">
     @{int itemIndex = 0;}
     @foreach (var item in Model.Items)
     {
-        <a class="pull-left text-center image-link"
-            href="@item.Fields.MediaUrl"
+        var thumbnailViewModel = (ThumbnailViewModel)item;
+
+        <a class="text-center image-link"
+            href="@(thumbnailViewModel.MediaUrl)"
             title="@item.Fields.AlternativeText">
-            <img src="@(((ThumbnailViewModel)item).ThumbnailUrl)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, itemIndex)" alt="@item.Fields.AlternativeText" />
+            <img src="@(thumbnailViewModel.ThumbnailUrl)" 
+                 data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)" 
+                 alt="@item.Fields.AlternativeText"
+                      @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                      @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) @Html.GetDetailsImageWidthAttributeIfExists(thumbnailViewModel.DetailsImageWidth) />
         </a>
         itemIndex++;
     }
