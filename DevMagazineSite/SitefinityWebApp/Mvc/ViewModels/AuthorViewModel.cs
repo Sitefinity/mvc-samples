@@ -1,20 +1,17 @@
 ﻿using DevMagazine.Core.Content;
 using DevMagazine.Core.Modules.Libraries.Images.ViewModels;
 using DevMagazine.Core.Modules.Shared.ViewModels;
-using SitefinityWebApp.Mvc.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Telerik.Sitefinity.DynamicModules.Model;
-using Telerik.Sitefinity.News.Model;
-using Telerik.Sitefinity.Model;
 using Telerik.Sitefinity.DynamicModules;
+using Telerik.Sitefinity.DynamicModules.Model;
 using Telerik.Sitefinity.GenericContent.Model;
-using Telerik.Sitefinity.RelatedData;
-using DevMagazine.Core.Modules.Libraries.Images;
-using DevMagazine.Core.Modules.Libraries.Documents;
-using Telerik.Sitefinity.Utilities.TypeConverters;
+using Telerik.Sitefinity.Model;
 using Telerik.Sitefinity.Modules.News;
+using Telerik.Sitefinity.News.Model;
+using Telerik.Sitefinity.RelatedData;
+using Telerik.Sitefinity.Utilities.TypeConverters;
 
 namespace SitefinityWebApp.Mvc.ViewModels
 {
@@ -258,6 +255,7 @@ namespace SitefinityWebApp.Mvc.ViewModels
 
             return relatedArticles;
         }
+
         #endregion
 
         #region Private fields

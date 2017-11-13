@@ -1,0 +1,5 @@
+// Padding for body in the content block iframe
+body[contenteditable="true"] {
+	@extend .sf-p-l;
+}
+

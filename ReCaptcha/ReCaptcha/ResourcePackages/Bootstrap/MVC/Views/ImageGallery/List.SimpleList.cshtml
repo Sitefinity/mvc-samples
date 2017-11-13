@@ -1,0 +1,32 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+<div class="@Model.CssClass">
+
+    @foreach (var item in Model.Items)
+    {
+        var thumbnailViewModel = (ThumbnailViewModel)item;
+
+    <a class="text-center" title="@(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description)">
+      <img src="@(thumbnailViewModel.ThumbnailUrl)" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.AlternativeText, @"[^\w\d_-]", "")' 
+                @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
+    </a>
+    }
+</div>
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

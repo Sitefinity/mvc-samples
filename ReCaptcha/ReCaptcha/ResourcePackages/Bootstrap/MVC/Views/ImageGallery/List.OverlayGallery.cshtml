@@ -1,0 +1,45 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+@Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), "head")
+
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), "bottom")
+
+<div class="sf-Gallery-thumbs-container">
+  <div class="sf-Gallery-thumbs @Model.CssClass">
+    @{int itemIndex = 0;}
+    @foreach (var item in Model.Items)
+    {
+        var thumbnailViewModel = (ThumbnailViewModel)item;
+
+        <a class="text-center image-link"
+            href="@(thumbnailViewModel.MediaUrl)"
+            title="@item.Fields.AlternativeText">
+            <img src="@(thumbnailViewModel.ThumbnailUrl)" 
+                 data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)" 
+                 alt="@item.Fields.AlternativeText"
+                      @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                      @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) @Html.GetDetailsImageWidthAttributeIfExists(thumbnailViewModel.DetailsImageWidth) />
+        </a>
+        itemIndex++;
+    }
+  </div>
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
