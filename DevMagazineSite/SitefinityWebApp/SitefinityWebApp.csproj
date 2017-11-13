@@ -1106,19 +1106,12 @@
     <Content Include="Mvc\Models\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\RadSpell\de-DE.tdf" />
-    <Content Include="App_Data\RadSpell\en-US.tdf" />
-    <Content Include="App_Data\RadSpell\fr-FR.tdf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\Sitefinity\" />
     <Folder Include="ResourcePackages\BootstrapCustom\assets\src\sass\sitefinity\" />
     <Folder Include="ResourcePackages\Bootstrap\assets\dist\images\social-share\" />
     <Folder Include="ResourcePackages\Bootstrap\assets\fonts\" />
     <Folder Include="ResourcePackages\Bootstrap\assets\src\images\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\GeoLocation\GeoLiteCity.dat" />
     <Content Include="Mvc\Views\Issue\List.LatestIssue.cshtml" />
     <Content Include="Mvc\Views\News\Detail.EmptyArticle.cshtml" />
     <Content Include="Mvc\Views\Issue\Detail.Issue.cshtml" />
