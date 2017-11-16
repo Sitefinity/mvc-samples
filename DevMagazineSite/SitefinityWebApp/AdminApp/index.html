@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Sitefinity AdminApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <!-- Critical CSS -->
+    <style>
+        
+        .tp-loader.-home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tp-loader.-home .loader__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tp-loader.-home .loader__rect {
+    margin-right: 1px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background-color: #38ab63;
+    opacity: 0;
+    animation: indexLoader 1s infinite ease-in-out;
+}
+.tp-loader.-home .loader__rect.-first {
+    animation-delay: 2s;
+}
+.tp-loader.-home .loader__rect.-second {
+    animation-delay: 2.1s;
+}
+.tp-loader.-home .loader__rect.-third {
+    animation-delay: 2.1s;
+}
+@keyframes indexLoader {
+    0% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+        
+    </style>
+    <!--Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <!--Icons-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Kendo UI | TODO: remove when custom css for editor is provided -->
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2017.1.223/styles/kendo.common.min.css">
+
+     
+        <!-- Configured Head Tags  -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/adminapp/assets/icons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/adminapp/assets/icons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/adminapp/assets/icons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/adminapp/assets/icons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/adminapp/assets/icons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/adminapp/assets/icons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/adminapp/assets/icons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/adminapp/assets/icons/apple-touch-icon-152x152.png">
+	<link rel="icon" type="image/png" sizes="196x196" href="/adminapp/assets/icons/favicon-196x196.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="/adminapp/assets/icons/favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/adminapp/assets/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/adminapp/assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/adminapp/assets/icons/favicon-16x16.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="/adminapp/assets/icons/mstile-144x144.png">
+	<meta name="msapplication-square70x70logo" content="/adminapp/assets/icons/mstile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="/adminapp/assets/icons/mstile-150x150.png">
+	<meta name="msapplication-square310x310logo" content="/adminapp/assets/icons/mstile-310x310.png">
+    
+<link href="/adminapp/styles.011ff1eefbb171b08932.css" rel="stylesheet"></head>
+    <!-- 3. Display the application -->
+<body>
+    <sf-app>
+        <!-- Loading Angular app content here (All inside sf-app will be replaced once Angular app is instantiated) ... -->
+        <div class="tp-loader -home">
+            <div class="loader__content">
+                <span class="loader__rect -first"></span>
+                <span class="loader__rect -second"></span>
+                <span class="loader__rect -third"></span>
+            </div>
+        </div>
+    </sf-app>
+
+    <!-- Configured Body Tags  -->
+    
+	<script src="/adminapp/assets/js/kendo-editor/kendo.custom.min.js"></script>
+	<script src="/adminapp/assets/js/monaco-editor/vs/loader.js"></script>
+    
+
+    <!--vendor + app bundles-->
+<script type="text/javascript" src="/adminapp/vendors.29b9fad4568e646c7e14.bundle.js"></script><script type="text/javascript" src="/adminapp/app.011ff1eefbb171b08932.bundle.js"></script></body>
+
+</html>
