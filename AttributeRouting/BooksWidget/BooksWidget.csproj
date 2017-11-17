@@ -283,7 +283,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
-    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Mvc\Controllers\BooksController.cs" />
     <Compile Include="Mvc\Models\Book.cs" />
     <Compile Include="Mvc\Models\BookDetailViewModel.cs" />
