@@ -25,7 +25,7 @@
 
     @if (Model.CurrentPage > 1)
     {
-        <a class="" href='@Url.Content(Model.PreviousPageUrl)'>[Previous]</a>
+        <a href='@Url.Content(Model.PreviousPageUrl)'>[Previous]</a>
     }
 
     @Model.CurrentPage / @Model.PageCount

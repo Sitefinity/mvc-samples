@@ -40,14 +40,10 @@ namespace BooksWidget.Mvc.Controllers
             return this.View(viewModel);
         }
 
-        [Route("web-interface/books/points/{page:int:min(1)?}")]
-        public JsonResult Points(int? page)
+        [Route("web-interface/books/points/{id}")]
+        public JsonResult Points(string id)
         {
-            var points = BooksController._library.Select(book => book.Points);
-            if (page.HasValue)
-                points = points.Skip((page.Value - 1) * BooksController.PageSize);
-
-            points = points.Take(BooksController.PageSize);
+            var points = BooksController._library.SingleOrDefault(b => b.Id == Guid.Parse(id)).Points;
             return this.Json(points, JsonRequestBehavior.AllowGet);
         }
 
