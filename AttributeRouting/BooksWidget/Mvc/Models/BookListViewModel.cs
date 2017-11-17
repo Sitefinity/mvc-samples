@@ -5,9 +5,9 @@ using Telerik.Sitefinity.Services;
 
 namespace BooksWidget.Mvc.Models
 {
-    public sealed class BooksViewModel
+    public sealed class BookListViewModel
     {
-        public BooksViewModel(IEnumerable<Book> items, int pageCount, int currentPage)
+        public BookListViewModel(IEnumerable<Book> items, int pageCount, int currentPage)
         {
             this._items = items;
             this._pageCount = pageCount;
@@ -42,7 +42,7 @@ namespace BooksWidget.Mvc.Models
         {
             get
             {
-                return this.IndexActionUrl(this.CurrentPage + 1);
+                return this.GetPageUrl(this.CurrentPage + 1);
             }
         }
 
@@ -50,20 +50,36 @@ namespace BooksWidget.Mvc.Models
         {
             get
             {
-                return this.IndexActionUrl(this.CurrentPage - 1);
+                return this.GetPageUrl(this.CurrentPage - 1);
             }
         }
-
-        private string IndexActionUrl(int page)
+        
+        public string ResolveAbsolutePageUrl(string relativePath)
+        {
+            var currentPageUrl = this.GetCurrentPageUrl();
+            return string.Format("{0}/{1}", currentPageUrl, relativePath);
+        }
+        
+        private string GetPageUrl(int page)
         {
             StringBuilder sb = new StringBuilder();
+
+            sb.Append(this.GetCurrentPageUrl());
+            sb.Append("/");
+            sb.Append(page);
+
+            return sb.ToString();
+        }
+
+        private string GetCurrentPageUrl()
+        {
+            StringBuilder sb = new StringBuilder();
+
             var currentNode = SiteMap.CurrentNode;
             if (currentNode != null)
                 sb.Append(currentNode.Url);
             else
                 sb.Append(VirtualPathUtility.RemoveTrailingSlash(SystemManager.CurrentHttpContext.Request.Path));
-            sb.Append("/");
-            sb.Append(page);
 
             return sb.ToString();
         }

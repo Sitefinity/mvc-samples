@@ -283,20 +283,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Helpers\UrlHelper.cs" />
     <Compile Include="Mvc\Controllers\BooksController.cs" />
     <Compile Include="Mvc\Models\Book.cs" />
-    <Compile Include="Mvc\Models\BooksViewModel.cs" />
+    <Compile Include="Mvc\Models\BookDetailViewModel.cs" />
+    <Compile Include="Mvc\Models\BookListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <EmbeddedResource Include="Mvc\Views\Books\Index.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\Books\Detail.cshtml" />
     <None Include="OpenAccessNuGet.targets" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mvc\Scripts\books-widget.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\1.jpg" />
+    <EmbeddedResource Include="Images\10.jpg" />
+    <EmbeddedResource Include="Images\2.jpg" />
+    <EmbeddedResource Include="Images\3.jpg" />
+    <EmbeddedResource Include="Images\4.jpg" />
+    <EmbeddedResource Include="Images\5.jpg" />
+    <EmbeddedResource Include="Images\6.jpg" />
+    <EmbeddedResource Include="Images\7.jpg" />
+    <EmbeddedResource Include="Images\8.jpg" />
+    <EmbeddedResource Include="Images\9.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="OpenAccessNuget.targets" />
