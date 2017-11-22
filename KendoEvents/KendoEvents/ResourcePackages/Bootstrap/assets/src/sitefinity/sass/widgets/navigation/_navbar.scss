@@ -22,12 +22,14 @@
 	}
 }
 
-.navbar-collapse.in {
-	.dropdown-submenu ul {
-		@extend .sf-pl-l; //20px
-		display: block;
-	}
-	.right-caret {
-		display: none;
-	}
+@media (max-width: $screen-xs-max) {
+    .navbar-collapse {
+	    .dropdown-submenu ul {
+            padding-left: 20px;
+		    display: block;
+	    }
+	    .right-caret {
+		    display: none;
+	    }
+    }
 }

@@ -28,7 +28,7 @@
         <div class="media-body sf-media-body">
             <h3>@((Model.Item.DataItem as SitefinityProfile).GetUserDisplayName())</h3>
             <p>@((Model.Item.DataItem as SitefinityProfile).User.Email)</p>
-            <p>@Html.Raw((((SitefinityProfileItemViewModel)Model.Item).About))</p>
+            <p>@Html.HtmlSanitize((((SitefinityProfileItemViewModel)Model.Item).About))</p>
         </div>
     }
     else

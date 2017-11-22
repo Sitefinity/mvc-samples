@@ -19,6 +19,6 @@
             }
         }
 
-    <div @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.Raw(Model.Item.Fields.Description)</div>
+    <div @Html.InlineEditingFieldAttributes("Description", "LongText")>@Html.HtmlSanitize((string)Model.Item.Fields.Description)</div>
 
 </div>
