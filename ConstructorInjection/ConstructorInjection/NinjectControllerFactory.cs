@@ -1,10 +1,6 @@
-﻿using Ninject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Web.Mvc;
+using Ninject;
 using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers;
 
 namespace ConstructorInjection
