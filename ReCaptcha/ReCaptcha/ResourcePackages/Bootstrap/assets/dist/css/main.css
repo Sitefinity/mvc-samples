@@ -6499,7 +6499,7 @@ pre {
 .sf-pb-l {
   padding-bottom: 20px; }
 
-.sf-pl-l, .navbar-collapse.in .dropdown-submenu ul {
+.sf-pl-l {
   padding-left: 20px; }
 
 .sf-pr-l {
@@ -6806,11 +6806,12 @@ pre {
     top: 0;
     display: block; }
 
-.navbar-collapse.in .dropdown-submenu ul {
-  display: block; }
-
-.navbar-collapse.in .right-caret {
-  display: none; }
+@media (max-width: 767px) {
+  .navbar-collapse .dropdown-submenu ul {
+    padding-left: 20px;
+    display: block; }
+  .navbar-collapse .right-caret {
+    display: none; } }
 
 .nav-sitemap {
   display: table;

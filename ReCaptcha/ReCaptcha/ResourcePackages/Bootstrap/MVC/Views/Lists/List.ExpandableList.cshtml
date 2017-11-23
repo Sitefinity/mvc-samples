@@ -29,7 +29,7 @@
                     <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
                         <a href="javascript:void(0)" @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="text-muted sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</a>
                         <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content">
-                            @Html.Raw(@listItem.Fields.Content)
+                            @Html.HtmlSanitize((string)listItem.Fields.Content)
                         </div>
                     </div>
                 }

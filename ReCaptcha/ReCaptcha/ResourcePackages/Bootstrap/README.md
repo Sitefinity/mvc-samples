@@ -19,10 +19,6 @@ The Bootstrap package contains front-end assets, widget template, grid widget te
  		- **css** - contains the processed css files
  			- **main.css** - this is output of the processed `main.scss` from `assets/src/project/sass`. This file contains Sitefinity, Bootstrap and project css
  			- **main.min.css** - this is the same as `main.css` but minified. This is the distributed css file which is linked in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
- 			- **sitefinity.bootstrap.css** - this is the processed css file which contains the combined sitefinity and bootstrap css
- 			- **sitefinity.bootstrap.min.css** - minified `sitefinity.bootstrap.css`
- 			- **sitefinity.css** - this is output of the processed `sitefinity.scss` from `assets/src/sitefinity/sass`. This files contain Sitefinity css only
- 			- **sitefinity.min.css** - minified `sitefinity.css`
         - **fonts** - contains files for sitefinity and project icon font
         - **images** - contains compressed images from src folder which are usually used as background images in the css
         - **js** - contains a minified js file which is a concatenation of js files listed in `jsfiles.json`. To use this file add a reference to it in the package Razor layout file `MVC/Views/Layouts/default.cshtml`
@@ -132,8 +128,15 @@ File structure
 ...
 
 main.scss
-// Sitefinity + Bootstrap CSS
-@import "../../sitefinity/sass/sitefinity.bootstrap.scss";
+//Import Bootstrap from npm
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../../../node_modules/magnific-popup/src/css/main.scss";
+
+// Sitefinity
+
+@import "../../sitefinity/sass/components/icons/sf-icon-font";
+@import "../../sitefinity/sass/widgets/socialShare/sf-sprite";
+@import "../../sitefinity/sass/sitefinity.scss";
 
 //Import .scss files here
 @import "setting/colors";
@@ -144,7 +147,7 @@ main.scss
 ...
 ```
 When you run grunt all scss files imported in `assets/src/project/sass/main.scss` will be processed and output in `assets/dist/css/main.css`
-If you don't want to include Sitefinity or Bootstrap css or you want to use another Bootstrap version change the import rule `@import "../../sitefinity/sass/sitefinity.bootstrap.scss";` in `assets/src/project/sass/main.scss`.
+If you don't want to include Sitefinity or Bootstrap css or you want to use another Bootstrap version change the import rule `@import "../../sitefinity/sass/sitefinity.scss";` or `@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";` in `assets/src/project/sass/main.scss`.
 ### Images
 Place all images in `assets/src/project/images`. After grunt is run all images from this folder will be compressed and moved to `assets/dist/images`.
 
@@ -168,7 +171,7 @@ In `jsfiles.json` define the order in which the project's js files will be conca
 	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/js/project.min.js"), "bottom")
 ```
 
-###Icons
+### Icons
 Place all svg files that you want to use as icon via an icon font in `assets/src/project/icons`. The icon font will be created the first time grunt is run. If you add new svg files you will have to run the task manually (`grunt webfont`) or rerun default grunt task.
 Two css classes will be generated for each icon. If the name of the svg file is logo.svg, the names of the css classes will be:
 - `icon-logo` - icon is displayed before Company name
