@@ -1,0 +1,33 @@
+//Import Bootstrap from npm
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../../../node_modules/magnific-popup/src/css/main.scss";
+
+// Sitefinity
+
+@import "../../sitefinity//sass/components/icons/sf-icon-font";
+@import "../../sitefinity//sass/widgets/socialShare/sf-sprite";
+@import "../../sitefinity/sass/sitefinity.scss";
+
+
+//Import .scss files here
+@import "tools/variables";
+@import "tools/typography";
+@import "tools/layout";
+@import "tools/utility-classes";
+
+// Icons
+@import "icons/glyph";
+
+// Modules
+@import "modules/Navbar";
+@import "modules/Author";
+@import "modules/Social";
+@import "modules/Buttons";
+@import "modules/Issue";
+@import "modules/Search";
+@import "modules/Article";
+@import "modules/Media";
+@import "modules/Pagination";
+@import "modules/Form";
+@import "modules/Events";
+@import "modules/Tabs";

@@ -1,9 +1,19 @@
 <textarea id="editor" style="height: 340px;"
     kendo-editor="editorWidget" ng-model="sfModel"
-	k-scope-field="editorWidget"
-	sf-toggle-commands="strikethrough, justifyFull, subscript, superscript, fontName, fontSize, foreColor, backColor, print"
+    k-scope-field="editorWidget"
+    sf-toggle-commands="strikethrough, justify-full, subscript, superscript, fontName, fontSize, foreColor, backColor, print"
     k-encoded="false"
     k-stylesheets='["{{htmlFieldCssUrl}}"]',
+    k-paste-cleanup="{
+        all: false,
+        css: false,
+        keepNewLines: false,
+        msAllFormatting: true,
+        msConvertLists: true,
+        msTags: true,
+        none: false,
+        span: false
+    }",
     k-tools='[
     "formatting",
     "bold", "italic", "underline",
@@ -22,13 +32,13 @@
         name: "insertFile",
         template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openDocumentSelector()\" title=\"@(Res.Get<ClientComponentsResources>().InsertFile)\"><span class=\"k-tool-icon k-insertFile\">@(Res.Get<ClientComponentsResources>().InsertFile)</span></a>"
     },
-	{
+    {
         name: "insertVideo",
         template: "<a href=\"\" class=\"k-tool custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\"></span></a>"
     },
     "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
     "cleanFormatting",
-	"strikethrough", "subscript", "superscript","fontName", "fontSize", "foreColor", "backColor", "print",
+    "strikethrough", "subscript", "superscript","fontName", "fontSize", "foreColor", "backColor", "print",
     {
         name: "showAll",
         template: "<a class=\"k-tool custom-tool show-all-button\" title=\"@(Res.Get<ClientComponentsResources>().AllTools)\" ng-click=\"toggleAllTools()\"><span class=\"glyphicon glyphicon-option-horizontal\"></span></a>"
@@ -36,7 +46,7 @@
     {
         name: "fullscreen",
         template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"Fullscreen\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen sf-maximize\"></span></a>"
-	},
+    },
     {
         name: "htmlView",
         template: "<button class=\"custom-tool btn btn-default btn-xs pull-right js-htmlview js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
