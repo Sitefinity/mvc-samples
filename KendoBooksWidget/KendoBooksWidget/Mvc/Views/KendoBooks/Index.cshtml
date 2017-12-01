@@ -1,36 +1,31 @@
 ﻿@model KendoBooksWidget.Mvc.Models.BooksViewModel
 
-@using Telerik.Sitefinity.Modules.Pages;
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Kendo.Mvc.UI
 @using KendoBooksWidget.Mvc.Models;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
 
-@Html.StyleSheet("http://kendo.cdn.telerik.com/2015.3.930/styles/kendo.common.min.css", "head")
-@Html.StyleSheet("http://kendo.cdn.telerik.com/2015.3.930/styles/kendo.blueopal.min.css", "head")
-@Html.Script(ScriptRef.JQuery, "top")
-@Html.Script(ScriptRef.KendoAll, "top")
-@Html.Script(Url.WidgetContent("http://kendo.cdn.telerik.com/2015.3.930/js/kendo.aspnetmvc.min.js"), "top")
+@Html.StyleSheet("http://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common.min.css", "head")
+@Html.StyleSheet("http://kendo.cdn.telerik.com/2017.3.913/styles/kendo.blueopal.min.css", "head")
+@Html.Script(ScriptRef.JQuery, "head")
+@Html.Script(ScriptRef.KendoAll, "head")
+@Html.Script(Url.WidgetContent("http://kendo.cdn.telerik.com/2017.3.913/js/kendo.aspnetmvc.min.js"), "head")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/kendo-books-widget.js"), "top")
 
-<div data-role="books-widget">
-
+<div data-role="books-widget"></div>
 
 @(Html.Kendo().Grid<Book>()
     .Name("booksGrid")
-	.EnableCustomBinding(true)
+    .EnableCustomBinding(true)
     .Columns(columns =>
     {
         columns.Bound(book => book.Title).Width(140);
-		columns.Bound(book => book.Author).Width(140);      
-		columns.Bound(book => book.Points).Width(40);     
-		columns.Command(command => command.Custom("Vote").Click("vote"));	
+        columns.Bound(book => book.Author).Width(140);
+        columns.Bound(book => book.Points).Width(40);
+        columns.Command(command => command.Custom("Vote").Click("vote"));
     })
     .Pageable()
     .DataSource(dataSource => dataSource
         .Ajax()
-		.PageSize(5)
-        .Read(read => read.Url(Url.Content("/web-interface/books")))
-    )
-)
-
-
-@Html.Script(Url.WidgetContent("Mvc/Scripts/kendo-books-widget.js"), "bottom")
+        .PageSize(5)
+        .Read(read => read.Url(Url.Content("/web-interface/books")))))

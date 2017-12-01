@@ -1,5 +1,4 @@
-﻿
-namespace KendoBooksWidget.Mvc.Models
+﻿namespace KendoBooksWidget.Mvc.Models
 {
     public sealed class Book
     {

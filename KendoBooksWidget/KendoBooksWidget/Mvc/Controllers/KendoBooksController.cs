@@ -1,10 +1,9 @@
-﻿using Kendo.Mvc.UI;
-using Kendo.Mvc.Extensions;
-using KendoBooksWidget.Mvc.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using KendoBooksWidget.Mvc.Models;
 using Telerik.Sitefinity.Mvc;
 
 namespace KendoBooksWidget.Mvc.Controllers

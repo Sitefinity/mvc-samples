@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Text;
-using System.Web;
-using Telerik.Sitefinity.Services;
 
 namespace KendoBooksWidget.Mvc.Models
 {

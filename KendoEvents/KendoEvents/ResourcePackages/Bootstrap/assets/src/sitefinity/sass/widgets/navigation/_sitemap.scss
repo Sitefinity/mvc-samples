@@ -1,0 +1,56 @@
+// SiteMap
+.nav-sitemap {
+	@extend .sf-p-xxs; //0
+	@extend .sf-m-xxs;  //0
+	display: table;
+	width: $nav-sitemap-width;
+	overflow: hidden;
+
+	ul {
+		@extend .sf-p-xxs; //0
+		@extend .sf-m-xxs; //0
+	}
+
+	li {
+		list-style-type: none;
+	}
+
+	> li {
+		display: table-cell;
+		border-left: $nav-sitemap-border-width solid $nav-sitemap-border-left-color;
+
+		&:first-child {
+			border-left-width: $nav-sitemap-first-child-border-left-width;
+		}
+	}
+
+	@media only screen and (max-width: $screen-xs-min) {
+		display: block;
+
+		> li {
+			display: block;
+			border-left-width: $mobile-nav-sitemap-li-border-left-width;
+
+			&:first-child {
+				border-top-width: $mobile-nav-sitemap-li-first-border-top-width;
+			}
+		}
+	}
+	@media only screen and (min-width: $screen-xs-min) and (max-width: $screen-sm-min) {
+		display: block;
+
+		> li {
+			margin-top: 0;
+			margin-bottom: 0;
+			margin-left: 1%;
+			margin-right: 1%;
+			float: left;
+			width: $mobile-nav-sitemap-li-width;
+			border-left-width: $mobile-nav-sitemap-li-border-left-width;
+			
+			&:nth-child(odd) {
+				clear: both;
+			}
+		}
+	}
+}

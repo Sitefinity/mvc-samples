@@ -1,10 +1,5 @@
 ﻿using ConstructorInjection.Mvc.Models;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConstructorInjection
 {
@@ -15,8 +10,7 @@ namespace ConstructorInjection
         /// </summary>
         public override void Load()
         {
-            Bind<IAuthorsService>().To<AuthorsService>();
+            this.Bind<IAuthorsService>().To<AuthorsService>();
         }
-
     }
 }

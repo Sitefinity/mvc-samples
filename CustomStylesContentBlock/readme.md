@@ -9,7 +9,7 @@ tools. One of those tools is "formatting". Without specifiyng details,
 the "formatting" tool gives you some default options - "Paragraph", "Quotation" and "Heading" 1,2,3,4,5 and 6.
 
 You can change the Content Block "formatting" tool globally (for the default
-Feather Content Block widget) by replacing the default view that Feather
+Feather Content Block widget when the widget is placed on hybrid page) by replacing the default view that Feather
 uses. You need to create a folder structure in your Sitefinity web
 application on root level with path
 **client-components\\fields\\html-field** and inside of it create a file

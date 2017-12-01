@@ -1,0 +1,64 @@
+// Kendo and bootstrap overrides
+
+div.k-event {
+	border-radius: 0;
+}
+.nav-pills>li+li {
+	margin-left: 0;
+}
+
+//Event styles
+
+.sf-event-item {
+	margin: $event-item-margin;
+	padding: $event-item-padding;
+	min-height: $event-item-min-height;
+	white-space: nowrap;
+}
+.sf-event-title,
+.sf-event-link {
+	display: inline-block;
+}
+.sf-event-link {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: top;
+}
+.sf-event-type {
+	display: inline-block;
+	@extend .sf-mr-s; //10px
+	width: $event-type-width;
+	height: $event-type-height;
+	border-radius: $event-type-border-radius;
+	vertical-align: middle;
+
+	&.sf-event-type--all {
+		background-color: $event-type-all-background;
+		border: $event-type-all-border-width solid $event-type-all-border-color;
+	}
+
+}
+.sf-event-addToList {
+	display: inline-block;
+}
+.sf-calendarList-title {
+	font-weight: $calendarList-title-font-weight;
+}
+.sf-calendarList-item {
+	padding: $calendarList-item-padding;
+	border-radius: $calendarList-item-border-radius;
+	cursor: pointer;
+	&.active {
+		background: $calendarList-item--active-background;
+	}
+}
+.k-scheduler-agendaview{
+	.sf-event-item {
+		display: inline-block;
+		@extend .sf-p-xxs; //0
+	}
+	.sf-event-type {
+		display: none;
+	}
+}

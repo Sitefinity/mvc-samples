@@ -1,0 +1,18 @@
+.sf-list--expandable {
+	i {
+		@extend .sf-mr-xs; //5px
+	}
+
+	.sf-list-content {
+		@extend .sf-ml-l; //20px
+	}
+
+	.sf-list-item {
+		>div {
+			@extend .sf-mb-xs; //5px
+		}
+		h3:first-child {
+			@extend .sf-mt-xxs; //0
+		}
+	}
+}

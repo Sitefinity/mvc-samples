@@ -1,0 +1,11 @@
+//Import Bootstrap from npm
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
+@import "../../../../node_modules/magnific-popup/src/css/main.scss";
+
+// Sitefinity
+
+@import "../../sitefinity/sass/components/icons/sf-icon-font";
+@import "../../sitefinity/sass/widgets/socialShare/sf-sprite";
+@import "../../sitefinity/sass/sitefinity.scss";
+
+//Import .scss files here

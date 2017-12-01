@@ -1,0 +1,70 @@
+// Default template
+
+.sf-FormNav {
+	@extend .sf-p-xxs; //0
+
+	li {
+		display: inline-block;
+		@extend .sf-mr-l; //20px
+
+		&.active {
+			font-weight: bold;
+		}
+	}
+}
+
+.sf-FormNav-page {
+	@extend .sf-mr-s; //10px
+	position: relative;
+	display: inline-block;
+	width: $formNav-page-width;
+	height: $formNav-page-height;
+	line-height: $formNav-page-line-height;
+	color: $formNav-page-color;
+	font-size: $formNav-page-font-size;
+	border: $formNav-page-border-width solid $formNav-page-border-color;
+	font-weight: bold;
+	border-radius: $formNav-page-border-radius;
+	text-align: center;
+	vertical-align: middle;
+	.active & {
+		color: $formNav-page--active-color;
+		border-color: $formNav-page--active-border-color;
+	}
+	.past & {
+		&:after {
+			content: "\2713";
+			position: absolute;
+			left: 7px;
+		}
+	}
+}
+
+.sf-FormNav-page-number {
+	.past & {
+		display: none;
+	}
+}
+
+// Progress template
+.sf-Progress-percent,
+.sf-Progress-page-title {
+	font-size: $progress-page-title-font-size;
+}
+
+.sf-Progress-percent {
+	font-weight: bold;
+}
+
+.sf-Progress-page-title {
+	@extend .sf-pl-xxs; //0
+	display: inline-block;
+
+	li {
+		display: none;
+		
+		&.active {
+			display: inline-block;
+		}
+	}
+}

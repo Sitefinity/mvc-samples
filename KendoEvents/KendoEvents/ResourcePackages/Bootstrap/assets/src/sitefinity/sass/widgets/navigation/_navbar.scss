@@ -1,0 +1,35 @@
+//right-caret
+.right-caret {
+	display: inline-block;
+	width: $right-caret-width;
+	height: $right-caret-height;
+	margin-left: 2px;
+	vertical-align: middle;
+	border-top: $right-caret-border-top-width solid $right-caret-border-top-color;
+	border-bottom: $right-caret-border-bottom-width solid $right-caret-border-bottom-color;
+	border-left: $right-caret-border-left-width solid;
+}
+
+.dropdown-submenu {
+	position: relative;
+	
+	&:hover {
+		> ul {
+			left: 100%;
+			top: 0;
+			display: block;
+		}
+	}
+}
+
+@media (max-width: $screen-xs-max) {
+    .navbar-collapse {
+	    .dropdown-submenu ul {
+            padding-left: 20px;
+		    display: block;
+	    }
+	    .right-caret {
+		    display: none;
+	    }
+    }
+}

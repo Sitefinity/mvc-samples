@@ -1,0 +1,22 @@
+﻿@model BooksWidget.Mvc.Models.BookDetailViewModel
+
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+<div data-role="books-widget">
+    <div data-role="book-item">
+        <p>@Model.Author, <strong>@Model.Title</strong></p>
+        <p><img src='@Model.ImageUrl' style="max-height: 400px; max-width: 400px"/></p>
+        <p><em>@Model.Description</em></p>
+        <p>
+            Points: <span data-role="points">@Model.Points</span>
+            <a href="" data-role="vote-link">[Vote]</a>
+        </p>
+
+        <input data-role="book-id" type="hidden" value="@Model.Id" />
+    </div>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/books-widget.js"), "bottom")

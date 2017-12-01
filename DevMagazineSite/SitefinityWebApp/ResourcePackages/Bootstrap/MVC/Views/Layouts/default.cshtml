@@ -12,14 +12,14 @@
     <title></title>
 
     @Html.Section("head")
-    @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/sitefinity.bootstrap.min.css"), "head")
+    @Html.StyleSheet(Url.Content("~/ResourcePackages/Bootstrap/assets/dist/css/main.min.css"), "head")
 </head>
 
 <body>
     @Html.Section("top")
-        
-    <div class="sfPublicWrapper" id="PublicWrapper">		
-        @Html.SfPlaceHolder("Contentplaceholder1")		
+
+    <div class="sfPublicWrapper" id="PublicWrapper">
+        @Html.SfPlaceHolder("Contentplaceholder1")
     </div>
 
     @* Inline editing scripts and helpers. They should be available only when inline editing is possible. *@

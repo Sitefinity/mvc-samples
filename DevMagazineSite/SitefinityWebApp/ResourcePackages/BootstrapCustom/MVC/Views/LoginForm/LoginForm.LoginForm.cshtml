@@ -72,13 +72,6 @@
             {
                 @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
             }
- 
-            if (Model.IncorrectCredentials)
-            {
-            
-            <p>@Html.Resource("IncorrectCredentialsMessage")</p>
-                
-            }
 
             if (Model.ShowRegistrationLink)
             {

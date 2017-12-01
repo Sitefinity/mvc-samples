@@ -1,0 +1,6 @@
+<div id="tracking-consent-dialog" style="padding:20px;position:relative;z-index:10000000;border:1px solid #ccc;background:#fff;"> 
+    <strong>@(Res.Get<Labels>().TrackingConsentDialogTitle)</strong>
+    <p>@(Res.Get<Labels>().TrackingConsentDialogDescription)</p>
+    <button type="button" onclick="TrackingConsentManager.updateUserConsent(true)" id="tracking-consent-dialog-accept" class="btn btn-default">@(Res.Get<Labels>().TrackingConsentDialogAccept)</button>
+    <button type="button" onclick="TrackingConsentManager.updateUserConsent(false)" id="tracking-consent-dialog-reject" class="btn btn-default">@(Res.Get<Labels>().TrackingConsentDialogReject)</button>
+</div>

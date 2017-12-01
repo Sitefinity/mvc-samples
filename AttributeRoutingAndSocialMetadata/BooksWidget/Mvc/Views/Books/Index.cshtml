@@ -1,0 +1,41 @@
+﻿@model BooksWidget.Mvc.Models.BookListViewModel
+
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+@Html.Script(ScriptRef.JQuery, "top")
+
+<div data-role="books-widget">
+    @foreach (var book in Model.Items)
+    {
+        var navigateUrl = Url.Content(Model.ResolveAbsolutePageUrl(string.Format("Detail/{0}", book.Id)));
+
+        <div data-role="book-item">
+            <p>@book.Author, @book.Title</p>
+            <p>
+                Points: <span data-role="points">@book.Points</span>
+                <a href="" data-role="vote-link">[Vote]</a>
+                <a href='@navigateUrl'>[Details]</a>
+            </p>
+
+            <input data-role="book-id" type="hidden" value="@book.Id" />
+        </div>
+
+    }
+
+    @if (Model.CurrentPage > 1)
+    {
+        <a href='@Url.Content(Model.PreviousPageUrl)'>[Previous]</a>
+    }
+
+    @Model.CurrentPage / @Model.PageCount
+
+    @if (Model.CurrentPage < Model.PageCount)
+    {
+        <a href='@Url.Content(Model.NextPageUrl)'>[Next]</a>
+    }
+
+    <input data-role="current-page" type="hidden" value="@Model.CurrentPage" />
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/books-widget.js"), "bottom")
