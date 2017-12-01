@@ -7,7 +7,7 @@ The goal of this sample is to demonstrate:
 
 ###  Prerequisites
 - .NET Framework 4.5 or higher
-- Sitefinity 10.2 or later
+- Sitefinity 10.2.6621.0
 - [Feather](https://github.com/Sitefinity/feather/wiki/Getting-Started)
 - [OpenGraph for MVC widgets](https://docs.sitefinity.com/open-graph-settings)
 - [SEO for MVC widgets](https://docs.sitefinity.com/seo-automatic-generation-of-metadata-for-mvc-widgets)
