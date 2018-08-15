@@ -7,22 +7,22 @@
     <!-- Critical CSS -->
     <style>
         
-        .tp-loader.-home {
+        .sf-loader.-home {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.tp-loader.-home .loader__content {
+.sf-loader.-home .loader__content {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.tp-loader.-home .loader__rect {
+.sf-loader.-home .loader__rect {
     margin-right: 1px;
     width: 10px;
     height: 10px;
@@ -31,13 +31,13 @@
     opacity: 0;
     animation: indexLoader 1s infinite ease-in-out;
 }
-.tp-loader.-home .loader__rect.-first {
+.sf-loader.-home .loader__rect.-first {
     animation-delay: 2s;
 }
-.tp-loader.-home .loader__rect.-second {
+.sf-loader.-home .loader__rect.-second {
     animation-delay: 2.1s;
 }
-.tp-loader.-home .loader__rect.-third {
+.sf-loader.-home .loader__rect.-third {
     animation-delay: 2.1s;
 }
 @keyframes indexLoader {
@@ -59,9 +59,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
     <!--Icons-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Kendo UI | TODO: remove when custom css for editor is provided -->
-    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2017.1.223/styles/kendo.common.min.css">
-
+    <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/widgets.js"></script>
      
         <!-- Configured Head Tags  -->
         <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/adminapp/assets/icons/apple-touch-icon-57x57.png">
@@ -83,12 +81,12 @@
 	<meta name="msapplication-square150x150logo" content="/adminapp/assets/icons/mstile-150x150.png">
 	<meta name="msapplication-square310x310logo" content="/adminapp/assets/icons/mstile-310x310.png">
     
-<link href="/adminapp/styles.011ff1eefbb171b08932.css" rel="stylesheet"></head>
+</head>
     <!-- 3. Display the application -->
 <body>
     <sf-app>
         <!-- Loading Angular app content here (All inside sf-app will be replaced once Angular app is instantiated) ... -->
-        <div class="tp-loader -home">
+        <div class="sf-loader -home">
             <div class="loader__content">
                 <span class="loader__rect -first"></span>
                 <span class="loader__rect -second"></span>
@@ -104,6 +102,6 @@
     
 
     <!--vendor + app bundles-->
-<script type="text/javascript" src="/adminapp/vendors.29b9fad4568e646c7e14.bundle.js"></script><script type="text/javascript" src="/adminapp/app.011ff1eefbb171b08932.bundle.js"></script></body>
+<script type="text/javascript" src="/adminapp/vendors.67ed20d62ea6b5d72fee.bundle.js"></script><script type="text/javascript" src="/adminapp/app.e3fec2f3f3770e2e94ca.bundle.js"></script></body>
 
 </html>

@@ -34,6 +34,8 @@ using System.Resources;
 [assembly: NeutralResourcesLanguageAttribute("en")]
 
 
+
+
 [assembly: Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes.ControllerContainer]
 
 [assembly: Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes.ResourcePackage]
