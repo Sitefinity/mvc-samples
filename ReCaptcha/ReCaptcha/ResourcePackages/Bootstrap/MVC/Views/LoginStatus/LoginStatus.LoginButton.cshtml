@@ -1,9 +1,14 @@
 ﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginStatus.LoginStatusViewModel
 
-@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Mvc.Proxy;
 
 @Html.Script(ScriptRef.JQuery, "top", false)
+
+@{
+    var SignOutUrl = string.Concat(Url.Action("SignOut"), string.Format("?{0}={1}", MvcControllerProxy.ControllerKey, ViewData[MvcControllerProxy.ControllerKey]));
+}
 
 <div class="@Model.CssClass">
     <div class="media" data-sf-role="sf-logged-in-view" style="display: none">
@@ -15,7 +20,7 @@
         <div class="media-body">
             <a href="@(Model.ProfilePageUrl ?? "#")" data-sf-role="sf-logged-in-name"></a>
             <p data-sf-role="sf-logged-in-email"></p>      
-            @Html.ActionLink(Html.Resource("Logout"), "SignOut", null, new { @class = "btn btn-default" })
+            <a class="btn btn-default" href="@SignOutUrl">@Html.Resource("Logout")</a>
         </div>
     </div>
 
