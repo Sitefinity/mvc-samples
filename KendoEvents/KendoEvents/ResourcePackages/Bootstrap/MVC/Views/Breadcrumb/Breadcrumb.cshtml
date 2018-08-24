@@ -1,9 +1,9 @@
 ﻿<div class="@Model.CssClass">
-    <ul class="sf-breadscrumb breadcrumb">
+    <ol class="sf-breadscrumb breadcrumb">
         @for (int i = 0; i < Model.SiteMapNodes.Count; i++)
         {
             var node = Model.SiteMapNodes[i];
-            
+
             if (i == Model.SiteMapNodes.Count - 1 && Model.ShowCurrentPageInTheEnd)
             {
                 <li class="active">@node.Title</li>
@@ -13,5 +13,5 @@
                 <li><a href="@node.Url">@node.Title </a></li>
             }
         }
-    </ul>
+    </ol>
 </div>

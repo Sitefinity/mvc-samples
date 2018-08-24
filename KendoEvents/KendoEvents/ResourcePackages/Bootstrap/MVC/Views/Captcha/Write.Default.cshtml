@@ -18,6 +18,9 @@
 			<input data-sf-role="violation-messages" type="hidden" value='{"required": "@Model.ValidatorDefinition.RequiredViolationMessage"}' />
             <label for='@Html.UniqueId("Textbox")'>@Html.Resource("TypeCodeAbove") </label>
             <input id='@Html.UniqueId("Textbox")' type="text" data-sf-role="captcha-input" name="@Model.CaptchaAnswerFormKey" required="required" class="form-control input-sm"/>
+            <p data-sf-role="invalid-captcha-input"  class="alert alert-danger">
+                @Html.Resource("CaptchaErrorMessage")
+            </p>
         </div>
     </div>
     <input type="hidden" data-sf-role="captcha-ca" name="@Model.CaptchaCorrectAnswerFormKey" />
