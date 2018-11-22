@@ -1,0 +1,13 @@
+﻿@if $has-rtl-support {
+
+    @include rtl-cultures  {
+        &:not(.sfPageEditorWrp) {
+            direction: rtl;
+
+            > body {
+                text-align: right;
+            }
+        }
+    }
+
+}

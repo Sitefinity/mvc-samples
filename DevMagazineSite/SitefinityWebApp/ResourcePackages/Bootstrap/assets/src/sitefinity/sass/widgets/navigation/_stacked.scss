@@ -3,3 +3,13 @@
 		@extend .sf-ml-m; //15px
 	}
 }
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .nav-stacked>li {
+        float: none;
+    }
+  }
+}

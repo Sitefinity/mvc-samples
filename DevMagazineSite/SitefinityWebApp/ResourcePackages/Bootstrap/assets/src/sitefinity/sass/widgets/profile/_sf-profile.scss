@@ -14,10 +14,28 @@
 			border-radius: $profile-avatar-remove-border-radius;
 		}
 	}
+
+    .sf-profile-aside {
+        @extend .sf-pr-xl; //30px
+    }
+
 	textarea {
 		min-height: 100px;
 	}
 	.media-object img {
 		max-width: none;
 	}
+}
+
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+        .sf-profile {
+            .sf-profile-aside {
+                @extend .sf-pl-xl; //30px
+                @extend .sf-pr-xxs; //0
+            }
+        }
+    }
 }

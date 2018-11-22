@@ -1,0 +1,56 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.MultipleChoiceField.MultipleChoiceFieldViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Forms.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "top", false)
+
+@{
+    var fieldName = string.IsNullOrEmpty(Model.MetaField.FieldName) ? "multiple-choice-field-name" : Model.MetaField.FieldName;
+    var requiredAttributes = MvcHtmlString.Create(Model.ValidationAttributes);
+    var isRequired = Model.IsRequired ? "true" : "false";
+    var hasDescription = !string.IsNullOrEmpty(Model.MetaField.Description);
+}
+
+<fieldset class="@Model.CssClass form-group" data-sf-role="multiple-choice-field-container">
+    <legend class="h6" id='@Html.UniqueId("RadioGroupLabel")'>@Model.MetaField.Title</legend>
+
+    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
+
+    <ul class="list-inline" aria-labelledby='@Html.UniqueId("RadioGroupLabel")' @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("RadioGroupInfo")'</text> } }>
+        @foreach (var choice in Model.Choices)
+        {
+            string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
+            bool isSelected = (!string.IsNullOrEmpty(value) && choice == value) ||
+                                (string.IsNullOrEmpty(value) && !Model.IsRequired && choice == Model.MetaField.DefaultValue as string);
+
+            var selctedAttributes = isSelected ? "checked" : string.Empty;
+            <li class="list-inline-item">
+                <label>
+                    <input type="radio" name="@fieldName" value="@choice" data-sf-role="multiple-choice-field-input" @selctedAttributes @requiredAttributes role="radio" aria-required="@isRequired" />
+                    @choice
+                </label>
+            </li>
+        }
+
+        @if(Model.HasOtherChoice)
+        {
+            <li class="list-inline-item">
+                <label>
+                    <input type="radio" name="@fieldName" data-sf-multiple-choice-role="other-choice-radio" data-sf-role="multiple-choice-field-input" role="radio" aria-required="@isRequired" />
+                    @Html.Resource("Other")
+                    <span class="sr-only">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
+                </label>
+                <input type="hidden" data-sf-multiple-choice-role="other-choice-text" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
+            </li>
+        }
+    </ul>
+    @if (hasDescription) 
+    {
+        <p id='@Html.UniqueId("RadioGroupInfo")' class="text-muted">@Model.MetaField.Description</p>
+    }
+</fieldset>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/MultipleChoiceField/multiple-choice-field.js"), "bottom", false)

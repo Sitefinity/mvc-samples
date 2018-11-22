@@ -5,7 +5,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Bootstrap/js/bootstrap.min.js"), "top", false)
 
 <div class="@Model.CssClass">

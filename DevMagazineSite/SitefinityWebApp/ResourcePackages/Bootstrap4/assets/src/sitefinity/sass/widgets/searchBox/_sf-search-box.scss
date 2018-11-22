@@ -1,0 +1,50 @@
+ul.sf-autocomplete {
+
+	@extend %p-0; //0
+
+	position: absolute;
+	background: $autocomplete-background;
+	border: $autocomplete-border-width solid $autocomplete-border-color;
+	list-style: none;
+
+	.ui-menu-item-wrapper {
+		padding: 3px;
+		color: $autocomplete-anchor-color;
+
+		&.ui-state-active {
+			background-color: $autocomplete-anchor-focus-background;
+		}
+
+		&:hover {
+			cursor:pointer;
+		}
+	}
+}
+/* Needed by jQueryUI Autocomplete widget for search box to improve autocomplete suggestions accessibility */
+.ui-helper-hidden-accessible{
+    border:0;
+    clip:rect(0 0 0 0);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    width:1px
+}
+
+.sf-search-input-wrapper  {
+    @extend %pr-2;
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+        .sf-search-input-wrapper {
+            @extend %pl-2; 
+            @extend %pr-0; //0
+        }
+    }
+}

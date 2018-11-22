@@ -5,12 +5,12 @@ ul.sf-autocomplete {
 	border: $autocomplete-border-width solid $autocomplete-border-color;
 	list-style: none;
 
-	a {
+	.ui-menu-item-wrapper {
 		padding: 3px;
 		display: block;
 		color: $autocomplete-anchor-color;
 
-		&.ui-state-focus {
+		&.ui-state-active {
 			background-color: $autocomplete-anchor-focus-background;
 		}
 

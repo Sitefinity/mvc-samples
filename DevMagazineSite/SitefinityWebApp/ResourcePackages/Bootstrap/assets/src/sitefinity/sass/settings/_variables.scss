@@ -413,3 +413,9 @@ $event-type-all-background:                    #fff;
 $event-type-all-border-color:                  #999;
 $calendarList-item--active-background:         #f2f2f2;
 $calendarList-title-font-weight:               bold;
+
+//## Rtl cultures
+
+//Set to false if you do not need rtl support
+$has-rtl-support: true;
+$rtl-cultures: "ar", "he", "fa", "ku", "ur", "dv", "ps", "ha", "ks", "yi";

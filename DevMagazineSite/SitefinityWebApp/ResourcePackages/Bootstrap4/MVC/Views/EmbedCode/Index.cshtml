@@ -1,0 +1,17 @@
+﻿@model Telerik.Sitefinity.Frontend.InlineClientAssets.Mvc.Models.EmbedCode.EmbedCodeViewModel
+
+@using Telerik.Sitefinity.Frontend.InlineClientAssets.Mvc.Models;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Services;
+
+@if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode && !SystemManager.IsInlineEditingMode)
+{
+    <div class="sf-Code">
+        <pre>@ViewBag.DesignModeContent</pre>
+    </div>
+   
+}
+else
+{   
+     @Html.Raw(Model.EmbedCode)
+}
