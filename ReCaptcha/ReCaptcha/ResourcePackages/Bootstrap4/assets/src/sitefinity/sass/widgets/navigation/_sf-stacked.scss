@@ -1,0 +1,13 @@
+.nav-stacked {
+	flex-direction: column;
+}
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .nav-stacked>li {
+        float: none;
+    }
+  }
+}

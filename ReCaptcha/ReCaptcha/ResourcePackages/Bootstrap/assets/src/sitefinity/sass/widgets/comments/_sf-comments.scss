@@ -86,6 +86,10 @@
 	@extend .sf-ml-xxxl; //50px
 }
 
+.sf-Comments-filter {
+    float: right;
+}
+
 //Reviews
 
 .sf-Review-already {
@@ -113,4 +117,32 @@
 		@extend .sf-mb-s; //10px
 		display: block;
 	}
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+    .sf-Comments-header h3 {
+        @extend .sf-ml-l; //20px
+        @extend .sf-mr-xxs; //0
+    }
+
+    .sf-Comments-filter {
+        float: left;
+    }
+
+    .sf-Comment-count,
+	.sf-Review-count {
+		@extend .sf-mr-s; //10px
+	}
+
+    .sf-Comment-count--block  {
+    .sf-Comment-count {
+		    @extend .sf-mr-xxs; //0
+	    }
+    }
+
+  }
 }

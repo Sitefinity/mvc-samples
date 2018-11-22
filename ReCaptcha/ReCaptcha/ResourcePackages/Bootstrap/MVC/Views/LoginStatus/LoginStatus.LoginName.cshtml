@@ -4,7 +4,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Mvc.Proxy;
 
-@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
 
 @{
 var SignOutUrl = string.Concat(Url.Action("SignOut"),string.Format("?{0}={1}", MvcControllerProxy.ControllerKey, ViewData[MvcControllerProxy.ControllerKey]));
@@ -28,4 +28,4 @@ var SignOutUrl = string.Concat(Url.Action("SignOut"),string.Format("?{0}={1}", M
 <input type="hidden" data-sf-role="sf-is-design-mode-value" value="@ViewBag.IsDesignMode.ToString()" />
 <input type="hidden" data-sf-role="sf-allow-windows-sts-login" value="@Model.AllowWindowsStsLogin.ToString()" />
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginStatus/login-status.js"), "bottom", true)

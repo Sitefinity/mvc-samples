@@ -57,3 +57,27 @@
 }
 
 
+//Float bootstrap columns to right
+
+@mixin float-grid-columns-right($class, $i: 1, $list: ".col-#{$class}-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-#{$class}-#{$i}";
+  }
+  #{$list} {
+    float: right;
+  }
+}
+
+//Right-to-left support
+
+@mixin rtl-cultures {
+    $available-rtl-cultures: ();
+    
+    @each $culture in $rtl-cultures {
+        $available-rtl-cultures: join($available-rtl-cultures, '[lang^="#{$culture}"]', "comma");
+    }
+
+    #{$available-rtl-cultures} {
+        @content
+    }
+}
