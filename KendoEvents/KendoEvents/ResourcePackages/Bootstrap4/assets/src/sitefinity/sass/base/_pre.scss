@@ -1,0 +1,13 @@
+
+
+pre {
+	@extend %p-0; //0
+
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: $pre-font-size;
+	background: $pre-background;
+	border: $pre-border-width;
+}
+
+
+

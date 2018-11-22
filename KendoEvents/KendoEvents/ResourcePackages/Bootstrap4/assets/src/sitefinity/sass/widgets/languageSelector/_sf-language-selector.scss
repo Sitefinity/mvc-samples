@@ -1,0 +1,33 @@
+.sf-lang-selector {
+
+	&.list-inline {
+
+		.list-inline-item {
+			@extend %pr-0; //0
+		}
+	}
+
+	a {
+		@extend %pt-1; //.25rem
+		@extend %pb-1; //.25rem
+		@extend %pl-2; //.5rem
+		@extend %pr-2; //.5rem
+
+		display: block;
+		font-size: $lang-selector-anchor-font-size;
+		border-radius: $lang-selector-anchor-border-radius;
+
+		&.selected {
+			background-color: $lang-selector-anchor--selected-background;
+			color: $lang-selector-anchor--selected-color;
+		}
+	}
+	
+	label {
+
+		select {
+			display: block;
+			font-weight: normal;
+		}
+	}
+}

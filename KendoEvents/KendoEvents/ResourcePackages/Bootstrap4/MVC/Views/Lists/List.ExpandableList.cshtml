@@ -1,0 +1,92 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
+
+@Html.Script(ScriptRef.JQuery, "top", false)
+
+<div class="@Model.CssClass" data-sf-role="lists">
+
+    <div class="sf-list sf-list--expandable clearfix">
+    
+        <div class="sf-list-expand">
+            <a href="#" data-sf-role="expandAll" role="button">@Html.Resource("ExpandAll")</a>
+            <a href="#" data-sf-role="collapseAll" role="button" style="display:none;">@Html.Resource("CollapseAll")</a>
+        </div>
+
+        <div class="sf-list-item">
+            @foreach (var item in Model.Items)
+            {
+                <h3 @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id) @Html.InlineEditingFieldAttributes("Title", "ShortText")>
+                    @item.Fields.Title
+                </h3>
+
+                foreach (var listItem in ((ListViewModel)item).ListItemViewModel.Items)
+                {
+                    <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
+                        <a
+                            href="javascript:void(0)"
+                            @Html.InlineEditingFieldAttributes("Title", "ShortText")
+                            data-sf-role="toggleLink"
+                            role="button"
+                            data-toggle="collapse"
+                            data-target="#@listItem.Fields.Id"
+                            aria-expanded="false"
+                            aria-controls="@listItem.Fields.Id">
+                            <svg aria-hidden="true">
+                                <use class="sf-icon-right" xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#angle-right"></use>
+                                <use class="sf-icon-down" xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#angle-down" style="display:none"></use>
+                            </svg>
+                            @listItem.Fields.Title
+                        </a>
+                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content collapse multi-collapse" id='@listItem.Fields.Id'>
+                            @Html.HtmlSanitize((string)listItem.Fields.Content)
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Lists/lists.js"), "bottom", false)
+
+<script type="text/javascript">
+    $('[data-sf-role=toggleLink]').on('click', function () {
+        var link = $(this);
+
+        if (link.hasClass("expanded")) {
+            toggleIcons(link, false);
+        } else {
+            toggleIcons(link);
+        }
+    });
+
+    $('[data-sf-role=expandAll]').on('click', function () {
+        var wrapper = $(this).closest('[data-sf-role=lists]');
+        var links = wrapper.find('[data-sf-role=toggleLink]');
+
+        toggleIcons(links);
+    });
+
+    $('[data-sf-role=collapseAll]').on('click', function () {
+        var wrapper = $(this).closest('[data-sf-role=lists]');
+        var links = wrapper.find('[data-sf-role=toggleLink]');
+
+        toggleIcons(links, false);
+    });
+
+    function toggleIcons(links, isExpanded = true) {
+        var iconsRight = links.find('.sf-icon-right');
+        var iconsDown = links.find('.sf-icon-down');
+
+        if (isExpanded) {
+            iconsRight.hide();
+            iconsDown.show();
+        } else {
+            iconsRight.show();
+            iconsDown.hide();
+        }
+    }
+</script>

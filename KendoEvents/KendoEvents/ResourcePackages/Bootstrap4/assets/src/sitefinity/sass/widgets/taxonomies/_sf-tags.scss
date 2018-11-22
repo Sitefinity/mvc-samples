@@ -1,0 +1,8 @@
+//Arrays with
+$names: "1", "2", "3", "4", "5", "6";
+$sizes: $tags-size1-font-size, $tags-size2-font-size, $tags-size3-font-size, $tags-size4-font-size, $tags-size5-font-size, $tags-size6-font-size;
+$class: "sf-Tags-size";
+
+//Creating tag classes
+
+@include create-taxa-size-class($names, $sizes, $class);

@@ -1,0 +1,27 @@
+@if $has-rtl-support {
+
+    $breakpoints: (
+        xs: null,
+        sm: $screen-sm-min,
+        md: $screen-md-min,
+        lg: $screen-lg-min
+    );
+
+    @include rtl-cultures  {
+        &:not(.sfPageEditorWrp) {
+            direction: rtl;
+        }
+
+        @each $size, $breakpoint in $breakpoints {
+
+            @if ($breakpoint) {
+                @media (min-width: $breakpoint) {
+                    @include float-grid-columns-right($size);
+                }
+
+            } @else {
+                    @include float-grid-columns-right($size);
+            }
+       }
+    }
+}
