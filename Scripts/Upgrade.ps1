@@ -15,7 +15,7 @@ function Upgrade-Packages {
     $packageConfigFiles = Get-ChildItem -Path ../ -Filter packages.config -Recurse -File
     $packageConfigFiles | ForEach-Object {
         $configFile = $_
-        $configFileContents = Get-File-Content $configFile.FullName
+        $configFileContents = Get-Content $configFile.FullName
         #$configFileContentsNoParse = New-Object -TypeName System.Xml.XmlDocument
         #$configFileContentsNoParse.LoadXml($configFileContentsNoParse)
 
@@ -30,7 +30,7 @@ function Upgrade-Packages {
         
             if ($packageName.Equals('Telerik.Sitefinity.All')) {
                 If (!$packageVersion.Equals($versionShort)) {
-                    .\nuget.exe update $configFile.FullName $packageName -Version $version -NonInteractive
+                    .\nuget.exe install $configFile.FullName $packageName -Version $version -NonInteractive
                 }
 
                 break
@@ -40,31 +40,12 @@ function Upgrade-Packages {
                 continue
             }
         
-            .\nuget.exe update $configFile.FullName $packageName -Version $version -NonInteractive
+            .\nuget.exe install $configFile.FullName $packageName -Version $version -NonInteractive
         }
     
         Write-Host 'Done' -ForegroundColor Green
     }
 }
-
-#update enhancer in csproj
-#$devMagazineProj = ($packageConfigFiles | Where-Object { $_.DirectoryName.Contains('SitefinityWebApp') } | Select-Object -First 1)
-#[XML]$projXml = Get-Content $devMagazineProj.FullName
-#$openAccessElement = (Select-XML -Xml $projXml -XPath "//package[contains(@id,'Telerik.DataAccess.Fluent')]"| Select-Object -First 1)
-#$openAccessUpdatedVersion = $openAccessElement.Node.Attributes['version'].Value
-
-#$projectFiles = Get-ChildItem -Path ../ -Filter *.csproj -Recurse -File
-#$projectFiles | ForEach-Object {
-#    $proj = $_
-
-    #Write-Host 'Restoring packages for solution' $proj.Name '...' -ForegroundColor Green
-    
-    #[XML]$projContents = Get-Content $proj.FullName
-    #$openAccessElement = (Select-XML -Xml $projXml -XPath "//EnhancerAssembly"| Select-Object -First 1)
-    #$openAccessElement.Node.InnerText.Replace(
-    
-    #Write-Host 'Done' -ForegroundColor Green
-#}
 
 function Build-Solutions {
     Write-Host 'Building solutions...' -ForegroundColor Green
@@ -78,29 +59,29 @@ function Build-Solutions {
     Write-Host 'Done' -ForegroundColor Green
 }
 
-function Get-File-Content {
-    param([String]$path)
-
-    [System.Xml.XmlReader]$fileStream = [System.Xml.XmlReader]::Create(($path))
-    #$byteArray = New-Object byte[] $fileStream.Length
-    #$encoding = New-Object System.Text.UTF8Encoding $true
-    #while ($fileStream.Read($byteArray, 0 , $byteArray.Length)) {
-    #    $result = $encoding.GetString($byteArray)
-    #}
-    #
-    #$fileStream.Dispose()
-
-    return $fileStream.Read
-    #return $result
-}
+#function Get-File-Content {
+#    param([String]$path)
+#
+#    [System.Xml.XmlReader]$fileStream = [System.Xml.XmlReader]::Create(($path))
+#    $byteArray = New-Object byte[] $fileStream.Length
+#    $encoding = New-Object System.Text.UTF8Encoding $true
+#    while ($fileStream.Read($byteArray, 0 , $byteArray.Length)) {
+#        $result = $encoding.GetString($byteArray)
+#    }
+#    
+#    $fileStream.Dispose()
+#
+#    return $fileStream.Read
+#    #return $result
+#}
 
 $timer =  [System.Diagnostics.Stopwatch]::StartNew()
-#Restore-Packages
+Restore-Packages
 
 $restorePackagesElapsed = [System.Math]::Round($timer.Elapsed.TotalSeconds / 60, 2)
 Write-Host 'Elapsed minutes: ', $restorePackagesElapsed
 
-#Upgrade-Packages
+Upgrade-Packages
 
 $updatePackagesElapsed = [System.Math]::Round($timer.Elapsed.TotalSeconds / 60, 2) - $restorePackagesElapsed
 Write-Host 'Elapsed minutes: ', $updatePackagesElapsed
