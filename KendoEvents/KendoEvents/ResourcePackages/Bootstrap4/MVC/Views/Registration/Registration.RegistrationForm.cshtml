@@ -1,0 +1,185 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration.RegistrationViewModel
+
+@using System.Linq.Expressions;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Utilities;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
+
+@{
+    var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
+    var rowClass = hasExternalProviders ? "row" : "";
+    var colClass = hasExternalProviders ? "col-lg-6" : "";
+
+    if (!Model.Profile.ContainsKey("FirstName"))
+    {
+        Model.Profile["FirstName"] = "";
+    }
+
+    if (!Model.Profile.ContainsKey("LastName"))
+    {
+        Model.Profile["LastName"] = "";
+    }
+}
+
+<div class="@Model.CssClass">
+	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
+	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
+    {
+        <div role="alert" aria-live="assertive">
+            <h3>@Html.Resource("VisitYourEmail")</h3>
+            <p>@string.Format(Html.Resource("ActivationLinkHasBeenSent"), Model.Email)</p>
+        </div>
+
+        <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">
+            @Html.Resource("SendAgain")
+            <span class="sr-only">@Html.Resource("SendActivationLinkAgain")</span>
+        </a>
+
+        <div data-sf-role="confirmationResendInfo" style="display:none;">
+            <p role="alert" aria-live="assertive">@string.Format(Html.Resource("ActivationLinkHasBeenSentAgain"), Model.Email)</p>
+            <a href="javascript:void(0)" data-sf-role="sendAgainLink" class="btn btn-primary">
+                @Html.Resource("SendAgain")
+                <span class="sr-only">@Html.Resource("SendActivationLinkAgain")</span>
+            </a>
+        </div>
+
+        <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
+    }
+    else if ((Request.QueryString["ShowSuccessfulRegistrationMsg"] == "true") ||
+             (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg))
+    {
+        <div role="alert" aria-live="assertive">
+            <h3>@Html.Resource("ThankYou")</h3>
+            <p>@Html.Resource("DefaultSuccessfulRegistrationMessage")</p>            
+        </div>
+    }
+    else
+    {
+        using (Html.BeginFormSitefinity(true))
+        {
+            @Html.ValidationSummary(true);
+            
+            <div class="@rowClass m-0">
+                <div class="@colClass">
+                <h3 class="mb-4">@Html.Resource("Registration")</h3>
+
+                @if (!string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <div class="alert alert-danger" role="alert" aria-live="assertive">@ViewBag.Error</div>
+                }
+
+                @Html.HiddenFor(m => m.RequiresQuestionAndAnswer)
+                
+                @FormGroupPanel("FirstName", m => m.Profile["FirstName"], "RegistrationFirstName")
+
+                @FormGroupPanel("LastName", m => m.Profile["LastName"], "RegistrationLastName")
+
+                @FormGroupPanel("Email", m => m.Email, "RegistrationEmail", "text", null, new Dictionary<string, object>(){{"type", "email"}})
+
+                @FormGroupPanel("Password", m => m.Password, "RegistrationPassword", "password")
+
+                @FormGroupPanel("ReTypePassword", m => m.ReTypePassword, "RegistrationReTypePassword", "password")
+
+                @if (Model.RequiresQuestionAndAnswer)
+                {
+                    @FormGroupPanel("Question", m => m.Question, "RegistrationQuestion")
+
+                    @FormGroupPanel("Answer", m => m.Answer, "RegistrationAnswer")
+                }
+
+                @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
+                {
+                    <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+                }
+
+                <div class="mt-3">
+                    <div>Already registered?</div>
+                    <a href="@Model.LoginPageUrl">@Html.Resource("BackToLogin")</a>
+                </div>
+            </div>
+
+            @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+            <div class="col-lg-6">    
+                <h3 class="mb-3">@Html.Resource("ConnectWith")</h3>
+
+                @foreach (var provider in Model.ExternalProviders)
+                {
+                    var classToBeAdd = "btn btn-lg btn-block " + @provider.Value;                 
+                    <div class="mb-1">
+                        @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
+                    </div>
+                }   
+            </div>
+            }
+        </div>
+        }
+    }
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Registration/registration-form.js"), "bottom", true)
+
+@helper FormGroupPanel(string label, Expression<Func<RegistrationViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
+{
+    var hasValidationMessage = Html.ValidationMessageFor(expression) != null;
+    var attributes = new Dictionary<string, object>();
+    var cls = "form-control";
+
+    if (classValue != null)
+    {
+        cls += " " + classValue;
+    }
+
+    attributes.Add("class", cls);
+
+    if (hasValidationMessage)
+    {
+        attributes.Add("aria-describedby", Html.UniqueId(descId));
+    }
+    if (additionalAttributes != null)
+    {
+        attributes = attributes.Concat(additionalAttributes).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    <div class="form-group">
+
+        @Html.LabelFor(expression, Html.Resource(label))
+
+        @switch (inputType)
+        {
+            case "text":
+                @Html.TextBoxFor(expression, attributes);
+                break;
+
+            case "textarea":
+                @Html.TextAreaFor(expression, attributes);
+                break;
+
+            case "password":
+                @Html.PasswordFor(expression, attributes);
+                break;
+
+            default:
+                break;
+        }
+
+        @if (hasValidationMessage)
+        {
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
+                <span class="form-text">@Html.ValidationMessageFor(expression)</span>
+            </div>
+        }
+    </div>
+}

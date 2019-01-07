@@ -1,0 +1,15 @@
+%icon-font {
+    font-family: $icon-font-family;
+    font-style: $icon-font-style;
+    font-variant: $icon-font-variant;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+%icon-font-solid {
+    @extend %icon-font;
+
+    font-weight: $icon-font-weight-solid;
+}

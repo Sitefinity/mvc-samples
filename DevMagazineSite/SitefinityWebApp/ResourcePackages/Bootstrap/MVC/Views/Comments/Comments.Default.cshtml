@@ -2,6 +2,7 @@
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 
@@ -23,7 +24,7 @@
         </div>
 
         <div class="col-md-5 clearfix">
-            <div class="pull-right">
+            <div class="sf-Comments-filter">
                  <a href="#" data-sf-role="comments-sort-new-button">@Html.Resource("NewestOnTop")</a>
                  <a href="#" data-sf-role="comments-sort-old-button">@Html.Resource("OldestOnTop")</a>
             </div>
@@ -103,7 +104,7 @@
 
 
                         <div>
-                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
+                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Submit")</button>
                         </div>
 
                     </div>

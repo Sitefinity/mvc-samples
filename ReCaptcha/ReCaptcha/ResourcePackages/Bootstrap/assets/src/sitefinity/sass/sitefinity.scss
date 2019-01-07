@@ -7,6 +7,10 @@
 
 //Base - elements
 @import "base/pre";
+@import "base/rtl";
+
+//Bootstrap
+@import "bootstrap/type";
 
 //Helper classes
 @import "utilities/spacing";
@@ -17,6 +21,11 @@
 @import "components/icons/icons";
 //Loading
 @import "components/loading/loading";
+//Longtext
+@import "components/longtext/longtext";
+
+//Sprite styles
+@import "components/sprite/sf-sprite";
 
 //---Sitefinity Widgets---//
 //Media
@@ -65,7 +74,11 @@
 // Feed
 @import "widgets/feed/sf-feed";
 
-//Forms
+//--- Forms ---//
+
+//Form
+@import "widgets/form/sf-form";
+
 //File Field
 @import "widgets/fileField/sf-file-field";
 
@@ -74,9 +87,6 @@
 
 //Events
 @import "widgets/event/sf-event";
-
-// Social share
-@import "widgets/socialShare/sf-social-share";
 
 // Login
 @import "widgets/login/sf-login";

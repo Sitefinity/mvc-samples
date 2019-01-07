@@ -1,0 +1,420 @@
+//
+// Variables
+// --------------------------------------------------
+
+//== Bootstrap variables
+
+$gray-base:                                     #000 !default;
+$gray-dark:                                     #333 !default;
+$gray-lighter:                                  #eee !default;
+
+$font-size-small:                               12px !default;
+$font-size-base:                                14px !default;
+$font-size-h1:                                  36px !default;
+$font-size-h2:                                  30px !default;
+$font-size-h3:                                  24px !default;
+$font-size-h4:                                  18px !default;
+
+$sf-modal-md:                                   600px !default;
+$sf-modal-lg:                                   900px !default;
+
+//## Media queries breakpoints
+
+$screen-xs-min:                                 480px !default;
+$screen-sm-min:                                 768px !default;
+
+//== Sitefinity variables
+
+// Icon font
+$icon-font-family: "Font Awesome 5 Free" !default;
+$icon-font-style: normal !default;
+$icon-font-variant: normal !default;
+$icon-font-weight-solid: 900 !default;
+
+//Colors
+
+//## White and transparent
+
+$transparent:                                   transparent !default;
+$white:                                         #fff !default;
+
+//## Gray
+
+$white-gray:                                    #f2f2f2 !default;
+$lightest-gray:                                 #e4e4e4 !default;
+$lighter-gray:                                  #ddd !default;
+$light-gray:                                    #ccc !default;
+$dark-gray:                                     #666 !default;
+$gray:                                          #999 !default;
+
+//## Blue
+
+$light-blue:                                    #3390cf !default;
+$denim:                                         #105ab5 !default;
+
+//External providers
+$google-color: 									#D54F50;
+$facebook-color:								#3E86B4;
+$github-color:									#333;
+$yahoo-color:									  #410093;
+$linkedIn-color:								#0077b5;
+$microsoft-color:								#00a1f1;
+$adfs-color:									  #00a1f1;
+$windows-color:									#00bcf2;
+$twitter-color:									#1da1f2;
+
+$providers: ( 
+  google: $google-color, 
+  facebook: $facebook-color, 
+  github: $github-color,
+  yahoo: $yahoo-color,
+  linkedin: $linkedIn-color,
+  microsoft: $microsoft-color,
+  adfs: $adfs-color,
+  windows: $windows-color,
+  twitter: $twitter-color 
+);
+
+//Size
+
+$s-border:                                      1px !default;
+$m-border:                                      4px !default;
+$l-border:                                      5px !default;
+$xl-border:                                     6px !default;
+$xxl-border:                                    8px !default;
+
+$xxl-border-radius:                             8px !default;
+$round-border-radius:                           50% !default;
+
+$font-size-md:                                  16px !default;
+
+//Margins and paddings
+
+$spacing-size-xxs: 0 !default;
+$spacing-size-xs: 5px !default;
+$spacing-size-s: 10px !default;
+$spacing-size-m: 15px !default;
+$spacing-size-l: 20px !default;
+$spacing-size-xl: 30px !default;
+$spacing-size-xxl: 40px !default;
+$spacing-size-xxxl: 50px !default;
+
+//Spacing classes
+$sizes-names: "xxs","xs", "s", "m", "l", "xl", "xxl", "xxxl";
+$sizes: $spacing-size-xxs,
+  $spacing-size-xs,
+  $spacing-size-s,
+  $spacing-size-m,
+  $spacing-size-l,
+  $spacing-size-xl,
+  $spacing-size-xxl,
+  $spacing-size-xxxl;
+
+//== Sitefinity widget colors
+
+//Icons
+
+//## Colors
+
+$icon-file-color:                               $light-gray !default;
+$icon-txt-background:                           $gray-dark !default;
+$icon-txt-color:                                $white !default;
+$icon-txt-xlsx-background:                      #38ab63 !default;
+$icon-txt-doc-background:                       #1a8cff !default;
+$icon-txt-ppt-background:                       #ed8527 !default;
+$icon-txt-pdf-background:                       #ff4848 !default;
+$icon-txt-zip-background:                       #596c9b !default;
+$icon-feed-color:                               #eb742f !default;
+$icon-comment-color:                            #63b5f0 !default;
+$icon-remove-button-color:                      $light-gray !default;
+$navbar-active-color:                           $navbar-light-active-color !default;
+
+//## Sizes
+
+// $icon-align-font-size:                       19px;
+// $icon-no-image-font-size:                    70px;
+$icon-txt-font-size:                            .5em !default;
+$icon-xxs-size:                                 14px !default;
+$icon-xs-size:                                  16px !default;
+$icon-sm-size:                                  24px !default;
+$icon-lg-size:                                  40px !default;
+
+//Code
+
+$code-color:                                    $gray !default;
+
+//Comments
+
+//## Colors
+
+$comments-header--selected-color:               $gray-dark !default;
+$comments-list-author-border-color:             #777 !default;
+
+//## Size
+
+$comments-list-author-border-width:             $s-border !default;
+$comments-form-min-height:                      90px !default;
+
+$comments-margin-top:                           30px !default;
+$comments-loading-margin-bottom:                15px !default;
+$comments-count-margin-left:                    10px !default;
+$comments-header-margin-bottom:                 30px !default;
+$comments-header-h3-margin-right:               20px !default;
+$comments-header-a-margin-top:                  5px !default;
+$comments-header-a-margin-bottom:               $comments-header-a-margin-top !default;
+$comments-list-margin-bottom:                   30px !default;
+$comments-list-author-padding-right:            5px !default;
+$comments-more-margin-bottom:                   30px !default;
+$comments-subscribe-margin-top:                 15px !default;
+$comments-subscribe-margin-left:                50px !default;
+
+//Reviews
+
+//## Size
+
+$review-already-margin-top:                     20px !default;
+$review-count-margin-left:                      10px !default;
+$review-count--block-margin-left:               0 !default;
+$review-count--block-margin-bottom:             10px !default;
+
+//Ratings
+
+//## Colors
+
+$ratings-stars-color:                           $light-gray !default;
+$ratings-stars--hover-color:                    $gray !default;
+$ratings-stars--on-color:                       #006cd8 !default;
+$ratings-stars--ronly-color:                    #ffcc00 !default;
+
+//## Size
+
+$ratings-stars-font-size:                       $font-size-h3 !default;
+$ratings-count-font-size:                       $font-size-md !default;
+
+//Form navigation
+
+//## Colors
+
+$formNav-page-color:                            $gray !default;
+$formNav-page-border-color:                     $gray !default;
+$formNav-page--active-color:                    $gray-dark !default;
+$formNav-page--active-border-color:             $gray-dark !default;
+
+//## Size
+
+$formNav-page-width:                            28px !default;
+$formNav-page-height:                           $formNav-page-width !default;
+$formNav-page-line-height:                      $formNav-page-width !default;
+$formNav-page-font-size:                        $font-size-h4 !default;
+$formNav-page-border-width:                     $s-border !default;
+$formNav-page-border-radius:                    $round-border-radius !default;
+$progress-page-title-font-size:                 $font-size-base !default;
+
+//Gallery
+
+//## Colors
+
+$gallery-thumbs-border-color:                   $transparent !default;
+$gallery-thumbs--is-selected-border-color:      #428bca !default;
+$gallery-image-background:                      $lightest-gray !default;
+$gallery-image-border-color:                    $lightest-gray !default;
+$gallery-prev-next-color:                       $gray-base !default;
+$gallery-prev-next-text-shadow-color:           $white !default;
+$gallery-prev-next-background:                  rgba(0, 0, 0, 0.1) !default;
+$gallery-prev-next-hover-color:                 $gray-base !default;
+$gallery-prev-background:                       linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%) !default;
+$gallery-next-background:                       linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%) !default;
+$gallery-thumbs--video-border-color:            $transparent !default;
+
+//## Size
+
+$gallery-thumbs-border-width:                   $l-border !default;
+$gallery-thumbs-line-height:                    120px !default;
+$gallery-image-height:                          600px !default;
+$gallery-image-line-height:                     $gallery-image-height !default;
+$gallery-image-border-width:                    $s-border !default;
+$gallery-image-img-min-height:                  100% !default;
+$gallery-image-img-width:                       auto !default;
+$gallery-prev-next-height:                      600px !default;
+$gallery-prev-next-line-height:                 $gallery-prev-next-height !default;
+$gallery-prev-next-font-size:                   40px !default;
+$gallery-prev-next-text-shadow-blur-radius:     3px !default;
+$gallery-prev-next-width:                       50% !default;
+$gallery-thumbs--video-border-width:            $l-border !default;
+$gallery-thumbs--video-width:                   160px !default;
+$gallery-thumbs--video-height:                  170px !default;
+$gallery-thumbs--video-anchor-width:            160px !default;
+$gallery-thumbs--video-anchor-height:           130px !default;
+$gallery-thumbs--video-h3-font-size:            $font-size-md !default;
+$gallery-thumbs--video-anchor-border-width:     $s-border !default;
+
+//Language selector
+
+//## Colors
+
+$lang-selector-anchor--selected-background:     $white-gray !default;
+$lang-selector-anchor--selected-color:          $gray-dark !default;
+
+//## Size
+
+$lang-selector-anchor-font-size:                $font-size-base !default;
+$lang-selector-anchor-border-radius:            $xxl-border-radius !default;
+
+//Media
+
+//## Colors
+
+$video-thmb-background:                         $gray-base !default;
+$icon-play-background:                          $gray-base !default;
+$icon-play-hover-background:                    $gray-dark !default;
+$icon-play-before-border-top-color:             $transparent !default;
+$icon-play-before-border-bottom-color:          $transparent !default;
+$icon-play-before-border-left-color:            $white !default;
+
+//## Size
+
+$img-thmb-width:                                120px !default;
+$img-thmb-height:                               90px !default;
+$video-thmb-width:                              120px !default;
+$video-thmb-height:                             90px !default;
+$video-thmb-anchor-height:                      70px !default;
+$icon-play-width:                               30px !default;
+$icon-play-height:                              30px !default;
+$icon-play-border-radius:                       $round-border-radius !default;
+$icon-play-before-border-top-width:             $xl-border !default;
+$icon-play-before-border-bottom-width:          $xl-border !default;
+$icon-play-before-border-left-width:            $xxl-border !default;
+
+//Navigation
+
+//## Colors
+
+$right-caret-border-top-color:                  $transparent !default;
+$right-caret-border-bottom-color:               $transparent !default;
+$nav-sitemap-border-left-color:                 $light-gray !default;
+$nav-sitemap-border-width:                      $s-border !default;
+$right-caret-width:                             0 !default;
+$right-caret-height:                            $right-caret-width !default;
+
+//## Size
+
+$right-caret-border-top-width:                  $m-border !default;
+$right-caret-border-bottom-width:               $m-border !default;
+$right-caret-border-left-width:                 $m-border !default;
+$nav-sitemap-width:                             100% !default;
+$nav-sitemap-first-child-border-left-width:     0 !default;
+$right-caret-left-offset:                       2px !default;
+
+//Search
+
+//## Colors
+
+$autocomplete-background:                       $white !default;
+$autocomplete-border-color:                     $light-gray !default;
+$autocomplete-anchor-color:                     $gray-base !default;
+$autocomplete-anchor-focus-background:          $gray-lighter !default;
+
+//## Size
+
+$autocomplete-border-width:                     $s-border !default;
+
+//@media only screen and (max-width: $screen-xs)
+
+$mobile-nav-sitemap-li-border-left-width:       0 !default;
+$mobile-nav-sitemap-li-first-border-top-width:  0 !default;
+
+//@media only screen and (min-width: $screen-xs) and (max-width: $screen-sm) 
+
+$mobile-nav-sitemap-li-width:                   48% !default;
+
+//Site selector
+
+//## Colors
+
+$site-selector--selected-background:           $white-gray !default;
+$site-selector--selected-color:                $gray-dark !default;
+
+//## Size
+
+$site-selector-font-size:                      $font-size-base !default;
+$site-selector-border-radius:                  $xxl-border-radius !default;
+
+//Taxonomies
+
+//## Size
+
+$tags-size1-font-size:                         11px !default;
+$tags-size2-font-size:                         13px !default;
+$tags-size3-font-size:                         $font-size-h4 !default;
+$tags-size4-font-size:                         $font-size-h3 !default;
+$tags-size5-font-size:                         $font-size-h2 !default;
+$tags-size6-font-size:                         $font-size-h1 !default;
+
+//Loading
+
+//## Colors
+
+$loading-line-background:                      #9cc5f7 !default;
+$loading-wrapper-background:                   rgba(0, 0, 0, 0.5) !default;
+$webkit-keyframes-background:                  $denim !default;
+$keyframes-background:                         $denim !default;
+
+//## Size
+
+$loading-line-height:                          30px !default;
+$loading-line-width:                           6px !default;
+
+//Common
+
+//## Colors
+
+$pre-background:                               $transparent !default;
+$pre-border-width:                             $s-border !default;
+
+//## Size
+
+$pre-font-size:                                $font-size-base !default;
+
+//Social share
+
+//## Colors
+
+$share-button-border-color:                    #d3d3d3 !default;
+$share-button-focus-hover-background:          #efefef !default;
+$share-button-focus-hover-color:               $gray-base !default;
+$share-button-color:  $gray-base;
+
+//## Size
+$share-button-border-width:                    $s-border !default;
+$share-button-border-radius:                   3px !default;
+$share-button-font-size:                       $font-size-small !default;
+$share-buttons-line-height:                     1 !default;
+
+//Events
+
+//#Size
+
+$event-type-width:                             15px;
+$event-type-height:                            15px;
+$event-toolbar-line-height:                    32px;
+$event-type-border-radius:                     $round-border-radius;
+$event-item-margin:                            0;
+$event-item-min-height:                        100%;
+$event-type-all-border-width:                  1px;
+$calendarList-item-padding:                    5px 10px;
+$calendarList-item-border-radius:              5px;
+
+
+
+//## Colors
+
+$event-type-all-background:                    #fff;
+$event-type-all-border-color:                  #999;
+$calendarList-item--active-background:         #f2f2f2;
+$calendarList-title-font-weight:               bold;
+
+//## Rtl cultures
+
+//Set to false if you do not need rtl support
+$has-rtl-support: true;
+$rtl-cultures: "ar", "he", "fa", "ku", "ur", "dv", "ps", "ha", "ks", "yi", "uz-arab", "tzm-arab";

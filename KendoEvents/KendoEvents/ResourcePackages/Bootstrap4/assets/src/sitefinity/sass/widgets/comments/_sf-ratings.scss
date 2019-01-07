@@ -1,0 +1,62 @@
+.sf-Ratings {
+    position: relative;
+
+    .sf-Ratings-stars {
+        display: inline-block;
+        vertical-align: middle;
+
+        span {
+            font-size: $ratings-stars-font-size;
+            color: $ratings-stars-color;
+        }
+
+        label {
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            height: 1px;
+            opacity: .0001;
+            position: absolute;
+            top: auto;
+            width: 1px;
+            z-index: 1;
+        }
+
+        .hover span {
+            color: $ratings-stars--hover-color;
+        }
+
+        .on span {
+            color: $ratings-stars--on-color;
+        }
+
+        &.sf-Ratings-stars--ronly {
+
+            span {
+                cursor: default;
+
+                &.on {
+                    color: $ratings-stars--ronly-color;
+                }
+            }
+        }
+    }
+
+    .sf-Ratings-average,
+    .sf-Ratings-count, {
+        font-size: $ratings-count-font-size;
+        vertical-align: middle;
+    }
+
+    .sf-Ratings-count {
+
+        span {
+            vertical-align: middle;
+        }
+    }
+}

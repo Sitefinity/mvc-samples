@@ -1,0 +1,82 @@
+// Default template
+.sf-FormNav {
+	@extend %p-0; //0
+
+	li {
+		@extend %mr-4; //1.5rem
+
+		&.active {
+			font-weight: bold;
+		}
+	}
+}
+
+.sf-FormNav-page {
+	@extend %mr-2; //.5rem
+
+	width: $formNav-page-width;
+	height: $formNav-page-height;
+	font-size: $formNav-page-font-size;
+	font-weight: bold;
+	color: $formNav-page-color;
+	border: $formNav-page-border-width solid $formNav-page-border-color;
+	border-radius: $formNav-page-border-radius;
+
+	.active & {
+		color: $formNav-page--active-color;
+		border-color: $formNav-page--active-border-color;
+	}
+	.past & {
+
+		&:after {
+			content: "\2713";
+		}
+	}
+}
+
+.sf-FormNav-page-number {
+
+	.past & {
+		display: none;
+	}
+}
+
+// Progress template
+.sf-Progress-percent,
+.sf-Progress-page-title {
+	font-size: $progress-page-title-font-size;
+}
+
+.sf-Progress-percent {
+	font-weight: bold;
+}
+
+.sf-Progress-page-title {
+	@extend %pl-0; //0
+
+	display: inline-block;
+
+	li {
+		display: none;
+		
+		&.active {
+			display: inline-block;
+		}
+	}
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .sf-FormNav li:first-child {
+          @extend %mr-0; //0
+    }
+    .sf-FormNav-page {
+        @extend %mr-0; //0
+        @extend %ml-2; //.5rem
+    }
+  }
+}

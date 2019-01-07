@@ -7,12 +7,13 @@
 			font-size: $ratings-stars-font-size;
 			color: $ratings-stars-color;
 			cursor: pointer;
-
-			&.hover,
-			&.on {
-				color: $ratings-stars--on-color;
-			}
 		}
+
+        .hover,
+		.on {
+				color: $ratings-stars--on-color;
+		}
+
 		&.sf-Ratings-stars--ronly {
 			span {
 				cursor: default;

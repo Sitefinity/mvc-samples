@@ -1,0 +1,17 @@
+﻿@model Telerik.Sitefinity.Frontend.InlineClientAssets.Mvc.Models.JavaScript.JavaScriptViewModel
+
+@using Telerik.Sitefinity.Frontend.InlineClientAssets.Mvc.Models;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Services;
+
+@if (Model.Position == EmbedPosition.InPlace && !(SystemManager.IsDesignMode && !SystemManager.IsPreviewMode && !SystemManager.IsInlineEditingMode))
+{
+    @Html.Raw(Model.JavaScriptCode)
+}
+
+@if (!string.IsNullOrEmpty(Model.DesignModeContent))
+{
+    <div class="sf-Code">
+        <pre>@Model.DesignModeContent</pre>
+    </div>
+}

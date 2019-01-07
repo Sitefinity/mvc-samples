@@ -1,0 +1,89 @@
+@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/popper.min.js"), "top", true)
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/bootstrap.min.js"), "top", true)
+
+<div class="@Model.CssClass">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
+
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target='#@Html.UniqueId("navbar")' aria-controls='@Html.UniqueId("navbar")' aria-expanded="false" aria-label="@Html.Resource("ToggleNavigation")">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id='@Html.UniqueId("navbar")'>
+            <ul class="navbar-nav flex-wrap">
+                @foreach (var node in Model.Nodes)
+                {
+                    @RenderRootLevelNode(node);
+                }
+            </ul>
+        </div>
+    </nav>
+</div>
+
+@*Here is specified the rendering for the root level*@
+@helper RenderRootLevelNode(NodeViewModel node)
+{
+    if (node.ChildNodes.Count > 0)
+    {
+        <li class="nav-item dropdown @GetClass(node)">
+            <a class="nav-link dropdown-toggle" href="#" id='@Html.UniqueId("navbarDropdownMenuLink")' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@node.Title</a>
+            <ul class="dropdown-menu" aria-labelledby='@Html.UniqueId("navbarDropdownMenuLink")'>
+                @RenderSubLevelsRecursive(node)
+            </ul>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item @GetClass(node)">
+            <a class="nav-link" href="@node.Url" target="@node.LinkTarget">@node.Title</a>
+        </li>
+    }
+}
+
+@*Here is specified the rendering for all child levels*@
+@helper RenderSubLevelsRecursive(NodeViewModel node)
+{
+    foreach (var childNode in node.ChildNodes)
+    {
+        if(childNode.ChildNodes.Count > 0)
+        {
+            <li class="dropdown-submenu">
+                <a class="dropdown-item @GetClass(childNode)" href="@childNode.Url" target="@childNode.LinkTarget">
+                    @childNode.Title
+                    <span class="right-caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @RenderSubLevelsRecursive(childNode)
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a class="dropdown-item @GetClass(childNode)" href="@childNode.Url" target="@childNode.LinkTarget">@childNode.Title</a>
+            </li>
+        }
+    }
+}
+
+@*Resolves the class that will be added for each node depending whether it is selected*@
+@helper GetClass(NodeViewModel node)
+{
+
+    if (node.IsCurrentlyOpened)
+    {
+        @Html.HtmlSanitize("active");
+    }
+    else if (node.HasChildOpen)
+    {
+        @Html.HtmlSanitize("active");
+    }
+}

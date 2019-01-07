@@ -4,18 +4,18 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
 
-@Html.Script(ScriptRef.JQuery)
+@Html.Script(ScriptRef.JQuery, "top", false)
 
 <div class="@Model.CssClass" data-sf-role="lists">
 
     <div class="sf-list sf-list--expandable clearfix">
     
-        <div class="pull-right">
+        <div class="sf-list-expand">
             <a  href="#" data-sf-role="expandAll">@Html.Resource("ExpandAll")</a>
-            <a class="pull-right" href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
+            <a  href="#" data-sf-role="collapseAll" style="display:none;">@Html.Resource("CollapseAll")</a>
         </div>
 
-        <div class="sf-list-item pull-left">
+        <div class="sf-list-item">
             @foreach (var item in Model.Items)
             {
 
@@ -28,7 +28,7 @@
                 {
                     <div @Html.InlineEditingAttributes(Model.ProviderName, ((ListViewModel)item).ListItemViewModel.ContentType.FullName, (Guid)listItem.Fields.Id)>
                         <a href="javascript:void(0)" @Html.InlineEditingFieldAttributes("Title", "ShortText") data-sf-role="toggleLink"><i class="text-muted sf-icon glyphicon glyphicon-chevron-right"></i>@listItem.Fields.Title</a>
-                        <div @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content">
+                        <div class="sf-Long-text" @Html.InlineEditingFieldAttributes("Content", "LongText") style="display:none;" class="sf-list-content">
                             @Html.HtmlSanitize((string)listItem.Fields.Content)
                         </div>
                     </div>

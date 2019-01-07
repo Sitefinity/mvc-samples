@@ -6,12 +6,12 @@
 @using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery, "top")
+@Html.Script(ScriptRef.JQuery, "top", true)
 
 @Html.StyleSheet(Url.WidgetContent("assets/magnific/magnific-popup.css"), "head")
 
-@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "bottom")
-@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), "bottom")
+@Html.Script(Url.WidgetContent("assets/magnific/jquery.magnific-popup.min.js"), "bottom", true)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/overlay-gallery.js"), "bottom", true)
 
 <div class="sf-Gallery-thumbs-container">
   <div class="sf-Gallery-thumbs @Model.CssClass">

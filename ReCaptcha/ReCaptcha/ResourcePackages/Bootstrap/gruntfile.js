@@ -1,5 +1,6 @@
 'use strict';
 var path = require('path');
+var sass = require('node-sass');
 
 // match one level down:
 // e.g. 'bar/foo/{,*/}*.js'
@@ -17,7 +18,7 @@ module.exports = function(grunt) {
     // Rename this folder if needed
     var projectAssetsFolder = "project";
 
-    // Options needed for webfont task.
+    /* // Options needed for webfont task.
     // Starting code point for Sitefinity font icons.
     var sfCodePoints = {
         "file": 0xF001,
@@ -40,8 +41,7 @@ module.exports = function(grunt) {
         ascent: 4096,
         descent: 0,
         autoHint: false
-    }
-
+    } */
 
     // Load all grunt tasks
     require('load-grunt-tasks')(grunt);
@@ -92,6 +92,7 @@ module.exports = function(grunt) {
 
         sass: {
             options: {
+                implementation: sass,
                 outputStyle: 'nested'
             },
             dist: {
@@ -125,14 +126,14 @@ module.exports = function(grunt) {
             }
         },
 
-        webfont: {
+        /* webfont: {
             icons: {
                 src: ['assets/src/sitefinity/icons/*.svg', 'assets/src/' + projectAssetsFolder + '/icons/*.svg'],
                 dest: 'assets/dist/fonts/',
                 destCss: 'assets/src/sitefinity/sass/components/icons/',
                 options: webFontOptions
             }
-        },
+        }, */
 
         cssmin: {
             minify: {
@@ -149,6 +150,7 @@ module.exports = function(grunt) {
             dist: {
                 files: [
                     { expand: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/*'], dest: 'assets/dist/fonts/bootstrap/', flatten: true, filter: 'isFile' },
+                    { expand: true, cwd: 'assets/src/sitefinity/fonts', src: '**', dest: 'assets/dist/fonts/' },
                     { expand: true, cwd: 'assets/src/' + projectAssetsFolder + '/fonts', src: '**', dest: 'assets/dist/fonts/' }
                 ]
             }
@@ -191,9 +193,9 @@ module.exports = function(grunt) {
             dist: {
                 src: ['assets/src/sitefinity/images/sprite/*.png', 'assets/src/' + projectAssetsFolder + '/images/sprite/*.png'],
                 dest: 'assets/src/sitefinity/images/sprite.png',
-                destCss: 'assets/src/sitefinity/sass/widgets/socialShare/_sf-sprite.scss',
+                destCss: 'assets/src/sitefinity/sass/components/sprite/_sf-sprite.scss',
                 imgPath: '../images/sprite.png',
-                cssTemplate: 'assets/src/sitefinity/sass/widgets/socialShare/sf-sprite.mustache'
+                cssTemplate: 'assets/src/sitefinity/sass/components/sprite/sf-sprite.mustache'
             }
         },
 
@@ -226,17 +228,17 @@ module.exports = function(grunt) {
     });
 
     // Tasks
-    // Task to generate icon font
+    /*// Task to generate icon font
     grunt.registerTask('iconfont', [
         'webfont', 'copy'
-    ]);
+    ]); */
 
     // Default task
     grunt.registerTask('default', ' ', function() {
         grunt.task.run('clean:all');
         grunt.task.run('newer:sprite');
         // grunt.task.run('webfont');
-        // grunt.task.run('copy');
+        grunt.task.run('copy');
         grunt.task.run('sass');
         grunt.task.run('uglify');
         grunt.task.run('csslint:dev');

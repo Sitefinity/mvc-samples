@@ -14,6 +14,7 @@
         none: false,
         span: true
     }",
+	k-serialization="{semantic: true}",
     k-tools='[
     "formatting",
     "bold", "italic", "underline",

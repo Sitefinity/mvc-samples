@@ -7,6 +7,10 @@
 		@extend .sf-ml-l; //20px
 	}
 
+    .sf-list-expand {
+        float: right;
+    }
+
 	.sf-list-item {
 		>div {
 			@extend .sf-mb-xs; //5px
@@ -15,4 +19,38 @@
 			@extend .sf-mt-xxs; //0
 		}
 	}
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .sf-list-item {
+        float: right;
+	}
+
+    .sf-list-expand {
+        float: left;
+    }
+
+    .sf-list--expandable {
+        i {
+		    @extend .sf-ml-xs; //5px
+            @extend .sf-mr-xxs; //0
+	    }
+
+        .glyphicon-chevron-right {
+            &:before {
+                content: "\e079";
+            }
+        }
+
+	    .sf-list-content {
+		    @extend .sf-ml-l; //0
+            @extend .sf-mr-l; //20px
+	    }
+    }
+  }
 }

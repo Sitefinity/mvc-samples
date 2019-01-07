@@ -1,0 +1,39 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.VideoGallery;
+
+<div class="sf-Gallery-thumbs-container">
+    <ul class="@Model.CssClass sf-Gallery-thumbs sf-Gallery-thumbs--video list-unstyled clearfix" aria-label="@Html.Resource("VideoGallery")">
+
+        @for (int i = 0; i < Model.Items.Count(); i++)
+        {
+            var item = Model.Items.ElementAt(i);
+            var itemIndex = (Model.CurrentPage - 1) * ViewBag.ItemsPerPage + i + 1;
+            var detailPageUrl = ViewBag.OpenInSamePage ? HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex) :
+                HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
+            var videoTitleId = Html.UniqueId("VideoTitle") + "-" + i.ToString();
+
+            <li class="sf-Gallery-thumb d-inline-block">
+                <a href="@detailPageUrl"
+                   title="Go to video @(string.IsNullOrEmpty(item.Fields.Description) ? item.Fields.Title : item.Fields.Description) details">
+                    <img src="@(((VideoThumbnailViewModel)item).ThumbnailUrl)" aria-labelledby="@videoTitleId" alt='@System.Text.RegularExpressions.Regex.Replace(item.Fields.Title, @"[^\w\d_-]", "")' />
+                </a>
+                <h3 id="@videoTitleId">@item.Fields.Title</h3>
+            </li>
+        }
+
+    </ul>
+</div>
+        @if (Model.ShowPager)
+        {
+            @Html.Action("Index", "ContentPager", new
+               {
+                   currentPage = Model.CurrentPage,
+                   totalPagesCount = Model.TotalPagesCount.Value,
+                   redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+               })
+        }
+

@@ -1,0 +1,67 @@
+﻿<textarea id="editor" style="height: 340px;"
+    kendo-editor="editorWidget" ng-model="sfModel"
+    k-scope-field="editorWidget"
+    sf-toggle-commands="strikethrough, align-justify, sub-script, sup-script, fontName, fontSize, foreground-color, colorpicker, print"
+    k-encoded="false"
+    k-stylesheets='["{{htmlFieldCssUrl}}"]',
+    k-paste-cleanup="{
+        all: false,
+        css: false,
+        keepNewLines: false,
+        msAllFormatting: true,
+        msConvertLists: true,
+        msTags: true,
+        none: false,
+        span: true
+   	}",
+	k-serialization="{semantic: true}",
+    k-tools='[
+    "formatting",
+    "bold", "italic", "underline",
+    "justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+    "insertUnorderedList", "insertOrderedList", "indent", "outdent",
+    {
+        name: "createLink",
+        template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openLinkSelector()\" title=\"@(Res.Get<ClientComponentsResources>().InsertHyperlink)\"><span class=\"k-tool-icon k-icon k-i-link-horizontal\"></span></a>"
+    },
+    "unlink",
+    {
+        name: "insertImage",
+        template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openImageSelector()\" title=\"@(Res.Get<ClientComponentsResources>().InsertImage)\"><span class=\"k-tool-icon k-icon k-i-image\"></span></a>"
+    },
+    {
+        name: "insertFile",
+        template: "<a href=\"\" class=\"k-tool k-group-start\" ng-click=\"openDocumentSelector()\" title=\"@(Res.Get<ClientComponentsResources>().InsertFile)\"><span class=\"k-tool-icon k-icon k-i-attachment\"></span></a>"
+    },
+    {
+        name: "insertVideo",
+        template: "<a href=\"\" class=\"k-tool custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().InsertVideo)\" ng-click=\"openVideoSelector()\"><span class=\"glyphicon glyphicon-facetime-video\"></span></a>"
+    },
+    "createTable", "addColumnLeft", "addColumnRight", "addRowAbove", "addRowBelow", "deleteRow", "deleteColumn",
+    "cleanFormatting",
+    "strikethrough", "subscript", "superscript","fontName", "fontSize", "foreColor", "backColor", "print",
+    {
+        name: "showAll",
+        template: "<a class=\"k-tool custom-tool show-all-button\" title=\"@(Res.Get<ClientComponentsResources>().AllTools)\" ng-click=\"toggleAllTools()\"><span class=\"glyphicon glyphicon-option-horizontal\"></span></a>"
+    },
+    {
+        name: "fullscreen",
+        template: "<a class=\"k-tool js-custom-tool custom-tool\" title=\"@(Res.Get<ClientComponentsResources>().Fullscreen)\" ng-click=\"toggleFullScreen()\"><span class=\"js-fullScreen sf-maximize\"></span></a>"
+    },
+    {
+        name: "htmlView",
+        template: "<button class=\"custom-tool btn btn-default btn-xs js-htmlview js-custom-tool\" ng-click=\"toggleHtmlView()\">\{\{htmlViewLabel\}\}</button>"
+    }
+    ]'>
+</textarea>
+
+<sf-link-selector-modal id="linkSelectorModal"></sf-link-selector-modal>
+
+<div class="mediaPropertiesModal"
+     template-url="{{mediaPropertiesDialog}}"
+     modal
+     size="normal"
+     existing-scope="true"
+     window-class="sf-designer-dlg sf-timespan-selector-dlg sf-backend-wrp"
+     dialog-controller="{{sfMediaPropertiesController}}">
+</div>

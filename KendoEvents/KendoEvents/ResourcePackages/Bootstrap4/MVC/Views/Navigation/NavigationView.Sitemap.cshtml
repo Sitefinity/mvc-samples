@@ -1,0 +1,53 @@
+@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.INavigationModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Navigation.Mvc.Models;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+
+<div class="@Model.CssClass">
+    <nav>
+        @* @Html.Action("GetView", new { viewName = "Dropdown", model= Model}) *@
+
+        <ul class="nav nav-sitemap">
+            @foreach (var node in Model.Nodes)
+            {
+                @RenderRootLevelNode(node);
+            }
+        </ul>
+    </nav>
+</div>
+@*Here is specified the rendering for the root level*@
+@helper RenderRootLevelNode(NodeViewModel node)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@node.Url" target="@node.LinkTarget"><strong>@node.Title</strong></a>
+        @if (node.ChildNodes.Count > 0)
+        {
+            <ul class="nav flex-column ml-2">
+                @foreach (var childNode in node.ChildNodes)
+                {
+                    @RenderSubLevelsRecursive(childNode)
+                }
+            </ul>
+        }
+    </li>
+}
+
+@*Here is specified the rendering for the sub levels*@
+@helper RenderSubLevelsRecursive(NodeViewModel node)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@node.Url" target ="@node.LinkTarget">@node.Title</a>
+        @if (node.ChildNodes.Count > 0)
+        {
+            <ul class="nav flex-column ml-2">
+                @foreach (var childNode in node.ChildNodes)
+                {
+                    @RenderSubLevelsRecursive(childNode)
+                }
+            </ul>
+        }
+    </li>
+}

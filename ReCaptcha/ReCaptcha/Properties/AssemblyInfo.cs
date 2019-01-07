@@ -37,5 +37,4 @@ using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ControllerContainer(typeof(Initializer), "Initialize")]
-
 [assembly: Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes.ResourcePackage]
