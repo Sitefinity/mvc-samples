@@ -1,4 +1,14 @@
 
+function Add-Nuget-Sources {
+    Write-Host 'Adding NuGet sources...' -ForegroundColor Green
+    
+    .\nuget.exe sources Add -Name "Sitefinity public repo" -Source http://nuget.sitefinity.com/nuget
+    .\nuget.exe sources Add -Name "Iris NuGet" -Source \\telerik.com\distributions\OfficialReleases\Sitefinity\IrisNuGet
+    .\nuget.exe sources Add -Name "Sitefinity private repo" -Source \\telerik.com\distributions\OfficialReleases\Sitefinity\nuget
+    
+    Write-Host 'Done' -ForegroundColor Green
+}
+
 function Restore-Packages {
     Write-Host 'Restoring packages...' -ForegroundColor Green
     $solutionFiles = Get-ChildItem -Path ../ -Filter *.sln -Recurse -File
@@ -49,6 +59,7 @@ function Upgrade-Packages {
 
 function Build-Solutions {
     Write-Host 'Building solutions...' -ForegroundColor Green
+    $solutionFiles = Get-ChildItem -Path ../ -Filter *.sln -Recurse -File
     $solutionFiles | ForEach-Object {
         $sln = $_
     
@@ -75,18 +86,7 @@ function Build-Solutions {
 #    #return $result
 #}
 
-$timer =  [System.Diagnostics.Stopwatch]::StartNew()
-Restore-Packages
-
-$restorePackagesElapsed = [System.Math]::Round($timer.Elapsed.TotalSeconds / 60, 2)
-Write-Host 'Elapsed minutes: ', $restorePackagesElapsed
-
-Upgrade-Packages
-
-$updatePackagesElapsed = [System.Math]::Round($timer.Elapsed.TotalSeconds / 60, 2) - $restorePackagesElapsed
-Write-Host 'Elapsed minutes: ', $updatePackagesElapsed
-
+#Add-Nuget-Sources
+#Restore-Packages
+#Upgrade-Packages
 Build-Solutions
-
-$buildElapsed = [System.Math]::Round($timer.Elapsed.TotalSeconds / 60, 2) - $restorePackagesElapsed - $updatePackagesElapsed
-Write-Host 'Elapsed minutes: ', $buildElapsed
