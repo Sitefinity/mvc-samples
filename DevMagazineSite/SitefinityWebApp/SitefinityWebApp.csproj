@@ -1285,7 +1285,9 @@
     <Content Include="Mvc\Views\Author\List.Author.cshtml" />
     <Content Include="Mvc\Views\Shared\_ListAuthor.cshtml" />
     <Content Include="Mvc\Views\Author\List.AuthorLatestIssue.cshtml" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SampleTemplate.cshtml">
       <Generator>RazorGenerator</Generator>
     </Content>
