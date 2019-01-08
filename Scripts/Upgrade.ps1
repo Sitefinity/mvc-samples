@@ -21,26 +21,35 @@ function Restore-Packages {
 
 function Upgrade-Packages {
     $packagesFilter = 'Telerik.Sitefinity'
+    $version = "11.2.6900.0"
 
-    $packageConfigFiles = Get-ChildItem -Path ../ -Filter packages.config -Recurse -File
+    $packageConfigFiles = Get-ChildItem -Path ../ -Filter packages.config -Recurse -File 
     $packageConfigFiles | ForEach-Object {
         $configFile = $_
-        $configFileContents = Get-Content $configFile.FullName
-        #$configFileContentsNoParse = New-Object -TypeName System.Xml.XmlDocument
-        #$configFileContentsNoParse.LoadXml($configFileContentsNoParse)
+
+        If (!$configFile.DirectoryName.Contains("AttributeRouting")) {
+            continue
+        }
 
         Write-Host 'Upgrading Sitefinity packages for' $configFile.Directory '...' -ForegroundColor Green
     
+        [XML]$configFileContents = Get-Content $configFile.FullName
         $sitefinityPackageElements = Select-XML -Xml $configFileContents -XPath "//package[contains(@id,'Telerik.Sitefinity')]"
+
+        $testArray = [System.Collections.ArrayList]@()
 
         foreach ($element in $sitefinityPackageElements) {
             $nodeAttributes = $element.Node.Attributes
             $packageName = $nodeAttributes['id'].Value
             $packageVersion = $nodeAttributes['version'].Value
+
+            If ($testArray.Contains($packageName)) {
+                continue
+            }
         
             if ($packageName.Equals('Telerik.Sitefinity.All')) {
                 If (!$packageVersion.Equals($versionShort)) {
-                    .\nuget.exe install $configFile.FullName $packageName -Version $version -NonInteractive
+                    .\nuget.exe update $configFile.FullName $packageName -Version $version -NonInteractive
                 }
 
                 break
@@ -49,8 +58,26 @@ function Upgrade-Packages {
             If ($packageVersion.Equals($versionShort)) {
                 continue
             }
-        
-            .\nuget.exe install $configFile.FullName $packageName -Version $version -NonInteractive
+
+            If ($packageName.Equals('Telerik.Sitefinity.Feather')) {
+                If (!$testArray.Contains('Telerik.Sitefinity.Feather.Core')) {
+                    $testArray.Add('Telerik.Sitefinity.Feather.Core');
+                }
+
+                If (!$testArray.Contains('Telerik.Sitefinity.Mvc')) {
+                    $testArray.Add('Telerik.Sitefinity.Mvc');
+                }
+            }
+
+            If ($packageName.Equals('Telerik.Sitefinity.Feather.Core')) {
+                If (!$testArray.Contains('Telerik.Sitefinity.Mvc')) {
+                    $testArray.Add('Telerik.Sitefinity.Mvc');
+                }
+            }
+                                
+            .\nuget.exe update $configFile.FullName $packageName -Version $version -NonInteractive
+
+            Copy-Item .\OpenAccessNuGet.targets -Destination $configFile.DirectoryName -ErrorAction SilentlyContinue
         }
     
         Write-Host 'Done' -ForegroundColor Green
@@ -70,23 +97,7 @@ function Build-Solutions {
     Write-Host 'Done' -ForegroundColor Green
 }
 
-#function Get-File-Content {
-#    param([String]$path)
-#
-#    [System.Xml.XmlReader]$fileStream = [System.Xml.XmlReader]::Create(($path))
-#    $byteArray = New-Object byte[] $fileStream.Length
-#    $encoding = New-Object System.Text.UTF8Encoding $true
-#    while ($fileStream.Read($byteArray, 0 , $byteArray.Length)) {
-#        $result = $encoding.GetString($byteArray)
-#    }
-#    
-#    $fileStream.Dispose()
-#
-#    return $fileStream.Read
-#    #return $result
-#}
-
 #Add-Nuget-Sources
 #Restore-Packages
-#Upgrade-Packages
-Build-Solutions
+Upgrade-Packages
+#Build-Solutions
