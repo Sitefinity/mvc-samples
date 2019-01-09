@@ -1,0 +1,36 @@
+﻿@model Telerik.Sitefinity.Frontend.Navigation.Mvc.Models.LanguageSelector.LanguageSelectorViewModel
+
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "top", false)
+
+<div class="@Model.CssClass">
+    <ul class="sf-lang-selector list-inline">
+        @foreach (var language in Model.Languages)
+        {
+            <li class="list-inline-item">
+                @if (SystemManager.IsDesignMode)
+                {
+                    <a href="" onclick="return false;" class="@GetClass(language.Culture)">@language.DisplayName</a>
+                }
+                else
+                {
+	                <a href="" onclick="openLink('@language.Culture'); return false;" class="@GetClass(language.Culture)">@language.DisplayName</a>
+                }
+            </li>
+        }
+    </ul>
+</div>
+
+@*Resolves the class that will be added for each language link depending whether it is the current language*@
+@helper GetClass(string culture)
+{
+    if (Model.CurrentLanguage == culture)
+    {
+        @Html.Raw("selected");
+    }
+}
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LanguageSelector/language-selector.js"), "bottom", false)
