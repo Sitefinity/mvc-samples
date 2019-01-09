@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleContentBlock", "SimpleContentBlock.csproj", "{69BA2DA6-808F-4514-B889-282A0374BAAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleContentBlock", "SimpleContentBlock/SimpleContentBlock.csproj", "{69BA2DA6-808F-4514-B889-282A0374BAAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4F4D3837-9D88-4B28-8AD7-790C06DF5DC3}"
 	ProjectSection(SolutionItems) = preProject
