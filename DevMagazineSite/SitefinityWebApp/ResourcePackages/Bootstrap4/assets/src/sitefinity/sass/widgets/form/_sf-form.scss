@@ -1,0 +1,28 @@
+﻿@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .checkbox,.radio {
+        label {
+            @extend %pl-0; //0
+            @extend %pr-4; //1.5rem
+        }
+    }
+
+    .checkbox {
+        input[type=checkbox] {
+           @extend %pl-0; //0
+
+           margin-right: -20px;
+        }
+    }
+
+    .radio {
+        input[type=radio] {
+           @extend %pl-0; //0
+
+           margin-right: -20px;
+        }
+    }
+  }
+}

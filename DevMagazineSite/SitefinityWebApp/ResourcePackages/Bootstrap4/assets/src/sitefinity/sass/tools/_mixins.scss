@@ -1,0 +1,41 @@
+// Mixin for generating taxonomy sizes
+
+@mixin create-taxa-size-class($names, $sizes, $class) {
+	@each $item in $names {
+		$i: index($names, $item);
+		.#{$class}#{$item} {
+			font-size: nth($sizes, $i);
+		}
+	}
+}
+
+// Mixin for generating colors for login external providers
+
+@mixin create-external-providers-colors($providers) {
+	@each $provider, $color in $providers {
+		.-sf-#{$provider}-button {
+			color: $color;
+			border-color: $color;
+
+			&:hover {
+				color: $white;
+				background-color: $color;
+				border-color: $transparent;
+			}
+		}
+	}
+}
+
+//Right-to-left support
+
+@mixin rtl-cultures {
+    $available-rtl-cultures: ();
+    
+    @each $culture in $rtl-cultures {
+        $available-rtl-cultures: join($available-rtl-cultures, '[lang^="#{$culture}"]', "comma");
+    }
+
+    #{$available-rtl-cultures} {
+        @content
+    }
+}

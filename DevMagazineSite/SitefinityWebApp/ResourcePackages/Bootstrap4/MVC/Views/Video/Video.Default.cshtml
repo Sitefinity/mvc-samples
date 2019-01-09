@@ -1,0 +1,24 @@
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Video.VideoViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@Html.Script(ScriptRef.JQuery, "head", false)
+
+@{
+    var videoUrl = Model.Item.Fields.MediaUrl;
+    var videoWidth = Model.AspectRatio.ToLowerInvariant() == "auto" ? string.Empty : string.Format("width={0}", Model.Width);
+    var videoHeight = Model.AspectRatio.ToLowerInvariant() == "auto" ? string.Empty : string.Format("height={0}", Model.Height);
+}
+
+<figure class="@Model.CssClass" aria-labelledby="@Html.UniqueId("VideoTitle")">
+    @if (!string.IsNullOrEmpty(videoUrl))
+    {
+        <video src="@videoUrl" @videoWidth @videoHeight class="@String.Concat("sf", Model.Item.Fields.Extension)" controls="controls" data-sf-role="playVideo" aria-labelledby='@Html.UniqueId("VideoTitle")' aria-describedby='@Html.UniqueId("VideoInfo")'></video>
+        
+        <figcaption id='@Html.UniqueId("VideoTitle")'>@Model.Item.Fields.Title</figcaption>
+        <p id='@Html.UniqueId("VideoInfo")'>@Model.Item.Fields.Description</p>
+    }
+</figure>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Video/video.js"), "bottom", false)

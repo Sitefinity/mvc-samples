@@ -68,3 +68,19 @@
 		}
 	}
 }
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .sf-FormNav li:first-child {
+          @extend .sf-mr-xxs; //0
+    }
+    .sf-FormNav-page {
+        @extend .sf-mr-xxs; //0
+        @extend .sf-ml-s; //10px
+    }
+  }
+}

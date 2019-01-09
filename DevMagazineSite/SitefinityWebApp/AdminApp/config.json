@@ -1,0 +1,60 @@
+{
+  "editorSettings": {
+      "pasteCleanup": {
+          "all": false,
+          "css": true,
+          "keepNewLines": false,
+          "msAllFormatting": false,
+          "msConvertLists": true,
+          "msTags": true,
+          "none": false,
+          "span": true
+      },
+      "resizable": {
+          "content": true,
+          "toolbar": true
+      },
+      "serialization": {
+          "semantic": false
+      },
+      "immutables": true,
+      "tools": [
+          "formatting",
+          "bold",
+          "italic",
+          {
+              "name": "insertUnorderedList",
+              "tooltip": "Unordered list"
+          },
+          {
+              "name": "insertOrderedList",
+              "tooltip": "Ordered list"
+          },
+          "indent",
+          "outdent",
+          "createLink",
+          {
+              "name": "unlink",
+              "tooltip": "Remove link"
+          },
+          "insertImage",
+          "embed",
+          "createTable",
+          "addRowAbove",
+          "addRowBelow",
+          "addColumnLeft",
+          "addColumnRight",
+          "deleteRow",
+          "deleteColumn",
+          "justifyLeft",
+          "justifyCenter",
+          "justifyRight",
+          "subscript",
+          "superscript",
+          "horizontalRule",
+          "tableWizard",
+          "cleanFormatting",
+          "html"
+      ]
+  }
+}

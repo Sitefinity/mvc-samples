@@ -3,3 +3,17 @@
 		@extend .sf-ml-s; //10px
 	}
 }
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+    
+      .sf-document-size,
+      .sf-document-extension {
+          display: inline-block;
+          direction: ltr;
+      }
+  }
+}

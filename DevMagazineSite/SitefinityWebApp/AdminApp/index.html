@@ -17,12 +17,12 @@
     justify-content: center;
     align-items: center;
 }
-.sf-loader.-home .loader__content {
+.sf-loader.-home .sf-loader__content {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.sf-loader.-home .loader__rect {
+.sf-loader.-home .sf-loader__rect {
     margin-right: 1px;
     width: 10px;
     height: 10px;
@@ -31,13 +31,13 @@
     opacity: 0;
     animation: indexLoader 1s infinite ease-in-out;
 }
-.sf-loader.-home .loader__rect.-first {
+.sf-loader.-home .sf-loader__rect.-first {
     animation-delay: 2s;
 }
-.sf-loader.-home .loader__rect.-second {
+.sf-loader.-home .sf-loader__rect.-second {
     animation-delay: 2.1s;
 }
-.sf-loader.-home .loader__rect.-third {
+.sf-loader.-home .sf-loader__rect.-third {
     animation-delay: 2.1s;
 }
 @keyframes indexLoader {
@@ -54,32 +54,30 @@
 
         
     </style>
-    <!--Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+
     <!--Icons-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/widgets.js"></script>
      
         <!-- Configured Head Tags  -->
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/adminapp/assets/icons/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/adminapp/assets/icons/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/adminapp/assets/icons/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/adminapp/assets/icons/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/adminapp/assets/icons/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/adminapp/assets/icons/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/adminapp/assets/icons/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/adminapp/assets/icons/apple-touch-icon-152x152.png">
-	<link rel="icon" type="image/png" sizes="196x196" href="/adminapp/assets/icons/favicon-196x196.png">
-	<link rel="icon" type="image/png" sizes="128x128" href="/adminapp/assets/icons/favicon-128x128.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="/adminapp/assets/icons/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/adminapp/assets/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/adminapp/assets/icons/favicon-16x16.png">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/adminapp/./assets/icons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/adminapp/./assets/icons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/adminapp/./assets/icons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/adminapp/./assets/icons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/adminapp/./assets/icons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/adminapp/./assets/icons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/adminapp/./assets/icons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/adminapp/./assets/icons/apple-touch-icon-152x152.png">
+	<link rel="icon" type="image/png" sizes="196x196" href="/adminapp/./assets/icons/favicon-196x196.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="/adminapp/./assets/icons/favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/adminapp/./assets/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/adminapp/./assets/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/adminapp/./assets/icons/favicon-16x16.png">
 	<meta name="msapplication-TileColor" content="#FFFFFF">
-	<meta name="msapplication-TileImage" content="/adminapp/assets/icons/mstile-144x144.png">
-	<meta name="msapplication-square70x70logo" content="/adminapp/assets/icons/mstile-70x70.png">
-	<meta name="msapplication-square150x150logo" content="/adminapp/assets/icons/mstile-150x150.png">
-	<meta name="msapplication-square310x310logo" content="/adminapp/assets/icons/mstile-310x310.png">
+	<meta name="msapplication-TileImage" content="/adminapp/./assets/icons/mstile-144x144.png">
+	<meta name="msapplication-square70x70logo" content="/adminapp/./assets/icons/mstile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="/adminapp/./assets/icons/mstile-150x150.png">
+	<meta name="msapplication-square310x310logo" content="/adminapp/./assets/icons/mstile-310x310.png">
+    
     
 </head>
     <!-- 3. Display the application -->
@@ -87,21 +85,22 @@
     <sf-app>
         <!-- Loading Angular app content here (All inside sf-app will be replaced once Angular app is instantiated) ... -->
         <div class="sf-loader -home">
-            <div class="loader__content">
-                <span class="loader__rect -first"></span>
-                <span class="loader__rect -second"></span>
-                <span class="loader__rect -third"></span>
+            <div class="sf-loader__content">
+                <span class="sf-loader__rect -first"></span>
+                <span class="sf-loader__rect -second"></span>
+                <span class="sf-loader__rect -third"></span>
             </div>
         </div>
     </sf-app>
 
     <!-- Configured Body Tags  -->
     
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script src="/adminapp/assets/js/kendo-editor/kendo.custom.min.js"></script>
 	<script src="/adminapp/assets/js/monaco-editor/vs/loader.js"></script>
     
 
     <!--vendor + app bundles-->
-<script type="text/javascript" src="/adminapp/vendors.67ed20d62ea6b5d72fee.bundle.js"></script><script type="text/javascript" src="/adminapp/app.e3fec2f3f3770e2e94ca.bundle.js"></script></body>
+<script type="text/javascript" src="/adminapp/vendors.73c3e7af91de2fb2bdd0.bundle.js"></script><script type="text/javascript" src="/adminapp/app.be82abc013ae024e4e18.bundle.js"></script></body>
 
 </html>
