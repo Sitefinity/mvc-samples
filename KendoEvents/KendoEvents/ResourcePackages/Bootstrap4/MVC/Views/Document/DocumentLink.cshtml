@@ -1,0 +1,26 @@
+﻿@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.Document.DocumentViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<div class="@Model.CssClass">
+    @if(!string.IsNullOrEmpty(Model.MediaUrl))
+    {
+        <div class="media d-flex align-items-center">
+          <div class="media-left pr-2 pt-1" aria-hidden="true">
+            <span class="sf-icon-txt">
+              <svg class="sf-icon-file sf-icon-txt sf-icon-lg">
+                  <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#file"></use>
+              </svg>
+              <span class="sf-icon-txt-md sf-icon-txt-@Model.Extension">@Model.Extension</span>
+            </span>
+          </div>
+          <div class="media-body" role="group">
+              <div>
+                <a class="@String.Concat("sf", Model.Extension)" href="@Model.MediaUrl" target="_blank">@Model.Title</a> 
+                <span class="text-muted" aria-label="@Html.Resource("FileExtension")">(@Model.Extension)</span>
+              </div>
+            <span class="text-muted" aria-label="@Html.Resource("FileSize")">@Model.FileSize KB</span>
+          </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,49 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.VideoGallery.VideoDetailsViewModel
+
+@using Telerik.Sitefinity;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Web.DataResolving;
+
+<div class="@Model.CssClass" @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)Model.Item.Fields.Id)>
+    <figure aria-labelledby="@Html.UniqueId("VideoTitle")">
+        <figcaption class="h2"  id="@Html.UniqueId("VideoTitle")" @Html.InlineEditingFieldAttributes("Title", "ShortText")>@Model.Item.Fields.Title</figcaption>
+        <div class="text-muted">
+            <span class="sr-only">@Html.Resource("VideoTakenOn") </span>
+            @Model.Item.GetDateTime("PublicationDate", "MMM d, yyyy, HH:mm tt")
+            @Html.Resource("By")
+            @DataResolver.Resolve(@Model.Item.DataItem, "Author", null)
+        </div>
+        <p @Html.InlineEditingFieldAttributes("Description", "LongText") id='@Html.UniqueId("VideoInfo")'>@Html.HtmlSanitize((string)Model.Item.Fields.Description)</p>        
+        <video src="@Html.Raw(Model.MediaUrl)" controls="controls" width="@Model.Width" height="@Model.Height" aria-labelledby='@Html.UniqueId("VideoTitle")' aria-describedby='@Html.UniqueId("VideoInfo")'></video>
+    </figure>
+    @if (ViewBag.ItemIndex != null)
+    {
+        <nav role="navigation" aria-label="@Html.Resource("PreviousNextVideo")" class="text-center clearfix">
+            @{
+                var previousItemIndex = ViewBag.ItemIndex == 1 ? Model.TotalItemsCount : ViewBag.ItemIndex - 1;
+                var nextItemIndex = ViewBag.ItemIndex == Model.TotalItemsCount ? 1 : ViewBag.ItemIndex + 1;
+            }
+
+            @if (Model.PreviousItem != null) 
+            {
+                <a class="sf-Gallery-prev--simple" aria-label="@Html.Resource("GoToPreviousVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.PreviousItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, previousItemIndex)">
+                    @Html.Resource("PreviousVideo")
+                </a>
+            }
+
+            @if (Model.PreviousItem != null || Model.NextItem != null)
+            {
+                @Html.HtmlSanitize((string)string.Format(Html.Resource("IndexOfTotal"), ViewBag.ItemIndex, Model.TotalItemsCount));
+            }
+
+            @if (Model.NextItem != null) 
+            {
+                <a class="sf-Gallery-next--simple" aria-label="@Html.Resource("GoToNextVideo")" href="@HyperLinkHelpers.GetDetailPageUrl(Model.NextItem, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, ViewBag.UrlKeyPrefix, nextItemIndex)">
+                    @Html.Resource("NextVideo")
+                </a>
+            }
+        </nav>
+
+        @Html.ActionLink(Html.Resource("BackToAllVideos"), "Index")
+    }
+</div>

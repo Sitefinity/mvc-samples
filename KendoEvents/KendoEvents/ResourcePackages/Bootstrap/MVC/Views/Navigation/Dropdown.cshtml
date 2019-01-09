@@ -5,7 +5,7 @@
 @using Telerik.Sitefinity.Modules.Pages;
 
 @*Add scripts and stylesheets*@
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom")
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Navigation.js"), "bottom", true)
 
 <select class="nav-select form-control">
     @foreach (var node in Model.Nodes)
