@@ -141,7 +141,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties Name="ListWidget" />
