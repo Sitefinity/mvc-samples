@@ -7,7 +7,7 @@ This package is based on the [Bootstrap 4 framework](http://getbootstrap.com/). 
 
 ## Npm
 ### Install
-Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit the  [npm](https://www.npmjs.com/) website.
+Npm is the package manager for JavaScript that enables you to assemble packages of reusable code. For more information, visit [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) websites. Currently *Bootstrap 4* package supports Node.js LTS version 10.14.0.
 ```
 > npm install
 > npm start
@@ -34,23 +34,22 @@ The Bootstrap package contains frontend assets, widget templates, and grid widge
  			- **js** - add JavaScript files in this folder that need to be moved to the `assets/dist/js` folder. You will need to extend/replace the file paths listed in `package.json` file in `config.copyJs` section.
  			- **sass** - create subfolders in this folder to add your SCSS files
  				- **main.scss** - import all your SCSS files here. This file will be processed to the `assets/dist/css/main.min.css` folder.
-        ```
 
 Following is an example of how to structure files hierarchically:
-        
-        | ResourcePackages
-        |-- Bootstrap
-        |---- assests
-        |------ dist
-        |------ src
-        |-------- sitefinity
-        |-------- project
-        |---------- sprites
-        |---------- images
-        |---------- js
-        |---------- sass
-        |------------ main.scss
-        ```
+```     
+| ResourcePackages
+|-- Bootstrap
+|---- assests
+|------ dist
+|------ src
+|-------- sitefinity
+|-------- project
+|---------- sprites
+|---------- images
+|---------- js
+|---------- sass
+|------------ main.scss
+```
 
 **IMPORTANT:** We do **not** recommend renaming the subfolders since they are used in npm scripts
 
@@ -103,8 +102,7 @@ To create a new grid widget is just as simple:
 
 **Example:** To create a simple placeholder with `<section>` tag, create `section.html` in `/ResourcePackages/Bootstrap4/GridSystem/Templates/`
 ```
-	<section class="section" data-sf-element="Section" data-placeholder-label="Section">
-	</section>
+<section class="section" data-sf-element="Section" data-placeholder-label="Section"></section>
 ```
 
 ## Recommendations for managing widget templates
@@ -171,12 +169,12 @@ In the `packages.json -> config.copyJs` section, list all your JavaScript files 
 ...,
 "config": {
     "copyJs": "... assets/src/project/js/project-file-1.js assets/src/project/js/project-file-2.js"
-  }
+}
 ```
 
 **Example:** To load `project-file-1.js` open the project Razor layout file (`/ResourcePackages/Bootstrap4/MVC/Views/Layouts/default.cshtml`) and add a reference there.
 ```
-	@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/project-file-1.js"), "bottom", true)
+@Html.Script(Url.Content("~/ResourcePackages/Bootstrap4/assets/dist/js/project-file-1.js"), "bottom", true)
 ```
 
 ### SVG sprites
@@ -187,12 +185,12 @@ According to the [Bootstrap 4 framework](https://getbootstrap.com/docs/4.1/migra
 ...,
 "config": {
     "copySprites": "... assets/src/project/sprites/sprite-1.svg assets/src/project/sprites/sprite-2.svg ",
-  }
+}
 ```
 
 **Example:** To use SVG icon in widget template add a reference there like this: (`solid.svg` is the sprite and `#book` is the [icon](https://fontawesome.com/icons/book?style=solid))
 ```
-    <svg>
-        <use class="sf-icon-right" xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#book"></use>
-    </svg>
+<svg>
+    <use class="sf-icon-right" xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#book"></use>
+</svg>
 ```
