@@ -2,9 +2,7 @@
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
-
 @Html.Script(ScriptRef.JQuery, "top", false)
-
 <div class="@Model.CssClass form-group">
     <button data-sf-btn-role="next" type="button" class="btn btn-secondary">@Html.HtmlSanitize(Model.NextStepText)</button>
     @if (Model.AllowGoBack)
@@ -12,5 +10,4 @@
         <a href="javascript:void(0)" data-sf-btn-role="prev">@Html.HtmlSanitize(Model.PreviousStepText)</a>
     }
 </div>
-@Html.Script(Url.WidgetContent("Mvc/Scripts/PageBreak/page-break.js"), "bottom", false)
-
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)

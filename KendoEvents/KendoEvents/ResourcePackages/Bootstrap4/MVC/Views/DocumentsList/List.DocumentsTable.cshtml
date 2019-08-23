@@ -38,7 +38,7 @@
                         @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
                     </td>
                     <td>
-                        <a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download") <span class="sr-only">@item.Fields.Title</span></a>
+                        <a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download")<span class="sr-only">@item.Fields.Title</span></a>
                     </td>
                 </tr>
             }

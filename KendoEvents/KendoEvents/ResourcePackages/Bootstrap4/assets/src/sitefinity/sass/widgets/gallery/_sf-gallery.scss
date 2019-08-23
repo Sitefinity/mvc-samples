@@ -74,7 +74,8 @@
 	-ms-user-select: none;
 	user-select: none;
 
-	&:hover {
+	&:hover, 
+    &:focus {
 		opacity: 1;
 		color: $gallery-prev-next-hover-color;
 	}

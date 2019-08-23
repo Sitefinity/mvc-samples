@@ -30,7 +30,7 @@
 }
 
 <div class="@Model.CssClass">    
-	@using (Html.BeginFormSitefinity())
+	@using (Html.BeginFormSitefinity("Unsubscribe", "UnsubscribeForm"))
 	{	
 		<h3>@Model.WidgetTitle</h3>
 		
@@ -58,7 +58,7 @@
 
 			<div class="form-inline">
 				@Html.TextBoxFor(u => u.Email, attributes)
-				<button type="submit" class="btn btn-primary ml-2">@Html.Resource("ButtonUnsubscribe")</button>
+				<button type="submit" class="btn btn-primary ml-2" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonUnsubscribe")</button>
 			</div>
 
 			@if (Html.ValidationMessageFor(u => u.Email) != null)

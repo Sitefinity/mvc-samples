@@ -2,6 +2,7 @@
 
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
 
 @Html.Script(ScriptRef.JQuery, "top", false)
 <div id="comments-@HttpUtility.HtmlEncode(Model.ThreadKey)" data-sf-role="comments-wrapper" class="@Model.CssClass sf-Comments sf-Reviews">
@@ -37,7 +38,7 @@
     </div>
 
     <div data-sf-role="list-loading-indicator" style="display:none;"></div>
-    <ul data-sf-role="comments-container" class="sf-Comments-list list-unstyled"></ul>
+    <div data-sf-role="comments-container" class="sf-Comments-list list-unstyled"></div>
 
     @if (Model.EnablePaging)
     {
@@ -112,7 +113,7 @@
                         }
 
                         <div>
-                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button">@Html.Resource("Submit")</button>
+                            <button class="btn btn-primary" data-sf-role="comments-new-submit-button" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("Submit")</button>
                         </div>
 
                     </div>
@@ -122,7 +123,7 @@
             </div>
 
             @if (Model.AllowSubscription)
-                {
+            {
                 <div class="sf-Comment-subscribe">
                     <span data-sf-role="comments-subscribe-text"></span>
                     <a href="#" data-sf-role="comments-subscribe-button">
@@ -149,9 +150,9 @@
         }
     }
 
-    <template data-sf-role="single-comment-template">
+    <div data-sf-role="single-comment-template">
 
-        <li class="media sf-media">
+        <div class="media sf-media">
             <input type="hidden" data-sf-role="rating-of-resource" value="@Html.Resource("Of")" />
 
             <div class="media-left sf-img-thmb" aria-hidden="true">
@@ -177,9 +178,9 @@
 
             </div>
 
-        </li>
+        </div>
 
-    </template>
+    </div>
 </div>
 
 @*Single rating item template*@

@@ -21,7 +21,7 @@
     </div>
 
     <div>
-        <a href="@Model.Item.Fields.MediaUrl" target="_blank">@Html.Resource("Download") <span class="sr-only">@Model.Item.Fields.Title</span></a>
+        <a href="@Model.Item.Fields.MediaUrl" target="_blank">@Html.Resource("Download")<span class="sr-only">@Model.Item.Fields.Title</span></a>
         <span aria-label="@Html.Resource("DocumentExtension")">(@Model.Extension)</span>
         <span aria-label="@Html.Resource("DocumentSize")">@(Math.Ceiling((double)Model.Item.Fields.TotalSize / 1024) + " KB")</span>
     </div>    

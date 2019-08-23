@@ -24,7 +24,7 @@
 					<span class="text-muted" aria-label="@Html.Resource("FileExtension")">(@(((DocumentItemViewModel)item).Extension))</span>
 
 					<div>
-						<a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download") <span class="sr-only">@item.Fields.Title</span></a>
+						<a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download")<span class="sr-only">@item.Fields.Title</span></a>
 						<span class="text-muted" aria-label="@Html.Resource("FileSize")">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
 					</div>
 				</div>

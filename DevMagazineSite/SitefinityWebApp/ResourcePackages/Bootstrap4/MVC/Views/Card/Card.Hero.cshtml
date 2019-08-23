@@ -1,7 +1,7 @@
 @model Telerik.Sitefinity.Frontend.Card.Mvc.Models.Card.CardViewModel
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
 <div class="@Model.CssClass container">
-    <div class="jumbotron" style="background: url('@Model.SelectedSizeUrl') center center; background-size: cover;">
+    <div class="jumbotron" style="background: url(&quot;@Model.SelectedSizeUrl&quot;) center center; background-size: cover;">
         <h1 class="display-4">@Html.HtmlSanitize(Model.Heading)</h1>
         <p class="lead">@Html.HtmlSanitize(Model.Description)</p>
         @if (!string.IsNullOrEmpty(Model.ActionName))

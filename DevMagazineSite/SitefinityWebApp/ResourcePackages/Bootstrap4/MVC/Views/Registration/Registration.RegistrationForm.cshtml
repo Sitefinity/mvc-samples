@@ -7,6 +7,7 @@
 @using Telerik.Sitefinity.Utilities;
 @using Telerik.Sitefinity.Services;
 @using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Registration;
+@using Telerik.Sitefinity.Web;
 
 @*Add scripts and stylesheets*@
 @Html.Script(ScriptRef.JQuery, "top", true)
@@ -30,7 +31,7 @@
 }
 
 <div class="@Model.CssClass">
-	@if ((Request.QueryString["ShowActivationMsg"] == "true") ||
+	@if ((Request.QueryStringGet("ShowActivationMsg") == "true") ||
 	 (ViewBag.ShowActivationMsg is bool && ViewBag.ShowActivationMsg))
     {
         <div role="alert" aria-live="assertive">
@@ -53,7 +54,7 @@
 
         <input type="hidden" data-sf-role="sf-resend-confirmation-endpoint-url" value="@Url.Action("ResendConfirmationEmail", new { email = Model.Email})" />
     }
-    else if ((Request.QueryString["ShowSuccessfulRegistrationMsg"] == "true") ||
+    else if ((Request.QueryStringGet("ShowSuccessfulRegistrationMsg") == "true") ||
              (ViewBag.ShowSuccessfulRegistrationMsg is bool && ViewBag.ShowSuccessfulRegistrationMsg))
     {
         <div role="alert" aria-live="assertive">
@@ -97,11 +98,11 @@
 
                 @if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode )
                 {
-                    <button type="button" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="button" class="btn btn-primary" disabled >@Html.Resource("Register")</button>
                 }
                 else
                 {
-                    <button type="submit" class="btn btn-primary">@Html.Resource("Register")</button>
+                    <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "") >@Html.Resource("Register")</button>
                 }
 
                 <div class="mt-3">

@@ -19,82 +19,74 @@
 }
 
 <div class="@Model.CssClass m-0">
-    @if (Telerik.Sitefinity.Security.SecurityManager.GetCurrentUserId() == Guid.Empty || SystemManager.IsInlineEditingMode || SystemManager.IsDesignMode)
+    @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
     {
-        using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
-        {
-            @Html.ValidationSummary(true);
+        @Html.ValidationSummary(true);
             
-            <div class="@rowClass">
-                <div class="@colClass">
-                    <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
+        <div class="@rowClass">
+            <div class="@colClass">
+                <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
                 
-                    @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
-                    {            
-                        <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
-                    }
+                @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
+                {            
+                    <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
+                }
 
-                    @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+                @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>(){{"aria-required", "true"}})
 
-                    @FormGroupPanel("Password", u => u.Password, "LoginPassword", "password", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+                @FormGroupPanel("Password", u => u.Password, "LoginPassword", "password", null, new Dictionary<string, object>(){{"aria-required", "true"}})
 
-                    @if (Model.ShowRememberMe || Model.ShowForgotPasswordLink)
-                    {
-                        var isPulledRight = Model.ShowRememberMe ? "col-lg-6" : "col-lg-12";
-
-                        <div class="form-group row">
-                            @if (Model.ShowRememberMe)
-                            {
-                            <div class="checkbox col-lg-6 m-0">
-                                <label>
-                                    @Html.CheckBoxFor(u => u.RememberMe)
-                                    @Html.Resource("RememberMe")
-                                </label>
-                            </div>
-                            }
-                            @if (Model.ShowForgotPasswordLink)
-                            {
-                            <div class="text-lg-right pr-4 @isPulledRight">
-                                @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
-                            </div>
-                            }
-                        </div>
-                    }
-                
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">@Html.Resource("LoginFormLogInButton")</button>
-                    </div>
-
-                    @if (Model.ShowRegistrationLink)
-                    {
-                        <div class="sf-registration-link">
-                            <div>@Html.Resource("NotRegisteredYet")</div>
-                            <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
-                        </div>
-                    }
-                </div>
-            
-                @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+                @if (Model.ShowRememberMe || Model.ShowForgotPasswordLink)
                 {
-                    <div class="col-lg-6">                
-                        <h3>@Html.Resource("UseAccountIn")</h3>
+                    var isPulledRight = Model.ShowRememberMe ? "col-lg-6" : "col-lg-12";
 
-                        @foreach (var provider in Model.ExternalProviders)
-                        { 
-                            var classToBeAdd = "btn btn-lg btn-block border " + @provider.Value;                 
-                            <div class="mb-1">
-                                @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
-                            </div>
+                    <div class="form-group row">
+                        @if (Model.ShowRememberMe)
+                        {
+                        <div class="checkbox col-lg-6 m-0">
+                            <label>
+                                @Html.CheckBoxFor(u => u.RememberMe)
+                                @Html.Resource("RememberMe")
+                            </label>
+                        </div>
+                        }
+                        @if (Model.ShowForgotPasswordLink)
+                        {
+                        <div class="text-lg-right pr-4 @isPulledRight">
+                            @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
+                        </div>
                         }
                     </div>
                 }
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("LoginFormLogInButton")</button>
+                </div>
+
+                @if (Model.ShowRegistrationLink)
+                {
+                    <div class="sf-registration-link">
+                        <div>@Html.Resource("NotRegisteredYet")</div>
+                        <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                    </div>
+                }
             </div>
-        }
-    }
-    
-    else
-    {
-        <p>@Html.Resource("AlreadyLoggedIn")</p>
+            
+            @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <div class="col-lg-6">                
+                    <h3>@Html.Resource("UseAccountIn")</h3>
+
+                    @foreach (var provider in Model.ExternalProviders)
+                    { 
+                        var classToBeAdd = "btn btn-lg btn-block border " + @provider.Value;                 
+                        <div class="mb-1">
+                            @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     }
 </div>
 

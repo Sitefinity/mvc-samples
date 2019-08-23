@@ -12,7 +12,7 @@
 @{ 
     var inputCssClass = "";
     HashSet<TextType> availableOptions = new HashSet<TextType>() { TextType.Text, TextType.Password, TextType.Date, TextType.DateTimeLocal, TextType.Month, TextType.Time,
-    TextType.Week, TextType.Number, TextType.Email,TextType.Url, TextType.Tel, TextType.Color };
+    TextType.Week, TextType.Number, TextType.Email, TextType.Url, TextType.Tel, TextType.Color };
 
     if (availableOptions.Contains(Model.InputType))
     {
@@ -38,11 +38,13 @@
         aria-required="@isRequired"
         data-sf-role="text-field-input"
         @Html.Raw(Model.ValidationAttributes)
-        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("TextboxInfo")'</text> } } />
+        @{if (hasDescription) { <text>aria-describedby='@Html.UniqueId("TextboxInfo") @Html.UniqueId("TextboxErrorMessage")'</text> } else { <text>aria-describedby='@Html.UniqueId("TextboxErrorMessage")'</text> } } />
      @if (hasDescription) 
      {
          <p id='@Html.UniqueId("TextboxInfo")' class="text-muted">@Model.MetaField.Description</p>
      }
+
+     <div id='@Html.UniqueId("TextboxErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
 </div>
 
 @Html.Script(Url.WidgetContent("Mvc/Scripts/TextField/text-field.js"), "bottom", false)

@@ -15,7 +15,7 @@
           "toolbar": true
       },
       "serialization": {
-          "semantic": false
+          "semantic": true
       },
       "immutables": true,
       "tools": [
@@ -55,6 +55,8 @@
           "tableWizard",
           "cleanFormatting",
           "html"
+      ],
+      "stylesheets": [
       ]
   }
 }
