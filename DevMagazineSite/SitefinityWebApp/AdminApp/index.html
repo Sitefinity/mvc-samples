@@ -7,7 +7,7 @@
     <!-- Critical CSS -->
     <style>
         
-        .sf-loader.-home {
+        .sf-app .sf-loader.-home {
     position: absolute;
     top: 0;
     left: 0;
@@ -16,13 +16,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    z-index: 100000;
 }
-.sf-loader.-home .sf-loader__content {
+.sf-app .sf-loader.-home .sf-loader__content {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.sf-loader.-home .sf-loader__rect {
+.sf-app .sf-loader.-home .sf-loader__rect {
     margin-right: 1px;
     width: 10px;
     height: 10px;
@@ -31,13 +33,13 @@
     opacity: 0;
     animation: indexLoader 1s infinite ease-in-out;
 }
-.sf-loader.-home .sf-loader__rect.-first {
+.sf-app .sf-loader.-home .sf-loader__rect.-first {
     animation-delay: 2s;
 }
-.sf-loader.-home .sf-loader__rect.-second {
+.sf-app .sf-loader.-home .sf-loader__rect.-second {
     animation-delay: 2.1s;
 }
-.sf-loader.-home .sf-loader__rect.-third {
+.sf-app .sf-loader.-home .sf-loader__rect.-third {
     animation-delay: 2.1s;
 }
 @keyframes indexLoader {
@@ -82,7 +84,7 @@
 </head>
     <!-- 3. Display the application -->
 <body>
-    <sf-app>
+    <sf-app class="sf-app">
         <!-- Loading Angular app content here (All inside sf-app will be replaced once Angular app is instantiated) ... -->
         <div class="sf-loader -home">
             <div class="sf-loader__content">
@@ -101,6 +103,6 @@
     
 
     <!--vendor + app bundles-->
-<script type="text/javascript" src="/adminapp/vendors.73c3e7af91de2fb2bdd0.bundle.js"></script><script type="text/javascript" src="/adminapp/app.be82abc013ae024e4e18.bundle.js"></script></body>
+<script type="text/javascript" src="/adminapp/vendors.909a64582d1873fa41a9.bundle.js"></script><script type="text/javascript" src="/adminapp/app.04fdda8729b5e7f5323b.bundle.js"></script></body>
 
 </html>

@@ -30,7 +30,7 @@
 }
 
 <div class="@Model.CssClass">
-	@using (Html.BeginFormSitefinity())
+	@using (Html.BeginFormSitefinity("Subscribe", "SubscribeForm"))
 	{
 		<h3>@Html.Resource("Subscribe")</h3>
 	
@@ -78,7 +78,7 @@
 
 			<div class="form-inline">
 				@Html.TextBoxFor(m => m.Email, attributes)
-				<button class="btn btn-primary ml-2" type="submit">@Html.Resource("ButtonSubscribe")</button>
+				<button class="btn btn-primary ml-2" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonSubscribe")</button>
 			</div>
 
 			@if (Html.ValidationMessageFor(m => m.Email) != null)

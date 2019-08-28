@@ -11,7 +11,7 @@
 <div class="@Model.CssClass sf-FileField form-group" data-sf-role="file-field-container" data-sf-config="@(Html.AttributeEncode(Model.Serialize()))">
     <label class="h6" for='@Html.UniqueId("FileUpload")'>@Model.MetaField.Title</label>
     <div data-sf-role="file-field-inputs">
-        @if (!SystemManager.IsDesignMode)
+        @if (!SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
         {
             @:<script type="text/template" data-sf-role="file-input-template">
             }
@@ -24,10 +24,10 @@
                    class="sf-FileField-input"
                    aria-required="@isRequired"
                    @{if (hasDescription) { <text> aria-describedby='@Html.UniqueId("FileUploadInfo")' </text>  } }>
-            @if (Model.AllowMultipleFiles)
+            @if (Model.AllowMultipleFiles || SystemManager.IsPreviewMode)
             {
                 <a href="javascript:void(0);" style="display: none;" data-sf-role="remove-input" aria-label="@Html.Resource("Remove")">
-                    <svg class="sf-icon-xs sf-icon-remove" style="display: none;" data-sf-role="remove-input" aria-hidden="true">
+                    <svg class="sf-icon-xs sf-icon-remove" style="display: none;" aria-hidden="true">
                         <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#times-circle"></use>
                     </svg>
                     @Html.Resource("Remove")
@@ -35,11 +35,11 @@
             }
             @if (Model.AcceptedFileTypes.Length > 0)
             {
-                <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</p>
+                <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</div>
             }
             @if (Model.MinFileSizeInMb > 0 || Model.MaxFileSizeInMb > 0)
             {
-                <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</p>
+                <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</div>
             }
         </div>
         @if (!SystemManager.IsDesignMode)
@@ -53,14 +53,14 @@
     {
         <a href="javascript:void(0);" data-sf-role="add-input">@Html.Resource("AddAnother")</a>
     }
-    <p class="text-danger" role="alert" aria-live="assertive" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</p>
+    <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</div>
     @if (hasDescription)
     {
         <p class="text-muted" id='@Html.UniqueId("FileUploadInfo")'>@Model.MetaField.Description</p>
     }
 </div>
-@if (!SystemManager.IsDesignMode)
+@if (!SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
 {
     @Html.Script(ScriptRef.JQuery, "top", false)
-    @Html.Script(Url.WidgetContent("Mvc/Scripts/FileField/file-field.js"), "bottom", false)
+    @Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
 }

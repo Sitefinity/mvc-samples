@@ -39,8 +39,8 @@
 	<div><span class="js-Gallery-index">1</span> of @Model.Items.Count()</div>
 
 	<p class="sf-Gallery-image js-Gallery-image">
-		<a class='js-Gallery-prev sf-Gallery-prev'><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
-		<a class='js-Gallery-next sf-Gallery-next'><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+		<a href="javascript:void(0)" class='js-Gallery-prev sf-Gallery-prev' title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+		<a href="javascript:void(0)" class='js-Gallery-next sf-Gallery-next' title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
         <img src="@(thumbnailViewModel.MediaUrl)" title="@firstItem.DataItem.Title" alt="@firstItem.DataItem.AlternativeText" 
                   @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
                   @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
@@ -57,8 +57,8 @@
 
 	<div class="sf-Gallery-image js-Gallery-image">
         <nav role="navigation" aria-label="@Html.Resource("PreviousNextImage")">
-            <a class="js-Gallery-prev sf-Gallery-prev" title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
-            <a class="js-Gallery-next sf-Gallery-next" title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+            <a href="javascript:void(0)" class="js-Gallery-prev sf-Gallery-prev" title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+            <a href="javascript:void(0)" class="js-Gallery-next sf-Gallery-next" title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
         </nav>
 		<img />
 	</div>
@@ -74,7 +74,7 @@
 		{
     var itemViewModel = (ThumbnailViewModel)item;
     
-			<a class="text-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)">
+			<a href="javascript:void(0)" class="text-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)">
                 <img src="@(itemViewModel.ThumbnailUrl)" alt="@item.Fields.AlternativeText" 
                               @Html.GetWidthAttributeIfExists(itemViewModel.Width)
                               @Html.GetHeightAttributeIfExists(itemViewModel.Height) />

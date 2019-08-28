@@ -14,7 +14,7 @@
     Html.Raw("<div class=\"form-inline\">"))
     <div class="form-group sf-search-input-wrapper" role="search">
         <input type="search" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@searchTextBoxId" class="form-control" value="@(ViewBag.SearchQuery)" aria-autocomplete="both" aria-describedby='@Html.UniqueId("SearchInfo")'/>
-        <button type="button" class="btn btn-primary ml-2" id="@(searchButtonId)">@Html.Resource("SearchLabel")</button>
+        <button type="button" class="btn btn-primary ml-2" id="@(searchButtonId)" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("SearchLabel")</button>
         <span id='@Html.UniqueId("SearchInfo")' aria-hidden="true" hidden>When autocomplete results are available use up and down arrows to review and enter to select.</span>
     </div>
 	
