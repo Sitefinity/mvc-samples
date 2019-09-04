@@ -118,6 +118,7 @@ node_modules
 
 ListWidget/.nuget/NuGet.exe
 UpgradeLog*.htm
+*/.vs/*
 
 .grunt
 _SpecRunner.html
