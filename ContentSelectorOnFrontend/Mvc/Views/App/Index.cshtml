@@ -1,32 +1,35 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.StyleSheet(Url.WidgetContent("Mvc/Scripts/Bootstrap/css/bootstrap.min.css"))
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 @Html.StyleSheet(Url.WidgetContent("assets/dist/css/sitefinity-backend.min.css"))
-<link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.common.min.css" rel="stylesheet" />
-<link href="http://cdn.kendostatic.com/2014.2.716/styles/kendo.default.min.css" rel="stylesheet" />
-  
+<link href="http://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common.min.css" rel="stylesheet" />
+<link href="http://kendo.cdn.telerik.com/2019.2.514/styles/kendo.default.min.css" rel="stylesheet" />
+
 @Html.Script(ScriptRef.JQuery, "top", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Angular/angular.min.js"), "top", false)
 @Html.Script(ScriptRef.KendoAll, "top", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Angular/angular-resource.min.js"), "top", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Angular/angular-route.min.js"), "top", false)
 @Html.Script(Url.WidgetContent("Mvc/Scripts/Bootstrap/js/ui-bootstrap-tpls.min.js"), "top", false)
-@Html.Script(Url.Content("~/Telerik.Sitefinity.Frontend/ServerContext.js"), "top", false)
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Designer/modal-dialog.js"), "top", false)
-@Html.Script(Url.WidgetContent("Mvc/Scripts/server-data.js"), "top", false)
-@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-services.js"), "top", false)
-@Html.Script(Url.WidgetContent("client-components/selectors/dynamic-modules/sf-data-service.js"), "top", false)
-@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-selectors.js"), "top", false)
-@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-list-selector.js"), "top", false)
-@Html.Script(Url.WidgetContent("client-components/selectors/dynamic-modules/sf-dynamic-items-selector.js"), "top", false)
- 
- <script src="~/Mvc/Scripts/App/app.js"></script>
- 
-  <div ng-app="app">
-     <div ng-controller="MainCtrl">
-         <span>Dynamic items selector</span>
-         <sf-list-selector sf-dynamic-items-selector sf-item-type="dynamicType"></sf-list-selector><br />
-     </div>
- </div>
- 
+
+@ASP.PartialExtensions.Partial(Html, "ServerContext", new Telerik.Sitefinity.Frontend.Mvc.Models.ServerContext())
+
+<div ng-app="app">
+    <div ng-controller="MainCtrl">
+
+        <span>Dynamic items selector</span>
+        <sf-list-selector sf-dynamic-items-selector sf-item-type="dynamicType"></sf-list-selector><br />
+    </div>
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Designer/modal-dialog.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/server-data.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-services.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("client-components/selectors/dynamic-modules/sf-data-service.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-selectors.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("client-components/selectors/common/sf-list-selector.js"), "bottom", false)
+@Html.Script(Url.WidgetContent("client-components/selectors/dynamic-modules/sf-dynamic-items-selector.js"), "bottom", false)
+
+@Html.Script(Url.WidgetContent("/Mvc/Scripts/App/app.js"), "bottom", false)
