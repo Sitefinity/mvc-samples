@@ -1,0 +1,39 @@
+.sf-profile {
+
+	.sf-profile-avatar {
+		display: inline-block;
+		margin-bottom: 10px;
+		position: relative;
+		
+		.sf-remove {
+			position:absolute;
+			top: 5px;
+			right: 5px;
+			outline: 0;
+		}
+	}
+
+    .sf-profile-aside {
+        @extend %pr-4; //1.5rem
+    }
+
+	textarea {
+		min-height: 100px;
+	}
+
+	.media-object img {
+		max-width: none;
+	}
+}
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+        .sf-profile {
+            .sf-profile-aside {
+                @extend %pl-4; //1.5rem
+                @extend %pr-0; //0
+            }
+        }
+    }
+}

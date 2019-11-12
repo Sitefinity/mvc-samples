@@ -1,0 +1,158 @@
+.sf-Comments {
+	@extend %mt-4; //1.5rem
+
+	[class^="sf-icon"] {
+		display: inline-block;
+	}
+
+	.sf-loading {
+		@extend %mb-3; //1rem
+	}
+}
+
+.sf-Comment-count {
+	@extend %ml-2; //.5rem
+
+	display: inline-block;
+
+	[class^="sf-icon"] {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.sf-Comment-count--block & {
+		@extend %ml-0; //0
+		@extend %mt-1; //.25rem
+
+		display: block;
+	}
+}
+
+// Hide elements before js initialization
+[data-sf-role="error-message"],
+[data-sf-role="list-loading-indicator"],
+[data-sf-role="list-loading-indicator"],
+[data-sf-role="comments-new-message-error"],
+[data-sf-role="comments-new-logged-out-view"],
+[data-sf-role="comments-new-name-error"],
+[data-sf-role="captcha-container"],
+[data-sf-role="single-comment-template"],
+[data-sf-role="comments-new-pending-approval-message"],
+[data-sf-role="comments-load-more-button"],
+[data-sf-role="comments-new-form-button"],
+[data-sf-role="comments-sort-new-button"],
+[data-sf-role="comments-sort-old-button"],
+[data-sf-role="comments-new-requires-authentication"],
+[data-sf-role="list-rating-wrapper"],
+[data-sf-role="review-new-form-replacement"] {
+	display: none;
+}
+
+.sf-Comments-header {
+	@extend %mb-4; //1.5rem
+
+	h3 {
+		@extend %mr-4; //1.5rem
+
+		display: inline-block;
+		margin-top: 0;
+	}
+	
+	a { 
+		@extend %mt-1; //.25rem
+		@extend %ml-1; //.25rem
+	}
+
+	.selected {
+		color: $comments-header--selected-color;
+	}
+}
+
+.sf-Comments-list {
+	@extend %mb-4; //1.5rem
+
+	.sf-Comments-list-author {
+		@extend %pr-1; //.25rem
+
+		border-right: $comments-list-author-border-width solid $comments-list-author-border-color;
+	}
+}
+
+.sf-Comments-form {
+	textarea {
+		min-height: $comments-form-min-height;
+	}
+}
+
+.sf-Comments-more {
+	@extend %mb-4; //1.5rem
+}
+
+.sf-Comment-subscribe {
+	@extend %mt-3; //1rem
+	@extend %ml-5; //3rem
+}
+
+.sf-Comments-filter {
+    float: right;
+}
+
+//Reviews
+
+.sf-Review-already {
+	@extend %mt-4; //1.5rem
+}
+
+.sf-Review-count {
+	@extend %ml-2; //.5rem
+
+	display: inline-block;
+
+	.sf-Review-count--block & {
+		@extend %ml-0; //0
+		@extend %mt-1; //.25rem
+
+		display: block;
+	}
+
+}
+
+//Comment count on new line
+
+.sf-Comment-count--block {
+	.sf-Comment-count,
+	.sf-Review-count {
+		@extend %ml-0; //0
+		@extend %mb-2; //.5rem
+
+		display: block;
+	}
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+    .sf-Comments-header h3 {
+        @extend %ml-4; //1.5rem
+        @extend %mr-0; //0
+    }
+
+    .sf-Comments-filter {
+        float: left;
+    }
+
+    .sf-Comment-count,
+	.sf-Review-count {
+		@extend %mr-2; //.5rem
+	}
+
+    .sf-Comment-count--block  {
+    .sf-Comment-count {
+		    @extend %mr-0; //0
+	    }
+    }
+
+  }
+}

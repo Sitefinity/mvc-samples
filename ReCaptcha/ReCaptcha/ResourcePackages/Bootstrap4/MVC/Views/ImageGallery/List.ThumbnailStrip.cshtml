@@ -1,0 +1,95 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Models;
+@using System.Web.Script.Serialization;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.ImageGallery;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+@using System.Linq;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script(Url.WidgetContent("Mvc/Scripts/ImageGallery/thumbnail-strip.js"), "bottom", true)
+
+@{
+    bool hasItems = Model.Items.Count() > 0;
+    bool isBackendDesignMode = SystemManager.IsDesignMode && !SystemManager.IsPreviewMode;
+    dynamic firstItem = null;
+
+    if (hasItems && isBackendDesignMode)
+    {
+        firstItem = Model.Items.FirstOrDefault();
+    }
+
+    ThumbnailViewModel thumbnailViewModel = (ThumbnailViewModel)firstItem;
+}
+
+<div class="sf-Gallery sf-Gallery--strip" aria-label="@Html.Resource("ImageGallery")">
+
+@if (hasItems)
+{
+		if (isBackendDesignMode)
+		{
+	<h2 class="js-Gallery-title">@firstItem.DataItem.Title</h2>
+
+	<p class="js-Gallery-description">@firstItem.DataItem.Description</p>
+
+	<div><span class="js-Gallery-index">1</span> of @Model.Items.Count()</div>
+
+	<p class="sf-Gallery-image js-Gallery-image">
+		<a href="javascript:void(0)" class='js-Gallery-prev sf-Gallery-prev' title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+		<a href="javascript:void(0)" class='js-Gallery-next sf-Gallery-next' title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+        <img src="@(thumbnailViewModel.MediaUrl)" title="@firstItem.DataItem.Title" alt="@firstItem.DataItem.AlternativeText" 
+                  @Html.GetWidthAttributeIfExists(thumbnailViewModel.Width)
+                  @Html.GetHeightAttributeIfExists(thumbnailViewModel.Height) />
+
+	</p>
+		}
+		else
+		{
+	<h2 class="js-Gallery-title" aria-live="polite" aria-atomic="true"></h2>
+
+	<p class="js-Gallery-description" aria-live="polite" aria-atomic="true"></p>
+
+	<div aria-live="polite" aria-atomic="true"><span class="js-Gallery-index"></span> of @Model.Items.Count()</div>
+
+	<div class="sf-Gallery-image js-Gallery-image">
+        <nav role="navigation" aria-label="@Html.Resource("PreviousNextImage")">
+            <a href="javascript:void(0)" class="js-Gallery-prev sf-Gallery-prev" title="@Html.Resource("GoToPreviousImage")"><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+            <a href="javascript:void(0)" class="js-Gallery-next sf-Gallery-next" title="@Html.Resource("GoToNextImage")"><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+        </nav>
+		<img />
+	</div>
+	}
+}
+
+
+
+	<ul class="sf-Gallery-thumbs-container list-unstyled">
+		<li class="sf-Gallery-thumbs js-Gallery-thumbs d-inline-block">
+		@{int itemIndex = 0;}
+		@foreach(var item in Model.Items)
+		{
+    var itemViewModel = (ThumbnailViewModel)item;
+    
+			<a href="javascript:void(0)" class="text-center" title="@item.Fields.Title" data-item="@Html.GetSerializedImage(item)" data-detail-url="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix, itemIndex)">
+                <img src="@(itemViewModel.ThumbnailUrl)" alt="@item.Fields.AlternativeText" 
+                              @Html.GetWidthAttributeIfExists(itemViewModel.Width)
+                              @Html.GetHeightAttributeIfExists(itemViewModel.Height) />
+			</a>
+			itemIndex++;
+		}
+		</li>
+	</ul>
+</div>
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}

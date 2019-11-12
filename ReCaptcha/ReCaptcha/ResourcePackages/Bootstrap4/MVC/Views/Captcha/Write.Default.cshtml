@@ -1,0 +1,44 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.Captcha.CaptchaViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+@Html.Script(ScriptRef.JQuery, "top", false)
+<div data-sf-role="field-captcha-container" style="display:none;" class="@Model.CssClass form-group">
+    <div>
+        <img data-sf-role="captcha-image" src='@Url.WidgetContent("assets/dist/img/dummy.jpg")' />
+        @if (Model.EnableAudioCode)
+        {
+            <button class="sf-Captcha-button btn btn-light ml-4" data-sf-role="captcha-audio-btn" type="button" title="@Html.Resource("CaptchaAudioTooltip")" aria-label="@Html.Resource("CaptchaAudioTooltip")">
+                <svg class="sf-icon-xxs" aria-hidden="true">
+                    <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#volume-up"></use>
+                </svg>
+            </button>
+            <audio data-sf-role="captcha-audio" controls style="display:none" />
+        }
+    </div>
+    <a href="#" data-sf-role="captcha-refresh-button">@Html.Resource("NewCode")</a>
+    <div class="form-inline">
+        <div class="form-group">
+            <input data-sf-role="violation-messages" type="hidden" value='{"required": "@Model.ValidatorDefinition.RequiredViolationMessage"}' />
+            <label for='@Html.UniqueId("Textbox")'>@Html.Resource("TypeCodeAbove") </label>
+            <input id='@Html.UniqueId("Textbox")' type="text" data-sf-role="captcha-input" name="@Model.CaptchaAnswerFormKey" required="required" class="form-control input-sm" />
+        </div>
+    </div>
+    <div data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
+    <input type="hidden" data-sf-role="captcha-k" name="@Model.CaptchaKeyFormKey" />
+    <input type="hidden" data-sf-role="captcha-settings" value="@Model.GenerateUrl" />
+    <input type="hidden" data-sf-role="captcha-iam" value='@Html.Resource("CaptchaErrorMessage")' />
+</div>
+@if (SystemManager.IsDesignMode)
+{
+    var scriptUrl = Url.WidgetContent("Mvc/Scripts/Captcha/captcha.js");
+    var queryAddition = scriptUrl.Contains("?") ? "&" : "?";
+    var fullScriptUrl = scriptUrl + queryAddition + string.Format("_={0}", DateTime.UtcNow.Ticks.ToString());
+
+    <script type="text/javascript" src='@fullScriptUrl'></script>
+}
+else
+{
+    @Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
+}

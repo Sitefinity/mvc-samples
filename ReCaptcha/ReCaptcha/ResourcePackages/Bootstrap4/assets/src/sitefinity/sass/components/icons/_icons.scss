@@ -1,0 +1,126 @@
+.sf-icon-txt {
+	display: inline-block;
+	position: relative;
+	line-height: normal;
+
+	[class^="sf-icon-txt-"] {
+		position: absolute;
+		height: auto;
+		font-size: $icon-txt-font-size;
+		font-style: normal;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: $icon-txt-color;
+		background-color: $icon-txt-background;
+		line-height: normal;
+	}
+	.sf-icon-txt-xlsx {
+		background-color: $icon-txt-xlsx-background;
+	}
+	.sf-icon-txt-doc,
+	.sf-icon-txt-docx {
+		background-color: $icon-txt-doc-background;
+	}
+	.sf-icon-txt-ppt,
+	.sf-icon-txt-pptx {
+		background-color: $icon-txt-ppt-background;
+	}
+	.sf-icon-txt-pdf {
+		background-color: $icon-txt-pdf-background;
+	}
+	.sf-icon-txt-zip {
+		background-color: $icon-txt-zip-background;
+	}
+}
+
+.sf-icon-xxs {
+	height: $icon-xxs-size;
+	width: $icon-xxs-size;
+}
+
+.sf-icon-xs {
+	height: $icon-xs-size;
+	width: $icon-xs-size;
+}
+
+.sf-icon-txt-sm {
+	padding: 0.1em 0.2em;
+	top: 31%;
+	right: -10%;
+}
+	
+.sf-icon-sm  {
+	height: $icon-sm-size;
+	width: $icon-sm-size;
+}
+
+.sf-icon-txt-md {
+	padding: 0.2em 0.4em;
+	top: 47%;
+	right: 0;
+}
+
+.sf-icon-lg {
+	height: $icon-lg-size;
+	width: $icon-lg-size;
+}
+
+.sf-icon-file {
+	fill: $icon-file-color;
+}
+
+.sf-icon-feed {
+	fill: $icon-feed-color;
+}
+
+.sf-icon-comment {
+	fill: $icon-comment-color;
+}
+
+.sf-icon-linkedin {
+	fill: #238cc8;
+}
+
+.sf-icon-tumblr {
+	fill: #426d9b;
+}
+
+.sf-icon-myspace {
+	fill: #008dde;
+}
+
+.sf-icon-facebook {
+	fill: #5d82d1;
+}
+
+.sf-icon-twitter {
+	fill: #38bcf5;
+}
+
+.sf-icon-blogger {
+	fill: #ff9233;
+}
+
+.sf-icon-delicious {
+	fill: #377bda;
+}
+
+.sf-icon-stumble-upon {
+	fill: #ff5c30;
+}
+
+.sf-icon-reddit {
+	fill: #9bbad9;
+}
+
+.sf-icon-mailto {
+	fill: #596c9b;
+}
+
+.sf-icon-digg {
+	fill: #596c9b;
+}
+
+.sf-icon-google {
+	fill: #347df4;
+}

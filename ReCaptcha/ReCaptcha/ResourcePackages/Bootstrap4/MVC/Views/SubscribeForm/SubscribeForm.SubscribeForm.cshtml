@@ -1,0 +1,92 @@
+@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.SubscribeFormViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
+
+@{
+	var hasValidationMessage = Html.ValidationMessageFor(m => m.Email) != null;
+	var attributes = new Dictionary<string, object>()
+	{
+		{ "class", "form-control" },
+		{ "type", "email" },
+		{ "aria-required", "true" }
+	};
+
+	if (hasValidationMessage)
+	{
+		attributes.Add("aria-describedby", Html.UniqueId("SubscribeFormInfo") + " " + Html.UniqueId("SubscribeFormValidatonInfo"));
+	}
+	else
+	{
+		attributes.Add("aria-describedby", Html.UniqueId("SubscribeFormInfo"));
+	}
+}
+
+<div class="@Model.CssClass">
+	@using (Html.BeginFormSitefinity("Subscribe", "SubscribeForm"))
+	{
+		<h3>@Html.Resource("Subscribe")</h3>
+	
+		<p class="text-muted" id='@Html.UniqueId("SubscribeFormInfo")'>
+			@Html.Resource("SubscribeMail")
+		</p>
+	
+		if (ViewBag.IsSucceeded == true)
+		{
+			<div class="alert alert-success" role="alert" aria-live="assertive">
+				@Html.Resource("ThankYou"). @Html.Resource("ThankYouMessage") (@ViewBag.Email)
+			</div>
+		}
+	
+		@Html.ValidationSummary(true)
+		if(!string.IsNullOrEmpty(ViewBag.Error))
+		{
+			<div class="alert alert-warning" role="alert" aria-live="assertive">
+				@ViewBag.Error
+			</div>
+		}
+	
+		@*
+		//Uncomment this if you want to show FirstName and LastName inputs	
+		<div class="form-group">
+			@Html.LabelFor(u => u.FirstName, Html.Resource("FirstName"))<em class="text-muted" id='@Html.UniqueId("SubscribeFormFirstNameInfo")'> @Html.Resource("Optional")</em> 
+
+			<div class="form-inline">
+				@Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", aria_describedby = Html.UniqueId("SubscribeFormFirstNameInfo") })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(u => u.LastName, Html.Resource("LastName"))<em class="text-muted" id='@Html.UniqueId("SubscribeFormLastNameInfo")'> @Html.Resource("Optional")</em>
+
+			<div class="form-inline">
+				@Html.TextBoxFor(u => u.LastName, new { @class = "form-control", aria_describedby = Html.UniqueId("SubscribeFormLastNameInfo") })
+			</div>
+
+		</div>
+		*@
+		
+		<div class="form-group">
+			@Html.LabelFor(u => u.Email, Html.Resource("Email"))
+
+			<div class="form-inline">
+				@Html.TextBoxFor(m => m.Email, attributes)
+				<button class="btn btn-primary ml-2" type="submit" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonSubscribe")</button>
+			</div>
+
+			@if (Html.ValidationMessageFor(m => m.Email) != null)
+			{
+				<div id='@Html.UniqueId("SubscribeFormValidatonInfo")' class="text-danger" role="alert" aria-live="assertive">
+					<span class="form-text">@Html.ValidationMessageFor(u => u.Email)</span>
+				</div>
+			}
+		</div>
+	}
+</div>

@@ -1,0 +1,52 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.CheckboxesField.CheckboxesFieldViewModel
+
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Forms.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@Html.Script(ScriptRef.JQuery, "top", false)
+@{
+    var fieldName = Model.MetaField.FieldName;
+    var requiredAttributes = MvcHtmlString.Create(Model.ValidationAttributes);
+    var isRequired = Model.IsRequired ? "true" : "false";
+    var hasDescription = !string.IsNullOrEmpty(Model.MetaField.Description);
+}
+<fieldset class="@Model.CssClass form-group" data-sf-role="checkboxes-field-container">
+    <legend class="h6" id='@Html.UniqueId("CheckboxGroupLabel")'>@Model.MetaField.Title</legend>
+
+    <input type="hidden" data-sf-role="violation-messages" value='{ "required": "@Model.RequiredViolationMessage"}' />
+    <input type="hidden" data-sf-role="required-validator" value='@Model.IsRequired.ToString()' />
+
+    <ul class="list-unstyled" aria-labelledby='@Html.UniqueId("CheckboxGroupLabel")' @{if (hasDescription) { <text> aria-describedby='@Html.UniqueId("CheckboxGroupInfo") @Html.UniqueId("CheckboxGroupErrorMessage")' </text>  } else { <text> aria-describedby='@Html.UniqueId("CheckboxGroupErrorMessage")' </text>  } }>
+        @foreach (var choice in Model.Choices)
+        {
+            string value = !string.IsNullOrEmpty(Model.Value as string) ? Model.Value as string : string.Empty;
+            string selectedValue = !string.IsNullOrEmpty(value) ? value : Model.MetaField.DefaultValue;
+            var selctedAttributes = !string.IsNullOrEmpty(selectedValue) && selectedValue.Contains(choice as string) ? "checked" : string.Empty;
+            <li>
+                <label>
+                    <input type="checkbox" name="@fieldName" value="@choice" data-sf-role="checkboxes-field-input" @selctedAttributes role="checkbox" aria-required="@isRequired" />
+                    @choice
+                </label>
+            </li>
+        }
+        @if (Model.HasOtherChoice)
+        {
+            <li>
+                <label>
+                    <input type="checkbox" name="@fieldName" data-sf-checkboxes-role="other-choice-checkbox" data-sf-role="checkboxes-field-input" role="checkbox" aria-required="@isRequired" />
+                    @Html.Resource("Other")
+                    <span class="sr-only">@Html.Resource("ThisChoiceWillExpandTextbox")</span>
+                </label>
+                <input type="hidden" data-sf-checkboxes-role="other-choice-text" aria-required="@isRequired" aria-label="@Html.Resource("OtherOption")" />
+            </li>
+        }
+    </ul>
+    @if (hasDescription)
+    {
+        <p class="text-muted" id='@Html.UniqueId("CheckboxGroupInfo")'>@Model.MetaField.Description</p>
+    }
+    <div id='@Html.UniqueId("CheckboxGroupErrorMessage")' data-sf-role="error-message" role="alert" aria-live="assertive" class="text-danger"></div>
+</fieldset>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
