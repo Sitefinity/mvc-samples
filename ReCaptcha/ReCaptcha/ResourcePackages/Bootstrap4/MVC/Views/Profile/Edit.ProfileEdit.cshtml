@@ -1,0 +1,205 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Profile.ProfileEditViewModel
+
+@using System.Collections.Generic;
+@using System.Linq.Expressions;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.Profile
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Utilities;
+@using Telerik.Sitefinity.Services;
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
+<div class="@Model.CssClass">
+    <h3>@Html.Resource("EditProfileLink")</h3>
+    @if (Model.ShowProfileChangedMsg)
+    {
+        <div class="alert alert-success" role="alert" aria-live="assertive">@Html.Resource("ChangesAreSaved")</div>
+    }
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert" aria-live="assertive">@ViewBag.ErrorMessage</div>
+    }
+    @using (Html.BeginFormSitefinity("Index", "EditProfileForm", FormMethod.Post, new Dictionary<string, object> { { "enctype", "multipart/form-data" }, { "role", "form" } }))
+    {
+        string[] readOnlyFields = ViewBag.ReadOnlyFields.ContainsKey("SitefinityProfile") ? (string[])ViewBag.ReadOnlyFields["SitefinityProfile"] : new string[0];
+        if (readOnlyFields.Count() > 0 || ViewBag.IsEmailReadOnly)
+        {
+            <div class="alert alert-info" role="alert">@string.Format(Html.Resource("YouAreRegisteredWith"), Model.ExternalProviderName)</div>
+        }
+        <div class="media sf-profile">
+            <div class="sf-profile-aside media-left">
+                @Html.HiddenFor(u => u.DeletePicture, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-delete-picture" } })
+                @Html.HiddenFor(u => u.DefaultAvatarUrl, new Dictionary<string, object>() { { "data-sf-role", "edit-profile-default-avatar-url" } })
+                <div class="media-object">
+                    <div class="sf-profile-avatar">
+                        <img data-sf-role="edit-profile-user-image" src="@Model.AvatarImageUrl" alt="@Model.UserName" width="100" height="100" />
+                        @*<button type="button" class="sf-remove close" aria-label="Close" data-sf-role="edit-profile-delete-picture-button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>*@
+                    </div>
+                    <div>
+                        <input type="file" data-sf-role="edit-profile-upload-picture-input" name="UploadedImage" style="display: none;" />
+                        <a href="javascript:void(0)" data-sf-role="edit-profile-upload-picture-button" role="button">@Html.Resource("EditProfileUploadImage")</a>
+                    </div>
+                </div>
+            </div>
+            <div class="media-body">
+                @if (readOnlyFields.Any(x => x.Equals("FirstName", StringComparison.OrdinalIgnoreCase)))
+                {
+                    @ReadOnlyFormGroupPanel("EditProfileFirstName", u => u.Profile["FirstName"])
+                }
+                else
+                {
+                    @FormGroupPanel("EditProfileFirstName", u => u.Profile["FirstName"], "ProfileFirstName")
+                }
+
+                @if (readOnlyFields.Any(x => x.Equals("LastName", StringComparison.OrdinalIgnoreCase)))
+                {
+                    @ReadOnlyFormGroupPanel("EditProfileLastName", u => u.Profile["LastName"])
+                }
+                else
+                {
+                    @FormGroupPanel("EditProfileLastName", u => u.Profile["LastName"], "ProfileLastName")
+                }
+
+                @if (readOnlyFields.Any(x => x.Equals("Nickname", StringComparison.OrdinalIgnoreCase)))
+                {
+                    @ReadOnlyFormGroupPanel("EditProfileNickname", u => u.Profile["Nickname"])
+                }
+                else
+                {
+                    @FormGroupPanel("EditProfileNickname", u => u.Profile["Nickname"], "ProfileNickName")
+                }
+
+                @if (readOnlyFields.Any(x => x.Equals("About", StringComparison.OrdinalIgnoreCase)))
+                {
+                    @ReadOnlyFormGroupPanel("EditProfileAbout", u => u.Profile["About"])
+                }
+                else
+                {
+                    @FormGroupPanel("EditProfileAbout", u => u.Profile["About"], "ProfileAbout", "textarea")
+                }
+
+                @if (ViewBag.IsEmailReadOnly)
+                {
+                    @ReadOnlyFormGroupPanel("EditProfileEmail", u => u.Email)
+                }
+                else
+                {
+                    @FormGroupPanel("EditProfileEmail", u => u.Email, "ProfileEmail")
+                }
+
+                @if (string.IsNullOrEmpty(Model.ExternalProviderName))
+                {
+                    <div class="mb-4">
+                        <a href="#" data-sf-role="edit-profile-change-password-button" role="button">
+                            @Html.Resource("EditProfileChangePasswordButton")
+                            <span class="sr-only">@Html.Resource("WillExpandChangePasswordSection")</span>
+                        </a>
+                    </div>
+                    <div data-sf-role="edit-profile-change-password-holder" style="display:none">
+                        <h4>@Html.Resource("EditProfileEditChangePasswordHeader")</h4>
+                        @FormGroupPanel("EditProfileOldPassword", u => u.OldPassword, "ProfileOldPassword", "password", null, new Dictionary<string, object>() { { "autocomplete", "off" } })
+                        @FormGroupPanel("EditProfileNewPassword", u => u.NewPassword, "ProfileNewPassword", "password")
+                        @FormGroupPanel("EditProfileRepeatPassword", u => u.RepeatPassword, "ProfileRepeatPassword", "password")
+                    </div>
+                }
+                else
+                {
+                    @ReadOnlyFormGroupPanel("Password", null, string.Format(Html.Resource("ExternalProviderNoPassword"), Model.ExternalProviderName))
+                }
+
+                @if (SystemManager.IsDesignMode)
+                {
+                    <button data-sf-role="profile-submit" type="button" class="btn btn-primary" disabled>@Html.Resource("EditProfileSave")</button>
+                }
+                else
+                {
+                    <button data-sf-role="profile-submit" type="submit" class="btn btn-primary">@Html.Resource("EditProfileSave")</button>
+                }
+
+                @if (SystemManager.IsPreviewMode)
+                {
+                    <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="profile-submit-preview-message" style="display:none">
+                        <span class="form-text"><span class="field-validation-error">@Html.Resource("PreviewProfileSaveMessage")</span></span>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+@{
+    bool hasPasswordErrors = ViewBag.HasPasswordErrors is bool && ViewBag.HasPasswordErrors == true;
+}
+<input type="hidden" data-sf-role="has-password-errors" value="@hasPasswordErrors.ToString().ToLowerInvariant()" />
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Profile/profile-edit.js"), "bottom", true)
+@helper FormGroupPanel(string label, Expression<Func<ProfileEditViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
+{
+    var hasValidationMessage = Html.ValidationMessageFor(expression) != null;
+    var attributes = new Dictionary<string, object>();
+    var cls = "form-control";
+
+    if (classValue != null)
+    {
+        cls += " " + classValue;
+    }
+
+    attributes.Add("class", cls);
+
+    if (hasValidationMessage)
+    {
+        attributes.Add("aria-describedby", Html.UniqueId(descId));
+    }
+    if (additionalAttributes != null)
+    {
+        attributes = attributes.Concat(additionalAttributes).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(expression, Html.Resource(label))
+        @switch (inputType)
+        {
+            case "text":
+                @Html.TextBoxFor(expression, attributes);
+                break;
+
+            case "textarea":
+                @Html.TextAreaFor(expression, attributes);
+                break;
+
+            case "password":
+                @Html.PasswordFor(expression, attributes);
+                break;
+
+            default:
+                break;
+        }
+        @if (hasValidationMessage)
+        {
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
+                <span class="form-text">@Html.ValidationMessageFor(expression)</span>
+            </div>
+        }
+    </div>
+}
+@helper ReadOnlyFormGroupPanel(string label, Expression<Func<ProfileEditViewModel, string>> expression, string message = null)
+{
+    <div class="form-group">
+        <label>
+            @Html.Resource(label)
+        </label>
+        @if (message == null)
+        {
+            <div>
+                @Html.HiddenFor(expression)
+                @Html.DisplayTextFor(expression)
+            </div>
+        }
+        else
+        {
+            <div>@message</div>
+        }
+    </div>
+}

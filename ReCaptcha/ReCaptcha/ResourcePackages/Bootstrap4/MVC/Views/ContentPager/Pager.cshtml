@@ -1,0 +1,39 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Helpers.ViewModels.PagerViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+
+<nav role="navigation" aria-label="@Html.Resource("Pagination")">
+    <ul class="pagination">
+        @if (Model.PreviousNode != null)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@String.Format(Model.RedirectUrlTemplate, Model.PreviousNode.PageNumber)" aria-label="@Html.Resource("GoToPreviousPage")">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @foreach (var page in Model.PagerNodes.OrderBy(x => x.PageNumber))
+        {
+            if (Model.CurrentPage == page.PageNumber)
+            {
+                <li class="active page-item">
+                    <a class="page-link" aria-current="true" href="@String.Format(Model.RedirectUrlTemplate, page.PageNumber)" aria-label="@Html.Resource("Page") @page.PageNumber">@page.PageNumber</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@String.Format(Model.RedirectUrlTemplate, page.PageNumber)" aria-label="@Html.Resource("GoToPage") @page.PageNumber">@page.PageNumber</a>
+                </li>
+            }
+        }
+        @if (Model.NextNode != null)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@String.Format(Model.RedirectUrlTemplate, Model.NextNode.PageNumber)" aria-label="@Html.Resource("GoToNextPage")">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>

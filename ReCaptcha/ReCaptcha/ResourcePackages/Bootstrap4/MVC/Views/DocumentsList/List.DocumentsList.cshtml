@@ -1,0 +1,46 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentsListViewModel
+
+@using System;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList;
+
+<ul class="list-unstyled @Model.CssClass">
+
+		@foreach (var item in Model.Items)
+		{
+			<li class="media">
+				<div class="media-left pr-2 pt-1" aria-hidden="true">
+					<span class="sf-icon-txt">
+						<svg class="sf-icon-file sf-icon-lg">
+							<use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#file"></use>
+						</svg>
+						<span class="sf-icon-txt-md sf-icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
+					</span>
+				</div>
+				<div class="media-body" role="group">
+					<a href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
+							<strong>@item.Fields.Title</strong>
+					</a>
+					<span class="text-muted" aria-label="@Html.Resource("FileExtension")">(@(((DocumentItemViewModel)item).Extension))</span>
+
+					<div>
+						<a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download")<span class="sr-only">@item.Fields.Title</span></a>
+						<span class="text-muted" aria-label="@Html.Resource("FileSize")">(@(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB"))</span>
+					</div>
+				</div>
+			</li>
+		}
+
+</ul>
+
+@if (Model.ShowPager)
+{
+		@Html.Action("Index", "ContentPager", new
+			 {
+					 currentPage = Model.CurrentPage,
+					 totalPagesCount = Model.TotalPagesCount.Value,
+					 redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+			 })
+}
+
+

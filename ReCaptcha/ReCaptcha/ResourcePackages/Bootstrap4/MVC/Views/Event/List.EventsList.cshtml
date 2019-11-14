@@ -1,0 +1,38 @@
+@model Telerik.Sitefinity.Frontend.Mvc.Models.ContentListViewModel
+
+@using Telerik.Sitefinity.Frontend.Events.Mvc.Helpers
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages
+@using Telerik.Sitefinity.Web.DataResolving
+
+<div class="@Model.CssClass">
+    <ul class="list-unstyled">
+        @foreach (var item in Model.Items)
+        {
+            var navigateUrl = HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix);
+
+            <li @Html.InlineEditingAttributes(Model.ProviderName, Model.ContentType.FullName, (Guid)item.Fields.Id)>
+                <h3 class="sf-event-title">
+                    <a @Html.InlineEditingFieldAttributes("Title", "ShortText") href="@navigateUrl">@item.Fields.Title</a>
+                </h3>
+                <span data-calendar-color="@item.EventCalendarColour()"></span>
+                <p class="text-muted">
+                    @*@If is on the same line, because otherwise there is an empty space before the comma*@
+                    <time>@item.EventDates()</time>@if (!string.IsNullOrEmpty(item.Fields.City)){<span>, @item.Fields.City</span>}
+                </p>
+                <p @Html.InlineEditingFieldAttributes("Summary", "LongText")>@Html.HtmlSanitize((string)item.Fields.Summary)</p>
+                <div class="sf-Comment-count--block">@Html.CommentsCount((string)navigateUrl, item.DataItem)</div>
+            </li>
+        }
+    </ul>
+
+    @if (Model.ShowPager)
+    {
+        @Html.Action("Index", "ContentPager", new
+        {
+            currentPage = Model.CurrentPage,
+            totalPagesCount = Model.TotalPagesCount.Value,
+            redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+        })
+    }
+</div>

@@ -1,0 +1,61 @@
+@model Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList.DocumentsListViewModel
+
+@using System;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Frontend.Media.Mvc.Models.DocumentsList;
+
+<div class="@Model.CssClass">
+
+    <div class="sf-document-list sf-document-list--table">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td scope="col"><strong>@Html.Resource("Title")</strong></td>
+                    <td scope="col"><strong>@Html.Resource("Type")</strong></td>
+                    <td scope="col"><strong>@Html.Resource("Size")</strong></td>
+                    <td></td>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <th scope="row">
+                        <span class="sf-icon-txt" aria-hidden="true">
+                            <svg class="sf-icon-file sf-icon-sm">
+                                <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#file"></use>
+                            </svg>
+                            <span class="sf-icon-txt-sm sf-icon-txt-@(((DocumentItemViewModel)item).Extension)">@(((DocumentItemViewModel)item).Extension)</span>
+                        </span>
+                        <a class="sf-title" href="@HyperLinkHelpers.GetDetailPageUrl(item, ViewBag.DetailsPageId, ViewBag.OpenInSamePage, Model.UrlKeyPrefix)">
+                            @item.Fields.Title
+                        </a>
+                    </th>
+                    <td>
+                        @(((DocumentItemViewModel)item).Extension)
+                    </td>
+                    <td>
+                        @(Math.Ceiling((double)item.Fields.TotalSize / 1024) + " KB")
+                    </td>
+                    <td>
+                        <a href="@item.Fields.MediaUrl" target="_blank">@Html.Resource("Download")<span class="sr-only">@item.Fields.Title</span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>
+
+@if (Model.ShowPager)
+{
+    @Html.Action("Index", "ContentPager", new
+       {
+           currentPage = Model.CurrentPage,
+           totalPagesCount = Model.TotalPagesCount.Value,
+           redirectUrlTemplate = ViewBag.RedirectPageUrlTemplate
+       })
+}
+
+

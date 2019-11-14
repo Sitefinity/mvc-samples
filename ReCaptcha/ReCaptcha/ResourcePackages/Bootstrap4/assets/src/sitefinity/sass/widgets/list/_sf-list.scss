@@ -1,0 +1,64 @@
+.sf-list--expandable {
+
+	a[data-sf-role="toggleLink"] {
+
+		svg {
+			fill: $gray;
+			height: 1em;
+			width: 1em;
+		}
+	}
+
+	.sf-list-content {
+		@extend %ml-4; //1.5rem
+	}
+
+    .sf-list-expand {
+        float: right;
+    }
+
+	.sf-list-item {
+
+		> div {
+			@extend %mb-1; //.25rem
+		}
+
+		h3:first-child {
+			@extend %mt-0; //0
+		}
+	}
+}
+
+//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+    .sf-list-item {
+        float: right;
+	}
+
+    .sf-list-expand {
+        float: left;
+    }
+
+    .sf-list--expandable {
+        i {
+		    @extend %ml-1; //.25rem
+            @extend %mr-0; //0
+	    }
+
+        .glyphicon-chevron-right {
+            &:before {
+                content: "\e079";
+            }
+        }
+
+	    .sf-list-content {
+		    @extend %ml-4; //1.5rem
+            @extend %mr-4; //1.5rem
+	    }
+    }
+  }
+}

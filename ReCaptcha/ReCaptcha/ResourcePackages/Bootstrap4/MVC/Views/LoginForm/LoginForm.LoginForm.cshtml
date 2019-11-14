@@ -1,0 +1,146 @@
+﻿@model Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm.LoginFormViewModel
+
+@using System.Linq.Expressions;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Frontend.Identity.Mvc.Models.LoginForm;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", true)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", true)
+
+@{
+    var hasExternalProviders = Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0;
+    var rowClass = hasExternalProviders ? "row" : "";
+    var colClass = hasExternalProviders ? "col-lg-6" : "";
+}
+
+<div class="@Model.CssClass m-0">
+    @using (Html.BeginFormSitefinity(@Request.Url.Query, null, null, FormMethod.Post, new Dictionary<string, object> { { "role", "form" } }, true))
+    {
+        @Html.ValidationSummary(true);
+            
+        <div class="@rowClass">
+            <div class="@colClass">
+                <h3>@Html.Resource("LoginFormLogInLegendHeader")</h3>
+                
+                @if (Request.Url.Query.Contains("err=true") || Model.LoginError)
+                {            
+                    <div class="alert alert-danger" role="alert" aria-live="assertive">@Html.Resource("IncorrectCredentialsMessage")</div>
+                }
+
+                @FormGroupPanel("UserName", u => u.UserName, "LoginUserName", "text", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+
+                @FormGroupPanel("Password", u => u.Password, "LoginPassword", "password", null, new Dictionary<string, object>(){{"aria-required", "true"}})
+
+                @if (Model.ShowRememberMe || Model.ShowForgotPasswordLink)
+                {
+                    var isPulledRight = Model.ShowRememberMe ? "col-lg-6" : "col-lg-12";
+
+                    <div class="form-group row">
+                        @if (Model.ShowRememberMe)
+                        {
+                        <div class="checkbox col-lg-6 m-0">
+                            <label>
+                                @Html.CheckBoxFor(u => u.RememberMe)
+                                @Html.Resource("RememberMe")
+                            </label>
+                        </div>
+                        }
+                        @if (Model.ShowForgotPasswordLink)
+                        {
+                        <div class="text-lg-right pr-4 @isPulledRight">
+                            @Html.ActionLink(Html.Resource("ForgottenPasword"), "ForgotPassword")
+                        </div>
+                        }
+                    </div>
+                }
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("LoginFormLogInButton")</button>
+                </div>
+
+                @if (Model.ShowRegistrationLink)
+                {
+                    <div class="sf-registration-link">
+                        <div>@Html.Resource("NotRegisteredYet")</div>
+                        <a href="@Model.RegisterPageUrl">@Html.Resource("LoginFormRegisterNow")</a>
+                    </div>
+                }
+            </div>
+            
+            @if (Model.ExternalProviders != null && Model.ExternalProviders.Count() > 0)
+            {
+                <div class="col-lg-6">                
+                    <h3>@Html.Resource("UseAccountIn")</h3>
+
+                    @foreach (var provider in Model.ExternalProviders)
+                    { 
+                        var classToBeAdd = "btn btn-lg btn-block border " + @provider.Value;                 
+                        <div class="mb-1">
+                            @Html.ActionLink(provider.Key, "LoginExternalProvider", new { model = provider.Key }, new { @class = classToBeAdd })
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom")
+
+@helper FormGroupPanel(string label, Expression<Func<LoginFormViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
+{
+    var hasValidationMessage = Html.ValidationMessageFor(expression) != null;
+    var attributes = new Dictionary<string, object>();
+    var cls = "form-control";
+
+    if (classValue != null)
+    {
+        cls += " " + classValue;
+    }
+
+    attributes.Add("class", cls);
+
+    if (hasValidationMessage)
+    {
+        attributes.Add("aria-describedby", Html.UniqueId(descId));
+    }
+    if (additionalAttributes != null)
+    {
+        attributes = attributes.Concat(additionalAttributes).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+    <div class="form-group">
+
+        @Html.LabelFor(expression, Html.Resource(label))
+
+        @switch (inputType)
+        {
+            case "text":
+                @Html.TextBoxFor(expression, attributes);
+                break;
+
+            case "textarea":
+                @Html.TextAreaFor(expression, attributes);
+                break;
+
+            case "password":
+                @Html.PasswordFor(expression, attributes);
+                break;
+
+            default:
+                break;
+        }
+
+        @if (hasValidationMessage)
+        {
+            <div id='@Html.UniqueId(descId)' class="text-danger" role="alert" aria-live="assertive">
+                <span class="form-text">@Html.ValidationMessageFor(expression)</span>
+            </div>
+        }
+    </div>
+}

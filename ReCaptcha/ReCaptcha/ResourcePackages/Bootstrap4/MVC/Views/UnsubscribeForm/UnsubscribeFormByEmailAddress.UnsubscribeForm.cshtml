@@ -1,0 +1,72 @@
+﻿@model Telerik.Sitefinity.Frontend.EmailCampaigns.Mvc.Models.UnsubscribeForm.UnsubscribeFormViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.UI.MVC;
+@using Telerik.Sitefinity.Services;
+@using Telerik.Sitefinity.Modules.Pages;
+
+@*Add scripts and stylesheets*@
+@Html.Script(ScriptRef.JQuery, "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js", "top", false)
+@Html.Script("//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js", "top", false)
+
+@{
+	var hasValidationMessage = Html.ValidationMessageFor(u => u.Email) != null;
+	var attributes = new Dictionary<string, object>()
+	{
+		{ "class", "form-control" },
+		{ "type", "email" },
+		{ "aria-required", "true" }
+	};
+
+	if (hasValidationMessage)
+	{
+		attributes.Add("aria-describedby", Html.UniqueId("UnsubscribeFormInfo") + " " + Html.UniqueId("UnsubscribeFormValidatonInfo"));
+	}
+	else
+	{
+		attributes.Add("aria-describedby", Html.UniqueId("UnsubscribeFormInfo"));
+	}
+}
+
+<div class="@Model.CssClass">    
+	@using (Html.BeginFormSitefinity("Unsubscribe", "UnsubscribeForm"))
+	{	
+		<h3>@Model.WidgetTitle</h3>
+		
+		<p class="text-muted" id='@Html.UniqueId("UnsubscribeFormInfo")'>
+			@Model.WidgetDescription
+		</p>
+		
+		if (ViewBag.IsSucceded == true)
+		{
+			<div class="alert alert-success" role="alert" aria-live="assertive">
+				@Html.HtmlSanitize(Model.Message)
+			</div>
+		}
+		
+		@Html.ValidationSummary(true)		
+		if (!string.IsNullOrEmpty(ViewBag.Error))
+		{
+			<div class="alert alert-danger" role="alert" aria-live="assertive">
+				@ViewBag.Error
+			</div>
+		}
+		
+		<div class="form-group">
+			@Html.LabelFor(u => u.Email, Html.Resource("Email"))
+
+			<div class="form-inline">
+				@Html.TextBoxFor(u => u.Email, attributes)
+				<button type="submit" class="btn btn-primary ml-2" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("ButtonUnsubscribe")</button>
+			</div>
+
+			@if (Html.ValidationMessageFor(u => u.Email) != null)
+			{
+				<div id='@Html.UniqueId("UnsubscribeFormValidatonInfo")' class="text-danger" role="alert" aria-live="assertive">
+                    <span class="form-text">@Html.ValidationMessageFor(u => u.Email)</span>
+				</div>
+			}
+		</div>
+	}
+</div>

@@ -1,0 +1,66 @@
+﻿@model Telerik.Sitefinity.Frontend.Forms.Mvc.Models.Fields.FileField.FileFieldViewModel
+
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@using Telerik.Sitefinity.Modules.Pages;
+@using Telerik.Sitefinity.Services;
+
+@{
+    var isRequired = Model.IsRequired ? "true" : "false";
+    var hasDescription = !string.IsNullOrEmpty(Model.MetaField.Description);
+}
+<div class="@Model.CssClass sf-FileField form-group" data-sf-role="file-field-container" data-sf-config="@(Html.AttributeEncode(Model.Serialize()))">
+    <label class="h6" for='@Html.UniqueId("FileUpload")'>@Model.MetaField.Title</label>
+    <div data-sf-role="file-field-inputs">
+        @if (!SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
+        {
+            @:<script type="text/template" data-sf-role="file-input-template">
+            }
+        <div data-sf-role="single-file-input">
+            <input id='@Html.UniqueId("FileUpload")'
+                   title="file"
+                   type="file"
+                   name="@(Model.MetaField.FieldName)"
+                   @Html.Raw(Model.ValidationAttributes)
+                   class="sf-FileField-input"
+                   aria-required="@isRequired"
+                   @{if (hasDescription) { <text> aria-describedby='@Html.UniqueId("FileUploadInfo")' </text>  } }>
+            @if (Model.AllowMultipleFiles || SystemManager.IsPreviewMode)
+            {
+                <a href="javascript:void(0);" style="display: none;" data-sf-role="remove-input" aria-label="@Html.Resource("Remove")">
+                    <svg class="sf-icon-xs sf-icon-remove" style="display: none;" aria-hidden="true">
+                        <use xlink:href="~/ResourcePackages/Bootstrap4/assets/dist/sprites/solid.svg#times-circle"></use>
+                    </svg>
+                    @Html.Resource("Remove")
+                </a>
+            }
+            @if (Model.AcceptedFileTypes.Length > 0)
+            {
+                <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="filetype-violation-message" style="display: none;">@Model.FileTypeViolationMessage</div>
+            }
+            @if (Model.MinFileSizeInMb > 0 || Model.MaxFileSizeInMb > 0)
+            {
+                <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="filesize-violation-message" style="display: none;">@Model.FileSizeViolationMessage</div>
+            }
+        </div>
+        @if (!SystemManager.IsDesignMode)
+        {
+        @:</script>
+    }
+
+    @* File inputs will be generated here *@
+    </div>
+    @if (Model.AllowMultipleFiles)
+    {
+        <a href="javascript:void(0);" data-sf-role="add-input">@Html.Resource("AddAnother")</a>
+    }
+    <div class="text-danger" role="alert" aria-live="assertive" data-sf-role="required-violation-message" style="display: none;">@Model.RequiredViolationMessage</div>
+    @if (hasDescription)
+    {
+        <p class="text-muted" id='@Html.UniqueId("FileUploadInfo")'>@Model.MetaField.Description</p>
+    }
+</div>
+@if (!SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
+{
+    @Html.Script(ScriptRef.JQuery, "top", false)
+    @Html.Script(Url.WidgetContent("Mvc/Scripts/Form/form.all.js"), "bottom", false)
+}

@@ -1,0 +1,30 @@
+﻿//Rtl support
+
+@if $has-rtl-support {
+
+  @include rtl-cultures {
+
+        .pagination {
+            padding-right: 0;
+        }
+
+        .page-item:first-child .page-link {
+            margin-left: -1px;
+
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            
+            border-top-right-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .page-item:last-child .page-link {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+    }
+}
