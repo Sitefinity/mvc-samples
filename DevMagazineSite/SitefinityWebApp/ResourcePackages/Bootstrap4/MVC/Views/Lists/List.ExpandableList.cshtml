@@ -4,8 +4,6 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Lists.Mvc.Models;
 
-@Html.Script(ScriptRef.JQuery, "top", false)
-
 <div class="@Model.CssClass" data-sf-role="lists">
 
     <div class="sf-list sf-list--expandable clearfix">
@@ -50,43 +48,4 @@
     </div>
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/Lists/lists.js"), "bottom", false)
-
-<script type="text/javascript">
-    $('[data-sf-role=toggleLink]').on('click', function () {
-        var link = $(this);
-
-        if (link.hasClass("expanded")) {
-            toggleIcons(link, false);
-        } else {
-            toggleIcons(link);
-        }
-    });
-
-    $('[data-sf-role=expandAll]').on('click', function () {
-        var wrapper = $(this).closest('[data-sf-role=lists]');
-        var links = wrapper.find('[data-sf-role=toggleLink]');
-
-        toggleIcons(links);
-    });
-
-    $('[data-sf-role=collapseAll]').on('click', function () {
-        var wrapper = $(this).closest('[data-sf-role=lists]');
-        var links = wrapper.find('[data-sf-role=toggleLink]');
-
-        toggleIcons(links, false);
-    });
-
-    function toggleIcons(links, isExpanded = true) {
-        var iconsRight = links.find('.sf-icon-right');
-        var iconsDown = links.find('.sf-icon-down');
-
-        if (isExpanded) {
-            iconsRight.hide();
-            iconsDown.show();
-        } else {
-            iconsRight.show();
-            iconsDown.hide();
-        }
-    }
-</script>
+@Html.Script(Url.WidgetContent("Mvc/Scripts/Lists/lists.js"), "bottom", throwException: false)

@@ -39,15 +39,20 @@
     <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d">
+      <HintPath>..\packages\Elasticsearch.Net.7.7.0\lib\net461\Elasticsearch.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IdentityModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <HintPath>..\packages\Progress.Sitefinity.IdentityModel.1.3.0\lib\net45\IdentityModel.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="IdentityServer3, Version=2.6.0.1, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Progress.Sitefinity.IdentityServer3.1.3.5\lib\net45\IdentityServer3.dll</HintPath>
+    <Reference Include="IdentityServer3, Version=2.6.0.1, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Progress.Sitefinity.IdentityServer3.1.3.6\lib\net45\IdentityServer3.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="IdentityServer3.AccessTokenValidation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Progress.Sitefinity.IdentityServer3.AccessTokenValidation.1.3.0\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
+    <Reference Include="IdentityServer3.AccessTokenValidation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Progress.Sitefinity.IdentityServer3.AccessTokenValidation.1.3.1\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
@@ -119,8 +124,17 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Nest, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d">
+      <HintPath>..\packages\NEST.7.5.1\lib\net461\Nest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nest.JsonNetSerializer, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d">
+      <HintPath>..\packages\NEST.JsonNetSerializer.7.5.1\lib\net461\Nest.JsonNetSerializer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -160,7 +174,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587">
-      <HintPath>..\packages\ServiceStack.Interfaces.5.6.0\lib\net45\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\packages\ServiceStack.Interfaces.5.8.0\lib\net45\ServiceStack.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ServiceStack.Text, Version=4.0.0.0, Culture=neutral, PublicKeyToken=e06fbc6124f57c43">
@@ -168,17 +182,37 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -219,7 +253,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Telerik.OpenAccess, Version=2018.0.1127.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
-      <HintPath>..\packages\Telerik.DataAccess.Core.2018.0.1127.1\lib\net40\Telerik.OpenAccess.dll</HintPath>
+      <HintPath>..\packages\Telerik.Sitefinity.OpenAccess.2018.0.1127.1\lib\net40\Telerik.OpenAccess.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2018.0.1127.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
@@ -234,143 +268,180 @@
       <HintPath>..\packages\Telerik.DataAccess.Core.2018.0.1127.1\lib\net40\Telerik.OpenAccess.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.Sync, Version=2018.0.1127.2, Culture=neutral, PublicKeyToken=563ab8ea49361608, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.OpenAccess.12.2.7200\lib\net472\Telerik.OpenAccess.Sync.dll</HintPath>
+    <Reference Include="Telerik.OpenAccess.Web, Version=2018.0.1127.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342">
+      <HintPath>..\packages\Telerik.DataAccess.Web35.2018.0.1127.1\lib\net20\Telerik.OpenAccess.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.OpenAccess.Web, Version=2018.0.1127.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.OpenAccess.12.2.7200\lib\net472\Telerik.OpenAccess.Web.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Core.13.0.7300\lib\net472\Telerik.Sitefinity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Authentication, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Progress.Sitefinity.Authentication.13.0.7300\lib\net472\Telerik.Sitefinity.Authentication.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Authentication, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Progress.Sitefinity.Authentication.12.2.7200\lib\net472\Telerik.Sitefinity.Authentication.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Blogs, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Blogs.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Blogs, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Blogs.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Card, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Card.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Card, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Card.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Comments, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Comments.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Comments, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Comments.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.ContentBlock, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.ContentBlock.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.ContentBlock, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.ContentBlock.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Data, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Data, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.DynamicContent, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.DynamicContent.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.DynamicContent, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.DynamicContent.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.EmailCampaigns, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.EmailCampaigns.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.EmailCampaigns, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.EmailCampaigns.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Events, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Events.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Events, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Events.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Forms, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Forms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Forms, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Forms.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Identity, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Identity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Identity, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Identity.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.InlineClientAssets, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.InlineClientAssets.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.InlineClientAssets, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.InlineClientAssets.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Lists, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Lists.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Lists, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Lists.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Media, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Media.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Media, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Media.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Navigation, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Navigation.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Navigation, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Navigation.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.News, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.News.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.News, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.News.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Publishing, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Publishing.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Publishing, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Publishing.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Search, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Search.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Search, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Search.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Taxonomies, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Taxonomies.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Taxonomies, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.12.2.7200\lib\net472\Telerik.Sitefinity.Frontend.Taxonomies.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Model, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Model.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Model, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Model.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Mvc, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Mvc.13.0.7300\lib\net472\Telerik.Sitefinity.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Mvc, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Mvc.12.2.7200\lib\net472\Telerik.Sitefinity.Mvc.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Personalization, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Personalization.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Personalization, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Personalization.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Personalization.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Personalization.Impl.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Personalization.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Personalization.Impl.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Telerik.Sitefinity.Resources, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Resources.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Search, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Search.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Search.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Search.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Comments, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Comments.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Comments.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Comments.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Documents, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Documents.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Documents.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Documents.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Events, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Events.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Notifications, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Notifications.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Notifications.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Notifications.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.RecycleBin, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Services.RecycleBin.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Statistics, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Statistics.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Services.Statistics.Impl, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.12.2.7200\lib\net472\Telerik.Sitefinity.Services.Statistics.Impl.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.SiteSync, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.SiteSync.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Sitefinity.Utilities, Version=12.2.7200.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.Sitefinity.Core.12.2.7200\lib\net472\Telerik.Sitefinity.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Web.Design, Version=2019.2.514.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2019.2.514.45\lib\net45\Telerik.Web.Design.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Search, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Search.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI, Version=2019.2.514.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2019.2.514.45\lib\net45\Telerik.Web.UI.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Search.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Search.Impl.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins, Version=2019.2.514.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2019.2.514.45\lib\net45\Telerik.Web.UI.Skins.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Services.Comments, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Comments.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Comments.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Comments.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Documents, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Documents.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Documents.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Documents.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Events, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Events.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Notifications, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Notifications.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Notifications.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Notifications.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.RecycleBin, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Services.RecycleBin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Statistics, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Services.Statistics.Impl, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.ServicesImpl.13.0.7300\lib\net472\Telerik.Sitefinity.Services.Statistics.Impl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.SiteSync, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Core.13.0.7300\lib\net472\Telerik.Sitefinity.SiteSync.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Utilities, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Utilities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.Design, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.UI, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.UI.Skins.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4">
@@ -402,366 +473,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\project\sass\adminapp\editor.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\project\sass\main.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\base\_list.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\base\_media.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\base\_pre.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\base\_rtl.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\components\icons\_icons.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\components\loading\_loading.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\settings\_variables.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\sitefinity.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\tools\_bootstrap-mixins.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\tools\_mixins.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\tools\_placeholder-selectors.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\utilities\_spacing.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\utilities\_text.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\code\_sf-code.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\comments\_sf-comments.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\comments\_sf-ratings.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\contentBlock\_sf-content-block.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\documentList\_sf-document-list.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\event\_sf-event.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\feed\_sf-feed.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\fileField\_sf-file-field.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\formNavigation\_sf-form-nav.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\form\_sf-form.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\gallery\_sf-gallery.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\languageSelector\_sf-language-selector.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\list\_sf-list.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\login\_sf-login.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\media\_sf-media.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\navigation\_sf-navbar.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\navigation\_sf-sitemap.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\navigation\_sf-stacked.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\pagination\_sf-pagination.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\profile\_sf-profile.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\searchBox\_sf-search-box.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\searchResults\_sf-search-results.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\siteSelector\_sf-site-selector.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\sitefinity\sass\widgets\taxonomies\_sf-tags.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\vendors\_all.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\vendors\_bootstrap.scss" />
-    <None Include="ResourcePackages\Bootstrap4\assets\src\vendors\_magnific-popup.scss" />
-    <None Include="ResourcePackages\Bootstrap4\client-components\fields\html-field\sf-html-field.sf-cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\AccountActivation\AccountActivation.AccountActivation.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\BlogPost\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\BlogPost\List.BlogPostList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Blog\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Blog\List.BlogList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Breadcrumb\Breadcrumb.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Captcha\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Card\Card.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Card\Card.Hero.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Card\Card.Simple.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ChangePassword\ChangePassword.ChangePassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\CheckboxesField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\CheckboxesField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\CheckboxesField\Write.Default_Inline.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Comments\Comments.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Comments\CommentsCount.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ContentBlock\Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ContentPager\Pager.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\DocumentsList\Detail.DocumentDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\DocumentsList\List.DocumentsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\DocumentsList\List.DocumentsTable.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Document\DocumentLink.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\DropdownListField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\DropdownListField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\EmailTextField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\EmailTextField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\EmbedCode\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\EventScheduler\Detail.EventDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\EventScheduler\List.Calendar.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Event\Detail.EventDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Event\List.EventsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Feed\Feed.FeedLink.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\FileField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\FlatTaxonomy\FlatTaxonomy.CloudList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\FlatTaxonomy\FlatTaxonomy.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\FlatTaxonomy\FlatTaxonomy.TagCloud.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Form\Form.SubmitResultView.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Form\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\HiddenField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\HiddenField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\HierarchicalTaxonomy\HierarchicalTaxonomy.CategoriesList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ImageGallery\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ImageGallery\List.ImageGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ImageGallery\List.OverlayGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ImageGallery\List.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ImageGallery\List.ThumbnailStrip.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Image\Image.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\JavaScript\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LanguageSelector\LanguageSelector.DropDownMenu.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LanguageSelector\LanguageSelector.LanguageLinks.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Layouts\default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\List.AnchorList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\List.ExpandableList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\List.ExpandedList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\List.PagesList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Lists\List.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LoginForm\ForgotPassword.ForgottenPassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LoginForm\LoginForm.LoginForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LoginForm\ResetPassword.ResetPassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LoginStatus\LoginStatus.LoginButton.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\LoginStatus\LoginStatus.LoginName.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\MultipleChoiceField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\MultipleChoiceField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\MultipleChoiceField\Write.Default_Inline.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\NavigationField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\NavigationField\Read.ProgressBar.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\Dropdown.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\NavigationView.Horizontal.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\NavigationView.Pills.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\NavigationView.Sitemap.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\NavigationView.Tabs.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Navigation\NavigationView.Vertical.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\News\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\News\List.NewsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\PageBreak\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ParagraphTextField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\ParagraphTextField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Profile\ConfirmPassword.ProfileEdit.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Profile\Edit.ProfileEdit.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Profile\Read.ProfilePreview.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Registration\Registration.RegistrationForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Reviews\Reviews.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Reviews\ReviewsCount.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SearchBox\SearchBox.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SearchResults\InputValidationError.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SearchResults\SearchResults.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SectionHeader\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SiteSelector\SiteSelector.DropDownMenu.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SiteSelector\SiteSelector.SiteLinks.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\StyleSheet\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SubmitButton\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\SubscribeForm\SubscribeForm.SubscribeForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\TextField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\TextField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\UnsubscribeForm\UnsubscribeFormByEmailAddress.UnsubscribeForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\UnsubscribeForm\UnsubscribeFormByLink.UnsubscribeMessage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\UsersList\Detail.UserDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\UsersList\List.UsersList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\VideoGallery\Detail.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\VideoGallery\List.OverlayGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\VideoGallery\List.VideoGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\MVC\Views\Video\Video.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap4\package-lock.json" />
-    <None Include="ResourcePackages\Bootstrap4\package.json" />
-    <None Include="ResourcePackages\Bootstrap4\razorgenerator.directives" />
-    <None Include="ResourcePackages\Bootstrap4\README.md" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.woff" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\sf-icon-font.eot" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\sf-icon-font.ttf" />
-    <None Include="ResourcePackages\Bootstrap\assets\dist\fonts\sf-icon-font.woff" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\project\sass\main.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\base\_pre.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\icons\feather-icons.json" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\icons\_icons.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\icons\_sf-icon-font.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\loading\_loading.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\settings\_variables.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\sitefinity.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\tools\_bootstrap-mixins.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\tools\_mixins.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\utilities\_spacing.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\utilities\_text.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\code\_sf-code.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\comments\_sf-comments.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\comments\_sf-ratings.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\contentBlock\_sf-content-block.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\documentList\_sf-document-list.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\event\_sf-event.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\feed\_sf-feed.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\fileField\sf-file-field.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\formNavigation\sf-form-nav.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\gallery\_gallery.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\languageSelector\_sf-language-selector.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\list\_sf-list.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\login\_sf-login.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\media\_sf-media.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\navigation\_navbar.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\navigation\_sitemap.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\navigation\_stacked.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\profile\_sf-profile.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\searchBox\_sf-search-box.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\searchResults\_sf-search-results.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\siteSelector\_sf-site-selector.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\socialShare\sf-sprite.mustache" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\socialShare\_sf-social-share.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\socialShare\_sf-sprite.scss" />
-    <None Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\widgets\taxonomies\_sf-tags.scss" />
-    <None Include="ResourcePackages\Bootstrap\client-components\fields\html-field\sf-html-field.sf-cshtml" />
-    <None Include="ResourcePackages\Bootstrap\csslint.json" />
-    <None Include="ResourcePackages\Bootstrap\jsfiles.json" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\AccountActivation\AccountActivation.AccountActivation.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\BlogPost\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\BlogPost\List.BlogPostList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Blog\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Blog\List.BlogList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Breadcrumb\Breadcrumb.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Captcha\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Card\Card.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Card\Card.Hero.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Card\Card.Simple.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ChangePassword\ChangePassword.ChangePassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\CheckboxesField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\CheckboxesField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\CheckboxesField\Write.Default_Inline.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Comments\Comments.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Comments\CommentsCount.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ContentBlock\Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\DocumentsList\Detail.DocumentDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\DocumentsList\List.DocumentsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\DocumentsList\List.DocumentsTable.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Document\DocumentLink.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\DropdownListField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\DropdownListField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\EmbedCode\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\EventScheduler\Detail.EventDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\EventScheduler\List.Calendar.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Event\Detail.EventDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Event\List.EventsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Feed\Feed.FeedLink.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\FileField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\FlatTaxonomy\FlatTaxonomy.CloudList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\FlatTaxonomy\FlatTaxonomy.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\FlatTaxonomy\FlatTaxonomy.TagCloud.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Form\Form.SubmitResultView.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Form\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\HiddenField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\HiddenField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\HierarchicalTaxonomy\HierarchicalTaxonomy.CategoriesList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ImageGallery\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ImageGallery\List.ImageGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ImageGallery\List.OverlayGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ImageGallery\List.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ImageGallery\List.ThumbnailStrip.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Image\Image.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\JavaScript\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LanguageSelector\LanguageSelector.DropDownMenu.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LanguageSelector\LanguageSelector.LanguageLinks.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Layouts\default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\List.AnchorList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\List.ExpandableList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\List.ExpandedList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\List.PagesList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Lists\List.SimpleList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LoginForm\ForgotPassword.ForgottenPassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LoginForm\LoginForm.LoginForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LoginForm\ResetPassword.ResetPassword.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LoginStatus\LoginStatus.LoginButton.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\LoginStatus\LoginStatus.LoginName.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\MultipleChoiceField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\MultipleChoiceField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\MultipleChoiceField\Write.Default_Inline.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\NavigationField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\NavigationField\Read.ProgressBar.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\Dropdown.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Horizontal.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Pills.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Sitemap.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Tabs.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Navigation\NavigationView.Vertical.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\News\Detail.DetailPage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\News\List.NewsList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\PageBreak\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ParagraphTextField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\ParagraphTextField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Profile\ConfirmPassword.ProfileEdit.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Profile\Edit.ProfileEdit.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Profile\Read.ProfilePreview.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Registration\Registration.RegistrationForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Reviews\Reviews.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\Reviews\ReviewsCount.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SearchBox\SearchBox.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SearchResults\SearchResults.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SiteSelector\SiteSelector.DropDownMenu.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SiteSelector\SiteSelector.SiteLinks.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SocialShare\SocialShare.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SocialShare\SocialShareIconsWithText.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\StyleSheet\Index.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SubmitButton\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\SubscribeForm\SubscribeForm.SubscribeForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\TextField\Read.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\TextField\Write.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\UnsubscribeForm\UnsubscribeFormByEmailAddress.UnsubscribeForm.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\UnsubscribeForm\UnsubscribeFormByLink.UnsubscribeMessage.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\UsersList\Detail.UserDetails.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\UsersList\List.UsersList.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\VideoGallery\Detail.Default.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\VideoGallery\List.OverlayGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\MVC\Views\VideoGallery\List.VideoGallery.cshtml" />
-    <None Include="ResourcePackages\Bootstrap\package.json" />
-    <None Include="ResourcePackages\Bootstrap\razorgenerator.directives" />
-    <None Include="ResourcePackages\Bootstrap\README.md" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\css\main.css" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\css\main.min.css" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\js\bootstrap.min.js" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\js\popper.min.js" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\sprites\brands.svg" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\sprites\regular.svg" />
-    <Content Include="ResourcePackages\Bootstrap4\assets\dist\sprites\solid.svg" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\container.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-12.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-2+3+2+3+2.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-3+3+3+3.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-3+6+3.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-3+9.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-4+4+4.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-4+8.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-6+6.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-8+4.html" />
-    <Content Include="ResourcePackages\Bootstrap4\GridSystem\Templates\grid-9+3.html" />
-    <Content Include="ResourcePackages\Bootstrap4\MVC\Scripts\Navigation\pills.js" />
-    <Content Include="ResourcePackages\Bootstrap\assets\dist\css\main.css" />
-    <Content Include="ResourcePackages\Bootstrap\assets\dist\css\main.min.css" />
-    <Content Include="ResourcePackages\Bootstrap\assets\dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
-    <Content Include="ResourcePackages\Bootstrap\assets\dist\fonts\sf-icon-font.svg" />
-    <Content Include="ResourcePackages\Bootstrap\assets\dist\images\sprite.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\icons\file.svg" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\icons\no-image.svg" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\blogger.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\comment.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\delicious.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\digg.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\email.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\facebook.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\feed.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\google.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\linkedin.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\mailto.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\myspace.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\reddit.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\remove.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\stumble-upon.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\tumblr.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\images\sprite\twitter.png" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\icons\feather-icons.css" />
-    <Content Include="ResourcePackages\Bootstrap\assets\src\sitefinity\sass\components\icons\sf-icon-font.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\container.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-12.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-2+3+2+3+2.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-3+3+3+3.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-3+6+3.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-3+9.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-4+4+4.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-4+8.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-6+6.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-8+4.html" />
-    <Content Include="ResourcePackages\Bootstrap\GridSystem\Templates\grid-9+3.html" />
-    <Content Include="ResourcePackages\Bootstrap\gruntfile.js" />
-    <Content Include="ResourcePackages\Bootstrap\MVC\Scripts\Navigation\pills.js" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets" Condition="Exists('..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets')" />
@@ -770,14 +484,14 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RazorGenerator.MsBuild.2.4.1\build\RazorGenerator.MsBuild.targets'))" />
-    <Error Condition="!Exists('..\packages\Telerik.Sitefinity.Feather.12.2.7200\build\Telerik.Sitefinity.Feather.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Telerik.Sitefinity.Feather.12.2.7200\build\Telerik.Sitefinity.Feather.targets'))" />
+    <Error Condition="!Exists('..\packages\Telerik.Sitefinity.Feather.13.0.7300\build\Telerik.Sitefinity.Feather.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Telerik.Sitefinity.Feather.13.0.7300\build\Telerik.Sitefinity.Feather.targets'))" />
   </Target>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties Name="ReCaptcha" />
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\packages\Telerik.Sitefinity.Feather.12.2.7200\build\Telerik.Sitefinity.Feather.targets" Condition="Exists('..\packages\Telerik.Sitefinity.Feather.12.2.7200\build\Telerik.Sitefinity.Feather.targets')" />
+  <Import Project="..\packages\Telerik.Sitefinity.Feather.13.0.7300\build\Telerik.Sitefinity.Feather.targets" Condition="Exists('..\packages\Telerik.Sitefinity.Feather.13.0.7300\build\Telerik.Sitefinity.Feather.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
