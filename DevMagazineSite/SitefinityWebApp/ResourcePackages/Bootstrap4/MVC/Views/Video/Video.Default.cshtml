@@ -3,8 +3,6 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @using Telerik.Sitefinity.Modules.Pages;
 
-@Html.Script(ScriptRef.JQuery, "head", false)
-
 @{
     var videoUrl = Model.Item.Fields.MediaUrl;
     var videoWidth = Model.AspectRatio.ToLowerInvariant() == "auto" ? string.Empty : string.Format("width={0}", Model.Width);

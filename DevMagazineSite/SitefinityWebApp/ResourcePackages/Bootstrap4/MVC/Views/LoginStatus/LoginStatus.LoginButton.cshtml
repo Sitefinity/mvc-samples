@@ -4,8 +4,6 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Mvc.Proxy;
 
-@Html.Script(ScriptRef.JQuery, "top", false)
-
 @{
     var SignOutUrl = string.Concat(Url.Action("SignOut"), string.Format("?{0}={1}", MvcControllerProxy.ControllerKey, ViewData[MvcControllerProxy.ControllerKey]));
 }
@@ -26,7 +24,7 @@
 
     <div data-sf-role="sf-logged-out-view" style="display: none">
 
-        <button class="btn btn-secondary" data-sf-role="login-status-button">@Html.Resource("Login")</button>
+        <button class="btn btn-secondary" data-sf-role="login-status-button" type="button">@Html.Resource("Login")</button>
         <a href="@(Model.RegistrationPageUrl ?? "#")">@Html.Resource("RegisterNow")</a>
 
     </div>

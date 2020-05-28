@@ -4,8 +4,6 @@
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Mvc.Proxy;
 
-@Html.Script(ScriptRef.JQuery, "top", true)
-
 @{
 var SignOutUrl = string.Concat(Url.Action("SignOut"),string.Format("?{0}={1}", MvcControllerProxy.ControllerKey, ViewData[MvcControllerProxy.ControllerKey]));
 }

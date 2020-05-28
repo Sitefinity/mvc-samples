@@ -90,8 +90,6 @@
     }
 </div>
 
-@Html.Script(Url.WidgetContent("Mvc/Scripts/LoginForm/login-form.js"), "bottom")
-
 @helper FormGroupPanel(string label, Expression<Func<LoginFormViewModel, string>> expression, string descId, string inputType = "text", string classValue = null, IDictionary<string, object> additionalAttributes = null)
 {
     var hasValidationMessage = Html.ValidationMessageFor(expression) != null;

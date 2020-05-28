@@ -12,6 +12,7 @@
 @Html.Script(Url.WidgetContent("http://kendo.cdn.telerik.com/2018.1.117/js/kendo.aspnetmvc.min.js"), "head")
 @Html.Script(Url.WidgetContent("Mvc/Scripts/kendo-books-widget.js"), "top")
 
+<input id="sfAppPath" type="hidden" value="@ViewBag.sfAppPath" />
 <div data-role="books-widget"></div>
 
 @(Html.Kendo().Grid<Book>()

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
@@ -13,6 +15,13 @@ namespace KendoBooksWidget.Mvc.Controllers
     {
         public ActionResult Index()
         {
+            var sfAppPath = System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath;
+
+            if (!sfAppPath.EndsWith("/", StringComparison.Ordinal))
+                sfAppPath = string.Concat(sfAppPath, "/");
+
+            this.ViewBag.sfAppPath = HttpUtility.HtmlEncode(sfAppPath);
+
             return this.View(new BooksViewModel());
         }
 

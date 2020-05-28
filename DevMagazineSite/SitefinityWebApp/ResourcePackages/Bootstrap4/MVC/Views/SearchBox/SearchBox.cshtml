@@ -3,36 +3,33 @@
 @using Telerik.Sitefinity.Services;
 @using Telerik.Sitefinity.Modules.Pages;
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
-
 @{
     var searchTextBoxId = Guid.NewGuid();
     var searchButtonId = Guid.NewGuid();
- }
-
+}
 @(!String.IsNullOrEmpty(Model.CssClass) ?
-    Html.Raw(String.Format("<div class=\"{0} form-inline\">", HttpUtility.HtmlAttributeEncode(Model.CssClass))) :
-    Html.Raw("<div class=\"form-inline\">"))
-    <div class="form-group sf-search-input-wrapper" role="search">
-        <input type="search" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@searchTextBoxId" class="form-control" value="@(ViewBag.SearchQuery)" aria-autocomplete="both" aria-describedby='@Html.UniqueId("SearchInfo")'/>
-        <button type="button" class="btn btn-primary ml-2" id="@(searchButtonId)" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("SearchLabel")</button>
-        <span id='@Html.UniqueId("SearchInfo")' aria-hidden="true" hidden>When autocomplete results are available use up and down arrows to review and enter to select.</span>
-    </div>
-	
-	<input type="hidden" data-sf-role="resultsUrl" value="@(Model.ResultsUrl)" />
-    <input type="hidden" data-sf-role="indexCatalogue" value="@(Model.IndexCatalogue)" />
-    <input type="hidden" data-sf-role="wordsMode" value="@(Model.WordsMode.ToString())" />
-    <input type="hidden" data-sf-role="disableSuggestions" value='@(Model.DisableSuggestions ? ("true") : ("false"))' />
-    <input type="hidden" data-sf-role="minSuggestionLength" value="@(Model.MinSuggestionLength)" />
-    <input type="hidden" data-sf-role="suggestionFields" value="@(Model.SuggestionFields)" />
-    <input type="hidden" data-sf-role="language" value="@(Model.Language)" />
-    <input type="hidden" data-sf-role="suggestionsRoute" value="@(Model.SuggestionsRoute)" />
-    <input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
-    <input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />
+        Html.Raw(String.Format("<div class=\"{0} form-inline\">", HttpUtility.HtmlAttributeEncode(Model.CssClass))) :
+        Html.Raw("<div class=\"form-inline\">"))
+<div class="form-group sf-search-input-wrapper" role="search">
+    <input type="search" title="@Html.Resource("SearchInput")" placeholder="@Model.BackgroundHint" id="@searchTextBoxId" class="form-control" value="@(ViewBag.SearchQuery)" aria-autocomplete="both" aria-describedby='@Html.UniqueId("SearchInfo")' />
+    <button type="button" class="btn btn-primary ml-2" id="@(searchButtonId)" @(SystemManager.IsDesignMode ? "disabled" : "")>@Html.Resource("SearchLabel")</button>
+    <span id='@Html.UniqueId("SearchInfo")' aria-hidden="true" hidden>When autocomplete results are available use up and down arrows to review and enter to select.</span>
+</div>
+
+<input type="hidden" data-sf-role="resultsUrl" value="@(Model.ResultsUrl)" />
+<input type="hidden" data-sf-role="indexCatalogue" value="@(Model.IndexCatalogue)" />
+<input type="hidden" data-sf-role="wordsMode" value="@(Model.WordsMode.ToString())" />
+<input type="hidden" data-sf-role="disableSuggestions" value='@(Model.DisableSuggestions ? ("true") : ("false"))' />
+<input type="hidden" data-sf-role="minSuggestionLength" value="@(Model.MinSuggestionLength)" />
+<input type="hidden" data-sf-role="suggestionFields" value="@(Model.SuggestionFields)" />
+<input type="hidden" data-sf-role="language" value="@(Model.Language)" />
+<input type="hidden" data-sf-role="siteId" value="@(SystemManager.CurrentContext.CurrentSite.Id)" />
+<input type="hidden" data-sf-role="suggestionsRoute" value="@(Model.SuggestionsRoute)" />
+<input type="hidden" data-sf-role="searchTextBoxId" value='@("#" + searchTextBoxId.ToString())' />
+<input type="hidden" data-sf-role="searchButtonId" value='@("#" + searchButtonId.ToString())' />
 </div>
 
 @* The inline editing functionality is loading jQuery too. *@
-
 @Html.Script(ScriptRef.JQuery, "top", true)
 @Html.Script(ScriptRef.JQueryUI, "top", true)
-
 @Html.Script(Url.WidgetContent("Mvc/Scripts/SearchBox/Search-box.js"), "bottom", true)
