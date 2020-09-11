@@ -38,8 +38,10 @@
               "tooltip": "Remove link"
           },
           "insertImage",
+          "insertDocument",
           "embed",
           "createTable",
+          "tableWizard",
           "addRowAbove",
           "addRowBelow",
           "addColumnLeft",
@@ -52,7 +54,6 @@
           "subscript",
           "superscript",
           "horizontalRule",
-          "tableWizard",
           "cleanFormatting",
           "html"
       ],

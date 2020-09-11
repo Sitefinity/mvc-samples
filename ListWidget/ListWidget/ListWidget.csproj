@@ -78,28 +78,28 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Sitefinity.Frontend, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend, Version=13.1.7400.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.1.7400\lib\net472\Telerik.Sitefinity.Frontend.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Frontend.Data, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
-      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.0.7300\lib\net472\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Frontend.Data, Version=13.1.7400.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.13.1.7400\lib\net472\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Sitefinity.Mvc, Version=13.0.7300.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
-      <HintPath>..\packages\Telerik.Sitefinity.Mvc.13.0.7300\lib\net472\Telerik.Sitefinity.Mvc.dll</HintPath>
+    <Reference Include="Telerik.Sitefinity.Mvc, Version=13.1.7400.0, Culture=neutral, PublicKeyToken=b28c218413bdf563">
+      <HintPath>..\packages\Telerik.Sitefinity.Mvc.13.1.7400\lib\net472\Telerik.Sitefinity.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.Design, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.Design.dll</HintPath>
+    <Reference Include="Telerik.Web.Design, Version=2020.2.512.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.2.512.45\lib\net45\Telerik.Web.Design.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.UI.dll</HintPath>
+    <Reference Include="Telerik.Web.UI, Version=2020.2.512.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.2.512.45\lib\net45\Telerik.Web.UI.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins, Version=2020.1.114.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
-      <HintPath>..\packages\Telerik.Web.UI.2020.1.114.45\lib\net45\Telerik.Web.UI.Skins.dll</HintPath>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2020.2.512.40, Culture=neutral, PublicKeyToken=121fae78165ba3d4">
+      <HintPath>..\packages\Telerik.Web.UI.2020.2.512.45\lib\net45\Telerik.Web.UI.Skins.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4">
