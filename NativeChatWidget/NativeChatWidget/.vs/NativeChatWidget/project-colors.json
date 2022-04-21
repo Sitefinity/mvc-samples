@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9ce85306-93d4-4d2b-ad8e-37ec5b2c0a9b": {
+      "ProjectGuid": "9ce85306-93d4-4d2b-ad8e-37ec5b2c0a9b",
+      "DisplayName": "NativeChatWidget",
+      "ColorIndex": 0
+    },
+    "6495e218-173d-4922-8357-89c5cd07ac8f": {
+      "ProjectGuid": "6495e218-173d-4922-8357-89c5cd07ac8f",
+      "DisplayName": "NativeChatWidget",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
