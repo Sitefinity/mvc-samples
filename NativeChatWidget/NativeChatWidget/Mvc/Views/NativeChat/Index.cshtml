@@ -1,0 +1,78 @@
+﻿@model NativeChatWidget.Mvc.Models.NativeChatViewModel
+
+<script src="https://web-chat.nativechat.com/3.1.1/sdk/nativechat.js"></script>
+<link href="https://web-chat.nativechat.com/3.1.1/sdk/nativechat.css" rel="stylesheet" type="text/css">
+
+<script>
+    var chatSettings = {
+        bot: {
+            id: "@Model.BotId",
+            name: "@Model.Nickname",
+            avatarUrl: "@Model.BotAvatarUrl"
+        },
+        channel: {
+            id: "@Model.ChannelId",
+            token: "@Model.ChannelAuthToken"
+        },
+        session: {
+            clear: true,
+            userMessage: "@Model.UserMessage"
+        },
+        placeholder: "@Model.Placeholder",
+        showFilePicker: @Model.ShowFilePicker,
+        showLocationPicker: @Model.ShowLocationPicker,
+        submitLocationText: "@Model.LocationPickerLabel",
+        googleApiKey: "@Model.GoogleApiKey",
+        locale: "@Model.Locale",
+        css: "@Model.CustomCss",
+        defaultLocation: @(Model.Latitude != null && Model.Longitude != null ? string.Format("{{ latitude: {0}, longitude: {1} }}", Model.Latitude, Model.Longitude) : "undefined")
+    };
+
+    if (window.DataIntelligenceSubmitScript) {
+        initChat();
+    }
+    else if (document.getElementById('sf-insight-settings')) {
+        if (window.addEventListener) {
+            window.addEventListener('decclientready', initChat, false);
+        }
+        else if (window.attachEvent) {
+            window.attachEvent('decclientready', initChat);
+        }
+    }
+    else {
+        initChat();
+    }
+
+    function initChat() {
+        if (window.DataIntelligenceSubmitScript) {
+            chatSettings.session.context = {
+                _systemTracking: {
+                    insight: {
+                        apiKey: window.DataIntelligenceSubmitScript._client.apiKey,
+                        dataSource: window.DataIntelligenceSubmitScript._client.source,
+                        subject: window.DataIntelligenceSubmitScript._client.sentenceClient.subjectKey,
+                        apiServerUrl: window.DataIntelligenceSubmitScript._client.apiServerUrl
+                    }
+                }
+            };
+
+            if (window.TrackingConsentManager) {
+                chatSettings.session.context._systemTracking.insight.canTrackCurrentUser = TrackingConsentManager.canTrackCurrentUser();
+            }
+        }
+
+        window.NativeChat.load({
+            id: "kcChatWindow",
+            origin: "",
+            display: {
+                mode: "@Model.ChatMode",
+                launcher: {
+                    openIconUrl: "@Model.OpeningChatIconUrl",
+                    closeIconUrl: "@Model.ClosingChatIconUrl"
+                },
+                containerId: "@Model.ContainerId"
+            },
+            chat: chatSettings
+        });
+    }
+</script>
