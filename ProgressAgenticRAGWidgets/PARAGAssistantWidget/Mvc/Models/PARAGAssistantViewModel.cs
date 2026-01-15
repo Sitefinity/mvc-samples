@@ -1,4 +1,4 @@
-﻿using PARAGAssistantWidget.Client;
+﻿using PARAGCore.Client;
 using PARAGAssistantWidget.Mvc.Controllers;
 using Progress.Sitefinity.Renderer.Entities.Content;
 using System;

@@ -1,6 +1,6 @@
-﻿using PARAGAssistantWidget.Configuration;
+﻿using PARAGCore.Configuration;
 using PARAGAssistantWidget.Mvc.Models;
-using PARAGAssistantWidget.OperationProviders;
+using PARAGCore.OperationProviders;
 using Progress.Sitefinity.Renderer.Designers;
 using Progress.Sitefinity.Renderer.Designers.Attributes;
 using Progress.Sitefinity.Renderer.Entities.Content;
@@ -11,7 +11,6 @@ using System.Net.Http;
 using System.Web.Mvc;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Configuration;
-using Telerik.Sitefinity.Frontend.Mvc.Infrastructure.Controllers.Attributes;
 using Telerik.Sitefinity.Localization;
 using Telerik.Sitefinity.Mvc;
 using Telerik.Sitefinity.Personalization;

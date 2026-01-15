@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PARAGAssistantWidget.Client;
+using PARAGCore.Client;
 using System;
 using System.Linq;
 using System.Net;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Telerik.Sitefinity.Abstractions;
 
-namespace PARAGAssistantWidget.Controllers
+namespace PARAGCore.Controllers
 {
     public class AgenticRagController : ApiController
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PARAGAssistantWidget.Clients.Models.Serialization
+namespace PARAGCore.Clients.Models.Serialization
 {
     internal class PARAGJSONSerializer
     {

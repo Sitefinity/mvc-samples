@@ -2,7 +2,7 @@
 using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Localization;
 
-namespace PARAGAssistantWidget.Configuration
+namespace PARAGCore.Configuration
 {
     public class PARAGConfig : ConfigSection
     {

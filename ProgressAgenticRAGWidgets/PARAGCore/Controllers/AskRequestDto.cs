@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PARAGAssistantWidget.Controllers
+namespace PARAGCore.Controllers
 {
     public class AskRequestDto
     {

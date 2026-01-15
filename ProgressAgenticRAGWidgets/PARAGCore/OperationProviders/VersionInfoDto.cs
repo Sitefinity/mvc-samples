@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace PARAGAssistantWidget.OperationProviders
+namespace PARAGCore.OperationProviders
 {
-    internal class VersionInfoDto
+    public class VersionInfoDto
     {
         [DataMember]
         public string ProductVersion { get; set; }

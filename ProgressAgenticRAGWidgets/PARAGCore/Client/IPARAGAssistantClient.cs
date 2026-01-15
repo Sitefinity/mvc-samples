@@ -1,10 +1,10 @@
-﻿using PARAGAssistantWidget.Controllers;
+﻿using PARAGCore.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace PARAGAssistantWidget.Client
+namespace PARAGCore.Client
 {
     public interface IPARAGAssistantClient
     {

@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using Telerik.Sitefinity.Configuration;
 
-namespace PARAGAssistantWidget.Configuration
+namespace PARAGCore.Configuration
 {
     public class AssistantConfig : ConfigElement
     {

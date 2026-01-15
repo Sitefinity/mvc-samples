@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace PARAGAssistantWidget.Controllers
+namespace PARAGCore.Controllers
 {
     public class FeedbackRequestDto
     {

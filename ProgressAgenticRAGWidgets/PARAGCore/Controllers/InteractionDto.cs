@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PARAGAssistantWidget.Controllers
+namespace PARAGCore.Controllers
 {
     public class InteractionDto
     {

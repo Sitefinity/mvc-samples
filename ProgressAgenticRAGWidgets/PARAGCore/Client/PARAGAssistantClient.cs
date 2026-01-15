@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PARAGAssistantWidget.Clients.Models.Serialization;
-using PARAGAssistantWidget.Configuration;
-using PARAGAssistantWidget.Controllers;
+using PARAGCore.Clients.Models.Serialization;
+using PARAGCore.Configuration;
+using PARAGCore.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telerik.Sitefinity.Configuration;
 
-namespace PARAGAssistantWidget.Client
+namespace PARAGCore.Client
 {
     public class PARAGAssistantClient : IPARAGAssistantClient
     {

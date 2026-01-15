@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace PARAGAssistantWidget.OperationProviders
+namespace PARAGCore.OperationProviders
 {
     [DataContract]
     public class KnowledgeBoxDto

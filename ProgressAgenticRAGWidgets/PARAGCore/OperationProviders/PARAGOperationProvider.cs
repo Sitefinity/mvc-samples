@@ -1,5 +1,5 @@
-﻿using PARAGAssistantWidget.Client;
-using PARAGAssistantWidget.Configuration;
+﻿using PARAGCore.Client;
+using PARAGCore.Configuration;
 using ServiceStack;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Data.Linq.Dynamic;
 using Telerik.Sitefinity.Web.Services.Contracts.Operations;
 
-namespace PARAGAssistantWidget.OperationProviders
+namespace PARAGCore.OperationProviders
 {
     public class PARAGOperationProvider : IOperationProvider
     {

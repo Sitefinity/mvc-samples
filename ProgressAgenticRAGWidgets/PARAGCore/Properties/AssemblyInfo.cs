@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PARAGAssistantWidget")]
+[assembly: AssemblyTitle("PARAGCore")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Progress")]
-[assembly: AssemblyProduct("PARAGAssistantWidget")]
+[assembly: AssemblyProduct("PARAGCore")]
 [assembly: AssemblyCopyright("Copyright © Progress 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c64dac2e-21c2-41c7-8985-64156a4d8794")]
+[assembly: Guid("f1b9546c-b0a6-46a7-bfb8-ea513796fe72")]
 
 // Version information for an assembly consists of the following four values:
 //
