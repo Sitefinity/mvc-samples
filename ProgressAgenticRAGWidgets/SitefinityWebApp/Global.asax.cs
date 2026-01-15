@@ -1,6 +1,6 @@
-﻿using PARAGAssistantWidget.Client;
-using PARAGAssistantWidget.Configuration;
-using PARAGAssistantWidget.OperationProviders;
+﻿using PARAGCore.Client;
+using PARAGCore.Configuration;
+using PARAGCore.OperationProviders;
 using System;
 using System.Web.Http;
 using Telerik.Microsoft.Practices.Unity;
