@@ -53,3 +53,6 @@ The widget will appear in your page toolbox.
 	- AdminApiBaseUrl - 
 	- CdnHostName - assistantcdn.blob.core.windows.net or cdn.assistant.api.sitefinity.cloud
 	- CdnRootFolderRelativePath - dev or prod
+
+## Setup security headers
+Go to Administration -> Settings -> Basic -> Web Security. Click **edit** on Trusted sources. Paste the value from **CdnHostName** under sections **Scripts** and **Styles**
