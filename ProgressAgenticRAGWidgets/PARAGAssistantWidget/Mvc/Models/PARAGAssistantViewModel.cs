@@ -20,7 +20,7 @@ namespace PARAGAssistantWidget.Mvc.Models
             string nickname,
             string greetingMessage,
             MixedContentContext assistantAvatar,
-            AssistantDisplayMode displayMode,
+            string displayMode,
             MixedContentContext openingChatIcon,
             MixedContentContext closingChatIcon,
             string containerId,
@@ -70,7 +70,7 @@ namespace PARAGAssistantWidget.Mvc.Models
 
         public MixedContentContext AssistantAvatar { get; set; }
 
-        public AssistantDisplayMode DisplayMode { get; set; }
+        public string DisplayMode { get; set; }
 
         public string ChatServiceName { get; set; }
 

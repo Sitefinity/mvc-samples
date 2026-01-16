@@ -81,22 +81,24 @@ namespace PARAGAssistantWidget.Mvc.Controllers
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("Chat window", 1)]
         [DisplayName("Chat window mode")]
+        [DefaultValue("overlay")]
         [DataType(customDataType: KnownFieldTypes.RadioChoice)]
+        [Choice("[{\"Title\":\"Display overlay\",\"Name\":\"overlay\",\"Value\":\"overlay\",\"Icon\":null},{\"Title\":\"Display inline\",\"Name\":\"inline\",\"Value\":\"inline\",\"Icon\":null}]")]
         [Description("[{\"Type\":1,\"Chunks\":[{\"Value\":\"Display overlay: \",\"Presentation\":[0]},{\"Value\":\"Chat appears in a small window, usually in the bottom right corner of the screen. It requires user interaction to open and overlays parts of the page content.\",\"Presentation\":[]}]},{\"Type\":1,\"Chunks\":[{\"Value\":\"Display inline: \",\"Presentation\":[0]},{\"Value\":\"Chat area is integrated into the page layout and does not overlay other elements. Suitable for long assistant responses and prompts.\",\"Presentation\":[]}]}]")]
-        public AssistantDisplayMode DisplayMode { get; set; }
+        public string DisplayMode { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("Chat window", 2)]
         [DisplayName("Opening chat icon")]
         [Description("Select a custom icon for opening chat window. If left empty, default icon will be displayed.")]
         [Content(Type = "Telerik.Sitefinity.Libraries.Model.Image", AllowMultipleItemsSelection = false)]
-        [ConditionalVisibility("{\"conditions\":[{\"fieldName\":\"DisplayMode\",\"operator\":\"Equals\",\"value\":\"modal\"}]}")]
+        [ConditionalVisibility("{\"conditions\":[{\"fieldName\":\"DisplayMode\",\"operator\":\"Equals\",\"value\":\"overlay\"}]}")]
         public MixedContentContext OpeningChatIcon { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("Chat window", 3)]
         [DisplayName("Closing chat icon")]
         [Description("Select a custom icon for closing chat window. If left empty, default icon will be displayed.")]
         [Content(Type = "Telerik.Sitefinity.Libraries.Model.Image", AllowMultipleItemsSelection = false)]
-        [ConditionalVisibility("{\"conditions\":[{\"fieldName\":\"DisplayMode\",\"operator\":\"Equals\",\"value\":\"modal\"}]}")]
+        [ConditionalVisibility("{\"conditions\":[{\"fieldName\":\"DisplayMode\",\"operator\":\"Equals\",\"value\":\"overlay\"}]}")]
         public MixedContentContext ClosingChatIcon { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("Chat window", 4)]
@@ -232,16 +234,6 @@ namespace PARAGAssistantWidget.Mvc.Controllers
             string placeholder = "{0}";
 
             return $"https://{cdnHostName}/{rootRelativePath}{placeholder}{versionSuffix}";
-        }
-
-        public enum AssistantDisplayMode
-        {
-            [Description("Display modal")]
-            [EnumDisplayName("Display overlay")]
-            modal,
-            [Description("Display inline")]
-            [EnumDisplayName("Display inline")]
-            inline
         }
     }
 }
