@@ -3,15 +3,15 @@
 
 The following sample demonstrates how to create a set of custom MVC widgets powered by Progress Agentic RAG. The list of widgets is the following:
 - AI Assistant Chat
-- Search box
-- Search results - including facets and AI generated answer
+- Search box - in development
+- Search results - including facets and AI generated answer - in development
 
 # Install the widgets
 
-1. Clone the [feather-samples](https://github.com/Sitefinity/feather-samples) repository.
+1. Clone the [mvc-samples](https://github.com/Sitefinity/mvc-samples) repository.
 2. Check if the version of the Sitefinity nugets referenced in it is the same as the version of your project. It they are different make sure to upgrade the nugets in the desired widget's project to match your version.
 3. Build the desired widget's project.
-4. Reference the created dll from your Sitefinity’s web application.
+4. Reference the created dlls from your Sitefinity’s web application.
 5. Create a **Global.asax.cs** file in your Sitefinity web application if you don't have such.
 6. Modify its content as shown in the sample **{{PROJECT_NAME}}/SitefinityWebApp/Global.asax.cs**
 7. Build your Sitefinity web application.
@@ -51,8 +51,8 @@ The widget will appear in your page toolbox.
 
 ## Setup Assistant settings
 	- AdminApiBaseUrl - 
-	- CdnHostName - assistantcdn.blob.core.windows.net or cdn.assistant.api.sitefinity.cloud
-	- CdnRootFolderRelativePath - dev or prod
+	- CdnHostName - **assistantcdn.blob.core.windows.net** or **cdn.assistant.api.sitefinity.cloud**
+	- CdnRootFolderRelativePath - **dev** or **prod**
 
 ## Setup security headers
-Go to Administration -> Settings -> Basic -> Web Security. Click **edit** on Trusted sources. Paste the value from **CdnHostName** under sections **Scripts** and **Styles**
+Go to Administration -> Settings -> Basic -> Web Security. Click **edit** on Trusted sources. Paste the value from **CdnHostName** under sections **Scripts**, **Styles** and **Images**
