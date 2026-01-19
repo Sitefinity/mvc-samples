@@ -6,7 +6,7 @@ namespace PARAGCore.Configuration
 {
     public class AgenticRAGConfig : ConfigSection
     {
-        [ObjectInfo(Title = "AccountId", Description = "Progress Agentic RAG NUA Key")]
+        [ObjectInfo(Title = "AccountId")]
         [ConfigurationProperty(PropertyNames.AccountId)]
         public string AccountId
         {
@@ -21,7 +21,7 @@ namespace PARAGCore.Configuration
             }
         }
 
-        [ObjectInfo(Title = "NUA Key", Description = "Progress Agentic RAG NUA Key")]
+        [ObjectInfo(Title = "NUA Key")]
         [ConfigurationProperty(PropertyNames.NuaKey)]
         [SecretData]
         public string NuaKey

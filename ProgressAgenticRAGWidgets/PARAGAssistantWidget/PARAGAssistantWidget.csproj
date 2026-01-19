@@ -67,11 +67,20 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Progress.Sitefinity.Renderer, Version=15.4.8600.490, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <HintPath>..\packages\Progress.Sitefinity.Renderer.15.4.8600.490\lib\netstandard2.0\Progress.Sitefinity.Renderer.dll</HintPath>
     </Reference>
     <Reference Include="RazorEngine, Version=3.0.8.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\Sitefinity.RazorEngine.3.0.8.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorGenerator.Mvc.2.3.12\lib\net40\RazorGenerator.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack, Version=6.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
       <HintPath>..\packages\ServiceStack.8.8.0\lib\net472\ServiceStack.dll</HintPath>
@@ -193,6 +202,12 @@
     <Reference Include="Telerik.Sitefinity, Version=15.4.8600.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <HintPath>..\packages\Telerik.Sitefinity.Core.15.4.8600\lib\net48\Telerik.Sitefinity.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.Sitefinity.Frontend, Version=15.4.8600.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.15.4.8600\lib\net48\Telerik.Sitefinity.Frontend.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Sitefinity.Frontend.Data, Version=15.4.8600.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telerik.Sitefinity.Feather.Core.15.4.8600\lib\net48\Telerik.Sitefinity.Frontend.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Sitefinity.Model, Version=15.4.8600.0, Culture=neutral, PublicKeyToken=b28c218413bdf563, processorArchitecture=MSIL">
       <HintPath>..\packages\Telerik.Sitefinity.Core.15.4.8600\lib\net48\Telerik.Sitefinity.Model.dll</HintPath>
     </Reference>
@@ -247,6 +262,9 @@
     <Reference Include="Telerik.Web.UI.Skins, Version=2025.3.825.462, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <HintPath>..\packages\Progress.Sitefinity.Web.UI.2025.3.825.462\lib\net462\Telerik.Web.UI.Skins.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvc\Controllers\PARAGAssistantController.cs" />
@@ -255,7 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Mvc\Views\PARAGAssistant\Index.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\PARAGAssistant\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
