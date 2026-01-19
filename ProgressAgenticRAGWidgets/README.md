@@ -26,28 +26,28 @@ The widget will appear in your page toolbox.
 		- Navigate to Manage account > NUA Keys.
 		- Select the option to create a new NUA Key and save it.
 		- Copy the generated key for use in API authentication or SDK configurations.
-		- Paste the key in SF: **Advanced Settings -> PARAG -> NUA key**
+		- Paste the key in SF: **Advanced Settings -> AgenticRAG -> NUA key**
 	- Account Id:
 		- Log in to the Agentic RAG Dashboard with your credentials.
 		- Navigate to Manage account > Account.
 		- Copy the UID
-		- Paste the ID in SF: **Advanced Settings -> PARAG -> Account ID**
+		- Paste the ID in SF: **Advanced Settings -> AgenticRAG -> Account ID**
 	- Base URL
 		- Log in to the Agentic RAG Dashboard with your credentials.
 		- Copy NucliaDB API endpoint
-		- Paste the URL without the path in SF: **Advanced Settings -> PARAG -> Base URL**
+		- Paste the URL without the path in SF: **Advanced Settings -> AgenticRAG -> Base URL**
 
 ## Setup Knowledge box
     - Knowledge box ID
         - Log in to the Agentic RAG Dashboard with your credentials.
         - Copy Knowledge Box UID
-        - Paste the ID in SF: **Advanced Settings -> PARAG -> Knowledge Boxes -> KnowledgeBoxId**
+        - Paste the ID in SF: **Advanced Settings -> AgenticRAG -> Knowledge Boxes -> KnowledgeBoxId**
 
     - Knowledge box API key
         - Log in to the Agentic RAG Dashboard with your credentials.
         - Go to Advanced -> API keys
         - Create a new API key and copy it
-        - Paste the key in SF: **Advanced Settings -> PARAG -> Knowledge Boxes -> KnowledgeBoxKey**
+        - Paste the key in SF: **Advanced Settings -> AgenticRAG -> Knowledge Boxes -> KnowledgeBoxKey**
 
 ## Setup Assistant settings
 	- AdminApiBaseUrl - https://api.sitefinity.cloud/Version

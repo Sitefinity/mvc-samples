@@ -233,7 +233,7 @@
     <Compile Include="Client\PARAGClientSerializer.cs" />
     <Compile Include="Configuration\AssistantConfig.cs" />
     <Compile Include="Configuration\KnowledgeBoxSettings.cs" />
-    <Compile Include="Configuration\PARAGConfig.cs" />
+    <Compile Include="Configuration\AgenticRAGConfig.cs" />
     <Compile Include="Controllers\AgenticRagController.cs" />
     <Compile Include="Controllers\AskRequestDto.cs" />
     <Compile Include="Controllers\FeedbackRequestDto.cs" />

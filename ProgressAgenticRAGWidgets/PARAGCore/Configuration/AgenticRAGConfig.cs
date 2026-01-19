@@ -4,11 +4,10 @@ using Telerik.Sitefinity.Localization;
 
 namespace PARAGCore.Configuration
 {
-    public class PARAGConfig : ConfigSection
+    public class AgenticRAGConfig : ConfigSection
     {
         [ObjectInfo(Title = "AccountId", Description = "Progress Agentic RAG NUA Key")]
         [ConfigurationProperty(PropertyNames.AccountId)]
-        [SecretData]
         public string AccountId
         {
             get

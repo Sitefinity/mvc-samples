@@ -11,16 +11,14 @@ using System.Net.Http;
 using System.Web.Mvc;
 using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Configuration;
-using Telerik.Sitefinity.Localization;
 using Telerik.Sitefinity.Mvc;
 using Telerik.Sitefinity.Personalization;
-using Telerik.Sitefinity.Services;
 using Telerik.Sitefinity.Web.UI;
 
 namespace PARAGAssistantWidget.Mvc.Controllers
 {
     [ControllerToolboxItem(
-        Name = "PARAGAssistant_MVC",
+        Name = "SitefinityAssistant_MVC",
         Title = "PARAG Assistant",
         SectionName = "Marketing",
         CssClass = WidgetIconCssClass)]
@@ -213,7 +211,7 @@ namespace PARAGAssistantWidget.Mvc.Controllers
 
         private string BuildCdnUrlFormatString()
         {
-            var config = Config.Get<PARAGConfig>();
+            var config = Config.Get<AgenticRAGConfig>();
             string version = null;
             try
             {

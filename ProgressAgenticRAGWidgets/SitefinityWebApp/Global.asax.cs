@@ -20,10 +20,10 @@ namespace SitefinityWebApp
 
         void Bootstrapper_Bootstrapped(object sender, EventArgs e)
         {
-            Config.RegisterSection<PARAGConfig>();
+            Config.RegisterSection<AgenticRAGConfig>();
             ObjectFactory.Container.RegisterType<IPARAGAssistantClient, PARAGAssistantClient>(new ContainerControlledLifetimeManager());
             ObjectFactory.Container.RegisterType(typeof(IOperationProvider), typeof(PARAGOperationProvider), typeof(PARAGOperationProvider).Name);
-                    
+
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
                 name: "parag",
                 routeTemplate: "parag/{action}",
