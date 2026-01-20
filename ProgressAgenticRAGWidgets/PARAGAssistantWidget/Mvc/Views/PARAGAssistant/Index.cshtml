@@ -53,7 +53,7 @@
         }
     </script>
 }
-else if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && SystemManager.IsDesignMode)
+else if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode))
 {
     <div class="sf-assistant-widget-placeholder">&nbsp;</div>
 }
