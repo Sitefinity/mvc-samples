@@ -2,7 +2,7 @@
 @using Telerik.Sitefinity.Frontend.Mvc.Helpers;
 @model PARAGAssistantWidget.Mvc.Models.PARAGAssistantViewModel
 
-@if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && !SystemManager.IsDesignMode)
+@if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && !(SystemManager.IsDesignMode && !SystemManager.IsPreviewMode))
 {
     <link href="@Model.GetCdnUrl("sf-assistant-chat-widget.css")" rel="stylesheet" type="text/css">
     <script src="@Model.GetCdnUrl("jquery.min.js")" type="text/javascript"></script>
@@ -53,7 +53,7 @@
         }
     </script>
 }
-else if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && SystemManager.IsDesignMode)
+else if (!string.IsNullOrEmpty(Model.KnowledgeBoxName) && (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode))
 {
     <div class="sf-assistant-widget-placeholder">&nbsp;</div>
 }
