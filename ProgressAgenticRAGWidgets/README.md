@@ -21,17 +21,6 @@ The widget will appear in your page toolbox.
 # Setup the widgets
 
 ## Setup Nuclia settings
-	- Nua key:
-		- Log in to the Agentic RAG Dashboard with your credentials.
-		- Navigate to Manage account > NUA Keys.
-		- Select the option to create a new NUA Key and save it.
-		- Copy the generated key for use in API authentication or SDK configurations.
-		- Paste the key in SF: **Advanced Settings -> AgenticRAG -> NUA key**
-	- Account Id:
-		- Log in to the Agentic RAG Dashboard with your credentials.
-		- Navigate to Manage account > Account.
-		- Copy the UID
-		- Paste the ID in SF: **Advanced Settings -> AgenticRAG -> Account ID**
 	- Base URL
 		- Log in to the Agentic RAG Dashboard with your credentials.
 		- Copy NucliaDB API endpoint
