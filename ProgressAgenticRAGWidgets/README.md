@@ -1,47 +1,60 @@
 ﻿Custom Progress Agentic RAG widgets
 ======
 
-The following sample demonstrates how to create a set of custom MVC widgets powered by Progress Agentic RAG. The list of widgets is the following:
-- AI Assistant Chat
-- Search box - in development
-- Search results - including facets and AI generated answer - in development
+This guide demonstrates how to create and configure a set of custom widgets powered by Progress Agentic RAG.
 
-# Install the widgets
+## Available Widgets
+- AI Assistant Chat
+
+# Installing the widgets
+
+Follow these steps to install the custom Agentic RAG widgets in your Sitefinity application:
 
 1. Clone the [mvc-samples](https://github.com/Sitefinity/mvc-samples) repository.
-2. Check if the version of the Sitefinity nugets referenced in it is the same as the version of your project. It they are different make sure to upgrade the nugets in the desired widget's project to match your version.
+2. Check Sitefinity NuGet versions - Ensure that the Sitefinity NuGet package versions used in the sample match those used in your project.If they differ, update the NuGet references in the widget project to match your Sitefinity version.
 3. Build the desired widget's project.
-4. Reference the created dlls from your Sitefinity’s web application.
-5. Create a **Global.asax.cs** file in your Sitefinity web application if you don't have such.
-6. Modify its content as shown in the sample **{{PROJECT_NAME}}/SitefinityWebApp/Global.asax.cs**
-7. Build your Sitefinity web application.
+4. Reference the DLLs - Add references to the generated DLLs in your Sitefinity web application.
+5. Create a **Global.asax.cs** file - If your Sitefinity web application doesn’t already include one, create a Global.asax.cs file.
+6. Configure the **Global.asax.cs** file - Modify its contents to match the sample located at: **{{PROJECT_NAME}}/SitefinityWebApp/Global.asax.cs**
+7. Rebuild your Sitefinity web application - Once built, the new widgets will appear in your Sitefinity Page Toolbox.
 
-The widget will appear in your page toolbox.
+# Configuring the Widgets
 
-# Setup the widgets
-
-## Setup Nuclia settings
+## Configure Nuclia Settings
 	- Base URL
-		- Log in to the Agentic RAG Dashboard with your credentials.
+		- Log in to the Agentic RAG Dashboard.
 		- Copy NucliaDB API endpoint
-		- Paste the URL without the path in SF: **Advanced Settings -> AgenticRAG -> Base URL**
+		- In Sitefinity, navigate to: **Administration → Settings → Advanced → AgenticRAG → Base URL**
+		- Paste the copied endpoint without the path.
 
-## Setup Knowledge box
+## Configure Knowledge Box
     - Knowledge box ID
-        - Log in to the Agentic RAG Dashboard with your credentials.
-        - Copy Knowledge Box UID
-        - Paste the ID in SF: **Advanced Settings -> AgenticRAG -> Knowledge Boxes -> KnowledgeBoxId**
+		- Log in to the Agentic RAG Dashboard.
+        - Copy the Knowledge Box UID.
+		- In Sitefinity, navigate to: **Administration → Settings → Advanced → AgenticRAG → Knowledge Boxes -> KnowledgeBoxId**.
+		- Paste the copied UID.
 
     - Knowledge box API key
-        - Log in to the Agentic RAG Dashboard with your credentials.
-        - Go to Advanced -> API keys
-        - Create a new API key and copy it
-        - Paste the key in SF: **Advanced Settings -> AgenticRAG -> Knowledge Boxes -> KnowledgeBoxKey**
+		- In the Agentic RAG Dashboard, go to Advanced → API Keys.
+        - Create a new API key and copy it.      
+		- In Sitefinity, navigate to: **Administration → Settings → Advanced → AgenticRAG → Knowledge Boxes -> KnowledgeBoxKey**.
+        - Paste the copied API key.
 
-## Setup Assistant settings
-	- AdminApiBaseUrl - https://api.sitefinity.cloud/Version
-	- CdnHostName - **cdn.assistant.api.sitefinity.cloud**
-	- CdnRootFolderRelativePath - **prod**
+## Configure Assistant Settings
+In Sitefinity, configure the following values under: **Administration → Settings → Advanced → AgenticRAG → Assistant**
 
-## Setup security headers
-Go to Administration -> Settings -> Basic -> Web Security. Click **edit** on Trusted sources. Paste the value from **CdnHostName** under sections **Scripts**, **Styles** and **Images**
+| Setting                       | Value                                  |
+| ----------------------------- | -------------------------------------- |
+| **AdminApiBaseUrl**           | `https://api.sitefinity.cloud/Version` |
+| **CdnHostName**               | `cdn.assistant.api.sitefinity.cloud`   |
+| **CdnRootFolderRelativePath** | `prod`                                 |
+
+
+## Configure Security Headers
+- Navigate to **Administration → Settings → Basic → Web Security**.
+- Click Edit under Trusted Sources.
+- Add the value from CdnHostName (cdn.assistant.api.sitefinity.cloud) under the following sections:
+	- Scripts
+	- Styles
+	- Images
+	
