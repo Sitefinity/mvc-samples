@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARAGCore", "PARAGCore\PARAGCore.csproj", "{F1B9546C-B0A6-46A7-BFB8-EA513796FE72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARAGAssistantWidget", "PARAGAssistantWidget\PARAGAssistantWidget.csproj", "{C64DAC2E-21C2-41C7-8985-64156A4D8794}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1B9546C-B0A6-46A7-BFB8-EA513796FE72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B9546C-B0A6-46A7-BFB8-EA513796FE72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B9546C-B0A6-46A7-BFB8-EA513796FE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B9546C-B0A6-46A7-BFB8-EA513796FE72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64DAC2E-21C2-41C7-8985-64156A4D8794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64DAC2E-21C2-41C7-8985-64156A4D8794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64DAC2E-21C2-41C7-8985-64156A4D8794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64DAC2E-21C2-41C7-8985-64156A4D8794}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61E44736-B4D0-4253-BE8C-F140D452629A}
+	EndGlobalSection
+EndGlobal
