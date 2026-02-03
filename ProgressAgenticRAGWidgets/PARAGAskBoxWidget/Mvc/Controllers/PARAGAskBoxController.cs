@@ -38,8 +38,6 @@ namespace PARAGAskBoxWidget.Mvc.Controllers
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection(SetupSectionName, 1)]
         [DisplayName("Search configuration")]
         [Description("[{\"Type\":1,\"Chunks\":[{\"Value\":\"A saved set of search settings that the AI uses to find content.\",\"Presentation\":[]}]},{\"Type\":1,\"Chunks\":[{\"Value\":\"Can be found in Progress Agentic Rag portal \",\"Presentation\":[]},{\"Value\":\"Search > Saved configurations\",\"Presentation\":[3]}]}]")]
-        [DataType(customDataType: KnownFieldTypes.Choices)]
-        [Choice(ServiceUrl = "/Default.GetSearchConfigurations(knowledgeBoxName=\'{0}\')", ServiceCallParameters = "[{ \"knowledgeBoxName\" : \"{0}\"}]")]
         public string ConfigurationName { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection(SetupSectionName, 2)]
