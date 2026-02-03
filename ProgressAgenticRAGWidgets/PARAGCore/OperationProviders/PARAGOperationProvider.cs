@@ -26,8 +26,8 @@ namespace PARAGCore.OperationProviders
                 assistantVersionOperation.IsAllowedUnauthorized = true;
 
                 var getPARAGSuggestions = OperationData.Create(this.GetPARAGSuggestions);
-                assistantVersionOperation.OperationType = OperationType.Unbound;
-                assistantVersionOperation.IsAllowedUnauthorized = true;
+                getPARAGSuggestions.OperationType = OperationType.Unbound;
+                getPARAGSuggestions.IsAllowedUnauthorized = true;
 
                 return new[] { getConfiguredKnowledgeBoxesOperation, assistantVersionOperation, getPARAGSuggestions };
             }
