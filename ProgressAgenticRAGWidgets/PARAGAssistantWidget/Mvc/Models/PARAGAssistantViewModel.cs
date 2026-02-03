@@ -25,7 +25,6 @@ namespace PARAGAssistantWidget.Mvc.Models
             string customCss,
             string cssClass,
             string serviceUrl,
-            string cdnUrlFormatString,
             string chatServiceName)
         {
             this.KnowledgeBoxName = knowledgeBoxName;
@@ -38,7 +37,6 @@ namespace PARAGAssistantWidget.Mvc.Models
             this.Placeholder = placeholder;
             this.CustomCss = customCss;
             this.CssClass = cssClass;
-            this.cdnUrlFormatString = cdnUrlFormatString;
             this.AssistantDisplayName = string.IsNullOrWhiteSpace(nickname) ? NicknameDefaultValue : nickname;
             this.ContainerId = string.IsNullOrWhiteSpace(containerId) ? DefaultContainerId : containerId;
             this.Notice = string.IsNullOrWhiteSpace(notice) ? NoticeDefaultValue : notice;
@@ -89,11 +87,6 @@ namespace PARAGAssistantWidget.Mvc.Models
         public string CustomCss { get; set; }
 
         public string CssClass { get; set; }
-
-        public string GetCdnUrl(string cdnFile)
-        {
-            return string.Format(this.cdnUrlFormatString, cdnFile);
-        }
 
         private void SetImageUrl(MixedContentContext image, string propName)
         {

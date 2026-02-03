@@ -25,7 +25,11 @@ namespace PARAGCore.OperationProviders
                 assistantVersionOperation.OperationType = OperationType.Unbound;
                 assistantVersionOperation.IsAllowedUnauthorized = true;
 
-                return new[] { getConfiguredKnowledgeBoxesOperation, assistantVersionOperation };
+                var getPARAGSuggestions = OperationData.Create(this.GetPARAGSuggestions);
+                assistantVersionOperation.OperationType = OperationType.Unbound;
+                assistantVersionOperation.IsAllowedUnauthorized = true;
+
+                return new[] { getConfiguredKnowledgeBoxesOperation, assistantVersionOperation, getPARAGSuggestions };
             }
 
             return Enumerable.Empty<OperationData>();
@@ -76,6 +80,26 @@ namespace PARAGCore.OperationProviders
                 var config = Config.Get<AgenticRAGConfig>().AssistantConfig;
                 var adminAPIBaseUrl = config.AdminApiBaseUrl;
                 return this.CallVersionInfoEndpoint(adminAPIBaseUrl);
+            }
+            catch (Exception err)
+            {
+                Exceptions.HandleException(err, ExceptionPolicyName.IgnoreExceptions);
+                return null;
+            }
+        }
+
+        private IList<string> GetPARAGSuggestions(OperationContext context = null)
+        {
+            var queryParams = context.GetQueryParams();
+            queryParams.TryGetValue("knowledgeBoxName", out var knowledgeBoxName);
+            queryParams.TryGetValue("searchQuery", out var searchText);
+
+            try
+            {
+                var client = ObjectFactory.Resolve<IPARAGAssistantClient>();
+                var result = client.GetSuggestionsAsync(knowledgeBoxName, searchText).ConfigureAwait(false).GetAwaiter().GetResult();
+                var suggestions = result.Entities.Entities.Select(x => x.Value).Concat(result.Paragraphs.Results.Select(x => x.Text));
+                return suggestions.ToList();
             }
             catch (Exception err)
             {

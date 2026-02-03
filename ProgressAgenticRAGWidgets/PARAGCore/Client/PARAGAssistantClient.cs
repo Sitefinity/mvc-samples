@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using PARAGCore.Clients.Models.Serialization;
 using PARAGCore.Configuration;
 using PARAGCore.Controllers;
+using PARAGCore.OperationProviders;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -26,6 +27,7 @@ namespace PARAGCore.Client
             HttpClient = sharedHttpClient;
         }
 
+        /// <inheritdoc/>
         public async Task<HttpResponseMessage> AskAsync(AskRequestDto request)
         {
             var knowledgeBoxName = request.KnowledgeBoxName;
@@ -40,6 +42,7 @@ namespace PARAGCore.Client
                 request).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        /// <inheritdoc/>
         public async Task<string> SendFeedbackAsync(FeedbackRequestDto request)
         {
             var knowledgeBoxName = request.KnowledgeBoxName;
@@ -52,6 +55,15 @@ namespace PARAGCore.Client
                 "feedback",
                 HttpMethod.Post,
                 request).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+
+        /// <inheritdoc/>
+        public Task<SuggestionsDto> GetSuggestionsAsync(string knowledgeBoxName, string searchQuery)
+        {
+            return this.SendKBRequestAsync<SuggestionsDto>(
+                knowledgeBoxName,
+                $"suggest?query={searchQuery}&fields=a/title&features=entities&features=paragraph",
+                HttpMethod.Get);
         }
 
         private async Task<Dictionary<string, string>> SetAuthHeaders(Dictionary<string, string> headers, string knowledgeBoxName)
