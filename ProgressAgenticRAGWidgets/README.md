@@ -5,6 +5,7 @@ This guide demonstrates how to create and configure a set of custom widgets powe
 
 ## Available Widgets
 - AI Assistant Chat
+- AI Ask Box
 
 # Installing the widgets
 
