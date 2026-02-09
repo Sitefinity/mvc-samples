@@ -15,7 +15,7 @@ namespace PARAGAskBoxWidget.Mvc.Controllers
 {
     [Telerik.Sitefinity.Mvc.ControllerToolboxItem(
         Name = WidgetName,
-        Title = "PARAG ask box",
+        Title = "AI ask box",
         SectionName = SectionName,
         CssClass = WidgetIconCssClass)]
     public class PARAGAskBoxController : Controller, IPersonalizable, ICustomWidgetVisualizationExtended
