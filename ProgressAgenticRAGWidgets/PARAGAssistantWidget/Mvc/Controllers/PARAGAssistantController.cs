@@ -1,5 +1,5 @@
-﻿using PARAGCore.Configuration;
-using PARAGAssistantWidget.Mvc.Models;
+﻿using PARAGAssistantWidget.Mvc.Models;
+using PARAGCore.Configuration;
 using PARAGCore.OperationProviders;
 using Progress.Sitefinity.Renderer.Designers;
 using Progress.Sitefinity.Renderer.Designers.Attributes;
@@ -13,6 +13,7 @@ using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Mvc;
 using Telerik.Sitefinity.Personalization;
+using Telerik.Sitefinity.Web;
 using Telerik.Sitefinity.Web.UI;
 
 namespace PARAGAssistantWidget.Mvc.Controllers
@@ -179,7 +180,7 @@ namespace PARAGAssistantWidget.Mvc.Controllers
                 this.Notice,
                 this.CustomCss,
                 this.CssClass,
-                "/parag/",
+                RouteHelper.ResolveUrl("/parag/", UrlResolveOptions.Rooted),
                 "ProgressARAGChatService");
 
             return View("Index", viewModel);

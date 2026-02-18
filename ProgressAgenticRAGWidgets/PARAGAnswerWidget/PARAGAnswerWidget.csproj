@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{76B0C7C8-6BFF-485E-B13B-9EF5A0ED8199}</ProjectGuid>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PARAGAskBoxWidget</RootNamespace>
-    <AssemblyName>PARAGAskBoxWidget</AssemblyName>
+    <RootNamespace>PARAGAnswerWidget</RootNamespace>
+    <AssemblyName>PARAGAnswerWidget</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -265,18 +265,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvc\Controllers\PARAGAskBoxController.cs" />
-    <Compile Include="Mvc\Models\AskBoxViewModel.cs" />
+    <Compile Include="Mvc\Controllers\PARAGAnswerController.cs" />
+    <Compile Include="Mvc\Models\AnswerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EmbeddedResource Include="Mvc\Views\PARAGAskBox\Default.cshtml" />
+    <EmbeddedResource Include="Mvc\Views\PARAGAnswer\Default.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.7.406.17\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
-    <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.7.406.17\analyzers\dotnet\cs\SharedAnalysisCode.dll" />
     <Analyzer Include="..\packages\AWSSDK.S3.3.7.405.10\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
     <Analyzer Include="..\packages\AWSSDK.S3.3.7.405.10\analyzers\dotnet\cs\SharedAnalysisCode.dll" />
     <Analyzer Include="..\packages\AWSSDK.SQS.3.7.400.129\analyzers\dotnet\cs\AWSSDK.SQS.CodeAnalysis.dll" />
