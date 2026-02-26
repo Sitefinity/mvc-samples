@@ -11,6 +11,21 @@ namespace PARAGCore.Configuration
         {
         }
 
+        [ObjectInfo(Title = "Base Url")]
+        [ConfigurationProperty(PropertyNames.BaseUrl)]
+        public string BaseUrl
+        {
+            get
+            {
+                return (string)this[PropertyNames.BaseUrl];
+            }
+
+            set
+            {
+                this[PropertyNames.BaseUrl] = value;
+            }
+        }
+
         [ObjectInfo(Title = "Knowledge box name")]
         [ConfigurationProperty(PropertyNames.KnowledgeBoxName, IsRequired = true, IsKey = true, DefaultValue = "")]
         public string KnowledgeBoxName
@@ -62,6 +77,7 @@ namespace PARAGCore.Configuration
             public const string KnowledgeBoxId = "knowledgeBoxId";
             public const string KnowledgeBoxToken = "knowledgeBoxToken";
             public const string KnowledgeBoxName = "knowledgeBoxName";
+            public const string BaseUrl = "baseUrl";
         }
     }
 }

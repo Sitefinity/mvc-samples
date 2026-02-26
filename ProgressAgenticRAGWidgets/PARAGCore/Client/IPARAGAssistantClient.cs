@@ -27,5 +27,12 @@ namespace PARAGCore.Client
         /// <param name="knowledgeBoxName">The name of the Knowledge Box.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains a dictionary of search configuration settings.</returns>
         Task<SuggestionsDto> GetSuggestionsAsync(string knowledgeBoxName, string searchQuery);
+
+        /// <summary>
+        /// Performs a find operation in the specified Knowledge Box using the provided query model.
+        /// </summary>
+        /// <param name="findQueryModel">The query model containing search parameters.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the search response.</returns>
+        Task<FindResponseDto> FindAsync(FindRequestDto findQueryModel);
     }
 }

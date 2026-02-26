@@ -10,7 +10,6 @@ namespace PARAGCore
     {
         private const string AdminApiBaseUrlPropertyName = "adminApiBaseUrl";
         private const string CdnHostNamePropertyName = "cdnHostName";
-        private const string CdnRootFolderRelativePathPropertyName = "cdnRootFolderRelativePath";
 
         public static string GetCdnUrl(string cdnFile)
         {
@@ -37,14 +36,10 @@ namespace PARAGCore
             }
 
             string cdnHostName = (string)assistantProp[CdnHostNamePropertyName];
-            string cdnRootFolderRelativePath = (string)assistantProp[CdnRootFolderRelativePathPropertyName];
-            string rootRelativePath = cdnRootFolderRelativePath == null ?
-                "staticfiles/" :
-                (string.IsNullOrEmpty(cdnRootFolderRelativePath) ? string.Empty : $"{cdnRootFolderRelativePath.Trim('/')}/");
             string versionSuffix = string.IsNullOrEmpty(version) ? string.Empty : $"?ver={version}";
             string placeholder = "{0}";
 
-            return $"https://{cdnHostName}/{rootRelativePath}{placeholder}{versionSuffix}";
+            return $"https://{cdnHostName}/{placeholder}{versionSuffix}";
         }
 
         private static VersionInfoDto RetrieveVersionInfo(string adminAPIBaseUrl)

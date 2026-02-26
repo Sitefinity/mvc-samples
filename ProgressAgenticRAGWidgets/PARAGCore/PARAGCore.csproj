@@ -237,6 +237,8 @@
     <Compile Include="Controllers\AgenticRagController.cs" />
     <Compile Include="Controllers\AskRequestDto.cs" />
     <Compile Include="Controllers\FeedbackRequestDto.cs" />
+    <Compile Include="Controllers\FindRequestDto.cs" />
+    <Compile Include="Controllers\FindResponseDto.cs" />
     <Compile Include="Controllers\InteractionDto.cs" />
     <Compile Include="HtmlHelpers.cs" />
     <Compile Include="OperationProviders\KnowledgeBoxDto.cs" />
