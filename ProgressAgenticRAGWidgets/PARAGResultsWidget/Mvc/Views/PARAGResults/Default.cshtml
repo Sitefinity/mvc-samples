@@ -1,0 +1,36 @@
+@using Telerik.Sitefinity.Services
+@using PARAGCore
+@model PARAGAskBoxWidget.Mvc.Models.AskBoxViewModel
+
+@if (!string.IsNullOrEmpty(Model.KnowledgeBoxName))
+{
+    if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode)
+    {
+        <div style="padding: 10px;">
+            <div style="background-color:#dcecf5; padding: 10px; border-radius: 5px;">
+                <p style="margin: 0;">AI ask box is configured.</p>
+                <p style="margin: 0;">Use "Preview" to check widgets's display on the page.</p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="@Model.CssClass"
+             data-sf-search-autocomplete-item-class="dropdown-item text-truncate"
+             data-sf-visibility-hidden="d-none"
+             data-sf-active-class="active">
+            <sf-parag-search-box knowledge-box-name="@Model.KnowledgeBoxName"
+                                 results-page-url="@Model.ResultsPageUrl"
+                                 search-configuration-name="@Model.SearchConfigurationName"
+                                 placeholder="@Model.Placeholder"
+                                 button-label="@Model.ButtonLabel"
+                                 suggestions-label="@Model.SuggestionsLabel"
+                                 suggestions="@Model.Suggestions"
+                                 suggestions-trigger-char-count="3"
+                                 suggestions-service-path="api/default">
+            </sf-parag-search-box>
+        </div>
+
+        <script src="@HtmlHelpers.GetCdnUrl("sf-parag-search-box.js")" type="text/javascript" defer></script>
+    }
+}

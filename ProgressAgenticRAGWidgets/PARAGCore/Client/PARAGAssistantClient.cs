@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using PARAGCore.Clients.Models.Serialization;
+﻿using PARAGCore.Clients.Models.Serialization;
 using PARAGCore.Configuration;
 using PARAGCore.Controllers;
 using PARAGCore.OperationProviders;
@@ -10,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telerik.Sitefinity.Configuration;
 
@@ -160,16 +158,7 @@ namespace PARAGCore.Client
             // Add payload for POST/PUT/PATCH requests
             if (payload != null && (method == HttpMethod.Post || method == HttpMethod.Put))
             {
-                string json;
-                if (payload is JObject jobject)
-                {
-                    json = jobject.ToString();
-                }
-                else
-                {
-                    json = PARAGJSONSerializer.Serialize(payload);
-                }
-
+                string json = PARAGJSONSerializer.Serialize(payload);
                 request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             }
 
