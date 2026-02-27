@@ -43,7 +43,7 @@ namespace PARAGAnswerWidget.Mvc.Controllers
         [DefaultValue(true)]
         [DataType(customDataType: KnownFieldTypes.CheckBox)]
         [Group("Include...")]
-        public bool ShowSearchedPhrase { get; set; }
+        public bool? ShowSearchedPhrase { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection(SetupSectionName, 3)]
         [DisplayName("Sources")]
@@ -51,7 +51,7 @@ namespace PARAGAnswerWidget.Mvc.Controllers
         [DefaultValue(true)]
         [DataType(customDataType: KnownFieldTypes.CheckBox)]
         [Group("Include...")]
-        public bool ShowSources { get; set; }
+        public bool? ShowSources { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection(SetupSectionName, 4)]
         [DisplayName("Notice")]
@@ -59,7 +59,7 @@ namespace PARAGAnswerWidget.Mvc.Controllers
         [DefaultValue(true)]
         [DataType(customDataType: KnownFieldTypes.CheckBox)]
         [Group("Include...")]
-        public bool ShowNotice { get; set; }
+        public bool? ShowNotice { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection(SetupSectionName, 6)]
         [DisplayName("Enable visitor feedback")]
@@ -136,13 +136,13 @@ namespace PARAGAnswerWidget.Mvc.Controllers
             {
                 Title = !string.IsNullOrEmpty(this.Title) ? this.Title : "AI answer",
                 AssistantAvatarUrl = this.GetImageUrl(this.AssistantAvatar),
-                ShowSources = this.ShowSources,
-                Notice = this.ShowNotice ?
+                ShowSources = this.ShowSources.HasValue ? this.ShowSources.Value : true,
+                Notice = this.ShowNotice.HasValue && this.ShowNotice.Value ?
                     !string.IsNullOrEmpty(this.Notice) ? this.Notice : "AI answer may contain mistakes." :
                     null,
                 ShowFeedback = this.ShowFeedback.HasValue ? this.ShowFeedback.Value : true,
                 CssClass = this.CssClass,
-                SearchedPhraseLabel = this.ShowSearchedPhrase ?
+                SearchedPhraseLabel = this.ShowSearchedPhrase.HasValue && this.ShowSearchedPhrase.Value ?
                     !string.IsNullOrEmpty(this.SearchedPhraseLabel) ? this.SearchedPhraseLabel : "Answer for \"{0}\"" :
                     null,
                 PositiveFeedbackTooltip = !string.IsNullOrEmpty(this.PositiveFeedbackTooltip) ? this.PositiveFeedbackTooltip : "Helpful",

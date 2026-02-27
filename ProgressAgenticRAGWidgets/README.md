@@ -6,13 +6,15 @@ This guide demonstrates how to create and configure a set of custom widgets powe
 ## Available Widgets
 - AI Assistant Chat
 - AI Ask Box
+- AI Answer
+- AI Search Results
 
 # Installing the widgets
 
 Follow these steps to install the custom Agentic RAG widgets in your Sitefinity application:
 
 1. Clone the [mvc-samples](https://github.com/Sitefinity/mvc-samples) repository.
-2. Check Sitefinity NuGet versions - Ensure that the Sitefinity NuGet package versions used in the sample match those used in your project.If they differ, update the NuGet references in the widget project to match your Sitefinity version.
+2. Check Sitefinity NuGet versions - Ensure that the Sitefinity NuGet package versions used in the sample match those used in your project. If they differ, update the NuGet references in the widget project to match your Sitefinity version.
 3. Build the desired widget's project.
 4. Reference the DLLs - Add references to the generated DLLs in your Sitefinity web application.
 5. Create a **Global.asax.cs** file - If your Sitefinity web application doesn’t already include one, create a Global.asax.cs file.

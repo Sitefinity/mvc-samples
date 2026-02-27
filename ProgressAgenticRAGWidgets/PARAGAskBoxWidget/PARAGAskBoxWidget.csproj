@@ -287,6 +287,9 @@
       <Name>PARAGCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mvc\Scripts\PARAGAskBox\ask-box.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Telerik.Licensing.1.6.24\build\Telerik.Licensing.targets" Condition="Exists('..\packages\Telerik.Licensing.1.6.24\build\Telerik.Licensing.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

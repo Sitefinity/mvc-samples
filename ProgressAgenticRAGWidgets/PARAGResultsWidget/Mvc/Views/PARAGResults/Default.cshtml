@@ -1,36 +1,57 @@
 @using Telerik.Sitefinity.Services
 @using PARAGCore
-@model PARAGAskBoxWidget.Mvc.Models.AskBoxViewModel
+@using Telerik.Sitefinity.Frontend.Mvc.Helpers;
+@model PARAGResultsWidget.Mvc.Models.ResultsViewModel
 
-@if (!string.IsNullOrEmpty(Model.KnowledgeBoxName))
+@if ((SystemManager.IsDesignMode && !SystemManager.IsPreviewMode) || Model.SearchResults != null)
 {
-    if (SystemManager.IsDesignMode && !SystemManager.IsPreviewMode)
-    {
-        <div style="padding: 10px;">
-            <div style="background-color:#dcecf5; padding: 10px; border-radius: 5px;">
-                <p style="margin: 0;">AI ask box is configured.</p>
-                <p style="margin: 0;">Use "Preview" to check widgets's display on the page.</p>
+    <div class="@Model.CssClass" data-sf-role='ai-results'>
+        <div class="d-flex align-items-center justify-content-between my-3">
+            <h1 role="alert" aria-live="assertive">@Model.ResultsHeader</h1>
+        </div>
+        <div>
+            <h4>@(Model.SearchResults?.Count() ?? 0) @Model.ResultsNumberLabel</h4>
+        </div>
+        @if (Model.SearchResults != null)
+        {
+            <div class="mt-5" data-sf-hide-while-loading="true">
+                @foreach (var item in Model.SearchResults)
+                {
+                    bool hasLink = !string.IsNullOrEmpty(item.Link);
+                    <div class="mb-5" data-sf-role="result-item" style="display:none">
+                        <div>
+                            <h3 class="mb-1">@item.Title</h3>
+                            @if (hasLink)
+                            {
+                                <a class="text-decoration-none" href="@item.Link">@item.Link</a>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-    }
-    else
-    {
-        <div class="@Model.CssClass"
-             data-sf-search-autocomplete-item-class="dropdown-item text-truncate"
-             data-sf-visibility-hidden="d-none"
-             data-sf-active-class="active">
-            <sf-parag-search-box knowledge-box-name="@Model.KnowledgeBoxName"
-                                 results-page-url="@Model.ResultsPageUrl"
-                                 search-configuration-name="@Model.SearchConfigurationName"
-                                 placeholder="@Model.Placeholder"
-                                 button-label="@Model.ButtonLabel"
-                                 suggestions-label="@Model.SuggestionsLabel"
-                                 suggestions="@Model.Suggestions"
-                                 suggestions-trigger-char-count="3"
-                                 suggestions-service-path="api/default">
-            </sf-parag-search-box>
-        </div>
 
-        <script src="@HtmlHelpers.GetCdnUrl("sf-parag-search-box.js")" type="text/javascript" defer></script>
-    }
+            <div class="d-flex align-items-center justify-content-between" data-sf-role="pager-container" style="display:none !important">
+                <div>
+                    <nav role="navigation" aria-label="Pagination">
+                        <ul class="pagination" data-sf-role="pagination">
+                        </ul>
+                    </nav>
+                </div>
+                <div class="mb-3">
+                    <em class="text-muted"><span data-sf-role="pager-summary"></span> <span>of @Model.SearchResults.Count() @Model.ResultsNumberLabel</span> </em>
+                </div>
+            </div>
+        }
+
+        @if (!SystemManager.IsDesignMode || SystemManager.IsPreviewMode)
+        {
+            <script type="application/json" data-sf-role="ai-results-data">
+                {
+                    "pageSize": @Model.PageSize
+                }
+            </script>
+
+            @Html.Script(Url.WidgetContent("Mvc/Scripts/PARAGResults/search-results.js"), "bottom", false)
+        }
+    </div>
 }
