@@ -24,6 +24,7 @@ namespace SitefinityWebApp
             ObjectFactory.Container.RegisterType<IPARAGAssistantClient, PARAGAssistantClient>(new ContainerControlledLifetimeManager());
             ObjectFactory.Container.RegisterType(typeof(IOperationProvider), typeof(PARAGOperationProvider), typeof(PARAGOperationProvider).Name);
 
+            // Install 'Microsoft.AspNet.WebApi.Core' and 'Microsoft.AspNet.WebApi.WebHost' NuGet packages to your project to use the following code for Web API configuration.
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
                 name: "parag",
                 routeTemplate: "parag/{action}",
