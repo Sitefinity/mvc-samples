@@ -22,7 +22,11 @@ Follow these steps to install the custom Progress Agentic RAG widgets in your Si
 5. Create a `Global.asax.cs` file, if your Sitefinity web application doesn’t already include one.
 6. Configure the `Global.asax.cs` file
 	1. Modify its contents to match the sample located at: `{{PROJECT_NAME}}/SitefinityWebApp/Global.asax.cs`
-7. If you are using a Sitefinity version >= 15.4.8623 disable the `Progress Agentic RAG connector` module
+7. If you are using a Sitefinity version >= 15.4.8623 you should do one of the following:
+	- If you want to use the sample widgets instead of the built-in ones, disable the `Progress Agentic RAG connector` module.
+	- If you want to use a mix of the sample and the built-in widgets:
+		- remove the `PARAGOperationProvider` registration from the `Global.asax.cs` file.
+		- populate the _PARAG_ and the _AgenticRAG_ configurations with the same values.
 8. Rebuild your Sitefinity web application
 
 > **RESULT**: After rebuilding your project, the new widgets will appear in your Sitefinity Page Toolbox.
@@ -39,7 +43,7 @@ Before you can use Progress Agentic RAG, you must configure the respective setti
 1. In the Agentic RAG Dashboard, navigate to _Advanced » API Keys_
 1. Create a new API key, copy it, and save it somewhere, for example &ndash; in Notepad.
 1. In Sitefinity CMS backend, navigate to _Administration » Settings » Advanced_.
-1. In the tree on the left, expand the _AgenticRAG » Knowledge Boxes_ node.
+1. In the tree on the left, expand the _PARAG » Knowledge Boxes_ node.
 1. Click _Create new_.
 1. In _Base URL_, paste the endpoint you from _Step 2_.<br>
 	For example, <code>https://europe-1.rag.progress.cloud</code>.
@@ -52,7 +56,7 @@ Before you can use Progress Agentic RAG, you must configure the respective setti
 To configure the Sitefinity AI Assistant settings, perform the following:
 
 1. In Sitefinity CMS backend, navigate to _Administration » Settings » Advanced_.
-1. In the tree on the left, expand the _AgenticRAG » Assistant_ node.
+1. In the tree on the left, expand the _PARAG » Assistant_ node.
 1. In _AdminApiBaseUrl_ enter `https://api.sitefinity.cloud/Version`.
 1. In _CdnHostName_ enter `cdn.assistant.cloud.sitefinity.com`.
 

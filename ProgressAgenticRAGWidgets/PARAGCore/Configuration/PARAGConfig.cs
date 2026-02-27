@@ -4,7 +4,7 @@ using Telerik.Sitefinity.Localization;
 
 namespace PARAGCore.Configuration
 {
-    public class AgenticRAGConfig : ConfigSection
+    public class PARAGConfig : ConfigSection
     {
         [ObjectInfo(Title = "Knowledge boxes")]
         [ConfigurationProperty(PropertyNames.KnowledgeBoxes)]

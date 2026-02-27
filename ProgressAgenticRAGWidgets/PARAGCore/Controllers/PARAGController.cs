@@ -10,11 +10,11 @@ using Telerik.Sitefinity.Abstractions;
 
 namespace PARAGCore.Controllers
 {
-    public class AgenticRagController : ApiController
+    public class PARAGController : ApiController
     {
         private readonly IPARAGAssistantClient client;
 
-        public AgenticRagController()
+        public PARAGController()
         {
             this.client = ObjectFactory.Resolve<IPARAGAssistantClient>();
         }

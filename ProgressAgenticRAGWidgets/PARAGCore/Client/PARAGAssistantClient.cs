@@ -83,7 +83,7 @@ namespace PARAGCore.Client
                 headers = new Dictionary<string, string>();
             }
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
             string accessKey = config.KnowledgeBoxes[knowledgeBoxName].KnowledgeBoxToken;
             headers.Add(NucliaServiceAccountHeader, $"Bearer {accessKey}");
 
@@ -99,7 +99,7 @@ namespace PARAGCore.Client
         {
             headers = await SetAuthHeaders(headers, knowledgeBoxName).ConfigureAwait(false);
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
 
             if (config.KnowledgeBoxes.TryGetValue(knowledgeBoxName, out var kbSettings))
             {
@@ -118,7 +118,7 @@ namespace PARAGCore.Client
         {
             headers = await SetAuthHeaders(headers, knowledgeBoxName).ConfigureAwait(false);
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
 
             if (config.KnowledgeBoxes.TryGetValue(knowledgeBoxName, out var kbSettings))
             {
@@ -136,7 +136,7 @@ namespace PARAGCore.Client
            Dictionary<string, string> headers = null,
            HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
         {
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
             var kb = config.KnowledgeBoxes.Values.Where(x => x.KnowledgeBoxId == knowledgeBoxId).FirstOrDefault();
 
             if (kb == null)

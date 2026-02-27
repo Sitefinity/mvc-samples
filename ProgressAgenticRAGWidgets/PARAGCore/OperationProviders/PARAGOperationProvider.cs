@@ -39,7 +39,7 @@ namespace PARAGCore.OperationProviders
         {
             IPARAGAssistantClient client = Telerik.Sitefinity.Abstractions.ObjectFactory.Resolve<IPARAGAssistantClient>();
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
             return config.KnowledgeBoxes
                 .AsQueryable<KeyValuePair<string, KnowledgeBoxSettings>>()
                 .ToList()
@@ -77,7 +77,7 @@ namespace PARAGCore.OperationProviders
         {
             try
             {
-                var config = Config.Get<AgenticRAGConfig>().AssistantConfig;
+                var config = Config.Get<PARAGConfig>().AssistantConfig;
                 var adminAPIBaseUrl = config.AdminApiBaseUrl;
                 return this.CallVersionInfoEndpoint(adminAPIBaseUrl);
             }

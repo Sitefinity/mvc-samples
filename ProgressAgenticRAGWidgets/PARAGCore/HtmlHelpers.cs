@@ -20,7 +20,7 @@ namespace PARAGCore
         internal static string BuildCdnUrlFormatString()
         {
             var manager = ConfigManager.GetManager();
-            var section = manager.GetSection("AgenticRAGConfig");
+            var section = manager.GetSection("PARAGConfig");
             var assistantProp = section["assistant"] as ConfigElement;
 
             string version = null;
