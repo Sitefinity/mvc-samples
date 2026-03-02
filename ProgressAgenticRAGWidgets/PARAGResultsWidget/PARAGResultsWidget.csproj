@@ -291,7 +291,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Mvc\Scripts\PARAGResults\search-results.js" />
+    <EmbeddedResource Include="Mvc\Scripts\PARAGResults\search-results.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Telerik.Licensing.1.6.24\build\Telerik.Licensing.targets" Condition="Exists('..\packages\Telerik.Licensing.1.6.24\build\Telerik.Licensing.targets')" />

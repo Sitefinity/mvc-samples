@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace PARAGCore.Controllers
@@ -7,24 +7,23 @@ namespace PARAGCore.Controllers
     public class AskRequestDto
     {
         [JsonPropertyName("knowledgeBoxName")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "KB Id is required.")]
         public string KnowledgeBoxName { get; set; }
 
         [JsonPropertyName("query")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Query is required.")]
-        [RegularExpression(@"^.{1,20000}$", ErrorMessage = "Query is too long.")]
         public string Query { get; set; }
 
+        [JsonProperty("chat_history")]
         [JsonPropertyName("chat_history")]
         public List<InteractionDto> ChatHistory { get; set; } = new List<InteractionDto>();
 
+        [JsonProperty("search_configuration")]
         [JsonPropertyName("search_configuration")]
         public string ConfigurationName { get; set; }
 
         [JsonPropertyName("citations")]
-        public string ShowSources { get; set; }
+        public string Citations { get; set; }
 
         [JsonPropertyName("show")]
-        public string[] ShowOptions { get; set; }
+        public string[] Show { get; set; }
     }
 }
