@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace PARAGCore.Controllers
@@ -12,11 +11,9 @@ namespace PARAGCore.Controllers
         [JsonPropertyName("query")]
         public string Query { get; set; }
 
-        [JsonProperty("chat_history")]
         [JsonPropertyName("chat_history")]
         public List<InteractionDto> ChatHistory { get; set; } = new List<InteractionDto>();
 
-        [JsonProperty("search_configuration")]
         [JsonPropertyName("search_configuration")]
         public string ConfigurationName { get; set; }
 

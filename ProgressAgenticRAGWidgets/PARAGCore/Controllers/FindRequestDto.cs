@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace PARAGCore.Controllers
 {
@@ -15,11 +14,9 @@ namespace PARAGCore.Controllers
         public string[] Show { get; set; }
 
         [JsonPropertyName("top_k")]
-        [JsonProperty("top_k")]
         public int Take { get; set; }
 
         [JsonPropertyName("search_configuration")]
-        [JsonProperty("search_configuration")]
         public string ConfigurationName { get; set; }
     }
 }
