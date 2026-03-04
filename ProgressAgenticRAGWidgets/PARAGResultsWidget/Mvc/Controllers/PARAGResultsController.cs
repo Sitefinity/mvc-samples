@@ -1,4 +1,5 @@
-﻿using PARAGCore.Controllers;
+﻿using Newtonsoft.Json;
+using PARAGCore.Controllers;
 using PARAGResultsWidget.Mvc.Models;
 using Progress.Sitefinity.Renderer.Designers;
 using System;
@@ -157,7 +158,7 @@ namespace PARAGResultsWidget.Mvc.Controllers
                     Show = new string[] { "basic", "origin", "values" }
                 };
 
-                request.Content = new StringContent(JsonSerializer.Serialize(findRequest), Encoding.UTF8, "application/json");
+                request.Content = new StringContent(JsonConvert.SerializeObject(findRequest), Encoding.UTF8, "application/json");
 
                 var httpResponseMessage = this.httpClient.SendAsync(request).GetAwaiter().GetResult();
                 httpResponseMessage.EnsureSuccessStatusCode();
