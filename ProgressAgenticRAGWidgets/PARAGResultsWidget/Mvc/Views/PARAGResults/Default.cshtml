@@ -10,7 +10,7 @@
             <h1 role="alert" aria-live="assertive">@Model.ResultsHeader</h1>
         </div>
         <div>
-            <h4>@(Model.SearchResults?.Count() ?? 0) @Model.ResultsNumberLabel</h4>
+            <h4>@(Model.SearchResults != null ? Model.SearchResults.Count() : 0) @Model.ResultsNumberLabel</h4>
         </div>
         @if (Model.SearchResults != null)
         {

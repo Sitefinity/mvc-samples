@@ -10,7 +10,6 @@ namespace PARAGCore.Clients.Models.Serialization
         {
             var jsonSerializerOptions = new JsonSerializerOptions
             {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
                 PropertyNamingPolicy = null,
                 // ensures Dictionary keys are serialized as is. 
                 DictionaryKeyPolicy = null,
