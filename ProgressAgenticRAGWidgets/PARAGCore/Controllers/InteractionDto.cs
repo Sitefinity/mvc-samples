@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace PARAGCore.Controllers
 {
     public class InteractionDto
     {
-        [JsonProperty("author")]
+        [JsonPropertyName("author")]
         public string Author { get; set; }
 
-        [JsonProperty("text")]
+        [JsonPropertyName("text")]
         public string Text { get; set; }
     }
 }

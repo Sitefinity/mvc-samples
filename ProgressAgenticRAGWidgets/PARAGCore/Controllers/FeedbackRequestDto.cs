@@ -1,26 +1,22 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Text.Json.Serialization;
 
 namespace PARAGCore.Controllers
 {
     public class FeedbackRequestDto
     {
-        [JsonProperty("knowledgeBoxName")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "KB Id is required.")]
+        [JsonPropertyName("knowledgeBoxName")]
         public string KnowledgeBoxName { get; set; }
 
-        [JsonProperty("ident")]
-        [Required(ErrorMessage = "Id is required")]
-        public string Id { get; set; }
+        [JsonPropertyName("ident")]
+        public string Ident { get; set; }
 
-        [JsonProperty("good")]
-        [Required(ErrorMessage = "Is good value is required")]
-        public bool IsGood { get; set; }
+        [JsonPropertyName("good")]
+        public bool Good { get; set; }
 
-        [JsonProperty("feedback")]
+        [JsonPropertyName("feedback")]
         public string Feedback { get; set; }
 
-        [JsonProperty("task")]
+        [JsonPropertyName("task")]
         public string Task { get; set; }
     }
 }

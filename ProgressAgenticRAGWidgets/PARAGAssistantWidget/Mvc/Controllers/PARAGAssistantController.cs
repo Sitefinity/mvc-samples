@@ -1,5 +1,5 @@
-﻿using PARAGCore.Configuration;
-using PARAGAssistantWidget.Mvc.Models;
+﻿using PARAGAssistantWidget.Mvc.Models;
+using PARAGCore.Configuration;
 using PARAGCore.OperationProviders;
 using Progress.Sitefinity.Renderer.Designers;
 using Progress.Sitefinity.Renderer.Designers.Attributes;
@@ -13,6 +13,7 @@ using Telerik.Sitefinity.Abstractions;
 using Telerik.Sitefinity.Configuration;
 using Telerik.Sitefinity.Mvc;
 using Telerik.Sitefinity.Personalization;
+using Telerik.Sitefinity.Web;
 using Telerik.Sitefinity.Web.UI;
 
 namespace PARAGAssistantWidget.Mvc.Controllers
@@ -33,16 +34,16 @@ namespace PARAGAssistantWidget.Mvc.Controllers
         }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("AI assistant", 1)]
-        [DisplayName("Knowledge box")]
-        [Description("A knowledge box is a separate collection of content in Progress Agentic RAG. Select which collection the assistant should use to answer questions.")]
+        [DisplayName("Agentic RAG connection")]
+        [Description("[{\"Type\":1,\"Chunks\":[{\"Value\":\"A connection to a specific knowledge box in Preogress Agentic RAG. Select which connection this widget should use to search and answer questions.\",\"Presentation\":[]}]},{\"Type\":1,\"Chunks\":[{\"Value\":\"Manage connections in \",\"Presentation\":[]},{\"Value\":\"Administration > Progress Agentic Rag connections\",\"Presentation\":[3]}]}]")]
         [DataType(customDataType: KnownFieldTypes.Choices)]
         [Choice(ServiceUrl = "/Default.GetConfiguredKnowledgeBoxes()", ServiceWarningMessage = "No PARAG knowledge boxes are found.")]
-        [Placeholder("Select knowledge box")]
+        [Placeholder("Select connection")]
         public string KnowledgeBoxName { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("AI assistant", 2)]
         [DisplayName("Search configuration")]
-        [Description("The name of a saved set of search settings that the AI assistant uses to find content. Those settings are configured via the PARAG portal.")]
+        [Description("[{\"Type\":1,\"Chunks\":[{\"Value\":\"A saved set of search settings that the AI uses to find content.\",\"Presentation\":[]}]},{\"Type\":1,\"Chunks\":[{\"Value\":\"Can be found in Progress Agentic Rag portal \",\"Presentation\":[]},{\"Value\":\"Search > Saved configurations\",\"Presentation\":[3]}]}]")]
         public string ConfigurationName { get; set; }
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("AI assistant", 3)]
@@ -71,7 +72,7 @@ namespace PARAGAssistantWidget.Mvc.Controllers
 
         [Progress.Sitefinity.Renderer.Designers.Attributes.ContentSection("AI assistant", 7)]
         [DisplayName("Enable visitor feedback")]
-        [Description("If enabled, site visitors can provide feedback on the assistant answers in the chat window.")]
+        [Description("If enabled, site visitors can provide feedback on the assistant's answer in the chat window.")]
         [DefaultValue(true)]
         [DataType(customDataType: KnownFieldTypes.ChipChoice)]
         [Choice("[{\"Title\":\"Yes\",\"Name\":\"Yes\",\"Value\":\"True\",\"Icon\":null},{\"Title\":\"No\",\"Name\":\"No\",\"Value\":\"False\",\"Icon\":null}]")]
@@ -163,7 +164,6 @@ namespace PARAGAssistantWidget.Mvc.Controllers
 
         public ActionResult Index()
         {
-            var cdnUrlFormatString = BuildCdnUrlFormatString();
             var viewModel = new PARAGAssistantViewModel(
                 this.KnowledgeBoxName,
                 this.ConfigurationName,
@@ -180,8 +180,7 @@ namespace PARAGAssistantWidget.Mvc.Controllers
                 this.Notice,
                 this.CustomCss,
                 this.CssClass,
-                "/parag/",
-                cdnUrlFormatString,
+                RouteHelper.ResolveUrl("/parag/", UrlResolveOptions.Rooted),
                 "ProgressARAGChatService");
 
             return View("Index", viewModel);
@@ -207,31 +206,6 @@ namespace PARAGAssistantWidget.Mvc.Controllers
             var result = httpResponseMessage.Content.ReadAsAsync<VersionInfoDto>().GetAwaiter().GetResult();
 
             return result;
-        }
-
-        private string BuildCdnUrlFormatString()
-        {
-            var config = Config.Get<AgenticRAGConfig>();
-            string version = null;
-            try
-            {
-                var versionInfo = this.RetrieveVersionInfo(config.AssistantConfig.AdminApiBaseUrl);
-                version = versionInfo?.ProductVersion;
-            }
-            catch (Exception ex)
-            {
-                string logMessage = $"Error retrieving assistant version info. Please check the assistant configuration details: {ex.Message}";
-                Log.Write(logMessage, ConfigurationPolicy.Trace);
-            }
-
-            string cdnHostName = config.AssistantConfig.CdnHostName;
-            string rootRelativePath = config.AssistantConfig.CdnRootFolderRelativePath == null ?
-                "staticfiles/" :
-                (string.IsNullOrEmpty(config.AssistantConfig.CdnRootFolderRelativePath) ? string.Empty : $"{config.AssistantConfig.CdnRootFolderRelativePath.Trim('/')}/");
-            string versionSuffix = string.IsNullOrEmpty(version) ? string.Empty : $"?ver={version}";
-            string placeholder = "{0}";
-
-            return $"https://{cdnHostName}/{rootRelativePath}{placeholder}{versionSuffix}";
         }
     }
 }

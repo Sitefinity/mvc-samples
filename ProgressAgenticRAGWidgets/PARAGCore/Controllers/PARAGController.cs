@@ -1,21 +1,20 @@
-﻿using Newtonsoft.Json;
-using PARAGCore.Client;
-using System;
+﻿using PARAGCore.Client;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Telerik.Sitefinity.Abstractions;
 
 namespace PARAGCore.Controllers
 {
-    public class AgenticRagController : ApiController
+    public class PARAGController : ApiController
     {
         private readonly IPARAGAssistantClient client;
 
-        public AgenticRagController()
+        public PARAGController()
         {
             this.client = ObjectFactory.Resolve<IPARAGAssistantClient>();
         }
@@ -28,16 +27,8 @@ namespace PARAGCore.Controllers
                 return this.BadRequest(this.ModelState);
             }
 
-            try
-            {
-                var response = await this.client.SendFeedbackAsync(model).ConfigureAwait(false);
-                return this.Ok(response);
-            }
-            catch (Exception e)
-            {
-                Log.Write($"Error while sending feedback: {e.Message}", System.Diagnostics.TraceEventType.Error);
-                return this.InternalServerError();
-            }
+            var response = await this.client.SendFeedbackAsync(model).ConfigureAwait(false);
+            return this.Ok(response);
         }
 
         [HttpPost]
@@ -52,7 +43,7 @@ namespace PARAGCore.Controllers
                         kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
                     );
                 errorResponse.Content = new StringContent(
-                    JsonConvert.SerializeObject(errors),
+                    JsonSerializer.Serialize(errors),
                     Encoding.UTF8,
                     "application/json"
                 );
@@ -61,6 +52,18 @@ namespace PARAGCore.Controllers
 
             var response = await this.client.AskAsync(request).ConfigureAwait(false);
             return response;
+        }
+
+        [HttpPost]
+        public async Task<IHttpActionResult> Find(FindRequestDto request)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            var response = await this.client.FindAsync(request).ConfigureAwait(false);
+            return this.Ok(response);
         }
     }
 }

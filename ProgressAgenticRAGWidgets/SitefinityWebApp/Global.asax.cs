@@ -12,7 +12,6 @@ namespace SitefinityWebApp
 {
     public class Global : System.Web.HttpApplication
     {
-
         protected void Application_Start(object sender, EventArgs e)
         {
             Bootstrapper.Bootstrapped += Bootstrapper_Bootstrapped;
@@ -20,16 +19,17 @@ namespace SitefinityWebApp
 
         void Bootstrapper_Bootstrapped(object sender, EventArgs e)
         {
-            Config.RegisterSection<AgenticRAGConfig>();
+            Config.RegisterSection<PARAGConfig>();
             ObjectFactory.Container.RegisterType<IPARAGAssistantClient, PARAGAssistantClient>(new ContainerControlledLifetimeManager());
             ObjectFactory.Container.RegisterType(typeof(IOperationProvider), typeof(PARAGOperationProvider), typeof(PARAGOperationProvider).Name);
 
+            // Install 'Microsoft.AspNet.WebApi.Core' and 'Microsoft.AspNet.WebApi.WebHost' NuGet packages to your project to use the following code for Web API configuration.
             GlobalConfiguration.Configuration.Routes.MapHttpRoute(
                 name: "parag",
                 routeTemplate: "parag/{action}",
                 defaults: new
                 {
-                    controller = "AgenticRag",
+                    controller = "PARAG",
                 });
         }
 

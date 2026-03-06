@@ -233,13 +233,17 @@
     <Compile Include="Client\PARAGClientSerializer.cs" />
     <Compile Include="Configuration\AssistantConfig.cs" />
     <Compile Include="Configuration\KnowledgeBoxSettings.cs" />
-    <Compile Include="Configuration\AgenticRAGConfig.cs" />
-    <Compile Include="Controllers\AgenticRagController.cs" />
+    <Compile Include="Configuration\PARAGConfig.cs" />
     <Compile Include="Controllers\AskRequestDto.cs" />
     <Compile Include="Controllers\FeedbackRequestDto.cs" />
+    <Compile Include="Controllers\FindRequestDto.cs" />
+    <Compile Include="Controllers\FindResponseDto.cs" />
     <Compile Include="Controllers\InteractionDto.cs" />
+    <Compile Include="Controllers\PARAGController.cs" />
+    <Compile Include="HtmlHelpers.cs" />
     <Compile Include="OperationProviders\KnowledgeBoxDto.cs" />
     <Compile Include="OperationProviders\PARAGOperationProvider.cs" />
+    <Compile Include="OperationProviders\SuggestionsDto.cs" />
     <Compile Include="OperationProviders\VersionInfoDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

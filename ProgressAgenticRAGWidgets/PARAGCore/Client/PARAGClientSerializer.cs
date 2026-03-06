@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace PARAGCore.Clients.Models.Serialization
 {
@@ -6,25 +8,28 @@ namespace PARAGCore.Clients.Models.Serialization
     {
         static PARAGJSONSerializer()
         {
-            var jsonSerializerSettings = new JsonSerializerSettings
+            var jsonSerializerOptions = new JsonSerializerOptions
             {
-                NullValueHandling = NullValueHandling.Ignore,
-                MaxDepth = 64
+                PropertyNamingPolicy = null,
+                // ensures Dictionary keys are serialized as is. 
+                DictionaryKeyPolicy = null,
+                MaxDepth = 64,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
             };
 
-            _settings = jsonSerializerSettings;
+            _options = jsonSerializerOptions;
         }
 
         public static string Serialize(object obj)
         {
-            return JsonConvert.SerializeObject(obj, _settings);
+            return JsonSerializer.Serialize(obj, _options);
         }
 
         public static T Deserialize<T>(string json)
         {
-            return JsonConvert.DeserializeObject<T>(json, _settings);
+            return JsonSerializer.Deserialize<T>(json, _options);
         }
 
-        private static JsonSerializerSettings _settings;
+        private static JsonSerializerOptions _options;
     }
 }

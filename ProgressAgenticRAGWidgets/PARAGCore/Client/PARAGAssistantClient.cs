@@ -1,12 +1,13 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PARAGCore.Clients.Models.Serialization;
+﻿using PARAGCore.Clients.Models.Serialization;
 using PARAGCore.Configuration;
 using PARAGCore.Controllers;
+using PARAGCore.OperationProviders;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telerik.Sitefinity.Configuration;
 
@@ -26,6 +27,7 @@ namespace PARAGCore.Client
             HttpClient = sharedHttpClient;
         }
 
+        /// <inheritdoc/>
         public async Task<HttpResponseMessage> AskAsync(AskRequestDto request)
         {
             var knowledgeBoxName = request.KnowledgeBoxName;
@@ -40,6 +42,7 @@ namespace PARAGCore.Client
                 request).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        /// <inheritdoc/>
         public async Task<string> SendFeedbackAsync(FeedbackRequestDto request)
         {
             var knowledgeBoxName = request.KnowledgeBoxName;
@@ -54,6 +57,25 @@ namespace PARAGCore.Client
                 request).ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
+        /// <inheritdoc/>
+        public Task<SuggestionsDto> GetSuggestionsAsync(string knowledgeBoxName, string searchQuery)
+        {
+            return this.SendKBRequestAsync<SuggestionsDto>(
+                knowledgeBoxName,
+                $"suggest?query={searchQuery}&fields=a/title&features=entities&features=paragraph",
+                HttpMethod.Get);
+        }
+
+        public async Task<FindResponseDto> FindAsync(FindRequestDto request)
+        {
+            var knowledgeBoxName = request.KnowledgeBoxName;
+
+            // remove kbname from payload
+            request.KnowledgeBoxName = null;
+            
+            return await SendKBRequestAsync<FindResponseDto>(knowledgeBoxName, "find", HttpMethod.Post, request).ConfigureAwait(false);
+        }
+
         private async Task<Dictionary<string, string>> SetAuthHeaders(Dictionary<string, string> headers, string knowledgeBoxName)
         {
             if (headers == null)
@@ -61,7 +83,7 @@ namespace PARAGCore.Client
                 headers = new Dictionary<string, string>();
             }
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
             string accessKey = config.KnowledgeBoxes[knowledgeBoxName].KnowledgeBoxToken;
             headers.Add(NucliaServiceAccountHeader, $"Bearer {accessKey}");
 
@@ -77,11 +99,11 @@ namespace PARAGCore.Client
         {
             headers = await SetAuthHeaders(headers, knowledgeBoxName).ConfigureAwait(false);
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
 
             if (config.KnowledgeBoxes.TryGetValue(knowledgeBoxName, out var kbSettings))
             {
-                return await SendRequestAsync<T>($"/api/v1/kb/{kbSettings.KnowledgeBoxId}/{endpoint}", method, payload, headers).ConfigureAwait(false);
+                return await SendRequestAsync<T>(kbSettings.KnowledgeBoxId, $"/api/v1/kb/{kbSettings.KnowledgeBoxId}/{endpoint}", method, payload, headers).ConfigureAwait(false);
             }
 
             return default(T);
@@ -96,26 +118,33 @@ namespace PARAGCore.Client
         {
             headers = await SetAuthHeaders(headers, knowledgeBoxName).ConfigureAwait(false);
 
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
 
             if (config.KnowledgeBoxes.TryGetValue(knowledgeBoxName, out var kbSettings))
             {
-                return await SendStreamingRequestAsync($"/api/v1/kb/{kbSettings.KnowledgeBoxId}/{endpoint}", method, payload, headers).ConfigureAwait(false);
+                return await SendStreamingRequestAsync(kbSettings.KnowledgeBoxId, $"/api/v1/kb/{kbSettings.KnowledgeBoxId}/{endpoint}", method, payload, headers).ConfigureAwait(false);
             }
 
             return null;
         }
 
         protected virtual async Task<HttpResponseMessage> SendRawHttpRequest(
+           string knowledgeBoxId,
            string endpoint,
            HttpMethod method,
            object payload = null,
            Dictionary<string, string> headers = null,
            HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
         {
-            var config = Config.Get<AgenticRAGConfig>();
+            var config = Config.Get<PARAGConfig>();
+            var kb = config.KnowledgeBoxes.Values.Where(x => x.KnowledgeBoxId == knowledgeBoxId).FirstOrDefault();
 
-            HttpRequestMessage request = new HttpRequestMessage(method, $"{config.BaseUrl}{endpoint}");
+            if (kb == null)
+            {
+                return null;
+            }
+
+            HttpRequestMessage request = new HttpRequestMessage(method, $"{kb.BaseUrl}{endpoint}");
 
             // Add custom headers
             if (headers != null)
@@ -129,16 +158,7 @@ namespace PARAGCore.Client
             // Add payload for POST/PUT/PATCH requests
             if (payload != null && (method == HttpMethod.Post || method == HttpMethod.Put))
             {
-                string json;
-                if (payload is JObject jobject)
-                {
-                    json = jobject.ToString();
-                }
-                else
-                {
-                    json = PARAGJSONSerializer.Serialize(payload);
-                }
-
+                string json = PARAGJSONSerializer.Serialize(payload);
                 request.Content = new StringContent(json, Encoding.UTF8, "application/json");
             }
 
@@ -154,12 +174,13 @@ namespace PARAGCore.Client
         }
 
         protected virtual async Task<T> SendRequestAsync<T>(
+            string knowledgeBoxId,
             string endpoint,
             HttpMethod method,
             object payload = null,
             Dictionary<string, string> headers = null)
         {
-            var response = await SendRawHttpRequest(endpoint, method, payload, headers, HttpCompletionOption.ResponseContentRead).ConfigureAwait(false);
+            var response = await SendRawHttpRequest(knowledgeBoxId, endpoint, method, payload, headers, HttpCompletionOption.ResponseContentRead).ConfigureAwait(false);
 
             var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
@@ -180,6 +201,7 @@ namespace PARAGCore.Client
         }
 
         protected virtual async Task<HttpResponseMessage> SendStreamingRequestAsync(
+            string knowledgeBoxId,
             string endpoint,
             HttpMethod method,
             object payload = null,
@@ -192,7 +214,7 @@ namespace PARAGCore.Client
 
             headers["Accept-Encoding"] = "gzip, deflate";
 
-            var response = await SendRawHttpRequest(endpoint, method, payload, headers, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+            var response = await SendRawHttpRequest(knowledgeBoxId, endpoint, method, payload, headers, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
             return response;
         }
 
